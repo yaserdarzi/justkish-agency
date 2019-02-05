@@ -25,7 +25,17 @@ module.exports = {
                 use: [ 'style-loader', 'css-loader' ]
                 
             },
-            {test: /\.(jpe?g|png|gif|svg|eot|ttf|woff|woff2)$/i, loader: "url-loader?name=src/[name].[ext]"},
+            {test: /\.(jpe?g|png|gif|svg)$/i, loader: "url-loader?name=src/[name].[ext]"},
+            {
+                test: /\.(woff(2)?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
+                use: [{
+                    loader: 'file-loader',
+                    options: {
+                        name: '[name].[ext]',
+                        outputPath: 'fonts/'
+                    }
+                }]
+            }
             
         ] 
     },
