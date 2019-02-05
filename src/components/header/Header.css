@@ -33,9 +33,12 @@ margin-left: 5px;
     display: flex;
     align-items: center;
     margin-right: 30px;
-
+    cursor: pointer;
 }
-
+.sub-menu:hover{
+    color: #555;
+    transition: all .2s linear;
+}
 .user-section{
     display: flex;
     align-items: center;
@@ -50,6 +53,11 @@ margin-left: 5px;
     cursor: pointer;
     align-items: center;
     margin-right: 30px;
+    cursor: pointer;
+}
+.profile:hover{
+    transition: all .2s linear;
+
 }
 .manage-profile{
     display: none;
@@ -104,9 +112,15 @@ display: flex;
     height: 35px;
     border-radius: 5px;
     margin: 0px 5px;
+    cursor: pointer;
+
 }
 .ticket , .shopping-card{
     position: relative;
+}
+.ticket:hover , .shopping-card:hover , .wallet:hover{
+    opacity: .8;
+    transition: all .2s linear;
 }
 .ticket:before , .shopping-card:before{
     position: absolute;
@@ -145,6 +159,10 @@ display: flex;
     font-size: 11px;
     line-height: 20px;
     align-items: center;
+    cursor: pointer;
+}
+.sub-manage-profile:hover{
+    opacity: .7;
 }
 .manage-profile-icon{
     padding-left: 5px;

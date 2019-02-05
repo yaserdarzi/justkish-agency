@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 import profile from './../../../assets/images/profile.jpg'
-import arrow_down from './../../../assets/icons/arrow_down.svg'
 import operator_edit from './../../../assets/icons/operator_edit.svg'
 import change_password from './../../../assets/icons/change_password.svg'
 import edit_profile from './../../../assets/icons/edit_profile.svg'
@@ -35,7 +34,6 @@ class Home extends Component {
                                     <span className="profile-name" >Maryam Azizi</span>
                                     <span className="profile-level" >مدیر</span>
                                 </div>
-                                <img className="my-arrow-down" src={arrow_down} alt="فلش" />
                             </div>
                             <div className="increas-credit" >
                                 <span className="increas-credit-text" >افزایش اعتبار</span>
@@ -78,7 +76,7 @@ class Home extends Component {
                                 <img src={arrowdown2} alt="فلش" />
                                 <ul className="sellers-list" >
 
-                                    <span className="all-sellers" >همه عاملین فروش</span>
+                                    <p className="all-sellers" >همه عاملین فروش</p>
 
                                     <li className="seller-list" >
                                         <img className="seller-img" src={profile} alt="عاملین" />
@@ -112,11 +110,11 @@ class Home extends Component {
                                     <span>گزارش فروش</span>
                                 </span>
                                 <img src={arrowdown2} alt="فلش" />
-                                <ul className="sellers-list" >
-                                    <li className="seller-list" >
+                                <ul className="report-lists" >
+                                    <li className="report-list" >
                                         <span>گزارش فروش</span>
                                     </li>
-                                    <li className="seller-list" >
+                                    <li className="report-list" >
                                         <span>گزارش مالی</span>
                                     </li>
                                 </ul></div>
