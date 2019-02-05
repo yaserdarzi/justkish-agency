@@ -1,0 +1,231 @@
+.home{
+
+}
+.home-box{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.part1{
+width: 25%;
+margin: 10px;
+}
+
+.checkout{
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+.report{
+    display: flex;
+    box-shadow: 0 2px 10px rgba(157,206,255,.34);
+    border-radius: 5px;
+    background-color: #fff;
+    overflow: hidden;
+    margin: 20px 0px;
+    border-right: 7px solid #0080ff;
+    padding: 20px;
+    font-size: 12px;
+    color: #494d51;
+    font-weight: 700;
+    align-items: center;
+}
+
+
+.manage-account{
+
+    box-shadow: 0 2px 10px rgba(157,206,255,.34);
+    background-color: #fff;
+    border-radius: 5px;
+    padding-right: 20px;
+}
+
+.increas-credit{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.increas-credit-text{
+    margin-top: 5px;
+    float: right;
+    height: 23px;
+    line-height: 23px;
+    background-color: #f7f9fb;
+    color: #0080ff;
+    font-size: 11px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.checkout-request{
+    border-radius: 5px;
+    width: 100%;
+    background-color: #0080ff;
+    text-align: center;
+    line-height: 36px;
+    height: 36px;
+    font-size: 11px;
+    display: block;
+    color: #fff;
+}
+
+.credit-show{
+
+}
+
+.credit-show-number{
+    display: block;
+    font-weight: 700;
+    color: #494d51;
+    font-size: 25px;
+}
+.credit-show-unit{
+
+}
+.account{
+    display: block;
+    box-shadow: 0 2px 10px rgba(157,206,255,.34);
+    border-radius: 5px;
+    background-color: #fff;
+    margin-bottom: 20px;
+}
+.account p {
+    border-bottom: 1px solid #f4f4f4;
+    padding: 20px;
+    font-weight: 700;
+    color: #494d51;
+    font-size: 12px;
+}
+.part2{
+    width: 75%;
+    margin:10px;
+
+}
+.filter{
+    display: flex;
+    justify-content: space-around;
+    padding: 20px 10px;
+    background-color: #fff;
+    border-radius: 10px;
+}
+.date{
+
+display: flex;
+}
+.from , .to{
+    width: 200px;
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 50px;
+    border-left: 1px solid #eaeaea;
+}
+.sellers{
+    display: flex;
+    align-items: center;
+    width: 180px;
+    justify-content: space-between;
+    color: #cecece;
+    position: relative;
+    cursor: pointer;
+
+}
+.sell-report{
+    display: flex;
+    align-items: center;
+    width: 180px;
+    justify-content: space-between;
+    color: #cecece;
+    cursor: pointer;
+    position: relative;
+}
+.sellers-list{
+    display: none;
+    position: absolute;
+    top: 50px;
+}
+.sell-report:hover .sellers-list{
+    display: block;
+}
+
+.seller-list{
+    border-bottom: 1px solid #f7f9fb;
+    display: flex;
+
+    color: #333;
+    padding: 10px;
+}
+.all-sellers{
+    color: #333;
+    font-size: 16px;
+}
+.seller-img{
+border-radius: 50%;
+}
+
+.seller-box{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.seller-name{
+
+}
+
+.seller-level{
+
+}
+.selers-right{
+    display: flex;
+    align-items: center;
+}
+.sell-report-right{
+    display: flex;
+    align-items: center;
+}
+
+
+
+.search-btn{
+    border-radius: 50%;
+    background-color: transparent;
+    cursor: pointer;
+}
+.all-income {
+    margin-top: 20px;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    padding:20px;
+    border-radius: 10px;
+}
+.all-income-sale{
+    display: flex;
+    align-items: center;
+
+}
+.income-text{
+    padding: 0px 10px;
+
+}
+.sale-text{
+    border-right: 1px solid #eaeaea;
+    padding: 0px 10px;
+}
+.pdf-grid{
+    display: flex;
+    align-items: center;
+    width: 180px;
+    justify-content: space-around
+}
+.pdf-grid div img{
+    padding: 0px 2px;
+    cursor: pointer;
+}
+.products{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
