@@ -13,13 +13,20 @@ class Index extends Component {
         super(props);
         this.state = {}
     }
+
+
+    onLogin  (){
+        alert("aras login")
+    }
+
+
     render() {
         return (
             <div className="index" >
 
                 <div className="login-signup" >
                     <div className="login-signup-logo" >
-                    <div className="myblur" ></div>
+                    {/* <div className="myblur" ></div> */}
                         <img className="register-img" src={logo} alt="جاست کیش" />
                         <div className="login-signup-box">
 
@@ -32,7 +39,7 @@ class Index extends Component {
                                 <p className="forget-pass" >
                                     <span>رمز خود را فراموش کرده ام </span>
                                 </p>
-                                <button className="login-btn" >ورود</button>
+                                <button className="login-btn" onClick={this.onLogin.bind(this)} >ورود</button>
                             </div>
 
                             <div className="ls-seprator" ></div>
