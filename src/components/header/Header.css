@@ -186,5 +186,58 @@ display: flex;
     .logo{
         border:none;
     }
+    .user-section{
+        width: 100%;
+        justify-content: space-between;
+    }
+    .profile {
+        margin-left: 10px;
+    }
+    .sub-menu {
+        margin-right: 10px;
+    }
+    .logo{
+        padding: 0px 10px 0px 0px;
+    }
+}
+
+@media screen and (max-width: 530px){
+
+    .logo-menu{
+        flex-direction: column;
+    }
+
+    .user-section {
+        flex-direction: column-reverse;
+        margin-top: 15px;
+    }
+    .profile-desc{
+        display: flex;
+        margin-top: 10px;
+    }
+    .shopping-box {
+        flex-direction: column;
+        width: 100%;
+    }
+    .wallet, .shopping-card, .ticket{
+        margin:auto;
+        margin-top: 10px;
+        width: 90%;
+    }
+    .wallet{
+        justify-content: space-between;
+    }
+    .shoppings-icon{
+        width: 50px;
+    }
+}
+
+@media screen and (max-width: 360px){
+    .menu {
+        flex-wrap: wrap;
+    }
+    .sub-menu{
+        width: 45%;
+    }
 
 }

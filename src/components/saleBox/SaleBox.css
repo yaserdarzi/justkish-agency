@@ -1,7 +1,7 @@
 .sale-box{
     margin-top: 20px;
     background-color: #fff;
-    width: 240px;
+    width: 24.5%;
     box-shadow: 0 3px 6px rgba(157,206,255,.16);
     border-radius: 10px;
     cursor: pointer;
@@ -49,5 +49,47 @@ margin-right: 20px;
 }
 
 .product-price-number span{
+
+}
+
+
+@media screen and (max-width: 1300px){
+
+.sale-box{
+    width: 33%;
+}
+
+}
+
+
+@media screen and (max-width: 1200px){
+
+    .sale-box{
+        width: 49%;
+    }
+    
+}
+
+@media screen and (max-width: 1000px){
+    .sale-box{
+        width: 33%;
+    }
+    
+
+}
+
+@media screen and (max-width: 760px){
+    .sale-box{
+        width: 49%;
+    }
+    
+
+}
+
+@media screen and (max-width: 480px){
+    .sale-box{
+        width: 99%;
+    }
+    
 
 }

@@ -28,11 +28,11 @@ class Home extends Component {
                     <div className="part1" >
                         <div className="checkout" >
 
-                            <div className="profile" >
-                                <img className="profile-img" src={profile} alt="profile" />
-                                <div className="profile-desc" >
-                                    <span className="profile-name" >Maryam Azizi</span>
-                                    <span className="profile-level" >مدیر</span>
+                            <div className="checkout-profile" >
+                                <img className="checkout-profile-img" src={profile} alt="profile" />
+                                <div className="checkout-profile-desc" >
+                                    <span className="checkout-profile-name" >Maryam Azizi</span>
+                                    <span className="checkout-profile-level" >مدیر</span>
                                 </div>
                             </div>
                             <div className="increas-credit" >
@@ -65,62 +65,65 @@ class Home extends Component {
                     <div className="part2" >
                         <div className="filter" >
                             <div className="date" >
-                                <div className="from" ></div>
-                                <div className="to" ></div>
+                                <div className="from" >از</div>
+                                <div className="to" >تا</div>
                             </div>
-                            <div className="sellers" >
-                                <span className="selers-right" >
-                                    <img src={user} alt="کاربر" />
-                                    <span>عامل فروش</span>
-                                </span>
-                                <img src={arrowdown2} alt="فلش" />
-                                <ul className="sellers-list" >
+                            <div className="search-sellers">
 
-                                    <p className="all-sellers" >همه عاملین فروش</p>
+                                <div className="sellers" >
+                                    <span className="selers-right" >
+                                        <img src={user} alt="کاربر" />
+                                        <span>عامل فروش</span>
+                                    </span>
+                                    <img src={arrowdown2} alt="فلش" />
+                                    <ul className="sellers-list" >
 
-                                    <li className="seller-list" >
-                                        <img className="seller-img" src={profile} alt="عاملین" />
-                                        <span className="seller-box" >
-                                            <span className="seller-name" >ZAHRA AMIRI</span>
-                                            <span className="seller-level" >عامل فروش ۱</span>
-                                        </span>
-                                    </li>
-                                    <li className="seller-list" >
-                                        <img className="seller-img" src={profile} alt="عاملین" />
-                                        <span className="seller-box" >
-                                            <span className="seller-name" >MONA VAFA</span>
-                                            <span className="seller-level" >عامل فروش ۲</span>
-                                        </span>
-                                    </li>
-                                    <li className="seller-list" >
-                                        <img className="seller-img" src={profile} alt="عاملین" />
-                                        <span className="seller-box" >
-                                            <span className="seller-name" >LEYLA HATAMI</span>
-                                            <span className="seller-level" >عامل فروش ۳</span>
-                                        </span>
-                                    </li>
+                                        <p className="all-sellers" >همه عاملین فروش</p>
 
-                                </ul>
+                                        <li className="seller-list" >
+                                            <img className="seller-img" src={profile} alt="عاملین" />
+                                            <span className="seller-box" >
+                                                <span className="seller-name" >ZAHRA AMIRI</span>
+                                                <span className="seller-level" >عامل فروش ۱</span>
+                                            </span>
+                                        </li>
+                                        <li className="seller-list" >
+                                            <img className="seller-img" src={profile} alt="عاملین" />
+                                            <span className="seller-box" >
+                                                <span className="seller-name" >MONA VAFA</span>
+                                                <span className="seller-level" >عامل فروش ۲</span>
+                                            </span>
+                                        </li>
+                                        <li className="seller-list" >
+                                            <img className="seller-img" src={profile} alt="عاملین" />
+                                            <span className="seller-box" >
+                                                <span className="seller-name" >LEYLA HATAMI</span>
+                                                <span className="seller-level" >عامل فروش ۳</span>
+                                            </span>
+                                        </li>
 
-                            </div>
+                                    </ul>
 
-                            <div className="sell-report" >
-                                <span className="sell-report-right" >
-                                    <img src={user} alt="کاربر" />
-                                    <span>گزارش فروش</span>
-                                </span>
-                                <img src={arrowdown2} alt="فلش" />
-                                <ul className="report-lists" >
-                                    <li className="report-list" >
+                                </div>
+
+                                <div className="sell-report" >
+                                    <span className="sell-report-right" >
+                                        <img src={user} alt="کاربر" />
                                         <span>گزارش فروش</span>
-                                    </li>
-                                    <li className="report-list" >
-                                        <span>گزارش مالی</span>
-                                    </li>
-                                </ul></div>
-                            <button className="search-btn" >
-                                <img src={search} alt="جستجو" ></img>
-                            </button>
+                                    </span>
+                                    <img src={arrowdown2} alt="فلش" />
+                                    <ul className="report-lists" >
+                                        <li className="report-list" >
+                                            <span>گزارش فروش</span>
+                                        </li>
+                                        <li className="report-list" >
+                                            <span>گزارش مالی</span>
+                                        </li>
+                                    </ul></div>
+                                <button className="search-btn" >
+                                    <img src={search} alt="جستجو" ></img>
+                                </button>
+                            </div>
 
                         </div>
                         <div className="all-income" >
@@ -146,19 +149,19 @@ class Home extends Component {
                             </div>
                         </div>
                         <div className="products" >
-                        <SaleBox />
-                        <SaleBox />
-                        <SaleBox />
-                        <SaleBox />
-                        <SaleBox />
-                        <SaleBox />
-                        <SaleBox />
-                        <SaleBox />
-                        <SaleBox />
-                        <SaleBox />
-                        <SaleBox />
-                        <SaleBox />
-                        <SaleBox />
+                            <SaleBox />
+                            <SaleBox />
+                            <SaleBox />
+                            <SaleBox />
+                            <SaleBox />
+                            <SaleBox />
+                            <SaleBox />
+                            <SaleBox />
+                            <SaleBox />
+                            <SaleBox />
+                            <SaleBox />
+                            <SaleBox />
+                            <SaleBox />
 
                         </div>
                     </div>

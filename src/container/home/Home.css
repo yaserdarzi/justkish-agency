@@ -8,7 +8,7 @@
     justify-content: space-around;
 }
 .part1{
-width: 25%;
+width: 30%;
 margin: 10px;
 }
 
@@ -17,7 +17,33 @@ margin: 10px;
     background-color: #fff;
     border-radius: 10px;
 }
+.checkout-profile{
+    position: relative;
+    display: flex;
+    flex-direction: row-reverse;
+    cursor: pointer;
+    align-items: center;
+    margin-right: 30px;
+    cursor: pointer;
+}
+.checkout-profile-img{
+    border-radius: 30px;
+    margin: 5px 10px;
+}
 
+.checkout-profile-desc{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.checkout-profile-name{
+    font-size: 15px;
+    font-weight: 900;
+}
+.checkout-profile-level{
+    font-size: 11px;
+}
 .report{
     display: flex;
     box-shadow: 0 2px 10px rgba(157,206,255,.34);
@@ -83,7 +109,9 @@ margin: 10px;
     opacity: .8;
 }
 .credit-show{
-
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
 }
 
 .credit-show-number{
@@ -110,7 +138,7 @@ margin: 10px;
     font-size: 12px;
 }
 .part2{
-    width: 75%;
+    width: 70%;
     margin:10px;
 
 }
@@ -125,11 +153,16 @@ margin: 10px;
 
 display: flex;
 }
+
+.search-sellers{
+    display: flex;
+}
 .from , .to{
     width: 200px;
     padding-left: 10px;
     padding-right: 10px;
     height: 50px;
+    line-height:50px;
     border-left: 1px solid #eaeaea;
 }
 .sellers{
@@ -238,6 +271,7 @@ display: block;
     border-radius: 50%;
     background-color: transparent;
     cursor: pointer;
+    margin-right: 10px;;
 }
 .all-income {
     margin-top: 20px;
@@ -274,4 +308,129 @@ display: block;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+}
+
+
+@media screen and (max-width: 1300px){
+    .filter{
+        flex-direction: column;
+    }
+    .date , .search-sellers{
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .search-sellers{
+        justify-content:space-between;
+    }
+    .from, .to{
+        width: 350px;
+    }
+    .to{
+        border: none;
+    }
+    .sellers , .sell-report{
+        width: 350px;
+        padding: 0px 0px 0px 50px;
+    }
+    .sellers{
+        border-left: 1px solid #eaeaea;
+    }
+
+}
+@media screen and (max-width: 1100px){
+
+    .sellers , .sell-report , .from, .to{
+        width: 300px;
+    }
+}
+
+@media screen and (max-width: 1000px){
+    .home-box{
+        flex-wrap: wrap;
+    }
+    .part1{
+        width: 100%;
+    }
+    .part2{
+        width: 100%;
+    }
+
+}
+
+@media screen and (max-width: 560px){
+    .profile {
+        border-top: 1px solid #f3f3f3;
+        width: 90%;
+        display: flex;
+        justify-content: center;
+    }
+    .my-arrow-down{
+        left: 10px;
+    }
+        .date{
+            flex-direction: column;
+        }
+        .from , .sellers{
+            border: none;
+        }
+        .search-sellers{
+            flex-wrap: wrap;
+        }
+        .sellers{
+            margin-bottom: 20px;
+        }
+        .all-income{
+            flex-direction: column;
+        }
+        .all-income-sale {
+            width: 100%;
+            justify-content: space-between;
+        }
+        .income-text , .sale-text{
+            width: 45%;
+            font-weight: 900;
+            margin-bottom: 20px;
+        }
+        .sale-text {
+            display: flex;
+            justify-content: flex-end;
+        }
+        .pdf-grid {
+            width: 100%;
+            justify-content: space-between;
+        }
+        .pdf-grid >div{
+            display: flex;
+            justify-content:space-around;
+            width: 100px;
+        }
+}
+@media screen and (max-width: 450px){
+    .all-income-sale{
+        flex-wrap: wrap;
+    }
+    .income-text, .sale-text{
+        display: flex;
+        width: 100%;
+        justify-content: center;
+    }
+    .part1 , .part2{
+        padding: 10px;
+    }
+}
+@media screen and (max-width: 400px){
+
+    .sellers , .sell-report , .search{
+        width: 90%;
+        margin:20px auto;
+        padding:0px;
+    }
+    .search-btn {
+        width: 90%;
+        background-color: #48a4ff;
+        display: flex;
+        justify-content: center;
+        border-radius: 10px;
+        margin: auto;
+    }
 }
