@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 
-import Input from './../../../components/input/Input'
-
-import logo from './../../../../assets/images/logo.png'
-
-import './index.css'
+//
+//
+//
+import Input from './../../../components/input/Input';
+import logo from './../../../../assets/images/logo.png';
+import base from '../../../api/baseURL';
+import './index.css';
 
 
 
@@ -14,8 +16,9 @@ class Index extends Component {
         this.state = {
             loginEmail:'',
             loginPassword:'',
-            loginEmailError:'error',
-            loginPasswordError:'pass werror'
+            loginEmailError:'',
+            loginPasswordError:'',
+            signinError:''
         }
     }
 
@@ -25,24 +28,102 @@ class Index extends Component {
         console.log(`
        email: ${this.state.loginEmail}
        password: ${this.state.loginPassword}
-        `)
+        `);
+
+        this.loginFetch();
     }
 
-    changedHandler= (event) => {
-        console.log( event.target.value)
+    changedHandler = (e) => {
+        //console.log(e.target.value)
+        this.setState({
+            [e.target.name] : e.target.value
+        });
+    }
+
+
+    loginFetch = async() => {
+        event.preventDefault();
+        const { loginEmail, loginPassword } = this.state;
+        let checking = true;
+
+        if(loginEmail === '')
+        {
+            this.setState({
+                loginEmailError:'لطفا ایمیل خود را وارد کنید'
+            });
+            checking = false;
+        }
+        if(loginPassword === '')
+        {
+            this.setState({
+                loginPasswordError:'لطفا کلمه عبور خود را وارد کنید'
+            });
+            checking = false;
+        }
+
+
+        // provider data for API --------->
+        const data = {
+            "email":loginEmail,
+            "password": loginPassword
+        } 
+
+        if(checking === true){
+            const res = await this.postData(data,'agency/auth/email/login');
+
+
+
+         console.log(res.status)
+
+         if(res.status === 401)
+         {
+             this.setState({
+                 signinError:'نام کاربری و یا کلمه عبور شما صحیح نمی باشد.'
+             })
+         }
+         console.log("fetch finish.!")
+        }
+    }
+
+
+
+    postData(data,key) {
+        console.log("fetching...")
 
         this.setState({
-            [event.target.name] : event.target.value
+            isLoading:true,
+            errorHandleing:'',
+            successMessage:''
         })
-    }
+
+         const url =  base.baseURL + key;
+
+          return fetch(url, {
+              method: "POST", 
+              cache: "no-cache",  
+              headers: {
+                  "Content-Type": "application/json",
+                  "Accept": "application/json",
+                  "agent" : "web" 
+              },
+              redirect: "follow", 
+              referrer: "no-referrer", 
+              body: JSON.stringify(data), 
+          })
+          .then(response => {
+            const statusCode = response.status
+            const data = response.json()
+            return Promise.all([statusCode, data])
+          })
+          .then(([res, data]) => {
+            //console.log(res, data)
+            this.setState({isLoading: false})
+            return ({'status':res, 'data':data.data})
+          })
+      }
 
 
-    loginFetch(){
-        const {loginEmail, loginPassword} = this.state;
 
-        
-
-    }
 
     render() {
         return (
@@ -58,6 +139,7 @@ class Index extends Component {
                             <div className="login" >
                                 <h1 className="login-title" >ورود به سامانه </h1>
                                 <p className="login-text">برای ورود ایمیل و رمز عبور را وارد نمایید</p>
+                                <p>{this.state.signinError}</p>
                                 <Input 
                                     placeHolder="ایمیل" 
                                     name="loginEmail"

@@ -18,7 +18,7 @@ const input = (props) => {
                           name={props.name}
                           required
                           maxLength={props.max}
-                          style={{color:props.color}}
+                          style={{color:props.color, marginBottom:5}}
                           />
                 <span className="span-label">{props.placeHolder }</span>
                {props.error ? (  <span className="input-error-text bounceIn" >{props.error}</span> ) : (null)}
