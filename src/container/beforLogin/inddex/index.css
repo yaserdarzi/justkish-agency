@@ -53,8 +53,11 @@
     width: 100%;
     justify-content: space-around;
 }
-.login{
+.login , .signup{
 width: 250px;
+display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 .login-btn{
     margin-top: 20px;
@@ -86,9 +89,7 @@ width: 250px;
 }
 
 
-.signup{
-width: 250px;
-}
+
 
 .signup-title , .login-title{
     font-size: 20px;
@@ -118,6 +119,8 @@ width: 250px;
     .login , .signup{
         margin: auto;
         width: 90%;
+        display: block;
+
     }
     .signup{
         margin-top: 20px;
