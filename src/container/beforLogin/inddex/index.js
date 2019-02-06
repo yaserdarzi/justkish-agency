@@ -37,6 +37,13 @@ class Index extends Component {
     }
 
 
+    loginFetch(){
+        const {loginEmail, loginPassword} = this.state;
+
+        
+
+    }
+
     render() {
         return (
             <div className="index" >
