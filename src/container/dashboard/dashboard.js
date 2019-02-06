@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
 
+import './dashboard.css';
 
 
 
@@ -11,8 +12,13 @@ class Dashboard extends Component {
     render() { 
         return ( 
             <div>
-                <div className="part1"></div>
-                <div className="part2"></div>
+                <div className="part-1">
+                    <div className="sellers">
+                        <p>حساب کاربری شما</p>
+                        <ul className="manage-sellers" ></ul>
+                    </div> 
+                </div>
+                <div className="part-2"></div>
             </div>
          );
     }
