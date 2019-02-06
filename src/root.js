@@ -6,8 +6,8 @@ import HeaderComponentAfterLogin from './components/header/Header';
 
 // import Token from './api/token';
 
-// const Token = 'Login'
-const Token = 'logout'
+const Token = 'Login'
+// const Token = 'logout'
  
 export default class Root extends Component {
     constructor(props) {
@@ -29,12 +29,9 @@ export default class Root extends Component {
             <div>
                 <div>
                     {Token === 'logout' ? ( '' ): ( <HeaderComponentAfterLogin/> )}            
-                   
                 </div>
                 <div> 
-                    
-                {Token === 'logout' ? ( <IndexComponent /> ): ( this.props.children )}            
-                   
+                    {Token === 'logout' ? ( <IndexComponent /> ): ( this.props.children )}            
                 </div>
                 <div>
                     {/* <Footer /> */}
