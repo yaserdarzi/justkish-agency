@@ -6,8 +6,8 @@ import HeaderComponentAfterLogin from './components/header/Header';
 
 // import Token from './api/token';
 
-const Token = 'Login'
-// const Token = 'logout'
+// const Token = 'Login'
+const Token = 'logout'
  
 export default class Root extends Component {
     constructor(props) {

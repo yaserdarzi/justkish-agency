@@ -7,6 +7,7 @@ import { Router ,  Route , browserHistory , IndexRoute  } from 'react-router';
 import RootComponent from './root';
 import DashboardScreen from './container/dashboard/dashboard';
 import HomeScreen from './container/home/Home';
+import IndexScreen from './container/beforLogin/inddex/index';
 
 
 
@@ -29,6 +30,7 @@ class RouterComponent extends Component {
             <Route path="/" component={RootComponent}>
                   <IndexRoute   component={HomeScreen} /> 
                   <Route   path="dashboard" component={DashboardScreen} /> 
+                  <Route   path="index" component={IndexScreen} /> 
                   <Route   path="home" component={HomeScreen} /> 
                 
               </Route>
