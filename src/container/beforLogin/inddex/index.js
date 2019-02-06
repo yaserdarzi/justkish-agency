@@ -19,13 +19,14 @@ class Index extends Component {
 
                 <div className="login-signup" >
                     <div className="login-signup-logo" >
-                        <img src={logo} alt="جاست کیش" />
+                    <div className="myblur" ></div>
+                        <img className="register-img" src={logo} alt="جاست کیش" />
                         <div className="login-signup-box">
 
 
                             <div className="login" >
-                                <h1>ورود به سامانه </h1>
-                                <p>برای ورود ایمیل و رمز عبور را وارد نمایید</p>
+                                <h1 className="login-title" >ورود به سامانه </h1>
+                                <p className="login-text">برای ورود ایمیل و رمز عبور را وارد نمایید</p>
                                 <Input placeHolder="ایمیل" name="email" />
                                 <Input placeHolder="رمز عبور" name="password" />
                                 <p className="forget-pass" >
@@ -37,8 +38,8 @@ class Index extends Component {
                             <div className="ls-seprator" ></div>
 
                             <div className="signup" >
-                                <h1>درخواست ساین </h1>
-                                <p>فرم درخواست ثبت نام مخصوص آژانس ها</p>
+                                <h1 className="signup-title">درخواست ساین </h1>
+                                <p className="signup-text">فرم درخواست ثبت نام مخصوص آژانس ها</p>
                                 <Input placeHolder="نام آژانس" name="agentname" />
                                 <Input placeHolder="شهر" name="city" />
                                 <Input placeHolder="آدرس ایمیل" name="emailadrress" />
