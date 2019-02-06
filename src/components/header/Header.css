@@ -3,7 +3,6 @@
     padding: 20px 10px;
     box-shadow: 0 3px 6px rgba(157,206,255,.16);
     background-color: #fff;
-    height: 90px;
 }
 .header-box{
     display: flex;
@@ -151,9 +150,23 @@ display: flex;
 }
 
 @media screen and (max-width: 1200px){
-
+.profile{
+    margin: 0;
+}
 .profile-desc{
     display: none;
+    
 }
+
+}
+
+@media screen and (max-width: 1080px){
+    .logo-menu {
+        justify-content: space-between;
+        width: 100%;
+    }
+    .logo{
+        border:none;
+    }
 
 }
