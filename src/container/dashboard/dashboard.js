@@ -11,7 +11,8 @@ class Dashboard extends Component {
     render() { 
         return ( 
             <div>
-                <p>Dashboards</p>
+                <div className="part1"></div>
+                <div className="part2"></div>
             </div>
          );
     }
