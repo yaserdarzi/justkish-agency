@@ -11,12 +11,29 @@ import './index.css'
 class Index extends Component {
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {
+            loginEmail:'',
+            loginPassword:'',
+            loginEmailError:'error',
+            loginPasswordError:'pass werror'
+        }
     }
 
 
     onLogin  (){
-        alert("aras login")
+        
+        console.log(`
+       email: ${this.state.loginEmail}
+       password: ${this.state.loginPassword}
+        `)
+    }
+
+    changedHandler= (event) => {
+        console.log( event.target.value)
+
+        this.setState({
+            [event.target.name] : event.target.value
+        })
     }
 
 
@@ -34,8 +51,20 @@ class Index extends Component {
                             <div className="login" >
                                 <h1 className="login-title" >ورود به سامانه </h1>
                                 <p className="login-text">برای ورود ایمیل و رمز عبور را وارد نمایید</p>
-                                <Input placeHolder="ایمیل" name="email" />
-                                <Input placeHolder="رمز عبور" name="password" />
+                                <Input 
+                                    placeHolder="ایمیل" 
+                                    name="loginEmail"
+                                    type={'text'}  
+                                    changed={this.changedHandler}
+                                    error={this.state.loginEmailError}
+                                />
+                                <Input 
+                                    placeHolder="رمز عبور" 
+                                    name="loginPassword"
+                                    type={'password'}  
+                                    changed={this.changedHandler}
+                                    error={this.state.loginPasswordError}
+                                />
                                 <p className="forget-pass" >
                                     <span>رمز خود را فراموش کرده ام </span>
                                 </p>
