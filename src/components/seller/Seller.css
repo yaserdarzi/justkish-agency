@@ -1,0 +1,48 @@
+.seller-com{
+
+}
+
+.seller-com-manage-sellers-item{
+    display:flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.seller-com-actions{
+display: flex;
+align-items: center;
+}
+
+.seller-com-edit , .seller-com-off{
+    padding: 0px 10px;
+    color: #b0b0b0;
+    transition: all .2s linear;
+    cursor: pointer;
+}
+.seller-com-edit:hover , .seller-com-off:hover{
+    color: #cccccc;
+    transition: all .2s linear;
+}
+
+.seller-com-left{
+display:flex;
+
+}
+
+.seller-com-name{
+display: flex;
+flex-direction: column;
+padding: 0px 10px;
+align-items: flex-end
+}
+.seller-com-name p{
+    font-weight: 900;
+}
+.seller-com-avatar{
+    width: 50px;
+    height: 50px;
+    background-color: deeppink;
+    border-radius: 50%;
+}
+
+

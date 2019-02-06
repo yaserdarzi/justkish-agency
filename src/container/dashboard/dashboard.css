@@ -4,32 +4,99 @@
 }
 
 
-.part-1{
-    width: 70%;
-    margin: 10px;
-    background-color: red;
+.dashboard1{
+    width: 75%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
 }
+.calender-weather-box{
+display:flex;
+width: 100%;
+padding: 10px;
+}
+.dashboard-calenrder{
+    width: 50%;
+    background-color: purple;
+    height: 200px;
+border-radius: 20px;
+    margin-left: 10px;
+    box-shadow: 0 2px 10px rgba(157,206,255,.34);
+}
+
+.dashboard-weather{
+    width: 50%;
+background-color: pink;
+height: 200px;
+border-radius: 20px;
+box-shadow: 0 2px 10px rgba(157,206,255,.34);
+}
+
+.sale-statistics{
+    margin: 10px;
+    background-color: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(157,206,255,.34);
+}
+
+.statistics-actions{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.sale-title{
+    padding: 10px 20px;
+}
+.sale-title h3{
+    display: flex;
+    align-items: center;
+    color: #494d51;
+}
+.sale-title h3 img{
+    margin-right: 10px;
+}
+.dashboard-dates{
+
+}
+.dashboard-dates ul{
+    display: flex;
+}
+.dashboard-dates ul li{
+    margin: 10px 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+.dashboard-dates ul li:hover{
+    opacity: .7;
+}
+.time-active{
+    border-bottom: 1px solid rgb(75, 170, 233);
+}
+
+.dashboard-chart{
+    width: 100%;
+    background-color: #71e271;
+    height: 500px;
+}
+
 
 .dashbord-sellers{
     display: block;
     box-shadow: 0 2px 10px rgba(157,206,255,.34);
-    border-radius: 5px;
+    border-radius: 20px;
     background-color: #fff;
     margin-bottom: 20px;
     width: 100%;
 
 }
 
-.dashbord-sellers p {
-    padding: 20px;
-    font-weight: 700;
-    color: #494d51;
-    font-size: 12px;
-}
 
 
 .dashbord-manage-sellers {
-    border-top: 1px solid #ccc;
 
 }
 
@@ -59,7 +126,15 @@
 
 }
 
-
+.dashbord-sellers-title{
+    font-weight: 900;
+    padding: 20px;
+    border-bottom: 1px solid  rgb(238, 238, 238);
+    color: #494d51;
+}
+.dashbord-sellers-title img{
+    margin-right: 10px;
+}
 .dashboard-seller-avatar{
     width: 50px;
     height: 50px;
@@ -97,12 +172,114 @@
     
 }
 
-.part-2{
-    width: 30%;
-    margin:10px;
-    background-color: black;
+.dashboard2{
+    width: 25%;
+    padding:10px;
     height: 100px;
+}
 
+.dashboard-report{
+    display: flex;
+    box-shadow: 0 2px 10px rgba(157,206,255,.34);
+    border-radius: 5px;
+    background-color: #fff;
+    overflow: hidden;
+    margin: 20px 0px;
+    padding: 20px;
+    font-size: 12px;
+    color: #494d51;
+    font-weight: 700;
+    align-items: center;
+    cursor: pointer;
+}
+.dashboard-report img{
+    margin-left: 10px;
+
+}
+.dashboard-support{
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(157,206,255,.34);
+}
+.dashboard-support h1{
+    font-weight: 900;
+    font-size: 13px;
+    padding: 20px;
+    display: flex;
+    border-bottom: 1px solid rgb(238, 238, 238);
+    color: #494d51;
+
+}
+.dashboard-support h1 img{
+    padding-left: 10px;
+}
+.dashboard-support-text{
+    padding: 20px;
+}
+
+ .dashboard-support-text h2 {
+font-size: 12px;
+color: #494d51;
+font-weight: 700;
+margin-bottom: 10px;
+}
+.dashboard-support-text img{
+    width: 22px;
+    height: 22px;
+
+}
+.dashboard-support-text span{
+    margin-left: 10px;
+}
+.dashboard-support-phone{
+    display: flex;
+    justify-content: flex-end;
+    font-size: 11px;
+    font-weight: 900;
+    color: #a2a2a2;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.dashboard-support-mail{
+    display: flex;
+    justify-content: flex-end;
+    font-size: 11px;
+    font-weight: 900;
+    color: #2cb5de;
+    align-items: center;
+}
+
+
+@media screen and (max-width: 1200px){
+.dashboard{
+    flex-direction: column;
+}
+.dashboard1 , .dashboard2{
+    width: 100%;
+}
+    
 
 }
 
+
+@media screen and (max-width: 800px){
+
+    .dashboard-calenrder , .dashboard-weather{
+        width: 100%;
+        margin-top: 10px;
+    } 
+    .calender-weather-box{
+        flex-direction: column;
+    }
+    
+    }
+
+@media screen and (max-width: 600px){
+    .statistics-actions{
+        flex-direction: column;
+    }
+    .dashboard-dates ul{
+        justify-content:space-around;
+    }
+}
