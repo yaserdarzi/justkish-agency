@@ -1,5 +1,9 @@
-.seller-com{
-
+ 
+.seller-com {
+    box-shadow: 0 3px 6px rgba(157,206,255,.16);
+    background-color: #fff;
+    margin: 5px 0px;
+    border-radius: 5px;
 }
 
 .seller-com-manage-sellers-item{
@@ -15,14 +19,13 @@ align-items: center;
 
 .seller-com-edit , .seller-com-off{
     padding: 0px 10px;
-    color: #cccccc;
+    color: #b0b0b0;
     transition: all .2s linear;
     cursor: pointer;
 }
 .seller-com-edit:hover , .seller-com-off:hover{
+    opacity: .8;
     transition: all .2s linear;
-    color: #b0b0b0;
-
 }
 
 .seller-com-left{
