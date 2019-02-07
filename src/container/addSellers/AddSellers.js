@@ -69,7 +69,7 @@ class AddSellers extends Component {
                         <div className="add-sellers-fields">
                             <div className="add-sellers-field" >
                                 <p>نام عامل فروش</p>
-                                <input name="name" placeHolder="مجتبی درزی" />
+                                <input name="name" placeHolder="یاسر درزی" />
                             </div>
                             <div className="add-sellers-field" >
                                 <p>ایمیل</p>
