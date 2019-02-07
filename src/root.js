@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 // import Footer from "./footer/footer";
 import IndexComponent from "./container/beforLogin/inddex/index";
 import HeaderComponentAfterLogin from './components/header/Header';
+import ForgetPasword from './container/beforLogin/forgetPassword/ForgetPassword';
 
 // import Token from './api/token';
 
@@ -31,7 +32,7 @@ export default class Root extends Component {
                     {Token === 'logout' ? ( '' ): ( <HeaderComponentAfterLogin/> )}            
                 </div>
                 <div> 
-                    {Token === 'logout' ? ( <IndexComponent /> ): ( this.props.children )}            
+                    {Token === 'logout' ? ( <ForgetPasword /> ): ( this.props.children )}            
                 </div>
                 <div>
                     {/* <Footer /> */}
