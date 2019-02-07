@@ -1,0 +1,124 @@
+.add-sellers{
+display: flex;
+}
+
+.add-sellers-title{
+    box-shadow: 0 3px 6px rgba(157,206,255,.16);
+    padding: 20px 30px;
+    background-color: #fff;
+    border-radius: 5px;
+}
+.add-sellers-title h1{
+    font-size: 17px;
+    color: #666;
+    font-weight: 900;
+    margin-bottom: 5px;
+}
+.add-sellers-title p{
+    font-size: 11px;
+    color: #666;
+    font-weight: 900;
+}
+
+.add-sellers-form{
+    box-shadow: 0 3px 6px rgba(157,206,255,.16);
+    background-color: #fff;
+    margin-top: 10px;
+    border-radius: 5px;
+    padding: 30px 50px;
+
+}
+
+.add-sellers-fields{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.add-sellers-field{
+width: 24%;
+}
+.add-sellers-field span{
+    color: #999;
+    font-weight: 900;
+}
+.add-sellers-field .Inputbox input{
+    background-color: #f8f8f8;
+}
+.add-sellers-field .input-label .span-label{
+    color: #dedede;
+    background-color: unset;
+}
+.add-sellers-field .input-label input:not(:placeholder-shown) + .span-label ,   .input-label input:focus + .span-label{
+    display: none;
+}
+.add-sellers-btn{
+    margin-top: 20px;
+    height: 40px;
+    line-height: 40px;
+    float: none;
+    display: block;
+    padding: 0 5px;
+    width: 100px;
+    box-shadow: none;
+    background: #0080ff;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    transition: all .2s linear;
+}
+.add-sellers-btn:hover{
+    opacity: .8;
+    transition: all .2s linear;
+
+}
+.add-sellers-list{
+    display:flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+.add-sellers-list .seller-com{
+    width: 32%;
+    margin: 5px;
+}
+.add-sellers-list .seller-com-edit, .add-sellers-list .seller-com-off{
+    color: #60c5ef;
+}
+
+
+@media screen and (max-width: 1200px){
+.add-sellers-list{
+    justify-content: space-between;
+
+}
+    .add-sellers-list .seller-com{
+        width: 48%;
+    }
+    .add-sellers-fields{
+        flex-wrap: wrap;
+    }
+    .add-sellers-field{
+        width: 48%;
+    }
+
+}
+@media screen and (max-width: 1000px){
+    .add-sellers{
+        flex-wrap: wrap;
+    }
+
+}
+
+
+@media screen and (max-width: 600px){
+    .add-sellers-field{
+        width: 100%;
+    }
+    .add-sellers-list .seller-com{
+        width: 100%;
+    }
+    .add-sellers-form{
+        padding: 20px;
+    }
+
+}

@@ -8,6 +8,7 @@ import logput from './../../../assets/icons/logput.svg'
 import report from './../../../assets/icons/report.svg'
 
 import Input from './../../components/input/Input'
+import Seller from './../../components/seller/Seller'
 
 import './AddSellers.css'
 import './../home/Home.css'
@@ -65,28 +66,34 @@ class AddSellers extends Component {
                     </div>
 
                     <div className="add-sellers-form" >
-                        <div className="add-sellers-field">
+                        <div className="add-sellers-fields">
                             <div className="add-sellers-field" >
                                 <span>نام عامل فروش</span>
                                 <Input name="name" placeHolder="مجتبی درزی" />
                             </div>
                             <div className="add-sellers-field" >
-                                <span>نام عامل فروش</span>
-                                <Input name="name" placeHolder="مجتبی درزی" />
+                                <span>ایمیل</span>
+                                <Input name="name" placeHolder="example@gmail.com" />
                             </div>
                             <div className="add-sellers-field" >
-                                <span>نام عامل فروش</span>
-                                <Input name="name" placeHolder="مجتبی درزی" />
+                                <span>گذرواژه</span>
+                                <Input name="name" placeHolder="طول کاراکتر باید تا ۸ کاراکتر باشد" />
                             </div>
                             <div className="add-sellers-field" >
-                                <span>نام عامل فروش</span>
-                                <Input name="name" placeHolder="مجتبی درزی" />
+                                <span>درصد کمیسیون فروش</span>
+                                <Input name="name" placeHolder="برای مثال ۸٪" />
                             </div>
                         </div>
 
                         <button className="add-sellers-btn" >افزودن</button>
                     </div>
-                    <div className="add-sellers-title" ></div>
+                    <div className="add-sellers-list" >
+                        <Seller name="مجتبی" level="عامل فروش" />
+                        <Seller name="مجتبی" level="عامل فروش" />
+                        <Seller name="مجتبی" level="عامل فروش" />
+                        <Seller name="مجتبی" level="عامل فروش" />
+                        <Seller name="مجتبی" level="عامل فروش" />
+                    </div>
                 </div>
 
             </div>
