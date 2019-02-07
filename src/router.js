@@ -10,6 +10,7 @@ import HomeScreen from './container/home/Home';
 import AddSellers from './container/addSellers/AddSellers';
 import IndexScreen from './container/beforLogin/inddex/index';
 import ForgetPasword from './container/beforLogin/forgetPassword/ForgetPassword';
+import CreateTicketScreen from './container/createTicket/createTicket';
 
 
 
@@ -36,6 +37,7 @@ class RouterComponent extends Component {
                   <Route   path="forgetpassword" component={ForgetPasword} /> 
                   <Route   path="addsellers" component={AddSellers} /> 
                   <Route   path="home" component={HomeScreen} /> 
+                  <Route   path="create-ticket" component={CreateTicketScreen} /> 
                 
               </Route>
           
