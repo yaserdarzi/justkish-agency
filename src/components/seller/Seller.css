@@ -15,13 +15,14 @@ align-items: center;
 
 .seller-com-edit , .seller-com-off{
     padding: 0px 10px;
-    color: #b0b0b0;
+    color: #cccccc;
     transition: all .2s linear;
     cursor: pointer;
 }
 .seller-com-edit:hover , .seller-com-off:hover{
-    color: #cccccc;
     transition: all .2s linear;
+    color: #b0b0b0;
+
 }
 
 .seller-com-left{
