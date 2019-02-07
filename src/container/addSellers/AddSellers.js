@@ -21,7 +21,7 @@ class AddSellers extends Component {
     }
     render() {
         return (
-            <div className="add-sellers" >
+            <div className="add-sellers container" >
                 <div className="part1" >
                     <div className="checkout" >
 
