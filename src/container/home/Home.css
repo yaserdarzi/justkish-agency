@@ -1,6 +1,8 @@
 .home{
 
 }
+
+
 .home-box{
     margin-top: 20px;
     display: flex;
@@ -120,7 +122,7 @@ margin: 10px;
     color: #494d51;
     font-size: 25px;
 }
-.credit-show-unit{
+.credit-show-unit {
 
 }
 .account{
