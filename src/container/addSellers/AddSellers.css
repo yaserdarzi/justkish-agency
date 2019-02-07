@@ -38,20 +38,23 @@ display: flex;
 .add-sellers-field{
 width: 24%;
 }
-.add-sellers-field span{
+.add-sellers-field p{
     color: #999;
     font-weight: 900;
 }
-.add-sellers-field .Inputbox input{
-    background-color: #f8f8f8;
+.add-sellers-field  input{
+    width: 100%;
+    font-family: inherit;
+    padding: 12px 5px 12px 0px;
+    height: 40px;
+    font-size: 12px;
+    border-radius: 5px;
+    color: #223254;
+    transition: all .3s cubic-bezier(0.000, 0.555, 0.025, 0.985);
+    background-color: #fafafa;
+    margin-top: 5px;
 }
-.add-sellers-field .input-label .span-label{
-    color: #dedede;
-    background-color: unset;
-}
-.add-sellers-field .input-label input:not(:placeholder-shown) + .span-label ,   .input-label input:focus + .span-label{
-    display: none;
-}
+
 .add-sellers-btn{
     margin-top: 20px;
     height: 40px;
@@ -91,14 +94,15 @@ width: 24%;
     justify-content: space-between;
 
 }
-    .add-sellers-list .seller-com{
-        width: 48%;
-    }
+
     .add-sellers-fields{
         flex-wrap: wrap;
     }
     .add-sellers-field{
         width: 48%;
+    }
+    .add-sellers-field p{
+        margin-top: 15px;
     }
 
 }
@@ -119,6 +123,9 @@ width: 24%;
     }
     .add-sellers-form{
         padding: 20px;
+    }
+    .add-sellers-field p{
+        margin-top: 15px;
     }
 
 }

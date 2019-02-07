@@ -68,20 +68,20 @@ class AddSellers extends Component {
                     <div className="add-sellers-form" >
                         <div className="add-sellers-fields">
                             <div className="add-sellers-field" >
-                                <span>نام عامل فروش</span>
-                                <Input name="name" placeHolder="مجتبی درزی" />
+                                <p>نام عامل فروش</p>
+                                <input name="name" placeHolder="مجتبی درزی" />
                             </div>
                             <div className="add-sellers-field" >
-                                <span>ایمیل</span>
-                                <Input name="name" placeHolder="example@gmail.com" />
+                                <p>ایمیل</p>
+                                <input name="name" placeHolder="example@gmail.com" />
                             </div>
                             <div className="add-sellers-field" >
-                                <span>گذرواژه</span>
-                                <Input name="name" placeHolder="طول کاراکتر باید تا ۸ کاراکتر باشد" />
+                                <p>گذرواژه</p>
+                                <input name="name" placeHolder="طول کاراکتر باید تا ۸ کاراکتر باشد" />
                             </div>
                             <div className="add-sellers-field" >
-                                <span>درصد کمیسیون فروش</span>
-                                <Input name="name" placeHolder="برای مثال ۸٪" />
+                                <p>درصد کمیسیون فروش</p>
+                                <input name="name" placeHolder="برای مثال ۸٪" />
                             </div>
                         </div>
 
