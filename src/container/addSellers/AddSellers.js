@@ -1,14 +1,24 @@
 import React, { Component } from 'react';
 
-import profile from './../../../assets/images/profile.jpg'
-import operator_edit from './../../../assets/icons/operator_edit.svg'
-import change_password from './../../../assets/icons/change_password.svg'
-import edit_profile from './../../../assets/icons/edit_profile.svg'
-import logput from './../../../assets/icons/logput.svg'
-import report from './../../../assets/icons/report.svg'
+//
+// external component ---------------------->
+//
+import Input from './../../components/input/Input';
+import Seller from './../../components/seller/Seller';
 
-import Input from './../../components/input/Input'
-import Seller from './../../components/seller/Seller'
+//
+// icons and imeages ----------------------->
+//
+import profile from './../../../assets/images/profile.jpg';
+import operator_edit from './../../../assets/icons/operator_edit.svg';
+import change_password from './../../../assets/icons/change_password.svg';
+import edit_profile from './../../../assets/icons/edit_profile.svg';
+import logput from './../../../assets/icons/logput.svg';
+import report from './../../../assets/icons/report.svg';
+
+//
+// css class ------------------------------>
+//
 
 import './AddSellers.css'
 import './../home/Home.css'
@@ -89,10 +99,10 @@ class AddSellers extends Component {
                     </div>
                     <div className="add-sellers-list" >
                         <Seller name="مجتبی" level="عامل فروش" />
-                        <Seller name="مجتبی" level="عامل فروش" />
-                        <Seller name="مجتبی" level="عامل فروش" />
-                        <Seller name="مجتبی" level="عامل فروش" />
-                        <Seller name="مجتبی" level="عامل فروش" />
+                        <Seller name="رضا" level="عامل فروش" />
+                        <Seller name="یاسر" level="عامل فروش" />
+                        <Seller name="آراس" level="عامل فروش" />
+                        <Seller name="حامد" level="عامل فروش" />
                     </div>
                 </div>
 
