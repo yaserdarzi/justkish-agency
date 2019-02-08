@@ -71,8 +71,6 @@ class Index extends Component {
         if(checking === true){
             const res = await this.postData(data,'agency/auth/email/login');
 
-
-
          console.log(res.status)
 
          if(res.status === 401)
@@ -80,6 +78,12 @@ class Index extends Component {
              this.setState({
                  signinError:'نام کاربری و یا کلمه عبور شما صحیح نمی باشد.'
              })
+         }
+         if(res.status === 200)
+         {
+            console.log(`user is success login and token is : ${res.data.token}`) // TODO Delete Later
+            localStorage.setItem('authorization', res.data.token)
+            window.location.pathname = '/dashboard'
          }
          console.log("fetch finish.!")
         }
