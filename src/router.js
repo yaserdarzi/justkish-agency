@@ -6,7 +6,7 @@ import { Router ,  Route , browserHistory , IndexRoute  } from 'react-router';
 // our components ----------------->
 import RootComponent from './root';
 import DashboardScreen from './container/dashboard/dashboard';
-import HomeScreen from './container/home/Home';
+import ManagementScreen from './container/home/Home';
 import AddSellers from './container/addSellers/AddSellers';
 import IndexScreen from './container/beforLogin/inddex/index';
 import ForgetPasword from './container/beforLogin/forgetPassword/ForgetPassword';
@@ -31,12 +31,12 @@ class RouterComponent extends Component {
             <Router history={browserHistory}>
             
             <Route path="/" component={RootComponent}>
-                  <IndexRoute   component={HomeScreen} /> 
+                  <IndexRoute   component={ManagementScreen} /> 
                   <Route   path="dashboard" component={DashboardScreen} /> 
                   <Route   path="index" component={IndexScreen} /> 
                   <Route   path="forgetpassword" component={ForgetPasword} /> 
                   <Route   path="addsellers" component={AddSellers} /> 
-                  <Route   path="home" component={HomeScreen} /> 
+                  <Route   path="management" component={ManagementScreen} /> 
                   <Route   path="create-ticket" component={CreateTicketScreen} /> 
                 
               </Route>

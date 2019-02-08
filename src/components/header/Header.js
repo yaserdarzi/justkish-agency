@@ -35,9 +35,9 @@ class Header extends Component {
                         </div>
                         <ul className="menu" >
                             <li className="sub-menu" ><Link to="/dashboard"><img className="menu-icon" src={dashboard} alt="داشبورد" /> داشبورد</Link></li>
-                            <li className="sub-menu" ><img className="menu-icon" src={ticket2} alt="بلیت" /> صدور بلیت </li>
-                            <li className="sub-menu" ><img className="menu-icon" src={management} alt="مدیریت" /> مدیریت</li>
-                            <li className="sub-menu" ><img className="menu-icon" src={support2} alt="پشتیبانی" /> پشتیبانی</li>
+                            <li className="sub-menu" ><Link to="/create-ticket"><img className="menu-icon" src={ticket2} alt="بلیت" /> صدور بلیت </Link></li>
+                            <li className="sub-menu" ><Link to="/management"><img className="menu-icon" src={management} alt="مدیریت" /> مدیریت</Link></li>
+                            <li className="sub-menu" ><Link to=""><img className="menu-icon" src={support2} alt="پشتیبانی" /> پشتیبانی</Link></li>
                         </ul>
                     </div>
                     <div className="user-section" >
