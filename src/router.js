@@ -9,9 +9,11 @@ import DashboardScreen from './container/dashboard/dashboard';
 import ManagementScreen from './container/home/Home';
 import AddSellers from './container/addSellers/AddSellers';
 import IndexScreen from './container/beforLogin/inddex/index';
+import Wallet from './container/wallet/Wallet'
 import ForgetPasword from './container/beforLogin/forgetPassword/ForgetPassword';
 import CreateTicketScreen from './container/createTicket/createTicket';
 import SupportScreen from './container/support/support';
+
 
 
 
@@ -35,6 +37,7 @@ class RouterComponent extends Component {
                   <IndexRoute   component={ManagementScreen} /> 
                   <Route   path="dashboard" component={DashboardScreen} /> 
                   <Route   path="index" component={IndexScreen} /> 
+                  <Route   path="wallet" component={Wallet} /> 
                   <Route   path="forgetpassword" component={ForgetPasword} /> 
                   <Route   path="addsellers" component={AddSellers} /> 
                   <Route   path="management" component={ManagementScreen} /> 

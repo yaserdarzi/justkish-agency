@@ -360,6 +360,7 @@ display: block;
 }
 
 @media screen and (max-width: 560px){
+    
     .profile {
         border-top: 1px solid #f3f3f3;
         width: 90%;

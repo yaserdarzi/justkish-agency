@@ -1,0 +1,435 @@
+.wallet-tab {
+    background-color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+    border-radius: 5px;
+    width: 80%;
+    margin: 20px auto 0px;
+    box-shadow: 0 3px 6px rgba(157,206,255,.16);
+}
+.wallet-tab p {
+    font-weight: 900;
+    cursor: pointer;
+    transition:all .2s linear;
+}
+.wallet-tab p:hover{
+    font-weight: 900;
+    cursor: pointer;
+    opacity: .7;
+    transition:all .2s linear;
+}
+.wallet-active-tab{
+    color: #0080FF;
+}
+
+
+.credit-boxes{
+width: 80%;
+margin: auto;
+
+}
+
+.credit-box{
+    display: flex;
+    justify-content: space-between;
+margin: 10px auto 10px;
+padding: 40px;
+background-color: #fff;
+box-shadow: 0 3px 6px rgba(157,206,255,.16);
+border-radius: 5px;
+}
+
+.credit-title{
+
+}
+.credit-title-h1{
+    font-size: 15px;
+    color: #5B5B5B;
+}
+.credit-title-p{
+    font-size: 12px;
+    color: #5B5B5B;
+}
+.credit-title-span{
+    font-size: 12px;
+    color: #0080FF; 
+    font-weight: 900;
+}
+.credit-input{
+    height: 40px;
+    border-radius: 5px;
+width: 230px;
+border: 1px solid #C4C4C4;
+background-color: #fff;
+color: rgb(128, 128, 128);
+direction: ltr;
+padding-left:10px;
+margin-bottom: 5px;
+}
+.credit-input::placeholder{
+color: #D8D8D8;
+
+}
+.pay-credit{
+    margin-bottom: 30px;
+}
+.pay-credit div{
+    position: relative;
+}
+.pay-credit div span{
+    position: absolute;
+    top: 45px;
+    right: 0;
+}
+.credit-btn{
+    background-color: #0080FF;
+    color: #fff;
+    width: 150px;
+    border-radius: 5px;
+    height: 40px;
+    margin-right: 20px;
+    cursor: pointer;
+    transition: all .2s linear;
+}
+.credit-btn:hover{
+    transition: all .2s linear;
+opacity: .8;
+}
+.now-credit{
+    display: flex;
+    width: 230px;
+    justify-content: space-around;
+    align-items: center;
+}
+.now-credit h1{
+    font-size: 20px;
+    color: #5B5B5B;
+}
+.now-credit p{
+    font-size: 30px;
+    color: #5B5B5B;
+}
+
+
+.transaction-boxes{
+    width: 80%;
+    margin: auto;
+}
+
+.transaction-box{
+padding: 20px;
+background-color: #fff;
+margin: 10px 0px 10px;
+display: flex;
+justify-content: space-between;
+border-radius: 5px;
+align-items: center;
+
+}
+
+.transaction-type{
+
+}
+.ts-type-ul{
+position: relative;
+}
+
+.ts-type-li{
+cursor: pointer;
+position: relative;
+}
+.ts-type-img{
+    position: absolute;
+    top: 5px;
+    left: -60px;
+}
+.sub-ts-type-ul{
+    display: none;
+    position: absolute;
+    flex-direction: column;
+    width: 200px;
+    background-color: #fff;
+    transition: all .2s linear;
+    border-radius: 5px;
+    overflow: hidden;
+}
+.ts-type-li:hover .sub-ts-type-ul{
+display: flex;
+flex-direction: column;
+}
+
+.sub-ts-type-li{
+    padding: 10px 20px;
+    border-bottom: 1px solid #e8e8e8;
+    transition: all .2s linear;
+
+}
+.sub-ts-type-li:hover{
+
+    background-color: #e8e8e8;
+    transition: all .2s linear;
+}
+.transaction-dates{
+display: flex;
+align-items: center;
+}
+.ts-dates-from , .ts-dates-to{
+    width: 100px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+}
+
+
+.transaction-price{
+display: flex;
+align-items: center;
+}
+
+.transaction-price-input-box{
+width: 100px;
+margin: 0px 5px;
+}
+
+.transaction-price-input{
+width: 100%;
+height: 40px;
+padding-right: 5px;
+}
+
+.transaction-sellers{
+
+}
+
+.ts-sellers-ul{
+    position: relative;
+
+}
+
+.ts-sellers-li{
+    cursor: pointer;
+    position: relative;
+
+}
+
+.ts-sellers-li:hover .sub-ts-sellers-ul{
+    display: flex;
+    flex-direction: column;
+}
+.sub-ts-sellers-ul{
+    display: none;
+    position: absolute;
+    flex-direction: column;
+    width: 200px;
+    background-color: #fff;
+    border-radius: 5px;
+    overflow: hidden;
+
+    }
+.sub-ts-sellers-li{
+    padding: 10px 20px;
+    border-bottom: 1px solid #e8e8e8;
+    transition: all .2s linear;
+}
+.sub-ts-sellers-li:hover{
+    background-color: #e8e8e8;
+    transition: all .2s linear;
+
+}
+
+.ts-sellers-img{
+    position: absolute;
+    top: 5px;
+    left: -60px;
+}
+.transaction-search{
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: transparent;
+    cursor: pointer;
+    transition: all .2s linear;
+
+}
+.transaction-search:hover{
+    opacity: .8;
+    transition: all .2s linear;
+}
+.ts-search-list{
+    width: 100%;
+
+
+}
+.ts-search-list table{
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+  .search-list-title{
+      border-bottom: 1px solid #D8D8D8;
+      background-color: #fff !important;
+      color: #D8D8D8;
+      text-align: center;
+      height: 70px !important;
+  }
+.ts-search-list td, .ts-search-list th {
+    text-align: left;
+    padding: 8px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 900;
+    color: #5B5B5B;
+  }
+  .ts-search-list th {
+      color:#D8D8D8;
+  }
+
+  .ts-search-list tr:nth-child(even) {
+    background-color: #fff;
+    height: 100px;
+    transition: all .2s linear;
+
+  }
+  .ts-search-list tr:nth-child(odd) {
+    background-color: #F9F9F9;
+    height: 100px;
+    transition: all .2s linear;
+  }
+  .ts-search-list tr:hover{
+    background-color: #f2f2f2;
+    transition: all .2s linear;
+    cursor: pointer;
+  }
+
+.sub-ts-sellers-li{
+
+}
+
+.table-desktop{
+    display: block;
+}
+.table-tablet{
+    display: none;
+}
+
+
+@media screen and (max-width: 1200px){
+.wallet-tab , .transaction-boxes{
+    width: 100%;
+}
+.Wallet-box{
+    padding: 5px;
+}
+.credit-boxes{
+    width: 100%;
+}
+
+}
+
+@media screen and (max-width: 900px){
+    .transaction-dates{
+        flex-direction: column;
+        align-items: baseline;
+    }
+    .transaction-price{
+        flex-direction: column;
+    }
+    .table-desktop{
+        display: none;
+    }
+    .table-tablet{
+        display: block;
+    }
+    .space-table{
+        height: 20px;
+    }
+    .credit-box{
+        flex-direction: column;
+    }
+    .pay-credit{
+    margin-top: 30px;   
+    }
+    .credit-title-h1 , .credit-title-p{
+        text-align: center;
+    }
+.now-credit{
+    width: 100%;
+    align-items: center;
+    margin-top: 20px;   
+}
+}
+
+@media screen and (max-width: 700px){
+    .transaction-box{
+        flex-direction: column;
+    }
+    .transaction-dates , .transaction-price{
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+.transaction-price , .transaction-type , .transaction-dates , .transaction-sellers { 
+width: 300px;
+height: 50px;;
+}
+.transaction-search{
+    width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #48a4ff;
+}
+.ts-type-img , .ts-sellers-img{
+    left: 0;
+}
+.credit-box{
+    padding: 20px;
+}
+
+}
+@media screen and (max-width: 500px){
+
+    .credit-btn{
+        margin-top: 30px;
+    width: 100%;
+    margin: 30px 0px 0px 0px;
+    }
+    .credit-input{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 400px){
+    .transaction-box{
+        flex-direction: column;
+    }
+    .transaction-dates , .transaction-price{
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+.transaction-price , .transaction-type , .transaction-dates , .transaction-sellers { 
+width: 200px;
+height: 50px;;
+}
+.transaction-search{
+    width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #48a4ff;
+}
+.ts-type-img , .ts-sellers-img{
+    left: 0;
+}
+.now-credit h1{
+    font-size: 15px;
+    color: #5B5B5B;
+}
+.now-credit p{
+    font-size: 20px;
+    color: #5B5B5B;
+}
+
+}
