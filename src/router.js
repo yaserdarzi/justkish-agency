@@ -8,6 +8,7 @@ import RootComponent from './root';
 import DashboardScreen from './container/dashboard/dashboard';
 import HomeScreen from './container/home/Home';
 import IndexScreen from './container/beforLogin/inddex/index';
+import Wallet from './container/wallet/Wallet'
 
 
 
@@ -31,6 +32,7 @@ class RouterComponent extends Component {
                   <IndexRoute   component={HomeScreen} /> 
                   <Route   path="dashboard" component={DashboardScreen} /> 
                   <Route   path="index" component={IndexScreen} /> 
+                  <Route   path="wallet" component={Wallet} /> 
                   <Route   path="home" component={HomeScreen} /> 
                 
               </Route>
