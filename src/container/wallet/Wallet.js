@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 
+//
+// icons and images ------------->
+//
 import arrowdown2 from './../../../assets/icons/arrow-down2.svg'
 import search from './../../../assets/icons/search.svg'
 
