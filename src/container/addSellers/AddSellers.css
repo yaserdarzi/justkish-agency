@@ -49,6 +49,7 @@ width: 24%;
     height: 40px;
     font-size: 12px;
     border-radius: 5px;
+    border: 1px solid #eee;
     color: #223254;
     transition: all .3s cubic-bezier(0.000, 0.555, 0.025, 0.985);
     background-color: #fafafa;
