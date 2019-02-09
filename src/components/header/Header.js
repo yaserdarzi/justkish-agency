@@ -49,7 +49,7 @@ class Header extends Component {
                             </div>
                             <img className="my-arrow-down" src={arrow_down} alt="فلش" />
                             <ul className="manage-profile" >
-                                <li className="sub-manage-profile" ><img className="manage-profile-icon" src={operator_edit} alt="داشبورد" />مدیریت اپراتورها</li>
+                                <li className="sub-manage-profile" ><Link to="/addsellers"><img className="manage-profile-icon" src={operator_edit} alt="داشبورد" />مدیریت اپراتورها</Link></li>
                                 <li className="sub-manage-profile" ><img className="manage-profile-icon" src={change_password} alt="تغییر رمز عبور" />تغییر رمز عبور</li>
                                 <li className="sub-manage-profile" ><img className="manage-profile-icon" src={edit_profile} alt="ویرایش حساب کاربری" />ویرایش حساب کاربری</li>
                                 <li className="sub-manage-profile" ><img className="manage-profile-icon" src={logput} alt="خروج" />خروج از حساب کاربری</li>
