@@ -40,7 +40,7 @@ class CreateTicket extends Component {
                         <div className="create-ticket-your-credit">
                             <p className="create-ticket-your-credit-title" ><img src={wallet} alt="wallet" /> اعتبار شما</p>
                             <p className="create-ticket-increase-credit-text">افزایش اعتبار</p>
-                            <p className="create-ticket-increase-credit" >6,776,000<img src={pluscircle} alt="افزایش اعتبار" /></p>
+                            <p className="create-ticket-increase-credit" >6,526,200<img src={pluscircle} alt="افزایش اعتبار" /></p>
                         </div>
                         <div className="create-ticket-bascket-boxes" >
                             <div className="create-ticket-your-bascket" >
@@ -87,20 +87,20 @@ class CreateTicket extends Component {
                                     <div className="create-ticket-customer-factor" >
                                         <p className="create-ticket-customer-factor-row">
                                             <span>فاکتور مشتری</span>
-                                            <span style={{color:'#FF3131'}}>1,900,000 ت</span>
+                                            <span style={{ color: '#FF3131' }}>1,900,000 ت</span>
                                         </p>
                                         <p className="create-ticket-customer-factor-row">
                                             <span >درآمد مجموعه از این فاکتور</span>
-                                            <span style={{color:'#00BF66'}}>300,000 ت</span>
+                                            <span style={{ color: '#00BF66' }}>300,000 ت</span>
                                         </p>
                                         <p className="create-ticket-customer-factor-row">
                                             <span>درآمد شما از این فاکتور</span>
-                                            <span style={{color:'#00BF66'}}>300,000 ت</span>
+                                            <span style={{ color: '#00BF66' }}>300,000 ت</span>
                                         </p>
                                     </div>
                                     <div className="create-ticket-customer-factor-total">
-                                            <span>مبلغ قابل پرداخت شما</span>
-                                            <span style={{color:'#00BF66'}}>1,600,000 ت</span>
+                                        <span>مبلغ قابل پرداخت شما</span>
+                                        <span style={{ color: '#00BF66' }}>1,630,000 ت</span>
                                     </div>
                                 </div>
                                 <div className="create-ticket-transaction" >
@@ -130,7 +130,7 @@ class CreateTicket extends Component {
 
                                 <div className="create-ticket-places" >
                                     <span className="create-ticket-places-right" >
-                                    <i className="fas fa-map-marker-alt"></i>
+                                        <i className="fas fa-map-marker-alt"></i>
                                         <span>در جزیره کیش </span>
                                     </span>
                                     <img src={arrowdown2} alt="فلش" />
@@ -139,10 +139,10 @@ class CreateTicket extends Component {
                                         <p className="create-ticket-places-all" >همه مکانها</p>
 
                                         <li className="create-ticket-places-list" >
-                                            کیش 
+                                            کیش
                                         </li>
                                         <li className="create-ticket-places-list" >
-                                           کیش 
+                                            کیش
                                         </li>
                                         <li className="create-ticket-places-list" >
                                             کیش
@@ -172,9 +172,9 @@ class CreateTicket extends Component {
                             </div>
 
                         </div>
-                        <div className="create-ticket-search-result" >
+                        <div className="create-ticket-search-result table-desktop" >
                             <h1>نتایج جستجو</h1>
-                            <div className="create-ticket-search-lists table-desktop" >
+                            <div className="create-ticket-search-lists " >
                                 <div className="create-ticket-search-list-titles" >
                                     <p className="create-ticket-search-play-title" >تفریح </p>
                                     <p>تاریخ </p>
@@ -235,14 +235,105 @@ class CreateTicket extends Component {
                                     <div className="create-ticket-add-to-bascket" >اضافه به سبد </div>
                                 </div>
                             </div>
-                            <div className="ts-search-list table-tablet" >
-                                
-                            </div>
                         </div>
 
+                        <div className="create-ticket-search-result table-tablet" >
+                            <h1>نتایج جستجو</h1>
+                            <div className="create-ticket-search-lists " >
+                                <div className="create-ticket-search-list-tablet" >
+                                    <div className="create-ticket-search-list-cells" >
+                                        <p className="create-ticket-search-play-title" >تفریح </p>
+                                        <div className="create-ticket-search-play">کشتی اوستا</div>
+                                    </div>
+                                    <div className="create-ticket-search-list-cells">
+                                        <p>تاریخ </p>
+                                        <div className="create-ticket-dates">
+                                            <p>1397/10/12</p>
+                                            <p className="create-ticket-days">شنبه</p>
+                                        </div>
+                                    </div>
+                                    <div className="create-ticket-search-list-cells">
+                                        <p>سانس ها</p>
+                                        <div>
+                                            <p className="create-ticket-clock">
+                                                <span>17:45</span>
+                                                <img src={arrowdown2} alt="فلش" />
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div className="create-ticket-search-list-cells">
+                                        <p>تعداد </p>
+                                        <div className="create-ticket-numbers">
+                                            <img src={positive} alt="مثبت" />
+                                            <span>1</span>
+                                            <img src={ngative} alt="منفی" />
+                                            <p className="create-ticket-number" >
+                                                <span>20</span>
+                                                <span>موجودی</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div className="create-ticket-search-list-cells">
+                                        <p>قیمت مشتری</p>
+                                        <div>250,000 ت </div>
+                                    </div>
+                                    <div className="create-ticket-search-list-cells">
+                                        <p>قیمت همکار</p>
+                                        <div>250,000 ت </div>
+                                    </div>
+                                    <div className="create-ticket-search-list-cells">
+                                        <div className="create-ticket-add-to-bascket" >اضافه به سبد </div>
+                                    </div>
+                                </div>
+                                <div className="create-ticket-search-list-tablet" >
+                                    <div className="create-ticket-search-list-cells" >
+                                        <p className="create-ticket-search-play-title" >تفریح </p>
+                                        <div className="create-ticket-search-play">کشتی اوستا</div>
+                                    </div>
+                                    <div className="create-ticket-search-list-cells">
+                                        <p>تاریخ </p>
+                                        <div className="create-ticket-dates">
+                                            <p>1397/10/12</p>
+                                            <p className="create-ticket-days">شنبه</p>
+                                        </div>
+                                    </div>
+                                    <div className="create-ticket-search-list-cells">
+                                        <p>سانس ها</p>
+                                        <div>
+                                            <p className="create-ticket-clock">
+                                                <span>17:45</span>
+                                                <img src={arrowdown2} alt="فلش" />
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div className="create-ticket-search-list-cells">
+                                        <p>تعداد </p>
+                                        <div className="create-ticket-numbers">
+                                            <img src={positive} alt="مثبت" />
+                                            <span>1</span>
+                                            <img src={ngative} alt="منفی" />
+                                            <p className="create-ticket-number" >
+                                                <span>20</span>
+                                                <span>موجودی</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div className="create-ticket-search-list-cells">
+                                        <p>قیمت مشتری</p>
+                                        <div>250,000 ت </div>
+                                    </div>
+                                    <div className="create-ticket-search-list-cells">
+                                        <p>قیمت همکار</p>
+                                        <div>250,000 ت </div>
+                                    </div>
+                                    <div className="create-ticket-search-list-cells">
+                                        <div className="create-ticket-add-to-bascket" >اضافه به سبد </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
             </div>
         );
     }

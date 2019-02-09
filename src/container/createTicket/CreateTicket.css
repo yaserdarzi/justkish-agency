@@ -466,6 +466,38 @@ margin: auto;
 
 }
 
+@media screen and (max-width: 900px){
+.create-ticket-search-list-tablet{
+    padding: 20px 40px;
+}
+.create-ticket-search-list-cells{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0px;
+    border-bottom: 1px solid #f7f7f7;
+}
+.create-ticket-clock{
+    width: 90px;
+}
+.create-ticket-numbers{
+    width: 100px;
+}
+.create-ticket-add-to-bascket{
+    width: 90%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+.create-ticket-search-result h1 {
+    padding: 0;
+    text-align: center;
+}
+.create-ticket-search-list-tablet{
+    margin-bottom: 10px;
+}
+}
 @media screen and (max-width: 560px){
     .create-ticket-date{
         flex-direction: column;
