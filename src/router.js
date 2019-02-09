@@ -11,7 +11,7 @@ import AddSellers from './container/addSellers/AddSellers';
 import IndexScreen from './container/beforLogin/inddex/index';
 import Wallet from './container/wallet/Wallet'
 import ForgetPasword from './container/beforLogin/forgetPassword/ForgetPassword';
-import CreateTicketScreen from './container/createTicket/createTicket';
+import CreateTicketScreen from './container/createTicket/CreateTicket';
 import SupportScreen from './container/support/support';
 
 
