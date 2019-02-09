@@ -1,0 +1,209 @@
+.profile-box{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.user-box{
+    background-color: #fff;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.user-box-title{
+    padding: 40px 50px 20px;
+    border-bottom: 1px solid #f7f7f7;
+}
+.user-box-title h1{
+    font-size: 18px;
+    color: #5B5B5B;
+}
+
+.user-box-title p{
+    font-size: 13px;
+    color: #5B5B5B;
+    margin-top: 10px;
+}
+.user-box-form{
+    padding: 20px 50px;
+}
+
+.user-box-img-input{
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+.user-box-img-input.change-pw{
+    flex-direction: column;
+    align-items:unset;
+}
+.user-box-inputs{
+display: flex;
+width: 80%;
+flex-wrap: wrap;
+}
+.user-box-inputs.bank-data , .user-box-inputs.change-password{
+width: 100%;
+}
+.profile-field{
+    width: 30%;
+    margin-left: 10px;
+    margin-bottom: 20px;
+    font-size: 11px;
+}
+.profile-field.big{
+    width: 61.5%;
+}
+.profile-field p{
+    color: #A4A4A4;
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+.profile-input {
+    width: 100%;
+    font-family: inherit;
+    padding: 12px 5px 12px 0px;
+    height: 40px;
+    font-size: 12px;
+    border-radius: 5px;
+    border: 1px solid #eee;
+    color: #272A2D;
+    transition: all .3s cubic-bezier(0.000, 0.555, 0.025, 0.985);
+    background-color: #fafafa;
+    margin-top: 5px;
+    background-color: #F6F6F6;
+    font-weight: 500;
+}
+.profile-input-file-box {
+    width: 100%;
+    font-family: inherit;
+    padding: 12px 5px 12px 0px;
+    height: 40px;
+    font-size: 12px;
+    border-radius: 5px;
+    border: 1px solid #eee;
+    color: #272A2D;
+    transition: all .3s cubic-bezier(0.000, 0.555, 0.025, 0.985);
+    background-color: #fafafa;
+    margin-top: 5px;
+    background-color: #F6F6F6;
+    font-weight: 500;
+    position: relative;
+    overflow: hidden;
+}
+.profile-input-file-box span{
+    color: #5B5B5B;
+}
+.profile-input-file{
+    color: transparent;
+    font-size: 0;
+    height: 100px;
+    width: 300px;
+    position: absolute;
+    top: -6px;
+    left: 0;
+    cursor: pointer;
+}
+.user-box-inputs .Inputbox{
+margin-left: 10px;
+}
+
+.user-box-img{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 20%;
+}
+.user-box-img img{ 
+    border-radius: 50%;
+    margin-bottom: 10px;
+    width: 80px;
+}
+.profile-mini-btn{
+    background-color: #F6F6F6;
+    font-size: 11px;
+    padding: 8px 20px;
+    border-radius: 5px;
+    transition: all .2s linear;
+}
+.profile-mini-btn:hover{
+    opacity: .8;
+    transition: all .2s linear;
+
+}
+
+
+.profile-btn{
+    background-color: #CECECE;
+    font-size: 12px;
+    padding: 8px 20px;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: 900;
+    margin: 20px 0px 40px;
+    transition: all .2s linear;
+
+}
+.profile-btn:hover{
+    opacity: .8;
+    transition: all .2s linear;
+}
+.forget-password-text span{
+    font-size: 11px;
+    color: #0080FF;
+}
+
+@media screen and (max-width: 1000px){
+
+    .profile-box{
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 800px){
+    .user-box-form{
+        padding: 20px;
+    }
+    .user-box-img-input{
+        flex-direction: column;
+    }
+    .user-box-inputs{
+        width: 100%;
+    }
+    .user-box-img {
+        flex-direction: row;
+        width: 100%;
+        justify-content: unset;
+    }
+    .profile-mini-btn {
+        margin-right: 50px;
+        width: 200px;
+        height: 45px;
+    }
+    
+    
+}
+@media screen and (max-width: 600px){
+    .profile-field , .profile-field.big{
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .profile-btn{
+        width: 100%;
+        margin-top: 40px;
+    }
+
+}
+@media screen and (max-width: 400px){
+    .user-box-img{
+        flex-direction: column;
+    }
+    .profile-mini-btn{
+
+        margin: 0px;
+    }
+
+}

@@ -108,6 +108,7 @@
 body{
   background: #f7f9fb;
   font-size: 13px;
+  overflow-x: hidden;
 }
 *{
   font-family: IRANSans;
@@ -117,6 +118,10 @@ body{
   direction: rtl;
   margin: 0;
   padding: 0;
+  outline: none;
+}
+button{
+	cursor: pointer;
 }
 .container {
   max-width: 1366px;
