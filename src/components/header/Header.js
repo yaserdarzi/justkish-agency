@@ -133,8 +133,10 @@ class Header extends Component {
                                 <span className="wallet-remain">دانلود بلیت</span>
                             </div>
                             <div className="shopping-card" >
-                                <img className="shoppings-icon border-left" src={shopping_card} alt="shopping_card" />
-                                <span className="wallet-remain">سبد خرید</span>
+                                <Link to="/">
+                                    <img className="shoppings-icon border-left" src={shopping_card} alt="shopping_card" />
+                                    <span className="wallet-remain">سبد خرید</span>
+                                </Link>
                             </div>
 
                         </div>
