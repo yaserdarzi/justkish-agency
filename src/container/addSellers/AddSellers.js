@@ -5,6 +5,9 @@ import React, { Component } from 'react';
 //
 import Input from './../../components/input/Input';
 import Seller from './../../components/seller/Seller';
+import SideLeft from '../../components/sideLeft/sideLeft';
+import base from '../../api/baseURL';
+import Token from '../../api/token';
 
 //
 // icons and imeages ----------------------->
@@ -22,15 +25,95 @@ import report from './../../../assets/icons/report.svg';
 
 import './AddSellers.css'
 import './../home/Home.css'
-import SideLeft from '../../components/sideLeft/sideLeft';
+
 
 
 class AddSellers extends Component {
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {
+            agentLoading: true,
+            agents:[]
+
+        }
     }
+
+
+    componentDidMount(){
+        this.getAllSellers();
+
+    }
+
+
+    getAllSellers()
+    {
+        console.log("fetching sellers is start......");
+
+        const data = {
+            "name":this.state.agentname,
+            "phone":this.state.phonenumber,
+            "city":this.state.city,
+            "email": this.state.emailadrress
+        } 
+
+        this.getData('agency/agent')
+ 
+    }
+
+
+    getData(key) {
+        console.log("fetching...")
+
+        this.setState({
+            // isLoading:true,
+            // errorHandleing:'',
+            // successMessage:''
+        })
+
+         const url =  base.baseURL + key;
+
+          return fetch(url, {
+              method: "GET", 
+              cache: "no-cache",  
+              headers: {
+                  "Content-Type": "application/json",
+                  "Accept": "application/json",
+                  "agent" : "web" ,
+                  "Authorization": Token
+              },
+              redirect: "follow", 
+              referrer: "no-referrer" 
+          })
+          .then(response =>  response.json())
+          .then( responsJson => {
+              console.log(responsJson.data)
+              this.setState({
+                  agents: responsJson.data,
+                  agentLoading: false
+              })
+          })
+      }
+
+
+
+
+
     render() {
+        const { isLoading, agents, error } = this.state;
+
+        const allAgents = ( 
+
+            // Object.keys(agents).map((item, i) => (
+            //     console.log(item),
+            //     <Seller   name={agents.name} level="admin" />
+            //   ))
+
+           this.state.agents.map((item, index) =>  <Seller  key={index}  name={item.name} avatar={item.image} level={item.type === 'normal' ? 'عامل فروش' : 'مدیر'} /> )
+           
+            //   <Seller  key={index}  name={item.name} level={item.type === 'normal' ? 'عامل فروش' : 'مدیر'} />
+            // <Seller key= {i} name={agents.name} level="admin" />
+        )
+
         return (
             <div className="add-sellers container" >
                 <div className="part1" >
@@ -65,11 +148,7 @@ class AddSellers extends Component {
                         <button className="add-sellers-btn" >افزودن</button>
                     </div>
                     <div className="add-sellers-list" >
-                        <Seller name="مجتبی" level="عامل فروش" />
-                        <Seller name="رضا" level="عامل فروش" />
-                        <Seller name="یاسر" level="عامل فروش" />
-                        <Seller name="آراس" level="عامل فروش" />
-                        <Seller name="حامد" level="عامل فروش" />
+                       {allAgents}
                     </div>
                 </div>
 
