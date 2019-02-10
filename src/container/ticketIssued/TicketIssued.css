@@ -1,0 +1,171 @@
+.ticket-issued-box{
+    margin: 20px auto;
+
+}
+
+
+
+.ticket-issued-search{
+    
+    box-shadow: 0 3px 6px rgba(157,206,255,.16);
+    border-radius: 5px;
+    overflow: hidden;
+    width: 80%;
+    margin: auto;
+}
+
+.ticket-issued-search-title{
+    padding: 50px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+}
+.ticket-issued-search-title h1{ 
+    color:#5B5B5B;
+    font-size: 18px;
+}
+.ticket-issued-search-input{
+position: relative;
+}
+.ticket-issued-search-input input{
+    color: #5B5B5B;
+    background-color: #FBFBFB;
+    border-radius: 5px;
+    padding: 5px 35px 5px 5px;
+    height: 45px;
+    width: 250px;
+}
+.ticket-issued-search-input input::placeholder{
+    color: #D8D8D8;
+}
+
+.ticket-issued-search-input i{
+    position: absolute;
+    right: 15px;
+    top: 16px;
+    color: #494D51;
+    font-size: 15px;
+}
+.ticket-issued-search-lists{
+
+}
+
+.ticket-issued-search-list-titles{
+display: flex;
+padding: 0px 30px;
+background-color: #fff;
+}
+.ticket-issued-search-list-title {
+    color: #D8D8D8;
+    width: calc((100% -50px)/5 ) ;
+    text-align: center;
+    padding: 20px 0px;
+    font-size: 15px;
+    font-weight: 900;
+}
+.ticket-issued-search-list-title-1 {
+    color: #D8D8D8;
+    width: 50px;
+    text-align: center;
+    padding: 20px 0px;
+    font-size: 15px;
+    font-weight: 900;
+
+}
+
+.ticket-issued-search-list{
+display: flex;
+padding: 0px 30px;
+border-top: 1px solid #e8e8e8;
+background-color: #fff;
+
+}
+.ticket-issued-search-list-cell {
+width: calc((100% -50px)/5 ) ;
+padding: 25px 0px;
+text-align: center;
+color: #494D51;
+}
+.ticket-issued-search-list-cell img{
+    margin: 0px 5px;
+    cursor: pointer;
+    transition:all .2s linear;
+}
+.ticket-issued-search-list-cell img:hover{
+opacity: .8;
+transition:all .2s linear;
+
+}
+.ticket-issued-search-list-cell-1 {
+    width: 50px;
+    padding: 25px 0px;
+    text-align: center;
+    color: #494D51;
+}
+
+.ticket-issued-search-list{
+
+}
+
+
+
+@media screen and (max-width: 1200px){
+    .ticket-issued-box{
+        padding: 5px;
+    }
+    .ticket-issued-search{ 
+        width: 100%;
+    }
+}
+    
+@media screen and (max-width: 900px){
+    .ticket-issued-search-list-title{
+        color: #D8D8D8;
+        text-align: center;
+        font-size: 15px;
+        font-weight: 900;
+    }
+    .ticket-issued-search-list-title , .ticket-issued-search-list-cell{
+       width: unset;
+       font-weight: 900;
+    }
+    .ticket-issued-search-list{
+        justify-content: space-between;
+        padding: 0px 50px;
+        align-content: center;
+    }
+    .ticket-issued-search-list-cell img{
+        padding: 0px 5px;
+    }
+}
+
+@media screen and (max-width: 600px){
+
+    .ticket-issued-search-title{
+        flex-direction: column;
+    }
+    .ticket-issued-search-title h1 {
+        margin-bottom: 20px;
+    }
+    .ticket-issued-search-input{
+        width: 90%;
+    }
+    .ticket-issued-search-input input{
+        width: 100%;
+        margin: auto;
+    }
+
+}
+@media screen and (max-width: 500px){
+
+
+}
+
+@media screen and (max-width: 400px){
+    .ticket-issued-search-list{
+        padding: 0px 10px;
+    }
+
+}
+    
