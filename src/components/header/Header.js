@@ -23,7 +23,21 @@ import logput from './../../../assets/icons/logput.svg';
 
 import './Header.css';
 
+
+//
+// externaml component ------------------------------->
+//
+
+
 class Header extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+   
+        }
+    }
+
     render() {
         return (
             <div className="header">

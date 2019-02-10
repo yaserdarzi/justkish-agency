@@ -5,6 +5,9 @@ import { Link } from 'react-router';
 // external compoent ---------------------------->
 //
 import SaleBox from '../../components/saleBox/SaleBox'
+import Token from '../../api/token';
+import base from '../../api/baseURL';
+
 
 //
 // icons and images --------------------------------->
@@ -28,6 +31,50 @@ import './Home.css';
 
 
 class Home extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            userInfo:{},
+            userType:''
+           
+        }
+    }
+
+
+componentWillMount(){
+
+    console.log("fetching")
+    
+   this.fetchingData(base.baseURL + 'agency');
+
+}
+
+
+fetchingData(url){
+    fetch(url, {
+        method: "GET", 
+        cache: "no-cache",  
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+            "agent" : "web",
+            "Authorization": Token
+        },
+        redirect: "follow", 
+        referrer: "no-referrer"  
+    })
+    .then(response => response.json())
+    .then(responseJson => {
+        this.setState({
+            userInfo: responseJson.data,
+            userType: responseJson.data.agent.type,
+            userName: responseJson.data.agent.name
+        })
+        console.log(responseJson.data)
+    })
+}
+
     render() {
         return (
             <div className="home">
@@ -39,8 +86,8 @@ class Home extends Component {
                             <div className="checkout-profile" >
                                 <img className="checkout-profile-img" src={profile} alt="profile" />
                                 <div className="checkout-profile-desc" >
-                                    <span className="checkout-profile-name" >Maryam Azizi</span>
-                                    <span className="checkout-profile-level" >مدیر</span>
+                                    <span className="checkout-profile-name" >{this.state.userName}</span>
+                                    <span className="checkout-profile-level" >{this.state.userType === 'admin' ? 'مدیر' : 'عامل فروش'}</span>
                                 </div>
                             </div>
                             <div className="increas-credit" >
