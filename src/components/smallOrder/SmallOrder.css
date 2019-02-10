@@ -1,0 +1,55 @@
+.create-ticket-your-order{
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid #f7f7f7;
+    padding: 10px 20px;
+    
+    }
+    
+    .create-ticket-your-order-box1{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    }
+    
+    .create-ticket-your-order-title{
+    display: flex;
+    color: #0080FF;
+    font-weight: 900;
+    font-size: 15px;
+    }
+    .create-ticket-your-order-title img{ 
+        margin-left: 5px;
+    }
+    .create-ticket-your-order-numbers{
+        width: 70px;
+        text-align: center;
+        height: 30px;
+        background-color: #f7f9fb;
+        border-radius: 5px;
+        align-items: center;
+        display: flex;
+        justify-content: space-around;
+        font-size: 15px;
+        font-weight: 900;
+        color: #585858;
+    }
+    .create-ticket-your-order-box2{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: #585858;
+    }
+    .create-ticket-your-order-box2 span{
+    font-weight: 900;
+    }
+    .create-ticket-your-order-box2 span:nth-child(1){
+    color: #CECECE;
+    font-size: 10px;
+    }
+    .create-ticket-your-order-box2 img{
+    }
+
+ 
+

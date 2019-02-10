@@ -1,0 +1,543 @@
+.create-ticket{
+
+}
+
+.create-ticket-box{
+display: flex;
+flex-direction: row-reverse;
+}
+.create-ticket-search-result{
+    margin-top: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(157,206,255,.34);
+}
+.create-ticket-search-result h1{
+    font-size: 16px;
+    color: #5B5B5B;
+    margin: 20px 0px; 
+    padding-right: 40px;  
+}
+
+
+
+.create-ticket-filter{
+    display: flex;
+    justify-content: space-around;
+    padding: 20px 10px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(157,206,255,.34);
+}
+
+.create-ticket-date{
+    display: flex;
+}
+.create-ticket-from , .create-ticket-to{
+    width: 200px;
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 50px;
+    line-height: 50px;
+    border-left: 1px solid #eaeaea;
+}
+.create-ticket-to{
+
+}
+
+.create-ticket-search{
+display: flex;
+}
+
+.create-ticket-places{
+    display: flex;
+    align-items: center;
+    width: 180px;
+    justify-content: space-around;
+    color: #cecece;
+    position: relative;
+    cursor: pointer;
+    border-left: 1px solid #eaeaea;
+}
+
+.create-ticket-places-right{
+    display: flex;
+    align-items: center;
+}
+
+
+.create-ticket-places-lists{
+    display: none;
+    position: absolute;
+    top: 50px;
+    background-color: #fff;
+    padding: 20px;
+    min-width: 250px;
+}
+
+.create-ticket-places-all{
+    color: #333;
+    font-size: 15px;
+    font-weight: 900;
+    text-align: center;
+    padding: 10px;
+}
+
+.create-ticket-places-list{
+    border-bottom: 1px solid #f7f9fb;
+    display: flex;
+    color: #333;
+    padding: 20px;
+    flex-direction: row-reverse;
+}
+.create-ticket-places:hover .create-ticket-places-lists{
+    display: block;
+}
+.create-ticket-features{
+    display: flex;
+    align-items: center;
+    width: 180px;
+    justify-content: space-around;
+    color: #cecece;
+    cursor: pointer;
+    position: relative;
+}
+
+.create-ticket-features-right{
+    display: flex;
+    align-items: center;
+}
+
+.create-ticket-features-lists{
+    display: none;
+    position: absolute;
+    top: 50px;
+    background-color: #fff;
+    min-width: 160px;
+}
+.create-ticket-features:hover .create-ticket-features-lists{
+display: block;
+}
+.create-ticket-features-list{
+    border-bottom: 1px solid #f7f9fb;
+    display: flex;
+    color: #333;
+    padding: 20px;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+}
+
+.create-ticket-search-btn{
+    border-radius: 50%;
+    background-color: transparent;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+
+
+.create-ticket-btn{
+    border-radius: 50%;
+    background-color: transparent;
+    cursor: pointer;
+    margin-right: 10px;;
+}
+
+
+
+
+.create-ticket-search-lists{
+
+}
+
+.create-ticket-search-list-titles{
+    padding: 20px 40px;
+    color: #D8D8D8;
+    border-bottom: 1px solid #f7f7f7;
+display: flex;
+text-align: right;
+}
+
+
+.create-ticket-search-list{
+    display: flex;
+    padding: 20px 40px;
+    border-bottom: 1px solid #f7f7f7;
+align-items: center;
+font-size: 11px;
+}
+.create-ticket-search-list-titles > p , .create-ticket-search-list > div {
+    width: calc(100%/7);
+    text-align: center;
+}
+.create-ticket-search-play{
+    color: #0080FF;
+    text-align: right !important;
+}
+.create-ticket-search-play-title{
+    text-align: right !important;
+
+}
+.create-ticket-search-list-title > p {
+
+}
+
+.create-ticket-dates{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.create-ticket-days{
+    font-size: 10px;
+    color: #D8D8D8;
+}
+.create-ticket-clock{
+    font-weight: 900;
+    border-radius: 5px;
+    background-color: #F7F9FB;
+    padding: 0px 4px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 70%;
+    margin: auto;
+    font-size: 13px;
+    height: 30px;
+    color: #272A2D;
+
+}
+
+.create-ticket-numbers{
+display: flex;
+justify-content: space-between;
+align-items: center;
+border-radius: 5px;
+    background-color: #F7F9FB;
+    padding:0px 4px;
+    height: 30px;
+
+}
+
+.create-ticket-number{
+display: flex;
+flex-direction: column;
+border-right: 1px solid #fff;
+display: flex;
+align-content: center;
+justify-content: center;
+padding: 0px 4px 0px 0px;
+height: 100%;
+}
+.create-ticket-number span:nth-child(1){
+color: #5B5B5B;
+font-size: 8px;
+}
+.create-ticket-number span:nth-child(2){
+    font-size: 5px;
+    color:#5B5B5B;
+    
+}
+.create-ticket-add-to-bascket{
+    background-color: #0080FF;
+    padding: 4px;
+    border-radius: 5px;
+    height: 30px;
+    color: #fff;
+    font-weight: 900;
+    line-height: 25px;
+    margin: auto;
+    cursor: pointer;
+    transition: all .2s linear;
+}
+.create-ticket-add-to-bascket:hover{
+    transition: all .2s linear;
+opacity: .8;
+
+}
+
+
+.create-ticket-your-credit{
+    background-color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 5px;
+    overflow: hidden;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(157,206,255,.34);
+    }
+
+.create-ticket-your-credit-title{
+    display: flex;
+    font-size: 15px;
+    color: #272A2D;
+    font-weight: 900;
+}
+.create-ticket-your-credit-title img{
+    margin-left: 5px;
+}
+.create-ticket-increase-credit-text{
+    color: #0080FF;
+    font-weight: 900;
+
+}
+.create-ticket-increase-credit{
+display: flex;
+}
+.create-ticket-increase-credit img{
+    margin-right: 5px;
+
+}
+.create-ticket-bascket-boxes{
+background-color: #fff;
+margin-top: 20px;
+box-shadow: 0 2px 10px rgba(157,206,255,.34);
+border-radius: 5px;
+overflow: hidden;
+}
+.create-ticket-your-bascket{
+    display: flex;
+    padding: 20px;
+    flex-direction: column;
+    border-bottom: 1px solid #f7f7f7;
+}
+
+.create-ticket-your-bascket-row1 , .create-ticket-your-bascket-row2 {
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-bottom: 15px;
+}
+
+.create-ticket-your-bascket-row1-span1{
+font-size: 17px;
+font-weight: 900;
+color: #707070;
+}
+.create-ticket-your-bascket-row1-span2{
+color: #585858; 
+font-size: 14px;
+font-weight: 900;
+display: flex;
+align-items: center;
+}
+
+.create-ticket-your-bascket-row2 span{
+    font-size: 13px;
+    font-weight: 900;
+    color: #585858;
+}
+
+.create-ticket-your-bascket-row1-span2 img{
+padding-left: 5px;
+}
+.create-ticket-your-orders{
+}
+
+.create-ticket-your-bascket-3{
+
+}
+
+.create-ticket-customer-factors{
+padding: 0px 20px;
+}
+.create-ticket-customer-factor{
+    border-bottom: 1px solid #f7f7f7;
+
+}
+.create-ticket-customer-factor-row{
+    font-size: 14px;
+    padding: 10px 0px;
+    display: flex;
+    justify-content: space-between;
+    color: #585858;
+}
+
+.create-ticket-customer-factor-total{
+    font-size: 15px;
+    padding: 10px   0px;
+    display: flex;
+    justify-content: space-between;
+    color: #585858;
+    font-weight: 900;
+}
+
+.create-ticket-transaction{
+
+}
+
+.create-ticket-pay{
+    background-color: #0080FF;
+    display: flex;
+    color: #fff;
+    align-items: center;
+    height: 42px;
+    width: 80%;
+    margin: auto;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    transition: all .2s linear;
+
+}
+.create-ticket-pay:hover{
+    opacity: .8;
+    transition: all .2s linear;
+}
+.create-ticket-transaction .Inputbox{
+width: 90%;
+margin: auto;
+}
+.create-ticket-imgs{ 
+
+}
+.create-ticket-imgs img:nth-child(1){
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.create-ticket-imgs img:nth-child(2){
+    position: absolute;
+    top: 15px;
+    right: 10px;
+}
+.create-ticket-text{
+    padding-right: 80px;
+    font-weight: 900;
+}
+
+
+@media screen and (max-width: 1300px){
+    .create-ticket-filter{
+        flex-direction: column;
+    }
+    .create-ticket-date , .create-ticket-search{
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .search-sellers{
+        justify-content:space-between;
+    }
+    .create-ticket-from, .create-ticket-to {
+        width: 350px;
+    }
+    .create-ticket-to{
+        border: none;
+    }
+    .create-ticket-places , .create-ticket-features{
+        width: 350px;
+        padding: 0px 0px 0px 50px;
+    }
+    .sellers{
+        border-left: 1px solid #eaeaea;
+    }
+
+}
+
+@media screen and (max-width: 1100px){
+
+    .create-ticket-from, .create-ticket-to , .create-ticket-places , .create-ticket-features {
+        width: 300px;
+    }
+}
+
+@media screen and (max-width: 1000px){
+    .create-ticket-box {
+        flex-wrap: wrap;
+    }
+    .part1{
+        width: 100%;
+        padding: 10px;
+    }
+    .part2{
+        width: 100%;
+        margin: auto;
+        padding: 10px;
+    }
+    .create-ticket-search{
+        justify-content: space-between;
+    }
+
+}
+
+@media screen and (max-width: 900px){
+.create-ticket-search-list-tablet{
+    padding: 20px 40px;
+}
+.create-ticket-search-list-cells{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0px;
+    border-bottom: 1px solid #f7f7f7;
+}
+.create-ticket-clock{
+    width: 90px;
+}
+.create-ticket-numbers{
+    width: 100px;
+}
+.create-ticket-add-to-bascket{
+    width: 90%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+.create-ticket-search-result h1 {
+    padding: 0;
+    text-align: center;
+}
+.create-ticket-search-list-tablet{
+    margin-bottom: 10px;
+}
+}
+@media screen and (max-width: 560px){
+    .create-ticket-date{
+        flex-direction: column;
+    }
+    .create-ticket-search{
+        flex-wrap: wrap;
+    }
+    .create-ticket-from{
+        border: none;
+    }
+    .create-ticket-places{
+        margin-bottom: 20px;
+        justify-content: space-between;
+        padding: 0px 10px;
+        border: none;
+    }
+    .create-ticket-features{
+        justify-content: space-between;
+        padding: 0px 10px;
+    }
+}
+@media screen and (max-width: 450px){
+
+    .part1 , .part2{
+        padding: 10px;
+    }
+}
+@media screen and (max-width: 400px){
+
+   .create-ticket-places , .create-ticket-features{
+        width: 90%;
+        margin:20px auto;
+        padding:0px;
+    }
+    .create-ticket-btn {
+        width: 90%;
+        background-color: #48a4ff;
+        display: flex;
+        justify-content: center;
+        border-radius: 10px;
+        margin: auto;
+    }
+}

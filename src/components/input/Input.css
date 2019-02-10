@@ -4,7 +4,7 @@
     margin:10px auto;
     width: 100%;
     /* max-width: 280px; */
-    height: 40px;
+    height: 50px;
 
   }
   .input-label .span-label {
@@ -18,6 +18,7 @@
     background-color: #fff;
     padding: 0px 3px;
     user-select: none;
+    border-radius: 5px;
   }
 
   .input-label input {
@@ -26,6 +27,7 @@
     font-family: inherit;
     padding: 12px 5px 12px 0px;
     height: 40px;
+    border:1px solid #eee;
     font-size: 14px;
     background: none;
     border-radius: 5px;
@@ -50,12 +52,11 @@
 
 
 
-.input-error-text{
-    position: absolute;
+.input-error-text{ 
     font-size: 12px;
     font-weight: 700;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    right: 6px;
+    left: 6px;
     color: #fff;
     top: 8px;
     user-select: none;

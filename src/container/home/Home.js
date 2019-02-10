@@ -1,5 +1,14 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 
+//
+// external compoent ---------------------------->
+//
+import SaleBox from '../../components/saleBox/SaleBox'
+
+//
+// icons and images --------------------------------->
+//
 import profile from './../../../assets/images/profile.jpg'
 import operator_edit from './../../../assets/icons/operator_edit.svg'
 import change_password from './../../../assets/icons/change_password.svg'
@@ -14,7 +23,6 @@ import cardview from './../../../assets/icons/card_view.svg'
 import pdf from './../../../assets/icons/pdf.svg'
 import excel from './../../../assets/icons/excel.svg'
 
-import SaleBox from '../../components/saleBox/SaleBox'
 
 import './Home.css';
 
@@ -54,7 +62,7 @@ class Home extends Component {
                         <div className="account" >
                             <p>حساب کاربری شما</p>
                             <ul className="manage-account" >
-                                <li className="sub-manage-profile" ><img className="manage-profile-icon" src={operator_edit} alt="داشبورد" />مدیریت اپراتورها</li>
+                                <li className="sub-manage-profile" ><Link to="/addsellers"><img className="manage-profile-icon" src={operator_edit} alt="داشبورد" />مدیریت عاملین فروش</Link></li>
                                 <li className="sub-manage-profile" ><img className="manage-profile-icon" src={change_password} alt="تغییر رمز عبور" />تغییر رمز عبور</li>
                                 <li className="sub-manage-profile" ><img className="manage-profile-icon" src={edit_profile} alt="ویرایش حساب کاربری" />ویرایش حساب کاربری</li>
                                 <li className="sub-manage-profile" ><img className="manage-profile-icon" src={logput} alt="خروج" />خروج از حساب کاربری</li>

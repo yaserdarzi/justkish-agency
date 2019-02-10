@@ -75,6 +75,16 @@ display: flex;
     color: #fff;
     cursor: pointer;
 }
+
+.login-btn:hover{
+    background: #3476b8;
+}
+
+.login-btn:active , .login-btn:focus {
+    outline: 0;
+    border: 0;
+}
+
 .forget-pass{
     margin-top: 5px;
     display: block;
