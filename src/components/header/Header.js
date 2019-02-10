@@ -63,8 +63,10 @@ class Header extends Component {
                                 <img className="shoppings-icon border-right" src={pluscircle} alt="pluscircle" />
                             </div>
                             <div className="ticket" >
-                                <img className="shoppings-icon border-left" src={ticket} alt="ticket" />
-                                <span className="wallet-remain">دانلود بلیت</span>
+                                <Link to="/ticket-issued">
+                                    <img className="shoppings-icon border-left" src={ticket} alt="ticket" />
+                                    <span className="wallet-remain">دانلود بلیت</span>
+                                </Link>
                             </div>
                             <div className="shopping-card" >
                                 <img className="shoppings-icon border-left" src={shopping_card} alt="shopping_card" />
