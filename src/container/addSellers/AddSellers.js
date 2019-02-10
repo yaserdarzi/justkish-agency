@@ -33,9 +33,14 @@ class AddSellers extends Component {
         super(props);
         this.state = {
             agentLoading: true,
-            agents:[]
+            agents:[],
+            name:'',
+            email:'',
+            password:'',
+            percent:''
 
         }
+        this.addNewSeller = this.addNewSeller.bind(this)
     }
 
 
@@ -44,18 +49,18 @@ class AddSellers extends Component {
 
     }
 
+    changedHandler = (e) => {
+        console.log(e.target.value)
+        this.setState({
+            [e.target.name] : e.target.value
+        });
+    }
+
 
     getAllSellers()
     {
         console.log("fetching sellers is start......");
-
-        const data = {
-            "name":this.state.agentname,
-            "phone":this.state.phonenumber,
-            "city":this.state.city,
-            "email": this.state.emailadrress
-        } 
-
+ 
         this.getData('agency/agent')
  
     }
@@ -91,6 +96,63 @@ class AddSellers extends Component {
                   agents: responsJson.data,
                   agentLoading: false
               })
+          })
+      }
+
+
+
+      addNewSeller(event){
+
+        event.preventDefault();
+        console.log("seller added.")
+
+              // provider data for API --------->
+        const data = {
+            "name" : this.state.name,
+            "email" : this.state.email,
+            "password" : this.state.password,
+            "repassword" : this.state.password,
+            "percent": this.state.percent,
+            "phone": '',
+            "tell": ''
+        } 
+
+        console.log(data);
+        this.postData(data,'agency/agent')
+
+      }
+
+      postData(data,key) {
+        console.log("fetching...")
+
+        this.setState({
+       
+        })
+
+         const url =  base.baseURL + key;
+
+          return fetch(url, {
+              method: "POST", 
+              cache: "no-cache",  
+              headers: {
+                  "Content-Type": "application/json",
+                  "Accept": "application/json",
+                  "agent" : "web",
+                  "Authorization": Token
+              },
+              redirect: "follow", 
+              referrer: "no-referrer", 
+              body: JSON.stringify(data), 
+          })
+          .then(response => {
+            const statusCode = response.status
+            const data = response.json()
+            return Promise.all([statusCode, data])
+          })
+          .then(([res, data]) => {
+            //console.log(res, data)
+            this.setState({isLoading: false})
+            return ({'status':res, 'data':data.data})
           })
       }
 
@@ -134,28 +196,28 @@ class AddSellers extends Component {
                         <p>حذف و اضافه کردم و تغییر سطح دسترسی عامیلن فروش با امکان زیر صورت پذیر است</p>
                     </div>
 
-                    <div className="add-sellers-form" >
+                    <form className="add-sellers-form" onSubmit={this.addNewSeller} >
                         <div className="add-sellers-fields">
                             <div className="add-sellers-field" >
                                 <p>نام عامل فروش</p>
-                                <input name="name" placeHolder="یاسر درزی" />
+                                <input name="name" placeHolder="یاسر درزی" onChange={this.changedHandler}/>
                             </div>
                             <div className="add-sellers-field" >
                                 <p>ایمیل</p>
-                                <input name="email" placeHolder="example@gmail.com" />
+                                <input name="email" placeHolder="example@gmail.com" onChange={this.changedHandler} />
                             </div>
                             <div className="add-sellers-field" >
                                 <p>گذرواژه</p>
-                                <input name="password" placeHolder="طول کاراکتر باید تا ۸ کاراکتر باشد" />
+                                <input name="password" placeHolder="طول کاراکتر باید تا ۸ کاراکتر باشد" onChange={this.changedHandler} />
                             </div>
                             <div className="add-sellers-field" >
                                 <p>درصد کمیسیون فروش</p>
-                                <input name="precent" placeHolder="برای مثال ۸٪" />
+                                <input name="percent" placeHolder="برای مثال ۸٪" onChange={this.changedHandler} />
                             </div>
                         </div>
 
                         <button className="add-sellers-btn" >افزودن</button>
-                    </div>
+                    </form>
                     <div className="add-sellers-list" >
                        {allAgents}
                     </div>
