@@ -5,25 +5,12 @@ import { Link } from 'react-router';
 // icons and images ------------->
 //
 import profile from './../../../assets/images/profile.jpg'
-import operator_edit from './../../../assets/icons/operator_edit.svg'
-import change_password from './../../../assets/icons/change_password.svg'
-import edit_profile from './../../../assets/icons/edit_profile.svg'
-import logput from './../../../assets/icons/logput.svg'
-import report from './../../../assets/icons/report.svg'
 import place_holder from './../../../assets/icons/place_holder.svg'
-import search from './../../../assets/icons/search.svg'
-import arrowdown2 from './../../../assets/icons/arrow-down2.svg'
-import user from './../../../assets/icons/user.svg'
-import gridview from './../../../assets/icons/grid_view.svg'
-import cardview from './../../../assets/icons/card_view.svg'
-import pdf from './../../../assets/icons/pdf.svg'
-import excel from './../../../assets/icons/excel.svg'
 
 //
 // components ------------->
 //
 
-import Input from './../../components/input/Input'
 
 import './Profile.css';
 import SideLeft from '../../components/sideLeft/sideLeft';
@@ -174,38 +161,7 @@ class Profile extends Component {
                             </div>
                         </div>
 
-                        <div className="user-box" >
-                            <div className="user-box-title" >
-                                <h1>تغییر گذرواژه</h1>
-                                <p>میتوانید رمز عبور خود را تغییر دهید</p>
-                            </div>
-                            <div className="user-box-form" >
-                                <div className="user-box-img-input change-pw" >
-                                    <div className="user-box-inputs change-password" >
-                                        <div className="profile-field" >
-                                            <p>رمز عبور قبلی</p>
-                                            <input className="profile-input" name="oldPassword" placeHolder="گذر واژه قبلی را وارد نمایید" />
-                                        </div>
-                                        <div className="profile-field" >
-                                            <p>رمز عبور جدید  </p>
-                                            <input className="profile-input" name="newPassword" placeHolder="طول پسورد باید تا 8 کارکتر باشد" />
-                                        </div>
-                                        <div className="profile-field" >
-                                            <p>تکرار رمز عبور</p>
-                                            <input className="profile-input" name="confirmPassword" placeHolder="طول پسورد باید تا 8 کارکتر باشد" />
-                                        </div>
-
-                                    </div>
-                                    <div className="forget-password-text" >
-
-                                        <Link to="/forgetpassword"><span>آیا گذرواژه خود را فراموش کرده اید</span></Link>
-                                    </div>
-
-                                </div>
-                                <button className="profile-btn" >تغییر گذرواژه</button>
-
-                            </div>
-                        </div>
+                        
 
 
                     </div>
