@@ -19,8 +19,18 @@ class Index extends Component {
             loginPassword:'',
             loginEmailError:'',
             loginPasswordError:'',
-            signinError:''
+            signinError:'',
+            agentname:'',
+            emailadrress:'',
+            city:'',
+            phonenumber:'',
+            regSuccess:''
+
         }
+
+
+ 
+
     }
 
 
@@ -30,12 +40,10 @@ class Index extends Component {
     }
 
     onLogin  (){
-        
-        console.log(`
-       email: ${this.state.loginEmail}
-       password: ${this.state.loginPassword}
-        `);
+        // clear all error validation
+        this.clearValidation();
 
+        // set fetching for login
         this.loginFetch();
     }
 
@@ -48,7 +56,7 @@ class Index extends Component {
 
 
     loginFetch = async() => {
-        event.preventDefault();
+      //  event.preventDefault();
         const { loginEmail, loginPassword } = this.state;
         let checking = true;
 
@@ -95,7 +103,102 @@ class Index extends Component {
         }
     }
 
+    // clear all state for error validation ---------------------->
+    clearValidation(){
+        this.setState({
+        
+            loginEmailError:'',
+            loginPasswordError:'',
+            signinError:'',
+            agentnameError:'',
+            emailadrressError:'',
+            cityError:'',
+            phonenumberError:'',
+            regSuccess:''
+        })
+    }
 
+    moji = React.createRef()
+    registerFetch = async(event) =>{
+        event.preventDefault();
+        
+       // alert("regiter")
+        let checking = true;
+
+        // clear all error validation
+        this.clearValidation();
+
+        // check validation of all inputs ---------------->
+        if(this.state.agentname === '')
+        {
+            this.setState({
+                agentnameError:'لطفا نام خود را وارد کنید.'
+            })
+            checking = false
+        }
+        if(this.state.city === '')
+        {
+            this.setState({
+                cityError:'لطفا نام شهر خود را وارد کنید.'
+            })
+            checking = false
+        }
+        if(this.state.emailadrress === '')
+        {
+            this.setState({
+                emailadrressError:'لطفا آدرس ایمیل خود را وارد کنید.'
+            })
+            checking = false
+        }
+        if(this.state.phonenumber === '' || this.state.phonenumber.length <11)
+        {
+            this.setState({
+                phonenumberError:'لطفا تلفن تماس خود را وارد کنید.'
+            })
+            checking = false
+        }
+
+
+        // provider data for API --------->
+        const data = {
+            "name":this.state.agentname,
+            "phone":this.state.phonenumber,
+            "city":this.state.city,
+            "email": this.state.emailadrress
+        } 
+
+
+
+        if(checking === true){
+          
+            console.log("registering. . .")
+
+            const res = await this.postData(data,'agency/request');
+
+            if(res.status === 200)
+            {
+                
+               console.log(`Agent is registerd!`) // TODO Delete Later 
+               this.setState({
+                   regSuccess:'درخواست شما با موفقیت ارسال شد.',
+                   
+               })
+
+               this.moji.current.reset()
+              
+               //window.location.pathname = '/dashboard'
+            }
+
+        }
+
+
+
+
+    }
+
+
+
+ 
 
     postData(data,key) {
         console.log("fetching...")
@@ -147,11 +250,10 @@ class Index extends Component {
                              <img className="register-img" src={logo} alt="جاست کیش" />
                              <div className="login-signup-box">
      
-     
                                  <div className="login" >
                                      <h1 className="login-title" >ورود به سامانه </h1>
                                      <p className="login-text">برای ورود ایمیل و رمز عبور را وارد نمایید</p>
-                                     <p>{this.state.signinError}</p>
+                                     <p className="signinError shake">{this.state.signinError}</p>
                                      <Input 
                                          placeHolder="ایمیل" 
                                          name="loginEmail"
@@ -174,15 +276,42 @@ class Index extends Component {
      
                                  <div className="ls-seprator" ></div>
      
-                                 <div className="signup" >
+                                 <form className="signup" onSubmit={this.registerFetch} ref={this.moji} >
                                      <h1 className="signup-title">درخواست ساین </h1>
                                      <p className="signup-text">فرم درخواست ثبت نام مخصوص آژانس ها</p>
-                                     <Input placeHolder="نام آژانس" name="agentname" />
-                                     <Input placeHolder="شهر" name="city" />
-                                     <Input placeHolder="آدرس ایمیل" name="emailadrress" />
-                                     <Input placeHolder="شماره همراه " name="phonenumber" />
-                                     <button className="login-btn" >ثبت نام</button>
-                                 </div>
+                                     <p className="regSuccess zoomIn">{this.state.regSuccess}</p>
+                                     <Input 
+                                     
+                                        placeHolder="نام آژانس" 
+                                        name="agentname"
+                                        type={'text'}  
+                                        changed={this.changedHandler}
+                                        error={this.state.agentnameError}
+                                        max="40" />
+                                     <Input 
+                                        placeHolder="شهر" 
+                                        name="city"
+                                        type={'text'}  
+                                        changed={this.changedHandler}
+                                        error={this.state.cityError}
+                                        max="30"  />
+                                     <Input 
+                                        placeHolder="آدرس ایمیل" 
+                                        name="emailadrress"
+                                        type={'email'}  
+                                        changed={this.changedHandler}
+                                        error={this.state.emailadrressError}
+                                        max="60"  />
+                                     <Input 
+                                        placeHolder="شماره همراه " 
+                                        name="phonenumber"
+                                        type={'text'}  
+                                        changed={this.changedHandler}
+                                        error={this.state.phonenumberError}
+                                        max="11"  />
+
+                                     <button className="login-btn" type="submit" value="Submit"  >ثبت نام</button>
+                                 </form>
                              </div>
      
                          </div>

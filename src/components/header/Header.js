@@ -20,6 +20,7 @@ import operator_edit from './../../../assets/icons/operator_edit.svg';
 import change_password from './../../../assets/icons/change_password.svg';
 import edit_profile from './../../../assets/icons/edit_profile.svg';
 import logput from './../../../assets/icons/logput.svg';
+import loading from '../../../assets/icons/loading.gif'
 
 import './Header.css';
 
@@ -38,7 +39,7 @@ class Header extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            userAvatar:'https://www.drupal.org/files/issues/default-avatar.png'
+            userAvatar: loading
         }
     }
 
