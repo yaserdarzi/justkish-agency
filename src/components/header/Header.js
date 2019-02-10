@@ -23,7 +23,69 @@ import logput from './../../../assets/icons/logput.svg';
 
 import './Header.css';
 
+
+//
+// externaml component ------------------------------->
+//
+
+import base from '../../api/baseURL';
+import Token from '../../api/token';
+
+
+
 class Header extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            userAvatar:'https://www.drupal.org/files/issues/default-avatar.png'
+        }
+    }
+
+    componentWillMount(){
+
+        this.fetchUserInfo(base.baseURL + 'agency')
+        
+
+    }
+
+    fetchUserInfo(url){
+        fetch(url, {
+            method: "GET", 
+            cache: "no-cache",  
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                "agent" : "web",
+                "Authorization": Token
+            },
+            redirect: "follow", 
+            referrer: "no-referrer"  
+        })
+        .then(response => response.json())
+        .then(responseJson => {
+            this.setState({
+                userInfo: responseJson.data,
+                userType: responseJson.data.agent.type,
+                userName: responseJson.data.agent.name,
+                userAvatar: responseJson.data.agent.image
+
+
+            })
+            console.log(responseJson.data)
+        })
+    }
+
+
+    logout(){
+      //  alert("log out")
+
+      localStorage.removeItem("authorization")
+      window.location.pathname = '/index'
+
+    }
+
+
     render() {
         return (
             <div className="header">
@@ -42,25 +104,28 @@ class Header extends Component {
                     </div>
                     <div className="user-section" >
                         <div className="profile" >
-                            <img className="profile-img" src={profile} alt="profile" />
+                            <img className="profile-img" src={this.state.userAvatar} alt="profile" />
                             <div className="profile-desc" >
-                                <span className="profile-name" >Maryam Azizi</span>
-                                <span className="profile-level" >مدیر</span>
+                                <span className="profile-name" >{this.state.userName}</span>
+                                <span className="profile-level" >{this.state.userType === 'admin' ? 'مدیر' : 'عامل فروش'}</span>
                             </div>
                             <img className="my-arrow-down" src={arrow_down} alt="فلش" />
                             <ul className="manage-profile" >
                                 <li className="sub-manage-profile" ><Link to="/addsellers"><img className="manage-profile-icon" src={operator_edit} alt="داشبورد" />مدیریت اپراتورها</Link></li>
                                 <li className="sub-manage-profile" ><img className="manage-profile-icon" src={change_password} alt="تغییر رمز عبور" />تغییر رمز عبور</li>
                                 <li className="sub-manage-profile" ><Link to="/profile"><img className="manage-profile-icon" src={edit_profile} alt="ویرایش حساب کاربری" />ویرایش حساب کاربری</Link></li>
-                                <li className="sub-manage-profile" ><img className="manage-profile-icon" src={logput} alt="خروج" />خروج از حساب کاربری</li>
+                                <li className="sub-manage-profile" onClick={this.logout}><img className="manage-profile-icon" src={logput} alt="خروج" />خروج از حساب کاربری</li>
                             </ul>
                         </div>
                         <div className="shopping-box" >
 
                             <div className="wallet">
+                              <Link to="/wallet">
                                 <img className="shoppings-icon border-left" src={wallet} alt="wallet" />
                                 <span className="wallet-remain" >6,333,443 ت</span>
                                 <img className="shoppings-icon border-right" src={pluscircle} alt="pluscircle" />
+                              </Link>
+
                             </div>
                             <div className="ticket" >
                                 <img className="shoppings-icon border-left" src={ticket} alt="ticket" />

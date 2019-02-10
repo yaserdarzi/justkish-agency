@@ -35,7 +35,7 @@ class RouterComponent extends Component {
             <Router history={browserHistory}>
             
             <Route path="/" component={RootComponent}>
-                  <IndexRoute   component={ManagementScreen} /> 
+                  <IndexRoute   component={IndexScreen} /> 
                   <Route   path="dashboard" component={DashboardScreen} /> 
                   <Route   path="index" component={IndexScreen} /> 
                   <Route   path="wallet" component={Wallet} /> 
