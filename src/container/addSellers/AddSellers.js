@@ -37,7 +37,8 @@ class AddSellers extends Component {
             name:'',
             email:'',
             password:'',
-            percent:''
+            percent:'',
+            isLoadingAddAgent: false
 
         }
         this.addNewSeller = this.addNewSeller.bind(this)
@@ -118,20 +119,21 @@ class AddSellers extends Component {
         } 
 
         console.log(data);
-        this.postData(data,'agency/agent')
+        this.postData(data,'agency/agent');
+       
 
       }
 
-      postData(data,key) {
+      postData =  (data,key) => {
         console.log("fetching...")
 
         this.setState({
-       
+            isLoadingAddAgent: true
         })
 
          const url =  base.baseURL + key;
 
-          return fetch(url, {
+          return   fetch(url, {
               method: "POST", 
               cache: "no-cache",  
               headers: {
@@ -150,10 +152,14 @@ class AddSellers extends Component {
             return Promise.all([statusCode, data])
           })
           .then(([res, data]) => {
-            //console.log(res, data)
-            this.setState({isLoading: false})
+            console.log(res, data)
+            this.setState({isLoadingAddAgent: false})
+            // after add refresh render all agent and show new record in list ....
+            this.getAllSellers()
             return ({'status':res, 'data':data.data})
           })
+
+          
       }
 
 
@@ -216,7 +222,7 @@ class AddSellers extends Component {
                             </div>
                         </div>
 
-                        <button className="add-sellers-btn" >افزودن</button>
+                        <button className="add-sellers-btn" >{this.state.isLoadingAddAgent ? <div className="loading-button"></div>  : 'افزودن'}</button>
                     </form>
                     <div className="add-sellers-list" >
                        {allAgents}

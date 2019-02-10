@@ -114,14 +114,17 @@ class Index extends Component {
             emailadrressError:'',
             cityError:'',
             phonenumberError:'',
-            regSuccess:''
+            regSuccess:'',
+            isLoadingRegister:false
         })
     }
 
     moji = React.createRef()
     registerFetch = async(event) =>{
         event.preventDefault();
-        
+        this.setState({
+            isLoadingRegister:true
+        })
        // alert("regiter")
         let checking = true;
 
@@ -181,6 +184,7 @@ class Index extends Component {
                console.log(`Agent is registerd!`) // TODO Delete Later 
                this.setState({
                    regSuccess:'درخواست شما با موفقیت ارسال شد.',
+                  
                    
                })
 
@@ -310,7 +314,7 @@ class Index extends Component {
                                         error={this.state.phonenumberError}
                                         max="11"  />
 
-                                     <button className="login-btn" type="submit" value="Submit"  >ثبت نام</button>
+                                     <button className="login-btn" type="submit" value="Submit"  >{this.state.isLoadingRegister ? <div className="loading-button"></div>  : 'ثبت نام'}</button>
                                  </form>
                              </div>
      
