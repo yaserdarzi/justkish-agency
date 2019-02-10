@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
 
 //
 // external compoent ---------------------------->
 //
 import SaleBox from '../../components/saleBox/SaleBox'
+import Token from '../../api/token';
+import base from '../../api/baseURL';
+import SideLeft from '../../components/sideLeft/sideLeft';
+
+
 
 //
 // icons and images --------------------------------->
 //
 import profile from './../../../assets/images/profile.jpg'
-import operator_edit from './../../../assets/icons/operator_edit.svg'
-import change_password from './../../../assets/icons/change_password.svg'
-import edit_profile from './../../../assets/icons/edit_profile.svg'
-import logput from './../../../assets/icons/logput.svg'
-import report from './../../../assets/icons/report.svg'
+
 import search from './../../../assets/icons/search.svg'
 import arrowdown2 from './../../../assets/icons/arrow-down2.svg'
 import user from './../../../assets/icons/user.svg'
@@ -28,47 +28,36 @@ import './Home.css';
 
 
 class Home extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            userInfo:{},
+            userType:'',
+            isLoading:false,
+            userAvatar:'https://www.drupal.org/files/issues/default-avatar.png'
+           
+        }
+    }
+
+
+
+
+
+
     render() {
+
+   
+      
+
+
         return (
             <div className="home">
+            {this.state.isLoading === true ? <div className="LoadingPattern"><div className="loader"></div></div> : ''}
                 <div className="home-box container" >
 
                     <div className="part1" >
-                        <div className="checkout" >
-
-                            <div className="checkout-profile" >
-                                <img className="checkout-profile-img" src={profile} alt="profile" />
-                                <div className="checkout-profile-desc" >
-                                    <span className="checkout-profile-name" >Maryam Azizi</span>
-                                    <span className="checkout-profile-level" >مدیر</span>
-                                </div>
-                            </div>
-                            <div className="increas-credit" >
-                                <span className="increas-credit-text" >افزایش اعتبار</span>
-                                <div className="credit-show" >
-                                    <p className="credit-show-number" >5,667,666</p>
-                                    <span className="credit-show-unit" >تومان</span>
-                                </div>
-                            </div>
-
-                        </div>
-                        <button className="checkout-request" >
-                            درخواست تصویه حساب
-                        </button>
-                        <div className="report" >
-                            <img src={report} alt="گزارش مالی" />
-                            <span>گزارش فروش ومالی</span>
-                        </div>
-                        <div className="account" >
-                            <p>حساب کاربری شما</p>
-                            <ul className="manage-account" >
-                                <li className="sub-manage-profile" ><Link to="/addsellers"><img className="manage-profile-icon" src={operator_edit} alt="داشبورد" />مدیریت عاملین فروش</Link></li>
-                                <li className="sub-manage-profile" ><img className="manage-profile-icon" src={change_password} alt="تغییر رمز عبور" />تغییر رمز عبور</li>
-                                <li className="sub-manage-profile" ><img className="manage-profile-icon" src={edit_profile} alt="ویرایش حساب کاربری" />ویرایش حساب کاربری</li>
-                                <li className="sub-manage-profile" ><img className="manage-profile-icon" src={logput} alt="خروج" />خروج از حساب کاربری</li>
-                            </ul>
-
-                        </div>
+                        <SideLeft />
                     </div>
                     <div className="part2" >
                         <div className="filter" >

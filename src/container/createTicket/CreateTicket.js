@@ -1,18 +1,7 @@
 import React, { Component } from 'react';
 
-import profile from './../../../assets/images/profile.jpg';
-import operator_edit from './../../../assets/icons/operator_edit.svg';
-import change_password from './../../../assets/icons/change_password.svg';
-import edit_profile from './../../../assets/icons/edit_profile.svg';
-import logput from './../../../assets/icons/logput.svg';
-import report from './../../../assets/icons/report.svg';
 import search from './../../../assets/icons/search.svg';
 import arrowdown2 from './../../../assets/icons/arrow-down2.svg';
-import user from './../../../assets/icons/user.svg';
-import gridview from './../../../assets/icons/grid_view.svg';
-import cardview from './../../../assets/icons/card_view.svg';
-import pdf from './../../../assets/icons/pdf.svg';
-import excel from './../../../assets/icons/excel.svg';
 import positive from './../../../assets/icons/positive.svg';
 import ngative from './../../../assets/icons/ngative.svg';
 import deletee from './../../../assets/icons/delete.svg';
@@ -130,10 +119,10 @@ class CreateTicket extends Component {
 
                                 <div className="create-ticket-places" >
                                     <span className="create-ticket-places-right" >
-                                        <i className="fas fa-map-marker-alt"></i>
+                                        <i className="fas fa-map-marker-alt create-ticket-places-marker "></i>
                                         <span>در جزیره کیش </span>
-                                    </span>
                                     <img src={arrowdown2} alt="فلش" />
+                                    </span>
                                     <ul className="create-ticket-places-lists" >
 
                                         <p className="create-ticket-places-all" >همه مکانها</p>
@@ -154,16 +143,46 @@ class CreateTicket extends Component {
 
                                 <div className="create-ticket-features" >
                                     <span className="create-ticket-features-right" >
-                                        <img src={user} alt="کاربر" />
                                         <span>همه </span>
                                     </span>
                                     <img src={arrowdown2} alt="فلش" />
                                     <ul className="create-ticket-features-lists" >
                                         <li className="create-ticket-features-list" >
-                                            <span>گزارش فروش</span>
-                                        </li>
-                                        <li className="create-ticket-features-list" >
-                                            <span>گزارش مالی</span>
+                                        <ul className="create-ticket-features-col" >
+                                            <li> پارسل</li>
+                                            <li> جت اسکی</li>
+                                            <li> فلای برد</li>
+                                            <li> قایق تندرو</li>
+                                            <li> غواصی </li>
+                                            <li> شاتل</li>
+                                            <li> بنانا</li>
+                                            <li> اسکی روی آب</li>
+                                            <li> اسب سواری</li>
+                                        </ul>
+                                        <ul className="create-ticket-features-col" >
+                                            <li> استند آپ کمدی</li>
+                                            <li> اسکوتر زیر دریایی</li>
+                                            <li> باگی</li>
+                                            <li> بیگ بال</li>
+                                            <li> پلاژ</li>
+                                            <li> پارک آبی اوشن</li>
+                                            <li> دلفیناریوم</li>
+                                            <li> سافاری</li>
+                                            <li> پینت بال</li>
+                                        </ul>
+                                        <ul className="create-ticket-features-col" >
+                                            <li> کشتی کروز</li>
+                                            <li> قلعه وحشت</li>
+                                            <li> شهرزیرزمینی کاریز</li>
+                                            <li> شترسواری</li>
+                                            <li> کیبل</li>
+                                            <li> ماساژ</li>
+                                            <li> ماهیگیری</li>
+                                            <li> جابرو کوپتر</li>
+                                            <li> پینت بال</li>
+                                        </ul>
+                                            
+                                        
                                         </li>
                                     </ul></div>
                                 <button className="create-ticket-btn" >

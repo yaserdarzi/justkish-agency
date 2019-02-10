@@ -15,6 +15,8 @@ import CreateTicketScreen from './container/createTicket/CreateTicket';
 import SupportScreen from './container/support/support';
 import ProfileScreen from './container/profile/Profile';
 import TicketIssuedScreen from './container/ticketIssued/TicketIssued'
+import ChangePasswordScreen from './container/changePassword/changePassword';
+
 
 
 
@@ -35,7 +37,7 @@ class RouterComponent extends Component {
             <Router history={browserHistory}>
             
             <Route path="/" component={RootComponent}>
-                  <IndexRoute   component={ManagementScreen} /> 
+                  <IndexRoute   component={IndexScreen} /> 
                   <Route   path="dashboard" component={DashboardScreen} /> 
                   <Route   path="index" component={IndexScreen} /> 
                   <Route   path="wallet" component={Wallet} /> 
@@ -46,6 +48,8 @@ class RouterComponent extends Component {
                   <Route   path="support" component={SupportScreen} /> 
                   <Route   path="profile" component={ProfileScreen} /> 
                   <Route   path="ticket-issued" component={TicketIssuedScreen} /> 
+                  <Route   path="change-password" component={ChangePasswordScreen} /> 
+
                 
               </Route>
           
