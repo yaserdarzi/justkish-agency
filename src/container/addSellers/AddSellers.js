@@ -102,14 +102,23 @@ class AddSellers extends Component {
         const { isLoading, agents, error } = this.state;
 
         const allAgents = ( 
+            // render all agents and pass props name , avatar , level ------->
+             this.state.agents.map((item, index) =>  
+                <Seller key={index}  
+                        name={item.name} 
+                        avatar={item.image} 
+                        level={item.type === 'normal' ? 'عامل فروش' : 'مدیر'} /> 
+                    )
+
+           
+
 
             // Object.keys(agents).map((item, i) => (
             //     console.log(item),
             //     <Seller   name={agents.name} level="admin" />
             //   ))
 
-           this.state.agents.map((item, index) =>  <Seller  key={index}  name={item.name} avatar={item.image} level={item.type === 'normal' ? 'عامل فروش' : 'مدیر'} /> )
-           
+         
             //   <Seller  key={index}  name={item.name} level={item.type === 'normal' ? 'عامل فروش' : 'مدیر'} />
             // <Seller key= {i} name={agents.name} level="admin" />
         )
