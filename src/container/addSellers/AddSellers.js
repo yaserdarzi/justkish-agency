@@ -99,16 +99,16 @@ class AddSellers extends Component {
 
 
     render() {
-        const { isLoading, agents, error } = this.state;
+     
 
         const allAgents = ( 
             // render all agents and pass props name , avatar , level ------->
-             this.state.agents.map((item, index) =>  
-                <Seller key={index}  
-                        name={item.name} 
-                        avatar={item.image} 
-                        level={item.type === 'normal' ? 'عامل فروش' : 'مدیر'} /> 
-                    )
+          this.state.agentLoading === false ?    this.state.agents.map((item, index) =>  
+            <Seller key={index}  
+                    name={item.name} 
+                    avatar={item.image} 
+                    level={item.type === 'normal' ? 'عامل فروش' : 'مدیر'} /> 
+                ) :  <div className="loader"></div> 
 
            
 
@@ -142,15 +142,15 @@ class AddSellers extends Component {
                             </div>
                             <div className="add-sellers-field" >
                                 <p>ایمیل</p>
-                                <input name="name" placeHolder="example@gmail.com" />
+                                <input name="email" placeHolder="example@gmail.com" />
                             </div>
                             <div className="add-sellers-field" >
                                 <p>گذرواژه</p>
-                                <input name="name" placeHolder="طول کاراکتر باید تا ۸ کاراکتر باشد" />
+                                <input name="password" placeHolder="طول کاراکتر باید تا ۸ کاراکتر باشد" />
                             </div>
                             <div className="add-sellers-field" >
                                 <p>درصد کمیسیون فروش</p>
-                                <input name="name" placeHolder="برای مثال ۸٪" />
+                                <input name="precent" placeHolder="برای مثال ۸٪" />
                             </div>
                         </div>
 
