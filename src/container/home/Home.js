@@ -36,7 +36,9 @@ class Home extends Component {
         super(props);
         this.state = {
             userInfo:{},
-            userType:''
+            userType:'',
+            isLoading:false,
+            userAvatar:'https://www.drupal.org/files/issues/default-avatar.png'
            
         }
     }
@@ -45,7 +47,9 @@ class Home extends Component {
 componentWillMount(){
 
     console.log("fetching")
-    
+    this.setState({
+        isLoading:true
+    })
    this.fetchingData(base.baseURL + 'agency');
 
 }
@@ -69,22 +73,34 @@ fetchingData(url){
         this.setState({
             userInfo: responseJson.data,
             userType: responseJson.data.agent.type,
-            userName: responseJson.data.agent.name
+            userName: responseJson.data.agent.name,
+            walletPrice: responseJson.data.wallet.wallet_price,
+            userAvatar: responseJson.data.agent.image,
+            isLoading:false
+            
         })
         console.log(responseJson.data)
     })
 }
 
+
+
     render() {
+
+   
+      
+
+
         return (
             <div className="home">
+            {this.state.isLoading === true ? <div className="LoadingPattern"><div className="loader"></div></div> : ''}
                 <div className="home-box container" >
 
                     <div className="part1" >
                         <div className="checkout" >
 
                             <div className="checkout-profile" >
-                                <img className="checkout-profile-img" src={profile} alt="profile" />
+                                <img className="checkout-profile-img" src={this.state.userAvatar} alt="profile" />
                                 <div className="checkout-profile-desc" >
                                     <span className="checkout-profile-name" >{this.state.userName}</span>
                                     <span className="checkout-profile-level" >{this.state.userType === 'admin' ? 'مدیر' : 'عامل فروش'}</span>
@@ -93,7 +109,7 @@ fetchingData(url){
                             <div className="increas-credit" >
                                 <span className="increas-credit-text" >افزایش اعتبار</span>
                                 <div className="credit-show" >
-                                    <p className="credit-show-number" >5,667,666</p>
+                                    <p className="credit-show-number" >{this.state.walletPrice}</p>
                                     <span className="credit-show-unit" >تومان</span>
                                 </div>
                             </div>

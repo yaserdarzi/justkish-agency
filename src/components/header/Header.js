@@ -28,14 +28,52 @@ import './Header.css';
 // externaml component ------------------------------->
 //
 
+import base from '../../api/baseURL';
+import Token from '../../api/token';
+
+
 
 class Header extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-   
+            userAvatar:'https://www.drupal.org/files/issues/default-avatar.png'
         }
+    }
+
+    componentWillMount(){
+
+        this.fetchUserInfo(base.baseURL + 'agency')
+        
+
+    }
+
+    fetchUserInfo(url){
+        fetch(url, {
+            method: "GET", 
+            cache: "no-cache",  
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                "agent" : "web",
+                "Authorization": Token
+            },
+            redirect: "follow", 
+            referrer: "no-referrer"  
+        })
+        .then(response => response.json())
+        .then(responseJson => {
+            this.setState({
+                userInfo: responseJson.data,
+                userType: responseJson.data.agent.type,
+                userName: responseJson.data.agent.name,
+                userAvatar: responseJson.data.agent.image
+
+
+            })
+            console.log(responseJson.data)
+        })
     }
 
     render() {
@@ -56,10 +94,10 @@ class Header extends Component {
                     </div>
                     <div className="user-section" >
                         <div className="profile" >
-                            <img className="profile-img" src={profile} alt="profile" />
+                            <img className="profile-img" src={this.state.userAvatar} alt="profile" />
                             <div className="profile-desc" >
-                                <span className="profile-name" >Maryam Azizi</span>
-                                <span className="profile-level" >مدیر</span>
+                                <span className="profile-name" >{this.state.userName}</span>
+                                <span className="profile-level" >{this.state.userType === 'admin' ? 'مدیر' : 'عامل فروش'}</span>
                             </div>
                             <img className="my-arrow-down" src={arrow_down} alt="فلش" />
                             <ul className="manage-profile" >
@@ -72,9 +110,12 @@ class Header extends Component {
                         <div className="shopping-box" >
 
                             <div className="wallet">
+                              <Link to="/wallet">
                                 <img className="shoppings-icon border-left" src={wallet} alt="wallet" />
                                 <span className="wallet-remain" >6,333,443 ت</span>
                                 <img className="shoppings-icon border-right" src={pluscircle} alt="pluscircle" />
+                              </Link>
+
                             </div>
                             <div className="ticket" >
                                 <img className="shoppings-icon border-left" src={ticket} alt="ticket" />

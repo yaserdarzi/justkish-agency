@@ -77,6 +77,7 @@ margin-left: 5px;
 .profile-img{
     border-radius: 30px;
     margin: 5px 10px;
+    width: 50px;
 }
 
 .profile-desc{
@@ -104,7 +105,7 @@ display: flex;
 
 }
 
-.wallet , .shopping-card , .ticket {
+.wallet a , .shopping-card , .ticket {
     display: flex;
     align-items: center;
     background-color: #f4f4f4;
