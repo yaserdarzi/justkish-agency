@@ -16,6 +16,7 @@ import SupportScreen from './container/support/support';
 import ProfileScreen from './container/profile/Profile';
 import TicketIssuedScreen from './container/ticketIssued/TicketIssued'
 import ChangePasswordScreen from './container/changePassword/changePassword';
+import ViewTicketScreen from './container/viewTicket/ViewTicket';
 
 
 
@@ -49,6 +50,7 @@ class RouterComponent extends Component {
                   <Route   path="profile" component={ProfileScreen} /> 
                   <Route   path="ticket-issued" component={TicketIssuedScreen} /> 
                   <Route   path="change-password" component={ChangePasswordScreen} /> 
+                  <Route   path="view-ticket" component={ViewTicketScreen} /> 
 
                 
               </Route>
