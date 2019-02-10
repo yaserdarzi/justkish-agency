@@ -14,7 +14,7 @@ import ForgetPasword from './container/beforLogin/forgetPassword/ForgetPassword'
 import CreateTicketScreen from './container/createTicket/CreateTicket';
 import SupportScreen from './container/support/support';
 import ProfileScreen from './container/profile/Profile';
-
+import TicketIssuedScreen from './container/ticketIssued/TicketIssued'
 
 
 
@@ -45,6 +45,7 @@ class RouterComponent extends Component {
                   <Route   path="create-ticket" component={CreateTicketScreen} /> 
                   <Route   path="support" component={SupportScreen} /> 
                   <Route   path="profile" component={ProfileScreen} /> 
+                  <Route   path="ticket-issued" component={TicketIssuedScreen} /> 
                 
               </Route>
           
