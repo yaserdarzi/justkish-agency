@@ -13,8 +13,8 @@ class Seller extends Component {
             <div className="seller-com">
                 <li className="seller-com-manage-sellers-item"   >
                     <div className="seller-com-actions">
-                        <div className="seller-com-off"><i className="fas fa-trash-alt"></i></div>
-                        <div className="seller-com-edit"> <i className="fas fa-pen"></i> </div>
+                        <div className="seller-com-off"><i onClick={this.props.deleteAgent} className="fas fa-trash-alt"></i></div>
+                        <div className="seller-com-edit"> <i onClick={this.props.editAgent} className="fas fa-pen"></i> </div>
                     </div>
                     <div className="seller-com-left" >
                         <div className="seller-com-name">

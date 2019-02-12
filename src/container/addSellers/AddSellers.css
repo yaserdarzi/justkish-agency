@@ -1,7 +1,32 @@
 .add-sellers{
 display: flex;
 }
+.editSellerBox{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+    opacity: 1;
+    transition: all .2s cubic-bezier(0.000, 1.020, 0.880, 1.065) , opacity .3s .1s linear;
 
+}
+.editSellerBoxHide{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+    opacity: 0;
+    visibility: hidden;
+    transition:  opacity .3s .1s  cubic-bezier(0.000, 1.020, 0.880, 1.065) , visibility  .3s .2s cubic-bezier(0.000, 1.020, 0.880, 1.065);
+}
 .add-sellers-title{
     box-shadow: 0 3px 6px rgba(157,206,255,.16);
     padding: 20px 30px;
@@ -87,6 +112,10 @@ width: 24%;
 }
 .add-sellers-list .seller-com-edit, .add-sellers-list .seller-com-off{
     color: #60c5ef;
+    padding: 0px;
+}
+.add-sellers-list .seller-com-edit i ,.add-sellers-list .seller-com-off i{
+    padding: 5px 10px;
 }
 
 .success-message{
