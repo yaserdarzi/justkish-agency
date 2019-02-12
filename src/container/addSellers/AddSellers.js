@@ -8,7 +8,7 @@ import Seller from './../../components/seller/Seller';
 import SideLeft from '../../components/sideLeft/sideLeft';
 import base from '../../api/baseURL';
 import Token from '../../api/token';
-
+import EditSeller from './../../components/editSeller/EditSeller'
 //
 // icons and imeages ----------------------->
 //
@@ -33,25 +33,26 @@ class AddSellers extends Component {
         super(props);
         this.state = {
             agentLoading: true,
-            agents:[],
-            name:'',
-            email:'',
-            password:'',
-            percent:'',
+            agents: [],
+            name: '',
+            email: '',
+            password: '',
+            percent: '',
             isLoadingAddAgent: false,
-            suuccessMessage:'',
-            errorMessage:'',
-            errorEmail:'',
-            errorName:'',
-            errorPercent:'',
-            errorPassword:''
+            suuccessMessage: '',
+            errorMessage: '',
+            errorEmail: '',
+            errorName: '',
+            errorPercent: '',
+            errorPassword: '',
+            editSeller: false
 
         }
         this.addNewSeller = this.addNewSeller.bind(this)
     }
 
 
-    componentDidMount(){
+    componentDidMount() {
         this.getAllSellers();
 
     }
@@ -59,189 +60,206 @@ class AddSellers extends Component {
     changedHandler = (e) => {
         //console.log(e.target.value)
         this.setState({
-            [e.target.name] : e.target.value
+            [e.target.name]: e.target.value
         });
     }
 
     //
     // fetching all sellers ------------------------------------------------
     //
-    getAllSellers()
-    {
+    getAllSellers() {
         // get all seler and show in sellers part -------->
         this.getData('agency/agent')
- 
+
     }
 
     getData(key) {
- 
+
         this.setState({
             agentLoading: true
         })
 
-         const url =  base.baseURL + key;
+        const url = base.baseURL + key;
 
-          return fetch(url, {
-              method: "GET", 
-              cache: "no-cache",  
-              headers: {
-                  "Content-Type": "application/json",
-                  "Accept": "application/json",
-                  "agent" : "web" ,
-                  "Authorization": Token
-              },
-              redirect: "follow", 
-              referrer: "no-referrer" 
-          })
-          .then(response =>  response.json())
-          .then( responsJson => {
-              //console.log(responsJson.data)
-              this.setState({
-                  agents: responsJson.data,
-                  agentLoading: false
-              })
-          })
-      }
+        return fetch(url, {
+            method: "GET",
+            cache: "no-cache",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                "agent": "web",
+                "Authorization": Token
+            },
+            redirect: "follow",
+            referrer: "no-referrer"
+        })
+            .then(response => response.json())
+            .then(responsJson => {
+                //console.log(responsJson.data)
+                this.setState({
+                    agents: responsJson.data,
+                    agentLoading: false
+                })
+            })
+    }
 
 
-     //
-     // Add new seller ------------------------------------------------>
-     //
+    //
+    // Add new seller ------------------------------------------------>
+    //
 
-      sellerForm = React.createRef();
+    sellerForm = React.createRef();
 
-    addNewSeller = async(event) => {
+    addNewSeller = async (event) => {
 
         event.preventDefault();
         let cheking = false;
         this.setState({
-            errorMessage:'',
-            suuccessMessage:'',
-            errorEmail:'',
-            errorName:'',
-            errorPercent:'',
-            errorPassword:''
+            errorMessage: '',
+            suuccessMessage: '',
+            errorEmail: '',
+            errorName: '',
+            errorPercent: '',
+            errorPassword: ''
         })
 
         // provider data for API --------->
         const data = {
-            "name" : this.state.name,
-            "email" : this.state.email,
-            "password" : this.state.password,
-            "repassword" : this.state.password,
+            "name": this.state.name,
+            "email": this.state.email,
+            "password": this.state.password,
+            "repassword": this.state.password,
             "percent": this.state.percent,
             "phone": '',
             "tell": ''
-        } 
+        }
         //
         // checking data input validation-------
-        if(this.state.name === ''){
+        if (this.state.name === '') {
             cheking = true;
             this.setState({
-                errorName:'لطفا نام عامل فروش را وارد نمایید.'
+                errorName: 'لطفا نام عامل فروش را وارد نمایید.'
             })
         }
 
-        if(this.state.email === ''){
+        if (this.state.email === '') {
             cheking = true;
             this.setState({
-                errorEmail:'لطفا آدرس ایمیل عامل فروش را وارد نمایید.'
+                errorEmail: 'لطفا آدرس ایمیل عامل فروش را وارد نمایید.'
             })
         }
 
-        if(this.state.percent === ''){
+        if (this.state.percent === '') {
             cheking = true;
             this.setState({
-                errorPercent:'لطفا درصد کمسیون فروش را وارد نمایید'
+                errorPercent: 'لطفا درصد کمسیون فروش را وارد نمایید'
             })
         }
 
-        if(this.state.password === ''){
+        if (this.state.password === '') {
             cheking = true;
             this.setState({
-                errorPassword:'لطفا کلمه عبور عامل فروش را وارد نمایید'
+                errorPassword: 'لطفا کلمه عبور عامل فروش را وارد نمایید'
             })
         }
 
-        if(cheking === false){
-            const res = await  this.postData(data,'agency/agent');
-    
+        if (cheking === false) {
+            const res = await this.postData(data, 'agency/agent');
+
             //console.log(res.status)
-            if( res.status === 200){
+            if (res.status === 200) {
                 this.setState({
-                    suuccessMessage:'عامل فروش جدید ثبت شد'
+                    suuccessMessage: 'عامل فروش جدید ثبت شد'
                 })
                 this.sellerForm.current.reset();
             }
-            if( res.status === 400){
+            if (res.status === 400) {
                 this.setState({
-                    errorMessage:'عامل فروش با این آدرس ایمیل ، قبلا ثبت شده است'
+                    errorMessage: 'عامل فروش با این آدرس ایمیل ، قبلا ثبت شده است'
                 });
                 console.log(res)
             }
         }
 
 
-       
+
 
     }
 
-    postData =  (data,key) => {
+    postData = (data, key) => {
         // console.log("fetching...")
 
         this.setState({
             isLoadingAddAgent: true
         })
 
-         const url =  base.baseURL + key;
+        const url = base.baseURL + key;
 
-          return   fetch(url, {
-              method: "POST", 
-              cache: "no-cache",  
-              headers: {
-                  "Content-Type": "application/json",
-                  "Accept": "application/json",
-                  "agent" : "web",
-                  "Authorization": Token
-              },
-              redirect: "follow", 
-              referrer: "no-referrer", 
-              body: JSON.stringify(data), 
-          })
-          .then(response => {
-            const statusCode = response.status
-            const data = response.json()
-            return Promise.all([statusCode, data])
-          })
-          .then(([res, data]) => {
-            //console.log(res, data)
-            this.setState({isLoadingAddAgent: false})
-            // after add refresh render all agent and show new record in list ....
-            if(res === 200)
-                this.getAllSellers()
-            return ({'status':res, 'data':data.data})
-          })
+        return fetch(url, {
+            method: "POST",
+            cache: "no-cache",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                "agent": "web",
+                "Authorization": Token
+            },
+            redirect: "follow",
+            referrer: "no-referrer",
+            body: JSON.stringify(data),
+        })
+            .then(response => {
+                const statusCode = response.status
+                const data = response.json()
+                return Promise.all([statusCode, data])
+            })
+            .then(([res, data]) => {
+                //console.log(res, data)
+                this.setState({ isLoadingAddAgent: false })
+                // after add refresh render all agent and show new record in list ....
+                if (res === 200)
+                    this.getAllSellers()
+                return ({ 'status': res, 'data': data.data })
+            })
 
-          
+
+    }
+
+    deactiveSeller = () => {
+
+    }
+
+    saveSellerChanges = () => {
+
+    }
+
+    editsellerModal = React.createRef()
+    editSellerModalOpen = () => {
+        this.setState({ editSeller: false })
+        this.editsellerModal.current.className = "editSellerBox"
     }
 
 
-
+    editSellerModalClose = () => {
+        this.setState({ editSeller: false })
+        this.editsellerModal.current.className = "editSellerBoxHide"
+    }
 
 
     render() {
-     
 
-        const allAgents = ( 
+
+        const allAgents = (
             // render all agents and pass props name , avatar , level ------->
-          this.state.agentLoading === false ?    this.state.agents.map((item, index) =>  
-            <Seller key={index}  
-                    name={item.name} 
-                    avatar={item.image} 
-                    level={item.type === 'normal' ? 'عامل فروش' : 'مدیر'} /> 
-                ) :  <div className="loader"></div> 
+            this.state.agentLoading === false ? this.state.agents.map((item, index) =>
+                <Seller key={index}
+                    name={item.name}
+                    editAgent={this.editSellerModalOpen}
+                    avatar={item.image}
+                    level={item.type === 'normal' ? 'عامل فروش' : 'مدیر'} />
+            ) : <div className="loader"></div>
 
-           
+
 
 
             // Object.keys(agents).map((item, i) => (
@@ -249,15 +267,31 @@ class AddSellers extends Component {
             //     <Seller   name={agents.name} level="admin" />
             //   ))
 
-         
+
             //   <Seller  key={index}  name={item.name} level={item.type === 'normal' ? 'عامل فروش' : 'مدیر'} />
             // <Seller key= {i} name={agents.name} level="admin" />
         )
 
+
         return (
             <div className="add-sellers container" >
+                <div className="editSellerBoxHide" ref={this.editsellerModal} >
+                    <EditSeller
+                        sellerId={"1"}
+                        sellerImg={profile}
+                        sellerName={"Afsaneh saberloo"}
+                        sellerLevel={"عامل فروش"}
+                        sellerNameValue="Afsaneh saberloo"
+                        sellerMailValue="test@test.com"
+                        sellerPassValue="11111111"
+                        sellerPrecentValue="22222222222"
+                        deactiveSeller={this.deactiveSeller}
+                        saveSellerChanges={this.saveSellerChanges}
+                        closeEditSeller={this.editSellerModalClose}
+                    />
+                </div>
                 <div className="part1" >
-                 <SideLeft />
+                    <SideLeft />
                 </div>
                 <div className="part2" >
                     <div className="add-sellers-title" >
@@ -277,10 +311,10 @@ class AddSellers extends Component {
                             <p>{this.state.errorMessage}</p>
                         </div>
                         <div className="add-sellers-fields">
-                 
+
                             <div className="add-sellers-field" >
                                 <p>نام عامل فروش</p>
-                                <input name="name" placeHolder="یاسر درزی" onChange={this.changedHandler}/>
+                                <input name="name" placeHolder="یاسر درزی" onChange={this.changedHandler} />
                             </div>
                             <div className="add-sellers-field" >
                                 <p>ایمیل</p>
@@ -296,10 +330,10 @@ class AddSellers extends Component {
                             </div>
                         </div>
 
-                        <button className="add-sellers-btn" >{this.state.isLoadingAddAgent ? <div className="loading-button"></div>  : 'افزودن'}</button>
+                        <button className="add-sellers-btn" >{this.state.isLoadingAddAgent ? <div className="loading-button"></div> : 'افزودن'}</button>
                     </form>
                     <div className="add-sellers-list" >
-                       {allAgents}
+                        {allAgents}
                     </div>
                 </div>
 
