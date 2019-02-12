@@ -107,7 +107,7 @@ display: flex;
 
 }
 
-.wallet a , .shopping-card , .ticket {
+.wallet a , .shopping-card a, .ticket a{
     display: flex;
     align-items: center;
     background-color: #f4f4f4;

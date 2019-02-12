@@ -83,7 +83,7 @@ class SideLeft extends Component {
                             </div>
                         </div>
                         <div className="increas-credit" >
-                            <span className="increas-credit-text" >افزایش اعتبار</span>
+                            <Link to="/wallet"><span className="increas-credit-text" >افزایش اعتبار</span></Link>
                             <div className="credit-show" >
                                 <p className="credit-show-number" >{this.state.walletPrice}</p>
                                 <span className="credit-show-unit" >تومان</span>

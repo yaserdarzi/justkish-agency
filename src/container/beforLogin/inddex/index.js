@@ -114,14 +114,17 @@ class Index extends Component {
             emailadrressError:'',
             cityError:'',
             phonenumberError:'',
-            regSuccess:''
+            regSuccess:'',
+            isLoadingRegister:false
         })
     }
 
-    moji = React.createRef()
+    regForm = React.createRef()
     registerFetch = async(event) =>{
         event.preventDefault();
-        
+        this.setState({
+            isLoadingRegister:true
+        })
        // alert("regiter")
         let checking = true;
 
@@ -181,10 +184,11 @@ class Index extends Component {
                console.log(`Agent is registerd!`) // TODO Delete Later 
                this.setState({
                    regSuccess:'درخواست شما با موفقیت ارسال شد.',
+                  
                    
                })
 
-               this.moji.current.reset()
+               this.regForm.current.reset()
               
                //window.location.pathname = '/dashboard'
             }
@@ -276,7 +280,7 @@ class Index extends Component {
      
                                  <div className="ls-seprator" ></div>
      
-                                 <form className="signup" onSubmit={this.registerFetch} ref={this.moji} >
+                                 <form className="signup" onSubmit={this.registerFetch} ref={this.regForm} >
                                      <h1 className="signup-title">درخواست ساین </h1>
                                      <p className="signup-text">فرم درخواست ثبت نام مخصوص آژانس ها</p>
                                      <p className="regSuccess zoomIn">{this.state.regSuccess}</p>
@@ -310,7 +314,7 @@ class Index extends Component {
                                         error={this.state.phonenumberError}
                                         max="11"  />
 
-                                     <button className="login-btn" type="submit" value="Submit"  >ثبت نام</button>
+                                     <button className="login-btn" type="submit" value="Submit"  >{this.state.isLoadingRegister ? <div className="loading-button"></div>  : 'ثبت نام'}</button>
                                  </form>
                              </div>
      
