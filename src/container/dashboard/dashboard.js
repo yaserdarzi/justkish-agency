@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 
-
+//
+// external component ------------------->
+//
 import Seller from './../../components/seller/Seller'
-
 import report from './../../../assets/icons/report.svg'
 import support from './../../../assets/icons/support.svg'
 import call from './../../../assets/icons/call.svg'
