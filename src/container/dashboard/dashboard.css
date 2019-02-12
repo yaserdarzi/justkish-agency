@@ -86,8 +86,45 @@ width: 50%;
     display: none;
 }
 .calendar-left{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.calendar-jalali{
+color: #fff;
+display:flex;
+}
+.calendar-jalali h1{
+    font-size: 80px;
+    margin-left: 10px;
+}
+
+.calendar-jalali-detail{
 
 }
+.calendar-jalali-detail h2{
+
+}
+
+.calendar-chris h1{
+
+}
+.calendar-chris{
+color: #fff;
+display:flex;
+}
+
+.calendar-chris-detail{
+
+}
+
+.calendar-chris-detail h2{
+
+
+}
+
 .dashboard-weather{
     width: 50%;
 background-color: pink;

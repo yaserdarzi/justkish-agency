@@ -21,6 +21,12 @@ class Dashboard extends Component {
         super(props);
         this.state = {}
     }
+    componentDidMount() {
+        let todayMonth = document.querySelector('#calendar .header > span').innerHTML.slice(4)
+        let todayDay = document.querySelector('.day.today').innerHTML
+
+        this.setState({ todayDay: todayDay, todayMonth: todayMonth })
+    }
     handler = () => {
 
     }
@@ -30,8 +36,22 @@ class Dashboard extends Component {
                 <div className="dashboard1">
                     <div className="calender-weather-box" >
                         <div className="dashboard-calenrder">
+
                             <div className="calendar-left">
-                                <Calendar onChange={this.handler} />
+                                <div className="calendar-jalali" >
+                                    <h1>{this.state.todayDay}</h1>
+                                    <div className="calendar-jalali-detail">
+                                        <h2>امروز</h2>
+                                        <h2>{this.state.todayMonth}</h2>
+                                    </div>
+                                </div>
+                                <div className="calendar-chris" >
+                                    <h1>14</h1>
+                                    <div className="calendar-chris-detail">
+                                        <h2>Today</h2>
+                                        <h2>March</h2>
+                                    </div>
+                                </div>
                             </div>
                             <div className="calendar-right">
                                 <Calendar onChange={this.handler} />
