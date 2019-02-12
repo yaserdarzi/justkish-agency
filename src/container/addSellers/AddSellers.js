@@ -57,7 +57,7 @@ class AddSellers extends Component {
     }
 
     changedHandler = (e) => {
-        console.log(e.target.value)
+        //console.log(e.target.value)
         this.setState({
             [e.target.name] : e.target.value
         });
@@ -95,7 +95,7 @@ class AddSellers extends Component {
           })
           .then(response =>  response.json())
           .then( responsJson => {
-              console.log(responsJson.data)
+              //console.log(responsJson.data)
               this.setState({
                   agents: responsJson.data,
                   agentLoading: false
@@ -164,15 +164,13 @@ class AddSellers extends Component {
         }
 
         if(cheking === false){
-            console.log(data);
             const res = await  this.postData(data,'agency/agent');
     
-            console.log(res.status)
+            //console.log(res.status)
             if( res.status === 200){
                 this.setState({
                     suuccessMessage:'عامل فروش جدید ثبت شد'
                 })
-                console.log(`Seller is added`) // TODO Delete Later 
                 this.sellerForm.current.reset();
             }
             if( res.status === 400){
@@ -189,7 +187,7 @@ class AddSellers extends Component {
     }
 
     postData =  (data,key) => {
-        console.log("fetching...")
+        // console.log("fetching...")
 
         this.setState({
             isLoadingAddAgent: true
@@ -216,10 +214,11 @@ class AddSellers extends Component {
             return Promise.all([statusCode, data])
           })
           .then(([res, data]) => {
-            console.log(res, data)
+            //console.log(res, data)
             this.setState({isLoadingAddAgent: false})
             // after add refresh render all agent and show new record in list ....
-            this.getAllSellers()
+            if(res === 200)
+                this.getAllSellers()
             return ({'status':res, 'data':data.data})
           })
 
