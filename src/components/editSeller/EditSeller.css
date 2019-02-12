@@ -214,4 +214,10 @@ transition: all .2s linear;
     .edit-seller-save{
         margin-top:10px;
     }
+    .edit-seller-close{
+        top: 0px;
+        right: 0px;
+        width: 35px;
+        padding: 10px;
+    }
 }
