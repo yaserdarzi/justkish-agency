@@ -89,7 +89,7 @@ class Header extends Component {
 
     render() {
         return (
-            <div className="header">
+            <div className="headerr">
                 <div className="header-box container" >
 
                     <div className="logo-menu" >
