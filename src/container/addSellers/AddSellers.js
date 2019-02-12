@@ -38,7 +38,13 @@ class AddSellers extends Component {
             email:'',
             password:'',
             percent:'',
-            isLoadingAddAgent: false
+            isLoadingAddAgent: false,
+            suuccessMessage:'',
+            errorMessage:'',
+            errorEmail:'',
+            errorName:'',
+            errorPercent:'',
+            errorPassword:''
 
         }
         this.addNewSeller = this.addNewSeller.bind(this)
@@ -57,23 +63,20 @@ class AddSellers extends Component {
         });
     }
 
-
+    //
+    // fetching all sellers ------------------------------------------------
+    //
     getAllSellers()
     {
-        console.log("fetching sellers is start......");
- 
+        // get all seler and show in sellers part -------->
         this.getData('agency/agent')
  
     }
 
-
     getData(key) {
-        console.log("fetching...")
-
+ 
         this.setState({
-            // isLoading:true,
-            // errorHandleing:'',
-            // successMessage:''
+            agentLoading: true
         })
 
          const url =  base.baseURL + key;
@@ -101,13 +104,26 @@ class AddSellers extends Component {
       }
 
 
+     //
+     // Add new seller ------------------------------------------------>
+     //
 
-      addNewSeller(event){
+      sellerForm = React.createRef();
+
+    addNewSeller = async(event) => {
 
         event.preventDefault();
-        console.log("seller added.")
+        let cheking = false;
+        this.setState({
+            errorMessage:'',
+            suuccessMessage:'',
+            errorEmail:'',
+            errorName:'',
+            errorPercent:'',
+            errorPassword:''
+        })
 
-              // provider data for API --------->
+        // provider data for API --------->
         const data = {
             "name" : this.state.name,
             "email" : this.state.email,
@@ -117,14 +133,62 @@ class AddSellers extends Component {
             "phone": '',
             "tell": ''
         } 
+        //
+        // checking data input validation-------
+        if(this.state.name === ''){
+            cheking = true;
+            this.setState({
+                errorName:'لطفا نام عامل فروش را وارد نمایید.'
+            })
+        }
 
-        console.log(data);
-        this.postData(data,'agency/agent');
+        if(this.state.email === ''){
+            cheking = true;
+            this.setState({
+                errorEmail:'لطفا آدرس ایمیل عامل فروش را وارد نمایید.'
+            })
+        }
+
+        if(this.state.percent === ''){
+            cheking = true;
+            this.setState({
+                errorPercent:'لطفا درصد کمسیون فروش را وارد نمایید'
+            })
+        }
+
+        if(this.state.password === ''){
+            cheking = true;
+            this.setState({
+                errorPassword:'لطفا کلمه عبور عامل فروش را وارد نمایید'
+            })
+        }
+
+        if(cheking === false){
+            console.log(data);
+            const res = await  this.postData(data,'agency/agent');
+    
+            console.log(res.status)
+            if( res.status === 200){
+                this.setState({
+                    suuccessMessage:'عامل فروش جدید ثبت شد'
+                })
+                console.log(`Seller is added`) // TODO Delete Later 
+                this.sellerForm.current.reset();
+            }
+            if( res.status === 400){
+                this.setState({
+                    errorMessage:'عامل فروش با این آدرس ایمیل ، قبلا ثبت شده است'
+                });
+                console.log(res)
+            }
+        }
+
+
        
 
-      }
+    }
 
-      postData =  (data,key) => {
+    postData =  (data,key) => {
         console.log("fetching...")
 
         this.setState({
@@ -160,7 +224,7 @@ class AddSellers extends Component {
           })
 
           
-      }
+    }
 
 
 
@@ -202,8 +266,19 @@ class AddSellers extends Component {
                         <p>حذف و اضافه کردم و تغییر سطح دسترسی عامیلن فروش با امکان زیر صورت پذیر است</p>
                     </div>
 
-                    <form className="add-sellers-form" onSubmit={this.addNewSeller} >
+                    <form className="add-sellers-form" onSubmit={this.addNewSeller} ref={this.sellerForm}>
+                        <div className="success-message flipInX">
+                            <p>{this.state.suuccessMessage}</p>
+                        </div>
+                        <div className="error-message shake">
+                            <p>{this.state.errorName}</p>
+                            <p>{this.state.errorEmail}</p>
+                            <p>{this.state.errorPassword}</p>
+                            <p>{this.state.errorPercent}</p>
+                            <p>{this.state.errorMessage}</p>
+                        </div>
                         <div className="add-sellers-fields">
+                 
                             <div className="add-sellers-field" >
                                 <p>نام عامل فروش</p>
                                 <input name="name" placeHolder="یاسر درزی" onChange={this.changedHandler}/>
