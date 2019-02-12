@@ -39,8 +39,8 @@
     width: 110vw;
     height: 110vh;
     filter: blur(20px) brightness(40%) opacity(100%);
-    background-color: #000;
-    background-image: url('./../../../assets/images/sellerEdit.png')
+    background-color: #202020e8;
+
 }
 .edit-seller-row1{
     display: flex;
