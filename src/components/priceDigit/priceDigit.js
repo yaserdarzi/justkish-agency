@@ -14,7 +14,7 @@ function priceDigit(str,type){
         
             return str;
         } 
-        return 0
+        return ''
     } else if(type ==='digit'){
         
         if(str !=='' && str !== null && str !== undefined ){
@@ -25,7 +25,7 @@ function priceDigit(str,type){
             }
             return(Number(a))
         }
-        return 0
+        return ''
             
     }
 }

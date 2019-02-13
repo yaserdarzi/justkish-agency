@@ -18,6 +18,7 @@ const input = (props) => {
         document.getElementById(props.name).focus();
     }
 
+    
     return (
         <div className="Inputbox">
 
@@ -31,6 +32,7 @@ const input = (props) => {
                           maxLength={props.max}
                           style={{color:props.color, marginBottom:5}}  
                           id={props.name}
+                          value={props.val}
                           />
 
 

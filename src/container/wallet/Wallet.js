@@ -7,6 +7,8 @@ import Button from '../../components/common/Button/Button';
 import Input from '../../components/input/Input';
 import base from '../../api/baseURL';
 import Token from '../../api/token';
+import PriceDigit from '../../components/priceDigit/priceDigit';
+
 
 //
 // icons and images ------------->
@@ -14,7 +16,7 @@ import Token from '../../api/token';
 import arrowdown2 from './../../../assets/icons/arrow-down2.svg'
 import search from './../../../assets/icons/search.svg'
 
-import './Wallet.css';
+import './Wallet.css'; 
 
 
 class Wallet extends Component {
@@ -116,7 +118,7 @@ class Wallet extends Component {
 
         // provider data for API --------->
         const data = {
-            "price" : this.state.priceOnline,
+            "price" : PriceDigit( this.state.priceOnline,'digit'),
         } 
 
 
@@ -424,10 +426,11 @@ class Wallet extends Component {
                                         <div className="container-flex">
                                             {/* <input className="credit-input" name="onlinePay" placeholder="شماره فیش پرداخت" /> */}
                                             <Input 
-                                                type={'number'} 
+                                                type={'text'} 
                                                 name={'priceOnline'}
                                                 placeholder={'مبلغ'}
                                                 changed={this.changedHandler}
+                                                val={PriceDigit(this.state.priceOnline,'price')}
                                                 error={this.state.errorOnlinePrice}
                                             /> 
                                             <Button                                                                  
