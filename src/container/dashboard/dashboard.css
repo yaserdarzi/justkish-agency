@@ -17,7 +17,7 @@ width: 100%;
 }
 .dashboard-calenrder{
     width: 50%;
-    background-color: purple;
+    background-color: rgb(195, 132, 214);
     height: 200px;
 border-radius: 20px;
     margin-left: 10px;
@@ -69,7 +69,7 @@ width: 50%;
 }
 .calendar-right #calender-wrapper #calendar .weeks-container .week .day.today{
     border-radius: 5px;
-    background-color: #ac5dab;
+    background-color: rgb(234, 182, 249);
 }
 .calendar-right #calender-wrapper #calendar .header .icon-and-text-in-a-row{
     font-size: 7px;
@@ -81,6 +81,12 @@ width: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
+    transition: all .2s linear;
+}
+.calendar-right #calender-wrapper #calendar .header .icon-and-text-in-a-row:hover{
+    background-color: #ffffff91;
+    transition: all .2s linear;
 }
 .calendar-right #calender-wrapper button{
     display: none;
@@ -93,36 +99,47 @@ width: 50%;
 }
 
 .calendar-jalali{
-color: #fff;
-display:flex;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    height: 120px;
+    width: 200px;
+    justify-content: center;
+    padding-top: 80px;
 }
+
 .calendar-jalali h1{
-    font-size: 80px;
+    font-size: 95px;
     margin-left: 10px;
+    display: flex;
 }
 
 .calendar-jalali-detail{
-
+    line-height: 26px;
 }
 .calendar-jalali-detail h2{
-
+    font-size: 17px;
 }
 
 .calendar-chris h1{
-
+    font-size: 33px;
+    width: 40px;
+    text-align: right;
 }
 .calendar-chris{
-color: #fff;
-display:flex;
+    color: #fff;
+    display: flex;
+    flex-direction: row-reverse;
+    width:150px;
 }
 
 .calendar-chris-detail{
-
+    margin: 8px 0px 0px 8px;
+    text-align: left;
 }
 
 .calendar-chris-detail h2{
-
-
+    font-size: 10px;
 }
 
 .dashboard-weather{
@@ -383,4 +400,101 @@ margin-bottom: 10px;
     .dashboard-dates ul{
         justify-content:space-around;
     }
+}
+
+@media screen and (max-width: 500px){
+
+    .calendar-jalali {
+        color: #fff;
+        display: flex;
+        align-items: center;
+        height: 70px;
+        width: 100px;
+        justify-content: center;
+        padding-top: 0px;
+    }
+    .calendar-jalali h1 {
+        font-size: 60px;
+        margin-left: 10px;
+        display: flex;
+        margin-top: 10px;
+    }
+    .calendar-chris {
+        color: #fff;
+        display: flex;
+        flex-direction: row-reverse;
+        width: 100px;
+        height: 70px;
+    }
+    .calendar-chris h1 {
+        font-size: 48px;
+        width: 52px;
+        margin-top: 12px;
+    }
+    .calendar-chris-detail {
+        text-align: left;
+        line-height: 26px;
+        margin: 20px 0px 0px 8px;
+    }
+    .calendar-left{
+        width: 30%;
+        align-items: flex-end;
+    }    
+    .calendar-right{
+        width: 70%;
+    }
+    .calendar-chris-detail h2  , .calendar-jalali-detail h2 {
+        font-size: 12px;
+    }
+
+}
+@media screen and (max-width: 400px){
+    .calendar-jalali-detail {
+        line-height: 15px;
+    }
+    .calendar-jalali h1 {
+        font-size: 27px;
+        margin-left: 0;
+        display: flex;
+    }
+    .calendar-jalali {
+        color: #fff;
+        display: flex;
+        align-items: center;
+        height: 70px;
+        width: 100%;
+        justify-content: center;
+        padding-top: 0px;
+        flex-direction: column;
+    }
+    .calendar-chris-detail h2, .calendar-jalali-detail h2 {
+        font-size: 11px;
+        text-align: center;
+    }
+    .calendar-chris {
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 70px;
+        margin: 0px auto;
+        justify-content: end;
+        align-items: center;
+    }
+    .calendar-chris h1 {
+        font-size: 33px;
+        width: 52px;
+        margin-top: 0;
+        text-align: center;
+        height: 40px;
+    }
+    .calendar-chris-detail {
+        text-align: center;
+        line-height: 15px;
+        margin: 0px;
+    }
+    .calendar-right #calender-wrapper #calendar .week.names span, .calendar-right #calender-wrapper #calendar .weeks-container .week span{
+        width: 22px;
+    }
+
 }

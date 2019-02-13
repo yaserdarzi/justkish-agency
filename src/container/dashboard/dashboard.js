@@ -22,10 +22,23 @@ class Dashboard extends Component {
         this.state = {}
     }
     componentDidMount() {
-        let todayMonth = document.querySelector('#calendar .header > span').innerHTML.slice(4)
-        let todayDay = document.querySelector('.day.today').innerHTML
+        // jalali day month
+        let currentMonthJalali = document.querySelector('#calendar .header > span').innerHTML.slice(4)
+        let currentDayJalali = document.querySelector('.day.today').innerHTML
 
-        this.setState({ todayDay: todayDay, todayMonth: todayMonth })
+        // chris day month
+        let monthNames = ["January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"
+        ];
+
+        let currentMonthChris = monthNames[(new Date()).getMonth()]
+        let currentDayChris = (new Date()).getDay()
+
+        this.setState({ currentDayJalali: currentDayJalali,
+                        currentMonthJalali: currentMonthJalali,
+                        currentDayChris: currentDayChris,
+                        currentMonthChris: currentMonthChris
+                     })
     }
     handler = () => {
 
@@ -39,17 +52,17 @@ class Dashboard extends Component {
 
                             <div className="calendar-left">
                                 <div className="calendar-jalali" >
-                                    <h1>{this.state.todayDay}</h1>
+                                    <h1>{this.state.currentDayJalali}</h1>
                                     <div className="calendar-jalali-detail">
                                         <h2>امروز</h2>
-                                        <h2>{this.state.todayMonth}</h2>
+                                        <h2>{this.state.currentMonthJalali}</h2>
                                     </div>
                                 </div>
                                 <div className="calendar-chris" >
-                                    <h1>14</h1>
+                                    <h1>{this.state.currentDayChris}</h1>
                                     <div className="calendar-chris-detail">
                                         <h2>Today</h2>
-                                        <h2>March</h2>
+                                        <h2>{this.state.currentMonthChris}</h2>
                                     </div>
                                 </div>
                             </div>
