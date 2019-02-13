@@ -231,8 +231,7 @@ class AddSellers extends Component {
     //
 
     getSeller(url){
-        console.log("fettttching")
-
+     
         fetch(url, {
             method: "GET", 
             cache: "no-cache",  
@@ -292,17 +291,6 @@ class AddSellers extends Component {
                     level={item.type === 'normal' ? 'عامل فروش' : 'مدیر'} />
             ) : <div className="loader"></div>
 
-
-
-
-            // Object.keys(agents).map((item, i) => (
-            //     console.log(item),
-            //     <Seller   name={agents.name} level="admin" />
-            //   ))
-
-
-            //   <Seller  key={index}  name={item.name} level={item.type === 'normal' ? 'عامل فروش' : 'مدیر'} />
-            // <Seller key= {i} name={agents.name} level="admin" />
         )
 
 
@@ -348,19 +336,19 @@ class AddSellers extends Component {
 
                             <div className="add-sellers-field" >
                                 <p>نام عامل فروش</p>
-                                <input name="name" placeHolder="یاسر درزی" onChange={this.changedHandler} />
+                                <input name="name" placeholder="یاسر درزی" onChange={this.changedHandler} />
                             </div>
                             <div className="add-sellers-field" >
                                 <p>ایمیل</p>
-                                <input name="email" placeHolder="example@gmail.com" onChange={this.changedHandler} />
+                                <input name="email" placeholder="example@gmail.com" onChange={this.changedHandler} />
                             </div>
                             <div className="add-sellers-field" >
                                 <p>گذرواژه</p>
-                                <input name="password" placeHolder="طول کاراکتر باید تا ۸ کاراکتر باشد" onChange={this.changedHandler} />
+                                <input name="password" placeholder="طول کاراکتر باید تا ۸ کاراکتر باشد" onChange={this.changedHandler} />
                             </div>
                             <div className="add-sellers-field" >
                                 <p>درصد کمیسیون فروش</p>
-                                <input name="percent" placeHolder="برای مثال ۸٪" onChange={this.changedHandler} />
+                                <input name="percent" placeholder="برای مثال ۸٪" onChange={this.changedHandler} />
                             </div>
                         </div>
 

@@ -93,8 +93,8 @@ class CreateTicket extends Component {
                                     </div>
                                 </div>
                                 <div className="create-ticket-transaction" >
-                                    <Input name="buyerName" placeHolder="نام خریدار" />
-                                    <Input name="buyerNumber" placeHolder="شماره خریدار " />
+                                    <Input name="buyerName" placeholder="نام خریدار" />
+                                    <Input name="buyerNumber" placeholder="شماره خریدار " />
                                     <div className="create-ticket-pay" >
                                         <div className="create-ticket-imgs">
                                             <img src={co} alt="فلش" />
