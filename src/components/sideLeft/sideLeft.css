@@ -1,0 +1,12 @@
+
+
+.loading-inline{
+    width: 100px;
+    height: 25px;
+    padding: 10px;
+    z-index: 9999;
+    background-image: url("../../../assets/icons/loading.gif");
+    background-repeat: no-repeat, repeat;
+    background-size: cover;
+    background-position: center;
+}
