@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 
 //
 // external component ------------------->
@@ -79,6 +80,15 @@ class Dashboard extends Component {
 
 
 
+    // 
+    //   Seller managemts ------------------------>
+    //
+    sellermanagment = () => {
+        
+        window.location.pathname ='/addsellers'
+
+    }
+
     render() {
 
         const allAgents = (
@@ -133,9 +143,9 @@ class Dashboard extends Component {
 
                         </ul>
 
-                        <button className="checkout-request" >
-                            اضافه کردن عامل فروش جدید
-                        </button>
+                        <Link to="/addsellers" className="checkout-request" >
+                            مدیریت عاملین فروش
+                        </Link>
 
 
                     </div>
