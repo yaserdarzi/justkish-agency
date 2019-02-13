@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import Calendar from 'react-persian-calendar'
 //
 // external component ------------------->
@@ -12,6 +13,25 @@ import questionmark from './../../../assets/icons/questionmark.svg';
 
 
 
+import { Link } from 'react-router';
+
+//
+// external component ------------------->
+//
+import Seller from './../../components/seller/Seller'
+import base from '../../api/baseURL';
+import Token from '../../api/token';
+
+//
+// icons and images --------------------------------->
+//
+import report from './../../../assets/icons/report.svg'
+import support from './../../../assets/icons/support.svg'
+import call from './../../../assets/icons/call.svg'
+import mail from './../../../assets/icons/mail.svg'
+import questionmark from './../../../assets/icons/questionmark.svg'
+
+
 import './dashboard.css';
 
 
@@ -19,8 +39,71 @@ import './dashboard.css';
 class Dashboard extends Component {
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {
+            agentLoading:true,
+            agents:[],
+
+        }
     }
+
+
+    componentDidMount() {
+        this.getAllSellers();
+
+    }
+
+
+
+    //
+    // fetching all sellers ------------------------------------------------
+    //
+    getAllSellers() {
+        // get all seler and show in sellers part -------->
+        this.getData('agency/agent')
+
+    }
+
+    getData(key) {
+
+        this.setState({
+            agentLoading: true
+        })
+
+        const url = base.baseURL + key;
+
+        return fetch(url, {
+            method: "GET",
+            cache: "no-cache",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                "agent": "web",
+                "Authorization": Token
+            },
+            redirect: "follow",
+            referrer: "no-referrer"
+        })
+            .then(response => response.json())
+            .then(responsJson => {
+                //console.log(responsJson.data)
+                this.setState({
+                    agents: responsJson.data,
+                    agentLoading: false
+                })
+            })
+    }
+
+
+
+    // 
+    //   Seller managemts ------------------------>
+    //
+    sellermanagment = () => {
+        
+        window.location.pathname ='/addsellers'
+
+    }
+
     componentDidMount() {
         this.getCalenderDayeMonth()
     }
@@ -47,7 +130,23 @@ class Dashboard extends Component {
     handler = () => {
 
     }
+
     render() {
+
+        const allAgents = (
+            // render all agents and pass props name , avatar , level ------->
+            this.state.agentLoading === false ? this.state.agents.map((item, index) =>
+                <Seller key={index}
+                    id={item.id}
+                    name={item.name}
+                    editAgent={() => this.editSellerModalOpen(item.id)}
+                    avatar={item.image}
+                    level={item.type === 'normal' ? 'عامل فروش' : 'مدیر'} />
+            ) : <div className="loader"></div>
+
+        )
+
+
         return (
             <div className="dashboard">
                 <div className="dashboard1">
@@ -103,15 +202,14 @@ class Dashboard extends Component {
                         <p className="dashbord-sellers-title" >عاملین فروش<img src={questionmark} alt="فروش" /></p>
                         <ul className="dashbord-manage-sellers" >
 
-                            <Seller name="MOJTABA" level="عاملین فروش" />
-                            <Seller name="ARAS" level="عاملین فروش" />
-                            <Seller name="YAER" level="عاملین فروش" />
+                            {/* <Seller name="MOJTABA" level="عاملین فروش" /> */}
+                            {allAgents}
 
                         </ul>
 
-                        <button className="checkout-request" >
-                            اضافه کردن عامل فروش جدید
-                        </button>
+                        <Link to="/addsellers" className="checkout-request" >
+                            مدیریت عاملین فروش
+                        </Link>
 
 
                     </div>
