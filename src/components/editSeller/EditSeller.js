@@ -113,11 +113,11 @@ class EditSeller extends Component {
                         if have date == user was deactive
                     
                     */}
-                    {!this.props.deactiveSeller === null ? <button className="edit-seller-deactive" onClick={this.props.deactiveSeller} >غیر فعال کردن عامل فروش</button> : <button className="edit-seller-active" onClick={this.props.deactiveSeller} > فعال کردن عامل فروش</button>}
+                    {this.props.deactiveSeller === null ? <button className="edit-seller-deactive" onClick={this.props.deactiveSeller} >غیر فعال کردن عامل فروش</button> : <button className="edit-seller-active" onClick={this.props.deactiveSeller} > فعال کردن عامل فروش</button>}
                         <div className="edit-seller-details" >
                             <div className="edit-seller-titles" >
                                 <h3>{this.props.sellerNameValue}</h3>
-                                <h4>{this.props.sellerLevel}</h4>
+                                <h4>{this.props.sellerLevel === 'normal' ? 'عامل فروش' : 'مدیر'}</h4>
                             </div>
                             <img src={this.props.sellerImg ? this.props.sellerImg : loadingAvatar} alt="عامل فروش" />
                         </div>
