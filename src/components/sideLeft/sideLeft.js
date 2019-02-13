@@ -5,6 +5,8 @@ import { Link } from 'react-router';
 
 import base from '../../api/baseURL';
 import Token from '../../api/token';
+import PriceDigit from '../../components/priceDigit/priceDigit';
+
 
 
 //
@@ -85,7 +87,7 @@ class SideLeft extends Component {
                         <div className="increas-credit" >
                             <Link to="/wallet"><span className="increas-credit-text" >افزایش اعتبار</span></Link>
                             <div className="credit-show" >
-                                <p className="credit-show-number" >{this.state.walletPrice}</p>
+                                <div className="credit-show-number" >{this.state.walletPrice ? PriceDigit(this.state.walletPrice,'price') : <div className="loading-inline"></div>}</div>
                                 <span className="credit-show-unit" >تومان</span>
                             </div>
                         </div>

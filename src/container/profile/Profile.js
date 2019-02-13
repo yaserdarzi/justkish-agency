@@ -51,15 +51,15 @@ class Profile extends Component {
                                     <div className="user-box-inputs" >
                                         <div className="profile-field" >
                                             <p>نام کاربری</p>
-                                            <input className="profile-input" name="userName" placeHolder="Maryam Azizi" />
+                                            <input className="profile-input" name="userName" placeholder="Maryam Azizi" />
                                         </div>
                                         <div className="profile-field" >
                                             <p>شماره همراه </p>
-                                            <input className="profile-input" name="mobile" placeHolder="0936 589 5569" />
+                                            <input className="profile-input" name="mobile" placeholder="0936 589 5569" />
                                         </div>
                                         <div className="profile-field" >
                                             <p>شماره ثابت</p>
-                                            <input className="profile-input" name="phoneNumber" placeHolder=" 076 444 5698" />
+                                            <input className="profile-input" name="phoneNumber" placeholder=" 076 444 5698" />
                                         </div>
 
                                     </div>
@@ -83,23 +83,23 @@ class Profile extends Component {
                                     <div className="user-box-inputs" >
                                         <div className="profile-field" >
                                             <p>نام کاربری</p>
-                                            <input className="profile-input" name="userName" placeHolder="Maryam Azizi" />
+                                            <input className="profile-input" name="userName" placeholder="Maryam Azizi" />
                                         </div>
                                         <div className="profile-field" >
                                             <p>شماره همراه </p>
-                                            <input className="profile-input" name="mobile" placeHolder="0936 589 5569" />
+                                            <input className="profile-input" name="mobile" placeholder="0936 589 5569" />
                                         </div>
                                         <div className="profile-field" >
                                             <p>شماره ثابت</p>
-                                            <input className="profile-input" name="phoneNumber" placeHolder=" 076 444 5698" />
+                                            <input className="profile-input" name="phoneNumber" placeholder=" 076 444 5698" />
                                         </div>
                                         <div className="profile-field" >
                                             <p>وب سایت</p>
-                                            <input className="profile-input" name="website" placeHolder=" www.ghasrangasht.com" />
+                                            <input className="profile-input" name="website" placeholder=" www.ghasrangasht.com" />
                                         </div>
                                         <div className="profile-field big" >
                                             <p>شماره ثابت</p>
-                                            <input className="profile-input" name="address" placeHolder=" تهران، شریعتی،‌خیابان میرداماد قبل از میدان مادر پلاک 87" />
+                                            <input className="profile-input" name="address" placeholder=" تهران، شریعتی،‌خیابان میرداماد قبل از میدان مادر پلاک 87" />
                                         </div>
 
                                     </div>
@@ -123,23 +123,23 @@ class Profile extends Component {
                                     <div className="user-box-inputs bank-data" >
                                         <div className="profile-field" >
                                             <p>شماره شبا </p>
-                                            <input className="profile-input" name="shabaNumber" placeHolder=" IR65465131654646545465465" />
+                                            <input className="profile-input" name="shabaNumber" placeholder=" IR65465131654646545465465" />
                                         </div>
                                         <div className="profile-field" >
                                             <p>شماره کارت </p>
-                                            <input className="profile-input" name="cardNumber" placeHolder="6104-3378-7662-5995" />
+                                            <input className="profile-input" name="cardNumber" placeholder="6104-3378-7662-5995" />
                                         </div>
                                         <div className="profile-field" >
                                             <p>نام صاحب حساب </p>
-                                            <input className="profile-input" name="ownerName" placeHolder="مریم عزیزی  " />
+                                            <input className="profile-input" name="ownerName" placeholder="مریم عزیزی  " />
                                         </div>
                                         <div className="profile-field" >
                                             <p>بانک  </p>
-                                            <input className="profile-input" name="bankName" placeHolder=" پاسارگاد" />
+                                            <input className="profile-input" name="bankName" placeholder=" پاسارگاد" />
                                         </div>
                                         <div className="profile-field" >
                                             <p>شعبه  </p>
-                                            <input className="profile-input" name="branchName" placeHolder=" میدان هدایت" />
+                                            <input className="profile-input" name="branchName" placeholder=" میدان هدایت" />
                                         </div>
                                         <div className="profile-field" >
                                             <p>تصویر کارت ملی  </p>
