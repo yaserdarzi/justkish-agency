@@ -1,24 +1,17 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
+import Calendar from 'react-persian-calendar';
 
-import Calendar from 'react-persian-calendar'
+//
+// external component ------------------->
+//
+
+
+
 //
 // external component ------------------->
 //
 import Seller from './../../components/seller/Seller';
-import report from './../../../assets/icons/report.svg';
-import support from './../../../assets/icons/support.svg';
-import call from './../../../assets/icons/call.svg';
-import mail from './../../../assets/icons/mail.svg';
-import questionmark from './../../../assets/icons/questionmark.svg';
-
-
-
-import { Link } from 'react-router';
-
-//
-// external component ------------------->
-//
-import Seller from './../../components/seller/Seller'
 import base from '../../api/baseURL';
 import Token from '../../api/token';
 
@@ -48,7 +41,9 @@ class Dashboard extends Component {
 
 
     componentDidMount() {
+        console.log()
         this.getAllSellers();
+        this.getCalenderDayeMonth();
 
     }
 
@@ -85,7 +80,7 @@ class Dashboard extends Component {
         })
             .then(response => response.json())
             .then(responsJson => {
-                //console.log(responsJson.data)
+                console.log(responsJson.data)
                 this.setState({
                     agents: responsJson.data,
                     agentLoading: false
@@ -104,9 +99,7 @@ class Dashboard extends Component {
 
     }
 
-    componentDidMount() {
-        this.getCalenderDayeMonth()
-    }
+    
 
     getCalenderDayeMonth = () => {
         // jalali day month
@@ -127,6 +120,7 @@ class Dashboard extends Component {
                         currentMonthChris: currentMonthChris
                      })
     }
+
     handler = () => {
 
     }
