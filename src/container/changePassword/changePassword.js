@@ -41,15 +41,15 @@ class ChangePassword extends Component {
                                     <div className="user-box-inputs change-password" >
                                         <div className="profile-field" >
                                             <p>رمز عبور قبلی</p>
-                                            <input className="profile-input" name="oldPassword" placeHolder="گذر واژه قبلی را وارد نمایید" />
+                                            <input className="profile-input" name="oldPassword" placeholder="گذر واژه قبلی را وارد نمایید" />
                                         </div>
                                         <div className="profile-field" >
                                             <p>رمز عبور جدید  </p>
-                                            <input className="profile-input" name="newPassword" placeHolder="طول پسورد باید تا 8 کارکتر باشد" />
+                                            <input className="profile-input" name="newPassword" placeholder="طول پسورد باید تا 8 کارکتر باشد" />
                                         </div>
                                         <div className="profile-field" >
                                             <p>تکرار رمز عبور</p>
-                                            <input className="profile-input" name="confirmPassword" placeHolder="طول پسورد باید تا 8 کارکتر باشد" />
+                                            <input className="profile-input" name="confirmPassword" placeholder="طول پسورد باید تا 8 کارکتر باشد" />
                                         </div>
 
                                     </div>

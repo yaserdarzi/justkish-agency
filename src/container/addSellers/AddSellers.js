@@ -34,6 +34,7 @@ class AddSellers extends Component {
         this.state = {
             agentLoading: true,
             agents: [],
+            agent:[],
             name: '',
             email: '',
             password: '',
@@ -225,6 +226,34 @@ class AddSellers extends Component {
 
     }
 
+    //
+    // Get Seller ------------------>
+    //
+
+    getSeller(url){
+     
+        fetch(url, {
+            method: "GET", 
+            cache: "no-cache",  
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                "agent" : "web",
+                "Authorization": Token
+            },
+            redirect: "follow", 
+            referrer: "no-referrer"  
+        })
+        .then(response => response.json())
+        .then(responseJson => {
+          this.setState({
+              agent: responseJson.data
+          })
+           console.log(responseJson.data)
+        })
+    }
+
+
     deactiveSeller = () => {
 
     }
@@ -238,6 +267,7 @@ class AddSellers extends Component {
         this.setState({ editSeller: false })
         this.editsellerModal.current.className = "editSellerBox"
         console.log("edit : " + id)
+        this.getSeller(base.baseURL + 'agency/agent/'+ id)
     }
 
 
@@ -261,17 +291,6 @@ class AddSellers extends Component {
                     level={item.type === 'normal' ? 'عامل فروش' : 'مدیر'} />
             ) : <div className="loader"></div>
 
-
-
-
-            // Object.keys(agents).map((item, i) => (
-            //     console.log(item),
-            //     <Seller   name={agents.name} level="admin" />
-            //   ))
-
-
-            //   <Seller  key={index}  name={item.name} level={item.type === 'normal' ? 'عامل فروش' : 'مدیر'} />
-            // <Seller key= {i} name={agents.name} level="admin" />
         )
 
 
@@ -280,14 +299,15 @@ class AddSellers extends Component {
                 <div className="editSellerBoxHide" ref={this.editsellerModal} >
                     <EditSeller
                         sellerId={"1"}
-                        sellerImg={profile}
-                        sellerName={"Afsaneh saberloo"}
-                        sellerLevel={"عامل فروش"}
-                        sellerNameValue="Afsaneh saberloo"
-                        sellerMailValue="test@test.com"
-                        sellerPassValue="11111111"
-                        sellerPrecentValue="22222222222"
-                        deactiveSeller={this.deactiveSeller}
+                        sellerImg={this.state.agent.image}
+                        sellerName={this.state.agent.name}
+                        sellerLevel={this.state.agent.type}
+                        sellerNameValue={this.state.agent.name}
+                        sellerMailValue={this.state.agent.email}
+                        sellerTellValue={this.state.agent.tell}
+                        sellerMobileValue={this.state.agent.phone}
+                        sellerPrecentValue={this.state.agent.percent}
+                        deactiveSeller={this.state.agent.deleted_at}
                         saveSellerChanges={this.saveSellerChanges}
                         closeEditSeller={this.editSellerModalClose}
                     />
@@ -316,19 +336,19 @@ class AddSellers extends Component {
 
                             <div className="add-sellers-field" >
                                 <p>نام عامل فروش</p>
-                                <input name="name" placeHolder="یاسر درزی" onChange={this.changedHandler} />
+                                <input name="name" placeholder="یاسر درزی" onChange={this.changedHandler} />
                             </div>
                             <div className="add-sellers-field" >
                                 <p>ایمیل</p>
-                                <input name="email" placeHolder="example@gmail.com" onChange={this.changedHandler} />
+                                <input name="email" placeholder="example@gmail.com" onChange={this.changedHandler} />
                             </div>
                             <div className="add-sellers-field" >
                                 <p>گذرواژه</p>
-                                <input name="password" placeHolder="طول کاراکتر باید تا ۸ کاراکتر باشد" onChange={this.changedHandler} />
+                                <input name="password" placeholder="طول کاراکتر باید تا ۸ کاراکتر باشد" onChange={this.changedHandler} />
                             </div>
                             <div className="add-sellers-field" >
                                 <p>درصد کمیسیون فروش</p>
-                                <input name="percent" placeHolder="برای مثال ۸٪" onChange={this.changedHandler} />
+                                <input name="percent" placeholder="برای مثال ۸٪" onChange={this.changedHandler} />
                             </div>
                         </div>
 

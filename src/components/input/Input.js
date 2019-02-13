@@ -59,7 +59,7 @@ example using
       <Input 
             type={'text'} 
             name={'email'}
-            placeHolder={'Email'}
+            placeholder={'Email'}
             changed={this.changedHandler}
             error={this.state.forgetEmailError}
         />

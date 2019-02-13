@@ -259,14 +259,14 @@ class Index extends Component {
                                      <p className="login-text">برای ورود ایمیل و رمز عبور را وارد نمایید</p>
                                      <p className="signinError shake">{this.state.signinError}</p>
                                      <Input 
-                                         placeHolder="ایمیل" 
+                                         placeholder="ایمیل" 
                                          name="loginEmail"
                                          type={'text'}  
                                          changed={this.changedHandler}
                                          error={this.state.loginEmailError}
                                      />
                                      <Input 
-                                         placeHolder="رمز عبور" 
+                                         placeholder="رمز عبور" 
                                          name="loginPassword"
                                          type={'password'}  
                                          changed={this.changedHandler}
@@ -286,28 +286,28 @@ class Index extends Component {
                                      <p className="regSuccess zoomIn">{this.state.regSuccess}</p>
                                      <Input 
                                      
-                                        placeHolder="نام آژانس" 
+                                        placeholder="نام آژانس" 
                                         name="agentname"
                                         type={'text'}  
                                         changed={this.changedHandler}
                                         error={this.state.agentnameError}
                                         max="40" />
                                      <Input 
-                                        placeHolder="شهر" 
+                                        placeholder="شهر" 
                                         name="city"
                                         type={'text'}  
                                         changed={this.changedHandler}
                                         error={this.state.cityError}
                                         max="30"  />
                                      <Input 
-                                        placeHolder="آدرس ایمیل" 
+                                        placeholder="آدرس ایمیل" 
                                         name="emailadrress"
                                         type={'email'}  
                                         changed={this.changedHandler}
                                         error={this.state.emailadrressError}
                                         max="60"  />
                                      <Input 
-                                        placeHolder="شماره همراه " 
+                                        placeholder="شماره همراه " 
                                         name="phonenumber"
                                         type={'text'}  
                                         changed={this.changedHandler}
