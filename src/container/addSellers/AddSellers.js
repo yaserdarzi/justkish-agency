@@ -234,9 +234,10 @@ class AddSellers extends Component {
     }
 
     editsellerModal = React.createRef()
-    editSellerModalOpen = () => {
+    editSellerModalOpen = (id) => {
         this.setState({ editSeller: false })
         this.editsellerModal.current.className = "editSellerBox"
+        console.log("edit : " + id)
     }
 
 
@@ -253,8 +254,9 @@ class AddSellers extends Component {
             // render all agents and pass props name , avatar , level ------->
             this.state.agentLoading === false ? this.state.agents.map((item, index) =>
                 <Seller key={index}
+                    id={item.id}
                     name={item.name}
-                    editAgent={this.editSellerModalOpen}
+                    editAgent={() => this.editSellerModalOpen(item.id)}
                     avatar={item.image}
                     level={item.type === 'normal' ? 'عامل فروش' : 'مدیر'} />
             ) : <div className="loader"></div>
