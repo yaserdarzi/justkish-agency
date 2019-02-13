@@ -22,6 +22,10 @@ class Dashboard extends Component {
         this.state = {}
     }
     componentDidMount() {
+        this.getCalenderDayeMonth()
+    }
+
+    getCalenderDayeMonth = () => {
         // jalali day month
         let currentMonthJalali = document.querySelector('#calendar .header > span').innerHTML.slice(4)
         let currentDayJalali = document.querySelector('.day.today').innerHTML
