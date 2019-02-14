@@ -10,7 +10,6 @@ flex-direction: row-reverse;
     margin-top: 20px;
     background-color: #fff;
     border-radius: 5px;
-    overflow: hidden;
     box-shadow: 0 2px 10px rgba(157,206,255,.34);
 }
 .create-ticket-search-result h1{
@@ -182,7 +181,7 @@ transition: all .2s linear;
 }
 
 .create-ticket-search-list-titles{
-    padding: 20px 40px;
+    padding: 10px;
     color: #D8D8D8;
     border-bottom: 1px solid #f7f7f7;
 display: flex;
@@ -196,14 +195,28 @@ text-align: right;
     border-bottom: 1px solid #f7f7f7;
 align-items: center;
 font-size: 11px;
+height: 150px;
 }
 .create-ticket-search-list-titles > p , .create-ticket-search-list > div {
-    width: calc(100%/7);
+    width: calc(100%/5);
     text-align: center;
+    padding: 0px 20px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.create-ticket-search-list-first-cell{
+    align-items: flex-start !important;
+    border-left: 1px solid #f7f7f7 !important;
+    padding: 0px 0px 0px 20px !important;
 }
 .create-ticket-search-play{
     color: #0080FF;
     text-align: right !important;
+    font-size: 18px;
+    font-weight: 900;
 }
 .create-ticket-search-play-title{
     text-align: right !important;
@@ -214,15 +227,15 @@ font-size: 11px;
 }
 
 .create-ticket-dates{
-
     display: flex;
-    flex-direction: column;
+    flex-direction: row-reverse;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
+    font-size: 12px;
+    color: #272A2D;
 }
-.create-ticket-days{
-    font-size: 10px;
-    color: #D8D8D8;
+.create-ticket-dates p{
+    font-size: 13px;
 }
 .create-ticket-clock{
     font-weight: 900;
@@ -231,35 +244,94 @@ font-size: 11px;
     padding: 0px 4px;
     display: flex;
     align-items: center;
-    justify-content: space-around;
-    width: 70%;
-    margin: auto;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0px auto;
     font-size: 13px;
     height: 30px;
     color: #272A2D;
-
+    margin-bottom: 10px;
 }
-
+div .clock-numbers{
+    width: 230px;
+    border-left: 1px solid #f7f7f7;
+}
 .create-ticket-numbers{
 display: flex;
 justify-content: space-between;
 align-items: center;
 border-radius: 5px;
-    background-color: #F7F9FB;
-    padding:0px 4px;
-    height: 30px;
-
+background-color: #F7F9FB;
+padding:0px 4px;
+height: 30px;
+cursor: pointer;
+position: relative;
+width: 100%;
 }
-
+.create-ticket-btn-fullscreen{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
 .create-ticket-number{
 display: flex;
 flex-direction: column;
-border-right: 1px solid #fff;
+border-left: 1px solid #fff;
 display: flex;
 align-content: center;
 justify-content: center;
-padding: 0px 4px 0px 0px;
+padding: 0px 5px;
 height: 100%;
+}
+.create-ticket-tourist-change{
+    width: 300px;
+    position: absolute;
+    top: 30px;
+    right: 0;
+}
+
+.create-ticket-tourist-change-ul{
+width: 300px;
+background-color: #fff;
+border-top: 3px solid #0080FF;
+border-radius: 0px 0px 5px 5px;
+padding: 15px;
+overflow: hidden;
+}
+
+
+.create-ticket-tourist-change-li{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.create-ticket-tourist-change-li h6{
+color: #272A2D;
+font-weight: 500;
+display: inline;
+font-size: 13px;
+margin-left: 5px;
+}
+.create-ticket-tourist-change-li span{
+color: #D8D8D8;
+display: inline;
+
+}
+.create-ticket-tourist-change-li .MinusPlus{
+width: 120px;
+}
+
+.create-ticket-tourist-change-li div span{
+
+}
+
+.create-ticket-tourist-numbers{
+    width: 100px;
+    display: flex;
+    justify-content: space-around;
 }
 .create-ticket-number span:nth-child(1){
 color: #5B5B5B;
@@ -270,17 +342,27 @@ font-size: 8px;
     color:#5B5B5B;
     
 }
+.create-ticket-price-span{
+    color: #D8D8D8 !important;
+}
+.create-ticket-price-box{
+    border-left: 1px solid #f7f7f7;
+}
+
+.create-ticket-price-box p{
+    display: flex;
+    justify-content: space-between;
+    color: #272A2D;
+    margin: 10px 0px;
+    width: 100%;
+}
 .create-ticket-add-to-bascket{
-    background-color: #0080FF;
-    padding: 4px;
-    border-radius: 5px;
+    padding: 0px 20px 0px 0px !important;
+}
+.create-ticket-add-to-bascket .button-style{
+    margin: 0px;
+    width: 90px;
     height: 30px;
-    color: #fff;
-    font-weight: 900;
-    line-height: 25px;
-    margin: auto;
-    cursor: pointer;
-    transition: all .2s linear;
 }
 .create-ticket-add-to-bascket:hover{
     transition: all .2s linear;
@@ -472,6 +554,18 @@ margin: auto;
 
 @media screen and (max-width: 1100px){
 
+    .create-ticket-search-list-titles > p, .create-ticket-search-list > div{
+        padding: 0px 5px;
+    }
+    .create-ticket-search-list{
+        padding: 10px
+    }
+
+}
+
+
+@media screen and (max-width: 1100px){
+
     .create-ticket-from, .create-ticket-to , .create-ticket-places , .create-ticket-features {
         width: 300px;
     }
@@ -510,7 +604,7 @@ margin: auto;
     width: 90px;
 }
 .create-ticket-numbers{
-    width: 100px;
+    width: 170px;
 }
 .create-ticket-add-to-bascket{
     width: 90%;
@@ -521,11 +615,31 @@ margin: auto;
     margin-top: 20px;
 }
 .create-ticket-search-result h1 {
-    padding: 0;
+    padding: 20px !important;
     text-align: center;
 }
 .create-ticket-search-list-tablet{
     margin-bottom: 10px;
+}
+.customer-coworker{
+    width: 150px;
+}
+.customer-coworker p{
+    display: flex;
+    justify-content: space-between;
+}
+.create-ticket-add-to-bascket {
+padding: 0px !important; 
+margin: auto;
+}
+.create-ticket-add-to-bascket .button-style{
+    width: 300px;
+    height: 40px;
+
+}
+.create-ticket-tourist-change{
+    left: 0;
+    right: unset;
 }
 }
 @media screen and (max-width: 560px){
@@ -595,4 +709,26 @@ margin: auto;
     .create-ticket-features-list{
         padding: 0px;
     }
+    .create-ticket-add-to-bascket .button-style{
+        width: 150px;
+        height: 40px;
+    
+    }
+    .create-ticket-tourist-change , .create-ticket-tourist-change-ul{
+        width: 250px;
+    }
+    .create-ticket-tourist-change-li .MinusPlus{
+        width: 90px;
+    }
+}
+
+
+@media screen and (max-width: 350px){
+    .create-ticket-tourist-change , .create-ticket-tourist-change-ul{
+        width: 200px;
+    }
+    .create-ticket-tourist-change-ul{
+padding: 10px;
+    }
+
 }

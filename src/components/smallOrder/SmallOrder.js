@@ -1,24 +1,45 @@
 import React, { Component } from 'react';
 
-import positive from './../../../assets/icons/positive.svg';
-import ngative from './../../../assets/icons/ngative.svg';
+
+
+import MinusPlus from './../common/MinusPlus/MinusPlus'
+
+
+
 import deletee from './../../../assets/icons/delete.svg';
+
 
 
 import './SmallOrder.css';
 
+
+
+
 class SmallOrder extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            
+        }
+    }
+
+
+        //minus plus 
+        handleFilterUpdate = () => {
+
+        }
     render() {
         return (
             <div >
                 <div className="create-ticket-your-order">
                     <div className="create-ticket-your-order-box1">
                         <p className="create-ticket-your-order-title" ><img src={deletee} alt="حذف" />{this.props.title}</p>
-                        <p className="create-ticket-your-order-numbers">
-                            <img src={positive} alt="مثبت" />
-                            <span>{this.props.orderNumber}</span>
-                            <img src={ngative} alt="منفی" />
-                        </p>
+                        <div className="create-ticket-your-order-numbers">
+                            <div className="MinusPlus" >
+                                <MinusPlus change={this.handleFilterUpdate} name={this.state.person} />
+                            </div>
+                        </div>
                     </div>
                     <div className="create-ticket-your-order-box2">
                         <span> {this.props.date}</span>

@@ -51,5 +51,8 @@
     .create-ticket-your-order-box2 img{
     }
 
- 
+    .create-ticket-your-order-numbers .option-flex-line{
+        padding: 0;
+        margin: 0;
+    }
 
