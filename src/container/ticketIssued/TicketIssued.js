@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 
 import email from './../../../assets/icons/email.svg'
 import sms from './../../../assets/icons/sms.svg'
@@ -49,9 +50,9 @@ class TicketIssued extends Component {
                                 <p className="ticket-issued-search-list-cell">265.000</p>
                                 <p className="ticket-issued-search-list-cell">15 اسفند 1397</p>
                                 <p className="ticket-issued-search-list-cell">
-                                    <img src={email} alt="ایمیل" />
-                                    <img src={sms} alt="پیام کوتاه" />
-                                    <img src={print} alt="پرینت" />
+                                   <Link to="/view-ticket"><img src={email} alt="ایمیل" /></Link>
+                                    <Link to="/view-ticket"><img src={sms} alt="پیام کوتاه" /></Link>
+                                    <Link to="/view-ticket"><img src={print} alt="پرینت" /></Link>
                                 </p>
                             </div>
                             <div className="ticket-issued-search-list">
@@ -61,9 +62,9 @@ class TicketIssued extends Component {
                                 <p className="ticket-issued-search-list-cell">265.000</p>
                                 <p className="ticket-issued-search-list-cell">15 اسفند 1397</p>
                                 <p className="ticket-issued-search-list-cell">
-                                    <img src={email} alt="ایمیل" />
-                                    <img src={sms} alt="پیام کوتاه" />
-                                    <img src={print} alt="پرینت" />
+                                    <Link to="/view-ticket"><img src={email} alt="ایمیل" /></Link>
+                                    <Link to="/view-ticket"><img src={sms} alt="پیام کوتاه" /></Link>
+                                    <Link to="/view-ticket"><img src={print} alt="پرینت" /></Link>
                                 </p>
                             </div>
 
@@ -95,7 +96,7 @@ class TicketIssued extends Component {
                                     <p className="ticket-issued-search-list-cell">
                                         <img src={email} alt="ایمیل" />
                                         <img src={sms} alt="پیام کوتاه" />
-                                        <img src={print} alt="پرینت" />
+                                        <img src={print} alt="پرینت" /> 
                                     </p>
                                 </div>
 
