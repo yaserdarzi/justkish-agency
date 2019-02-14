@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import {Link } from 'react-router'
 import search from './../../../assets/icons/search.svg';
 import arrowdown2 from './../../../assets/icons/arrow-down2.svg';
 import positive from './../../../assets/icons/positive.svg';
@@ -100,9 +100,9 @@ class CreateTicket extends Component {
                                             <img src={co} alt="فلش" />
                                             <img src={arrow} alt="فلش" />
                                         </div>
-                                        <div className="create-ticket-text">
+                                        <Link to="/payment-method" className="create-ticket-text">
                                             پرداخت و صدور بلیت
-                                        </div>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>
