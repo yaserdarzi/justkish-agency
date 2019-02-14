@@ -31,6 +31,7 @@
 }
 .register-img{
     margin-bottom: 50px;
+    z-index: 1;
 
 }
 .myblur{
@@ -43,8 +44,8 @@
     height: 100%;
     z-index: 0;
     background-size: cover;
-    /* filter: blur(20px) brightness(100%) opacity(65%); */
-    /* background-image: url('./../../../../assets/images/login_singup.png'); */
+    filter: blur(20px) brightness(100%) opacity(65%);
+    background-image: url('./../../../../assets/images/login_singup.png');
 
 }
 .login-signup-box{
@@ -52,6 +53,7 @@
     flex-direction: row;
     width: 100%;
     justify-content: space-around;
+    z-index: 1;
 }
 .login , .signup{
 width: 250px;
@@ -95,7 +97,7 @@ display: flex;
 .ls-seprator{
     width: 2px;
     background-color: #fff;
-    height: 300px;
+    height: 400px;
 }
 
 

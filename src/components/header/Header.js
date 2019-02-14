@@ -73,7 +73,7 @@ class Header extends Component {
 
 
             })
-            console.log(responseJson.data)
+           // console.log(responseJson.data)
         })
     }
 
@@ -89,7 +89,7 @@ class Header extends Component {
 
     render() {
         return (
-            <div className="header">
+            <div className="headerr">
                 <div className="header-box container" >
 
                     <div className="logo-menu" >
@@ -135,8 +135,10 @@ class Header extends Component {
                                 </Link>
                             </div>
                             <div className="shopping-card" >
-                                <img className="shoppings-icon border-left" src={shopping_card} alt="shopping_card" />
-                                <span className="wallet-remain">سبد خرید</span>
+                                <Link to="/">
+                                    <img className="shoppings-icon border-left" src={shopping_card} alt="shopping_card" />
+                                    <span className="wallet-remain">سبد خرید</span>
+                                </Link>
                             </div>
 
                         </div>

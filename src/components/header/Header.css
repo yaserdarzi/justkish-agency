@@ -1,4 +1,4 @@
-.header{
+.headerr{
     width: 100%;
     padding: 20px 10px;
     box-shadow: 0 3px 6px rgba(157,206,255,.16);
@@ -107,7 +107,7 @@ display: flex;
 
 }
 
-.wallet a , .shopping-card , .ticket {
+.wallet a , .shopping-card a, .ticket a{
     display: flex;
     align-items: center;
     background-color: #f4f4f4;

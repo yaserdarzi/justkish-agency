@@ -23,10 +23,25 @@
     color: #0080FF;
 }
 
+.container-flex{
+    display: flex;
+    
+}
 
 .credit-boxes{
 width: 80%;
 margin: auto;
+
+}
+.container-loader{
+    width: 100%;
+    text-align: center;
+    align-items: center;
+    position: absolute; 
+    padding: 40px;
+    left: 0;
+    right: 0;
+
 
 }
 

@@ -114,14 +114,17 @@ class Index extends Component {
             emailadrressError:'',
             cityError:'',
             phonenumberError:'',
-            regSuccess:''
+            regSuccess:'',
+            isLoadingRegister:false
         })
     }
 
-    moji = React.createRef()
+    regForm = React.createRef()
     registerFetch = async(event) =>{
         event.preventDefault();
-        
+        this.setState({
+            isLoadingRegister:true
+        })
        // alert("regiter")
         let checking = true;
 
@@ -181,10 +184,11 @@ class Index extends Component {
                console.log(`Agent is registerd!`) // TODO Delete Later 
                this.setState({
                    regSuccess:'درخواست شما با موفقیت ارسال شد.',
+                  
                    
                })
 
-               this.moji.current.reset()
+               this.regForm.current.reset()
               
                //window.location.pathname = '/dashboard'
             }
@@ -246,7 +250,7 @@ class Index extends Component {
                  <div className="index" >
                          <div className="login-signup" >
                          <div className="login-signup-logo" >
-                         {/* <div className="myblur" ></div> */}
+                         <div className="myblur" ></div>
                              <img className="register-img" src={logo} alt="جاست کیش" />
                              <div className="login-signup-box">
      
@@ -255,14 +259,14 @@ class Index extends Component {
                                      <p className="login-text">برای ورود ایمیل و رمز عبور را وارد نمایید</p>
                                      <p className="signinError shake">{this.state.signinError}</p>
                                      <Input 
-                                         placeHolder="ایمیل" 
+                                         placeholder="ایمیل" 
                                          name="loginEmail"
                                          type={'text'}  
                                          changed={this.changedHandler}
                                          error={this.state.loginEmailError}
                                      />
                                      <Input 
-                                         placeHolder="رمز عبور" 
+                                         placeholder="رمز عبور" 
                                          name="loginPassword"
                                          type={'password'}  
                                          changed={this.changedHandler}
@@ -276,41 +280,41 @@ class Index extends Component {
      
                                  <div className="ls-seprator" ></div>
      
-                                 <form className="signup" onSubmit={this.registerFetch} ref={this.moji} >
+                                 <form className="signup" onSubmit={this.registerFetch} ref={this.regForm} >
                                      <h1 className="signup-title">درخواست ساین </h1>
                                      <p className="signup-text">فرم درخواست ثبت نام مخصوص آژانس ها</p>
                                      <p className="regSuccess zoomIn">{this.state.regSuccess}</p>
                                      <Input 
                                      
-                                        placeHolder="نام آژانس" 
+                                        placeholder="نام آژانس" 
                                         name="agentname"
                                         type={'text'}  
                                         changed={this.changedHandler}
                                         error={this.state.agentnameError}
                                         max="40" />
                                      <Input 
-                                        placeHolder="شهر" 
+                                        placeholder="شهر" 
                                         name="city"
                                         type={'text'}  
                                         changed={this.changedHandler}
                                         error={this.state.cityError}
                                         max="30"  />
                                      <Input 
-                                        placeHolder="آدرس ایمیل" 
+                                        placeholder="آدرس ایمیل" 
                                         name="emailadrress"
                                         type={'email'}  
                                         changed={this.changedHandler}
                                         error={this.state.emailadrressError}
                                         max="60"  />
                                      <Input 
-                                        placeHolder="شماره همراه " 
+                                        placeholder="شماره همراه " 
                                         name="phonenumber"
                                         type={'text'}  
                                         changed={this.changedHandler}
                                         error={this.state.phonenumberError}
                                         max="11"  />
 
-                                     <button className="login-btn" type="submit" value="Submit"  >ثبت نام</button>
+                                     <button className="login-btn" type="submit" value="Submit"  >{this.state.isLoadingRegister ? <div className="loading-button"></div>  : 'ثبت نام'}</button>
                                  </form>
                              </div>
      
