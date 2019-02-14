@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import {Link } from 'react-router'
 import search from './../../../assets/icons/search.svg';
 import arrowdown2 from './../../../assets/icons/arrow-down2.svg';
 import positive from './../../../assets/icons/positive.svg';
@@ -95,7 +95,7 @@ class CreateTicket extends Component {
                                 <div className="create-ticket-transaction" >
                                     <Input name="buyerName" placeholder="نام خریدار" />
                                     <Input name="buyerNumber" placeholder="شماره خریدار " />
-                                    <div className="create-ticket-pay" >
+                                    <Link to="/payment-method" className="create-ticket-pay" >
                                         <div className="create-ticket-imgs">
                                             <img src={co} alt="فلش" />
                                             <img src={arrow} alt="فلش" />
@@ -103,7 +103,7 @@ class CreateTicket extends Component {
                                         <div className="create-ticket-text">
                                             پرداخت و صدور بلیت
                                         </div>
-                                    </div>
+                                    </Link>
                                 </div>
                             </div>
 
