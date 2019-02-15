@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 
 
+
 //
 // icons and images ------------->
 //
+
+import {Link } from 'react-router'
+
 import search from './../../../assets/icons/search.svg';
 import arrowdown2 from './../../../assets/icons/arrow-down2.svg';
 import positive from './../../../assets/icons/positive.svg';
