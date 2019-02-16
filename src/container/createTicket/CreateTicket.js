@@ -102,11 +102,11 @@ class CreateTicket extends Component {
             <div className="create-ticket" >
                 <div className="create-ticket-box container" >
                     <div className="part1" >
-                        <div className="create-ticket-your-credit">
+                        {/* <div className="create-ticket-your-credit">
                             <p className="create-ticket-your-credit-title" ><img src={wallet} alt="wallet" /> اعتبار شما</p>
                             <p className="create-ticket-increase-credit-text">افزایش اعتبار</p>
                             <p className="create-ticket-increase-credit" >6,526,200<img src={pluscircle} alt="افزایش اعتبار" /></p>
-                        </div>
+                        </div> */}
                         <div className="create-ticket-bascket-boxes" >
                             <div className="create-ticket-your-bascket" >
                                 <p className="create-ticket-your-bascket-row1" >

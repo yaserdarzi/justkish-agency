@@ -405,7 +405,7 @@ display: flex;
 }
 .create-ticket-bascket-boxes{
 background-color: #fff;
-margin-top: 20px;
+/* margin-top: 20px; */
 box-shadow: 0 2px 10px rgba(157,206,255,.34);
 border-radius: 5px;
 overflow: hidden;
