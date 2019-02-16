@@ -303,7 +303,7 @@ class CreateTicket extends Component {
                                                                         <span className="notCloseMenuLand">(12 سال به بالا)</span>
                                                                     </div>
                                                                     <div className="MinusPlus" >
-                                                                        <MinusPlus change={this.handleFilterUpdate} name={this.state.person} />
+                                                                        <MinusPlus change={this.handleFilterUpdate} counter={this.state.person} name={this.state.person} />
                                                                     </div>
                                                                 </li>
                                                                 <li className="create-ticket-tourist-change-li">
@@ -312,7 +312,7 @@ class CreateTicket extends Component {
                                                                         <span className="notCloseMenuLand">(2 تا 12 سال)</span>
                                                                     </div>
                                                                     <div className="MinusPlus" >
-                                                                        <MinusPlus change={this.handleFilterUpdate} name={this.state.person} />
+                                                                        <MinusPlus change={this.handleFilterUpdate} counter={this.state.person} name={this.state.person} />
                                                                     </div>
                                                                 </li>
                                                                 <li className="create-ticket-tourist-change-li">
@@ -321,7 +321,7 @@ class CreateTicket extends Component {
                                                                         <span className="notCloseMenuLand">(10 روز تا 2 سال)</span>
                                                                     </div>
                                                                     <div className="MinusPlus" >
-                                                                        <MinusPlus change={this.handleFilterUpdate} name={this.state.person} />
+                                                                        <MinusPlus change={this.handleFilterUpdate} counter={this.state.person} name={this.state.person} />
                                                                     </div>
                                                                 </li>
 
