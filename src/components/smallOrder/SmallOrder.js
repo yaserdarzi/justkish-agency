@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 
 
-import MinusPlus from './../optionButtonPlusMinus/optionButton'
+import MinusPlus from './../common/MinusPlus/MinusPlus'
 
 
 

@@ -25,8 +25,7 @@ import arrow from './../../../assets/icons/arrow.svg';
 import SmallOrder from './../../components/smallOrder/SmallOrder';
 import Input from './../../components/input/Input';
 import Button from './../../components/common/Button/Button'
-import MinusPlus from './../../components/common/MinusPlus/MinusPlus';
-import OptionButton from './../../components/common/MinusPlus/MinusPlus';
+import MinusPlus from './../../components/common/MinusPlus/MinusPlus'; 
 
 
 import './CreateTicket.css';
