@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 
 
-import MinusPlus from './../common/MinusPlus/MinusPlus'
+import MinusPlus from './../optionButtonPlusMinus/optionButton'
 
 
 
@@ -20,15 +20,19 @@ class SmallOrder extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            
+            person:0
         }
     }
 
 
         //minus plus 
-        handleFilterUpdate = () => {
-
+        handleFilterUpdate = (newValue) => {
+            this.setState({
+                person: newValue
+            });
         }
+    
+
     render() {
         return (
             <div >
@@ -37,7 +41,7 @@ class SmallOrder extends Component {
                         <p className="create-ticket-your-order-title" ><img src={deletee} alt="حذف" />{this.props.title}</p>
                         <div className="create-ticket-your-order-numbers">
                             <div className="MinusPlus" >
-                                <MinusPlus change={this.handleFilterUpdate} name={this.state.person} />
+                                <MinusPlus change={this.handleFilterUpdate} counter={this.state.person} name={this.state.person} />
                             </div>
                         </div>
                     </div>
