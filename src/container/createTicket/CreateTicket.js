@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
+import {Link } from 'react-router';
+import base from '../../api/baseURL';
+import Token from '../../api/token';
 
 
 
 //
 // icons and images ------------->
 //
-
-import {Link } from 'react-router'
 
 import search from './../../../assets/icons/search.svg';
 import arrowdown2 from './../../../assets/icons/arrow-down2.svg';
@@ -25,7 +26,8 @@ import arrow from './../../../assets/icons/arrow.svg';
 import SmallOrder from './../../components/smallOrder/SmallOrder';
 import Input from './../../components/input/Input';
 import Button from './../../components/common/Button/Button'
-import MinusPlus from './../../components/common/MinusPlus/MinusPlus'; 
+import MinusPlus from './../../components/common/MinusPlus/MinusPlus';
+import Tickets from '../../components/createTicket/listAllTickets'; 
 
 
 import './CreateTicket.css';
@@ -36,12 +38,14 @@ class CreateTicket extends Component {
         super(props);
         this.state = {
             selectTourist: false,
+            allTickets:[],
             person:0
         }
     }
 
     componentDidMount = async () => {
         window.addEventListener('scroll', this.handleScroll);
+        this.getAllTicket();
     }
 
     componentWillUnmount() {
@@ -95,9 +99,62 @@ class CreateTicket extends Component {
         });
     }
 
+    //
+    //  Get all issus ticket ------------------->
+    //
+
+    getAllTicket =() =>{
+        console.log("fetching all data from issus ticket.....")
+        this.getData('agency/ticket?start_date=1550061287&end_date=1550579687&categories_id=0')
+    }
+
+
+    getData(key) {
+
+        this.setState({
+            agentLoading: true
+        })
+
+        const url = base.baseURL + key;
+
+        return fetch(url, {
+            method: "GET",
+            cache: "no-cache",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                "agent": "web",
+                "Authorization": Token
+            },
+            redirect: "follow",
+            referrer: "no-referrer"
+        })
+            .then(response => response.json())
+            .then(responsJson => {
+                console.log(responsJson.data.total)
+                this.setState({
+                    allTickets: responsJson.data.total,
+                    agentLoading: false
+                })
+            })
+    }
+
   
 
     render() {
+
+        const renderAllTickets = (
+            // render all agents and pass props name , avatar , level ------->
+            this.state.agentLoading === false ? this.state.allTickets.map((item, index) =>
+                <Tickets key={index}
+                    id={item.id}
+                    title={item.title}  
+                    data={item} />
+            ) : <div className="loader"></div>
+
+        )
+
+
         return (
             <div className="create-ticket" >
                 <div className="create-ticket-box container" >
@@ -267,103 +324,8 @@ class CreateTicket extends Component {
                             </div>
 
                         </div>
-                        <div className="create-ticket-search-result table-desktop" >
-
-                            <div className="create-ticket-search-lists " >
-                                <div className="create-ticket-search-list">
-                                    <div className="create-ticket-search-list-first-cell" >
-                                        <div className="create-ticket-search-play">کشتی اوستا</div>
-                                        <div className="create-ticket-dates">
-                                            <p>شنبه 1397/10/12 </p>
-
-                                        </div>
-                                    </div>
-                                    <div className="clock-numbers">
-                                        <p className="create-ticket-clock ">
-                                            <img src={arrowdown2} alt="فلش" />
-                                            <span>17:45</span>
-                                        </p>
-                                        <div className="create-ticket-numbers">
-                                            <p onClick={this.selectTouristNumberHandler} className="create-ticket-btn-fullscreen"></p>
-                                            <p className="create-ticket-number" >
-                                                <span className="notCloseMenuLand">20</span>
-                                                <span className="notCloseMenuLand">موجودی</span>
-                                            </p>
-                                            <div className="create-ticket-tourist-numbers" >تعدا گردشگر
-                                                <div className="notCloseMenuLand">1</div>
-                                                {
-                                                    this.state.selectTourist
-                                                        ?
-                                                        <div className="create-ticket-tourist-change" >
-                                                            <ul className="create-ticket-tourist-change-ul">
-                                                                <li className="create-ticket-tourist-change-li">
-                                                                    <div className="notCloseMenuLand">
-                                                                        <h6 className="notCloseMenuLand" >بزرگسال</h6>
-                                                                        <span className="notCloseMenuLand">(12 سال به بالا)</span>
-                                                                    </div>
-                                                                    <div className="MinusPlus" >
-                                                                        <MinusPlus change={this.handleFilterUpdate} counter={this.state.person} name={this.state.person} />
-                                                                    </div>
-                                                                </li>
-                                                                <li className="create-ticket-tourist-change-li">
-                                                                    <div className="notCloseMenuLand">
-                                                                        <h6 className="notCloseMenuLand">کودک</h6>
-                                                                        <span className="notCloseMenuLand">(2 تا 12 سال)</span>
-                                                                    </div>
-                                                                    <div className="MinusPlus" >
-                                                                        <MinusPlus change={this.handleFilterUpdate} counter={this.state.person} name={this.state.person} />
-                                                                    </div>
-                                                                </li>
-                                                                <li className="create-ticket-tourist-change-li">
-                                                                    <div className="notCloseMenuLand">
-                                                                        <h6 className="notCloseMenuLand">نوزاد</h6>
-                                                                        <span className="notCloseMenuLand">(10 روز تا 2 سال)</span>
-                                                                    </div>
-                                                                    <div className="MinusPlus" >
-                                                                        <MinusPlus change={this.handleFilterUpdate} counter={this.state.person} name={this.state.person} />
-                                                                    </div>
-                                                                </li>
-
-                                                            </ul>
-
-                                                        </div>
-
-                                                        :
-                                                        ''
-
-                                                }
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="create-ticket-price-box" >
-                                        <p className="create-ticket-price-span">قیمت مشتری</p>
-                                        <p><span className="create-ticket-price-span">بزرگسال</span> <span>250,000 ت</span></p>
-                                        <p><span className="create-ticket-price-span">کودک</span><span>125,000 ت</span></p>
-                                        <p><span className="create-ticket-price-span">نوزاد رایگان</span></p>
-                                    </div>
-                                    <div className="create-ticket-price-box">
-                                        <p className="create-ticket-price-span">قیمت همکار </p>
-                                        <p><span className="create-ticket-price-span">بزرگسال</span> <span>190,000 ت</span></p>
-                                        <p><span className="create-ticket-price-span">کودک</span><span> 100,000 ت</span></p>
-                                        <p><span className="create-ticket-price-span">نوزاد رایگان</span></p>
-                                    </div>
-
-                                    <div className="create-ticket-add-to-bascket" >
-                                        <Button
-                                            isLoading={this.state.isLoading}
-                                            title={'اضافه به سبد '}
-                                            bgcolor={'#0080FF'}
-                                            hoverbgcolor={'#1fc056cc'}
-                                            click={this.callSubmit} />
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div>
-
-                  
-                        </div>
+                       {/* -------------------------- */}
+                        {renderAllTickets}
 
                         <div className="create-ticket-search-result table-tablet" >
                             <h1>نتایج جستجو</h1>

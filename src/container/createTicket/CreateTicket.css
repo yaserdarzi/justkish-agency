@@ -251,6 +251,7 @@ height: 150px;
     height: 30px;
     color: #272A2D;
     margin-bottom: 10px;
+    direction: rtl;
 }
 div .clock-numbers{
     width: 230px;

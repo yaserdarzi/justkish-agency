@@ -76,7 +76,7 @@ class Header extends Component {
 
 
             })
-            console.log(responseJson.data)
+           // console.log(responseJson.data)
         })
     }
 
