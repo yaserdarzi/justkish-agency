@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 
 
+
 //
 // icons and images ------------->
 //
+
+import {Link } from 'react-router'
+
 import search from './../../../assets/icons/search.svg';
 import arrowdown2 from './../../../assets/icons/arrow-down2.svg';
 import positive from './../../../assets/icons/positive.svg';
@@ -21,7 +25,8 @@ import arrow from './../../../assets/icons/arrow.svg';
 import SmallOrder from './../../components/smallOrder/SmallOrder';
 import Input from './../../components/input/Input';
 import Button from './../../components/common/Button/Button'
-import MinusPlus from './../../components/common/MinusPlus/MinusPlus'
+import MinusPlus from './../../components/common/MinusPlus/MinusPlus';
+import OptionButton from './../../components/common/MinusPlus/MinusPlus';
 
 
 import './CreateTicket.css';
@@ -31,7 +36,8 @@ class CreateTicket extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            selectTourist: false
+            selectTourist: false,
+            person:0
         }
     }
 
@@ -84,11 +90,13 @@ class CreateTicket extends Component {
         }
 
     }
-
-    //minus plus 
-    handleFilterUpdate = () => {
-
+    handleFilterUpdate = (newValue) => {
+        this.setState({
+            person: newValue
+        });
     }
+
+  
 
     render() {
         return (
@@ -295,7 +303,7 @@ class CreateTicket extends Component {
                                                                         <span className="notCloseMenuLand">(12 سال به بالا)</span>
                                                                     </div>
                                                                     <div className="MinusPlus" >
-                                                                        <MinusPlus change={this.handleFilterUpdate} name={this.state.person} />
+                                                                        <MinusPlus change={this.handleFilterUpdate} counter={this.state.person} name={this.state.person} />
                                                                     </div>
                                                                 </li>
                                                                 <li className="create-ticket-tourist-change-li">
@@ -304,7 +312,7 @@ class CreateTicket extends Component {
                                                                         <span className="notCloseMenuLand">(2 تا 12 سال)</span>
                                                                     </div>
                                                                     <div className="MinusPlus" >
-                                                                        <MinusPlus change={this.handleFilterUpdate} name={this.state.person} />
+                                                                        <MinusPlus change={this.handleFilterUpdate} counter={this.state.person} name={this.state.person} />
                                                                     </div>
                                                                 </li>
                                                                 <li className="create-ticket-tourist-change-li">
@@ -313,7 +321,7 @@ class CreateTicket extends Component {
                                                                         <span className="notCloseMenuLand">(10 روز تا 2 سال)</span>
                                                                     </div>
                                                                     <div className="MinusPlus" >
-                                                                        <MinusPlus change={this.handleFilterUpdate} name={this.state.person} />
+                                                                        <MinusPlus change={this.handleFilterUpdate} counter={this.state.person} name={this.state.person} />
                                                                     </div>
                                                                 </li>
 
@@ -329,13 +337,13 @@ class CreateTicket extends Component {
                                         </div>
                                     </div>
                                     <div className="create-ticket-price-box" >
-                                        <p span className="create-ticket-price-span">قیمت مشتری</p>
+                                        <p className="create-ticket-price-span">قیمت مشتری</p>
                                         <p><span className="create-ticket-price-span">بزرگسال</span> <span>250,000 ت</span></p>
                                         <p><span className="create-ticket-price-span">کودک</span><span>125,000 ت</span></p>
                                         <p><span className="create-ticket-price-span">نوزاد رایگان</span></p>
                                     </div>
                                     <div className="create-ticket-price-box">
-                                        <p span className="create-ticket-price-span">قیمت همکار </p>
+                                        <p className="create-ticket-price-span">قیمت همکار </p>
                                         <p><span className="create-ticket-price-span">بزرگسال</span> <span>190,000 ت</span></p>
                                         <p><span className="create-ticket-price-span">کودک</span><span> 100,000 ت</span></p>
                                         <p><span className="create-ticket-price-span">نوزاد رایگان</span></p>
@@ -352,6 +360,10 @@ class CreateTicket extends Component {
                                 </div>
 
                             </div>
+                        </div>
+                        <div>
+
+                  
                         </div>
 
                         <div className="create-ticket-search-result table-tablet" >
@@ -399,7 +411,8 @@ class CreateTicket extends Component {
                                                                         <span className="notCloseMenuLand">(12 سال به بالا)</span>
                                                                     </div>
                                                                     <div className="MinusPlus" >
-                                                                        <MinusPlus change={this.handleFilterUpdate} name={this.state.person} />
+                                                                    
+                                                                    <MinusPlus change={this.handleFilterUpdate} counter={this.state.person} name={this.state.person}  />
                                                                     </div>
                                                                 </li>
                                                                 <li className="create-ticket-tourist-change-li">
@@ -408,7 +421,7 @@ class CreateTicket extends Component {
                                                                         <span className="notCloseMenuLand">(2 تا 12 سال)</span>
                                                                     </div>
                                                                     <div className="MinusPlus" >
-                                                                        <MinusPlus change={this.handleFilterUpdate} name={this.state.person} />
+                                                                        <MinusPlus change={this.handleFilterUpdate} counter={this.state.person} name={this.state.person} />
                                                                     </div>
                                                                 </li>
                                                                 <li className="create-ticket-tourist-change-li">
@@ -417,7 +430,7 @@ class CreateTicket extends Component {
                                                                         <span className="notCloseMenuLand">(10 روز تا 2 سال)</span>
                                                                     </div>
                                                                     <div className="MinusPlus" >
-                                                                        <MinusPlus change={this.handleFilterUpdate} name={this.state.person} />
+                                                                        <MinusPlus change={this.handleFilterUpdate} counter={this.state.person} name={this.state.person} />
                                                                     </div>
                                                                 </li>
 
