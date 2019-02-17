@@ -126,6 +126,35 @@ class SmallOrder extends Component {
                 return ({'status':res, 'data':data.data})
               })
           }
+
+          _removeFromShopBag = async(data) => {
+              console.log("remove!")
+              console.log(data)
+
+              console.log(`
+              data is -------------------
+              type :${data.type}
+              id :${data.products_id}
+              price_age_range_id : ${data.product_price_range.id}
+              episode_id :${data.products_episode.id}
+              `);
+
+
+
+                     // provider data for API --------->
+            const dataProw = {
+                "type":data.type,
+                "id":data.products_id,
+                "price_age_range_id":data.product_price_range.id,
+                "episode_id": data.products_episode.id
+            } 
+            
+           const res = await this.postData(dataProw,'agency/shopping/remove');
+           console.log(res)
+           console.log(res.status);
+           this.props.action(); // refresh shoping bag
+
+          }
     
 
     render() {
@@ -156,7 +185,7 @@ class SmallOrder extends Component {
             <div >
                 <div className="create-ticket-your-order">
                     <div className="create-ticket-your-order-box1">
-                        <p className="create-ticket-your-order-title" ><img src={deletee} alt="حذف" />{this.props.title}</p>
+                        <p className="create-ticket-your-order-title" onClick={() => this._removeFromShopBag(this.props.prices)} ><img src={deletee} alt="حذف" />{this.props.title}</p>
                         <div className="create-ticket-your-order-numbers">
                     
                         </div>
@@ -165,8 +194,8 @@ class SmallOrder extends Component {
                         <span> {this.props.date}</span>  
                     </div>
                     <div className="MinusPlus" >
-                            {renderPrices}
-                            </div>
+                        {renderPrices}
+                    </div>
                 </div>
             </div>
         );

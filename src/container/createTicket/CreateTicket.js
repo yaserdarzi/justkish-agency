@@ -278,6 +278,7 @@ class CreateTicket extends Component {
                                 <p className="create-ticket-your-bascket-row2" >
                                     <span>تعداد سفارشات</span>
                                     <span>{this.state.shopingBag.total_count}</span>
+                              
                                 </p>
                             </div>
 
@@ -294,20 +295,20 @@ class CreateTicket extends Component {
                                     <div className="create-ticket-customer-factor" >
                                         <p className="create-ticket-customer-factor-row">
                                             <span>فاکتور مشتری</span>
-                                            <span style={{ color: '#FF3131' }}>1,900,000 ت</span>
+                                            <span style={{ color: '#FF3131' }}>0</span>
                                         </p>
                                         <p className="create-ticket-customer-factor-row">
                                             <span >درآمد مجموعه از این فاکتور</span>
-                                            <span style={{ color: '#00BF66' }}>300,000 ت</span>
+                                            <span style={{ color: '#00BF66' }}>0</span>
                                         </p>
                                         <p className="create-ticket-customer-factor-row">
                                             <span>درآمد شما از این فاکتور</span>
-                                            <span style={{ color: '#00BF66' }}>300,000 ت</span>
+                                            <span style={{ color: '#00BF66' }}>0</span>
                                         </p>
                                     </div>
                                     <div className="create-ticket-customer-factor-total">
                                         <span>مبلغ قابل پرداخت شما</span>
-                                        <span style={{ color: '#00BF66' }}>1,630,000 ت</span>
+                                        <span style={{ color: '#00BF66' }}>{this.state.shopingBag.total_price} تومان</span>
                                     </div>
                                 </div>
                                 <div className="create-ticket-transaction" >
