@@ -185,7 +185,7 @@ transition: all .2s linear;
     color: #D8D8D8;
     border-bottom: 1px solid #f7f7f7;
 display: flex;
-text-align: right;
+text-align: right;  
 }
 
 
@@ -193,19 +193,17 @@ text-align: right;
     display: flex;
     padding: 20px 40px;
     border-bottom: 1px solid #f7f7f7;
-align-items: center;
-font-size: 11px;
-height: 150px;
+    align-items: center;
+    font-size: 11px;
 }
 .create-ticket-search-list-titles > p , .create-ticket-search-list > div {
-    width: calc(100%/5);
+    /* width: calc(100%/5); */
     text-align: center;
-    padding: 0px 20px;
-    height: 100%;
+    padding: 0px 20px; 
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: center; 
 }
 .create-ticket-search-list-first-cell{
     align-items: flex-start !important;
@@ -251,6 +249,7 @@ height: 150px;
     height: 30px;
     color: #272A2D;
     margin-bottom: 10px;
+    direction: rtl;
 }
 div .clock-numbers{
     width: 230px;
@@ -306,6 +305,8 @@ overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    border-bottom: 1px solid #f5f5f5;
+
 }
 
 .create-ticket-tourist-change-li h6{
@@ -314,6 +315,11 @@ font-weight: 500;
 display: inline;
 font-size: 13px;
 margin-left: 5px;
+}
+
+.create-ticket-tourist-change-li p{
+    color: #909090;
+    padding-bottom: 5px;
 }
 .create-ticket-tourist-change-li span{
 color: #D8D8D8;
@@ -325,7 +331,9 @@ width: 120px;
 }
 
 .create-ticket-tourist-change-li div span{
-
+    color: #333;
+    font-size: 12px;
+    font-weight: 700;
 }
 
 .create-ticket-tourist-numbers{
@@ -336,21 +344,26 @@ width: 120px;
 .create-ticket-number span:nth-child(1){
 color: #5B5B5B;
 font-size: 8px;
+font-weight: 700;
 }
 .create-ticket-number span:nth-child(2){
-    font-size: 5px;
+    font-size: 8px;
     color:#5B5B5B;
+    font-weight: 700;
+
+
     
 }
 .create-ticket-price-span{
-    color: #D8D8D8 !important;
+    color: #989898 !important;
+    font-size: 15px;
 }
 .create-ticket-price-box{
-    border-left: 1px solid #f7f7f7;
+    width: 500px;
 }
 
 .create-ticket-price-box p{
-    display: flex;
+    display: block;
     justify-content: space-between;
     color: #272A2D;
     margin: 10px 0px;
@@ -405,7 +418,7 @@ display: flex;
 }
 .create-ticket-bascket-boxes{
 background-color: #fff;
-margin-top: 20px;
+/* margin-top: 20px; */
 box-shadow: 0 2px 10px rgba(157,206,255,.34);
 border-radius: 5px;
 overflow: hidden;
@@ -435,6 +448,20 @@ font-size: 14px;
 font-weight: 900;
 display: flex;
 align-items: center;
+background-color: #fcfcfc;
+padding: 5px;
+border-radius: 5px;
+transition: all 150ms ease-in;
+cursor: pointer;
+
+}
+
+.create-ticket-your-bascket-row1-span2:hover{
+    background-color: #E74C3C;
+    transition: all 150ms ease-in;
+    color: #333333;
+    
+
 }
 
 .create-ticket-your-bascket-row2 span{
@@ -445,12 +472,17 @@ align-items: center;
 
 .create-ticket-your-bascket-row1-span2 img{
 padding-left: 5px;
+width: 20px;
+padding: 5px;
+
 }
 .create-ticket-your-orders{
 }
 
 .create-ticket-your-bascket-3{
 
+    background-color: #f1f1f1;
+    padding: 2px;
 }
 
 .create-ticket-customer-factors{
@@ -524,7 +556,49 @@ margin: auto;
     font-weight: 900;
 }
 
+.create-ticket-price-level{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+    /* border-bottom: 1px solid #eee; */
+    transition: all  200ms ease-in;
+}
 
+.create-ticket-price-level:hover{
+
+    /* border: 1px solid #f4f4f4; */
+    -webkit-box-shadow: 10px 10px 20px 0 rgba(0,0,0,.1);
+    box-shadow: 10px 10px 20px 0 rgba(0,0,0,.1);
+    -webkit-transform: translateY(-3px);
+    -ms-transform: translateY(-3px);
+    transform: translateY(-3px);
+    transition: all  200ms ease-in;
+    border-radius: 5px;
+}
+
+.create-ticket-price-level-text h3{
+    font-size: 16px;
+}
+.create-ticket-price-level-text{
+    display: flex;
+    flex-direction: column;
+}
+
+.create-ticket-price-level-text1{
+font-weight: 900;
+font-size: 14px;
+}
+.create-ticket-price-level-text2{
+    color: #C0C0C0;
+}
+
+.create-ticket-price-level .button-style{
+    width: 105px;
+    font-size: 11px;
+    height: 35px;
+}
 @media screen and (max-width: 1300px){
     .create-ticket-filter{
         flex-direction: column;
