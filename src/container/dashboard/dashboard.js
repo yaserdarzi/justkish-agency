@@ -346,10 +346,12 @@ class Dashboard extends Component {
 
 
                     </div>
-                    <div className="dashboard-report" >
-                        <img src={report} alt="گزارش مالی" />
-                        <span>گزارش فروش ومالی</span>
-                    </div>
+                    <Link to="/reports">
+                        <div className="dashboard-report" >
+                            <img src={report} alt="گزارش مالی" />
+                            <span>گزارش فروش ومالی</span>
+                        </div>
+                    </Link>
                     <div className="dashboard-support">
                         <h1><img src={support} alt="پشتیبانی" /> پشتیبانی</h1>
                         <div className="dashboard-support-text" >
