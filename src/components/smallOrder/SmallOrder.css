@@ -3,7 +3,14 @@
     flex-direction: column;
     border-bottom: 1px solid #f7f7f7;
     padding: 10px 20px;
+    transition: all 200ms ease-in;
     
+    }
+
+    .create-ticket-your-order:hover{
+        background-color: #f3f3f3;
+        transition: all 200ms ease-in;
+
     }
     
     .create-ticket-your-order-box1{
@@ -21,12 +28,28 @@
     }
     .create-ticket-your-order-title img{ 
         margin-left: 5px;
+        width: 20px;
+        height: 20px;
+        padding: 4px;
+        background-color: #fcfcfc;
+        border-radius: 50px;
+        border: 2px solid #E74C3C;
+        transition: all 150ms ease-in;
+        cursor: pointer;
+
+
     }
+    .create-ticket-your-order-title img:hover{
+        background-color: #E74C3C;
+        transition: all 150ms ease-in;
+
+
+    }
+
     .create-ticket-your-order-numbers{
-        width: 70px;
+        width: 120px;
         text-align: center;
-        height: 30px;
-        background-color: #f7f9fb;
+        height: 40px;
         border-radius: 5px;
         align-items: center;
         display: flex;
@@ -48,11 +71,10 @@
     color: #CECECE;
     font-size: 10px;
     }
-    .create-ticket-your-order-box2 img{
-    }
+  
 
     .create-ticket-your-order-numbers .option-flex-line{
-        padding: 0;
-        margin: 0;
+        padding: 10px;
+        margin: 0; 
+        
     }
-

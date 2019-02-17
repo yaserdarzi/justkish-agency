@@ -51,8 +51,13 @@ class Dashboard extends Component {
         this.getAllSellers();
         this.getCalenderDayeMonth();
 
+
         console.log(PriceDigit('df', 'digit'))
         this.weatherHandler()
+
+       // console.log(PriceDigit('df','digit'))
+
+
     }
 
 

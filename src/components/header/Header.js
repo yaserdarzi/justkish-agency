@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { browserHistory } from 'react-router';
+import PriceDigit from '../priceDigit/priceDigit';
+
 
 //
 // icons and images ------------------------>
@@ -69,7 +71,8 @@ class Header extends Component {
                 userInfo: responseJson.data,
                 userType: responseJson.data.agent.type,
                 userName: responseJson.data.agent.name,
-                userAvatar: responseJson.data.agent.image
+                userAvatar: responseJson.data.agent.image,
+                walletPrice: responseJson.data.wallet.wallet_price,
 
 
             })
@@ -123,7 +126,7 @@ class Header extends Component {
                             <div className="wallet">
                               <Link to="/wallet">
                                 <img className="shoppings-icon border-left" src={wallet} alt="wallet" />
-                                <span className="wallet-remain" >6,333,443 ت</span>
+                                <span className="wallet-remain" >{this.state.walletPrice ? PriceDigit(this.state.walletPrice,'price') : <div className="loading-inline"></div>}</span>
                                 <img className="shoppings-icon border-right" src={pluscircle} alt="pluscircle" />
                               </Link>
 

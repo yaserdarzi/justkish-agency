@@ -3,12 +3,12 @@ import Radium from 'radium'
 import './Button.css';
 
 const button = (props) => (
-    <div className="button-box">
-        <button className="button-style" 
+    <div  className="button-box">
+        <button className="button-style"  
                 onClick={props.click} 
                 style={{backgroundColor : props.bgcolor , ':hover' : {backgroundColor : props.hoverbgcolor}} } >
                     {props.isLoading ? (
-                        <div className="loader-button"></div>
+                        <div  className="loader-button"></div>
                     ) : (
                             props.title
                     )}

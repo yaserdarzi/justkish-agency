@@ -7,6 +7,7 @@ import Input from './../../../components/input/Input';
 import logo from './../../../../assets/images/logo.png';
 import base from '../../../api/baseURL';
 import Token from '../../../api/token';
+import Button from '../../../components/common/Button/Button';
 import './index.css';
 
 
@@ -56,9 +57,13 @@ class Index extends Component {
 
 
     loginFetch = async() => {
+      
       //  event.preventDefault();
         const { loginEmail, loginPassword } = this.state;
         let checking = true;
+        this.setState({
+            isLoading:true
+        })
 
         if(loginEmail === '')
         {
@@ -74,7 +79,7 @@ class Index extends Component {
             });
             checking = false;
         }
-
+         
 
         // provider data for API --------->
         const data = {
@@ -101,6 +106,11 @@ class Index extends Component {
          }
          console.log("fetch finish.!")
         }
+       
+
+        this.setState({
+            isLoading:false
+        })
     }
 
     // clear all state for error validation ---------------------->
@@ -276,6 +286,12 @@ class Index extends Component {
                                          <span>رمز خود را فراموش کرده ام </span>
                                      </p>
                                      <button className="login-btn" onClick={this.onLogin.bind(this)} >ورود</button>
+                                     <Button                                                                  
+                                        isLoading={this.state.isLoading}                                    
+                                        title={'ورود'}                                                      
+                                        bgcolor={'#0080FF'}                                                 
+                                        hoverbgcolor={'#0080FF'}                                          
+                                        click={this.onLogin.bind(this)}/>   
                                  </div>
      
                                  <div className="ls-seprator" ></div>
