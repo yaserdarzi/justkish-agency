@@ -19,6 +19,7 @@ export default class CreateTicketMinusPluse extends React.Component {
 
         if (event.target.name === 'max')
            {
+
                 await this.setState({ counter: this.state.counter + 1 });
                 this.props.actionInc();
 

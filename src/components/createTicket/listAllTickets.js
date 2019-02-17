@@ -6,7 +6,7 @@ import PriceDigit from '../priceDigit/priceDigit';
 import TimeStamp from '../times/timespanToDate';
 import base from '../../api/baseURL';
 import Token from '../../api/token';
-
+ 
 
 
 import arrowdown2 from '../../../assets/icons/arrow-down2.svg';
@@ -21,7 +21,8 @@ class Seller extends Component {
             selectTourist: false,
             allTickets:[],
             person:0,
-            agentLoading:false
+            agentLoading:false,
+            isLoadingAdding:false
         }
     }
 
@@ -85,7 +86,7 @@ class Seller extends Component {
     //
 
     actionInc = async(data,id) =>{
-     // console.log(data) 
+      console.log("click") 
       console.log(id) 
 
 
@@ -109,7 +110,7 @@ class Seller extends Component {
     console.log(res)
     console.log(res.status);
 
-    this.props.action();
+    this.props.action(); // refresh shoping bag
     
 
     }
@@ -149,7 +150,39 @@ class Seller extends Component {
       }
 
 
-
+      addToShopBag = async(data,id) =>{
+          console.log(event.target.name)
+        console.log("click") 
+        console.log(id) 
+        this.setState({
+            isLoadingAdding:true
+        })
+  
+        console.log(`
+        data is -------------------
+        type :${data.type}
+        id :${data.id}
+        price_age_range_id :${id}
+        episode_id :${data.episode_id}
+        `);
+  
+      // provider data for API --------->
+      const dataProw = {
+          "type":data.type,
+          "id":data.id,
+          "price_age_range_id":id,
+          "episode_id": data.episode_id
+      } 
+  
+      const res = await this.postData(dataProw,'agency/shopping/add');
+      console.log(res)
+      console.log(res.status);
+      this.setState({
+        isLoadingAdding:false
+    })
+      this.props.action(); // refresh shoping bag
+      
+      }
 
 
     handleFilterUpdate = (newValue) => {
@@ -180,7 +213,7 @@ class Seller extends Component {
                 <div className="notCloseMenuLand">
                     <h6 className="notCloseMenuLand">{item.title}</h6>
                     <span>{PriceDigit(item.price,'price')}</span> 
-                    <p className="notCloseMenuLand">({item.min} تا {item.max} سال)</p> 
+                    <p className="notCloseMenuLand">( تا {item.max} سال)</p> 
                  
                 </div>
                 <div className="MinusPlus" >
@@ -190,9 +223,40 @@ class Seller extends Component {
             ) : <div className="loader"></div>
 
         )
+
+
+                //
+        // for drop list to incremnt and decremnt ticket.
+        //
+        const renderAddTicket = (
+            // render all agents and pass props name , avatar , level ------->
+            this.state.agentLoading === false ? this.props.data.prices.map((item, index) =>
+             
+                    <div key={index} className="create-ticket-price-level">
+                        <div className="create-ticket-price-level-text">
+                            <span className="create-ticket-price-level-text1">{item.title}</span>
+                            <span className="create-ticket-price-level-text2">({item.min} تا {item.max} سال)</span>
+                        </div>
+                        <h3>   {PriceDigit(item.price,'price')} <span>تومان</span> </h3>
+                        <Button 
+                            id={index}
+                            name={index}  
+                            key={index}                                                               
+                            isLoading={ this.state.isLoadingAdding}                                    
+                            title={' افزودن به سبد خرید'}                                                      
+                            bgcolor={'#0080FF'}                                                 
+                            hoverbgcolor={'#0080FF'}                                          
+                            click={() => this.addToShopBag(this.props.data,item.id)}/> 
+                    </div>
+                
+            ) : <div className="loader"></div>
+
+        )
+
+
+
         return (
-            <div className="create-ticket-search-result table-desktop" >
-            {this.props.data.start_date}
+            <div className="create-ticket-search-result table-desktop" > 
 
             <div className="create-ticket-search-lists " >
                     <div className="create-ticket-search-list">
@@ -200,7 +264,6 @@ class Seller extends Component {
                             <div className="create-ticket-search-play">{this.props.data.title}</div>
                             <div className="create-ticket-dates">
                                 <p>{TimeStamp(this.props.data.start_date)}</p>
-
                             </div>
                         </div>
                         <div className="clock-numbers">
@@ -266,7 +329,36 @@ class Seller extends Component {
                         </div>
                         <div className="create-ticket-price-box" >
                             <p className="create-ticket-price-span">قیمت مشتری</p>
-                            {renderPriceAction}
+                            {/* {renderPriceAction} */}
+                            
+                                    {/* <div className="create-ticket-price-level">
+                                        <div className="create-ticket-price-level-text">
+                                            <span className="create-ticket-price-level-text1">بزرگسال</span>
+                                            <span className="create-ticket-price-level-text2">(18 تا 20 سال)</span>
+                                        </div>
+                                        <h3>   25,000 </h3>
+                                        <Button                                                                  
+                                            isLoading={this.state.isLoading}                                    
+                                            title={' افزودن به سبد خرید'}                                                      
+                                            bgcolor={'#0080FF'}                                                 
+                                            hoverbgcolor={'#0080FF'}                                          
+                                            click={this.callSubmit}/> 
+                                    </div>
+                                    <div className="create-ticket-price-level">
+                                        <div className="create-ticket-price-level-text">
+                                            <span className="create-ticket-price-level-text1">بزرگسال</span>
+                                            <span className="create-ticket-price-level-text2">(18 تا 20 سال)</span>
+                                        </div>
+                                        <h3>   25,000 </h3>
+                                        <Button                                                                  
+                                            isLoading={this.state.isLoading}                                    
+                                            title={' افزودن به سبد خرید'}                                                      
+                                            bgcolor={'#0080FF'}                                                 
+                                            hoverbgcolor={'#0080FF'}                                          
+                                            click={this.callSubmit}/> 
+                                    </div> */}
+
+                                   {renderAddTicket}
                         </div>
                         {/* <div className="create-ticket-price-box">
                             <p className="create-ticket-price-span">قیمت (تومان) </p>

@@ -195,7 +195,6 @@ text-align: right;
     border-bottom: 1px solid #f7f7f7;
     align-items: center;
     font-size: 11px;
-    height: 150px;
 }
 .create-ticket-search-list-titles > p , .create-ticket-search-list > div {
     /* width: calc(100%/5); */
@@ -356,10 +355,11 @@ font-weight: 700;
     
 }
 .create-ticket-price-span{
-    color: #D8D8D8 !important;
+    color: #989898 !important;
+    font-size: 15px;
 }
 .create-ticket-price-box{
-    border-left: 1px solid #f7f7f7;
+    width: 500px;
 }
 
 .create-ticket-price-box p{
@@ -537,7 +537,49 @@ margin: auto;
     font-weight: 900;
 }
 
+.create-ticket-price-level{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+    /* border-bottom: 1px solid #eee; */
+    transition: all  200ms ease-in;
+}
 
+.create-ticket-price-level:hover{
+
+    /* border: 1px solid #f4f4f4; */
+    -webkit-box-shadow: 10px 10px 20px 0 rgba(0,0,0,.1);
+    box-shadow: 10px 10px 20px 0 rgba(0,0,0,.1);
+    -webkit-transform: translateY(-3px);
+    -ms-transform: translateY(-3px);
+    transform: translateY(-3px);
+    transition: all  200ms ease-in;
+    border-radius: 5px;
+}
+
+.create-ticket-price-level-text h3{
+    font-size: 16px;
+}
+.create-ticket-price-level-text{
+    display: flex;
+    flex-direction: column;
+}
+
+.create-ticket-price-level-text1{
+font-weight: 900;
+font-size: 14px;
+}
+.create-ticket-price-level-text2{
+    color: #C0C0C0;
+}
+
+.create-ticket-price-level .button-style{
+    width: 105px;
+    font-size: 11px;
+    height: 35px;
+}
 @media screen and (max-width: 1300px){
     .create-ticket-filter{
         flex-direction: column;

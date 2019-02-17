@@ -12,14 +12,19 @@ export default class InputComponent extends React.Component {
 
     Change = async (event) => {
 
-        this.props.action();
+        // this.props.action();
+       
 
-           console.log(this.state.counter)
-           console.log(event.target.name)
-           console.log(this.props.name)
+        //    console.log(this.state.counter)
+        //    console.log(event.target.name)
+        //    console.log(this.props.name)
 
         if (event.target.name === 'max')
-            await this.setState({ counter: this.state.counter + 1 })
+           { 
+              
+               await this.setState({ counter: this.state.counter + 1 });
+               this.props.actionInc();
+            }
 
         else
             if (this.state.counter > 0)
@@ -27,29 +32,7 @@ export default class InputComponent extends React.Component {
             else
                 this.setState({ counter: 0 })
 
-        //this.props.change(this.state.counter);  // todo
-
-
-        // Functional Program ------------------------------------->
-
-        // if(event.target.name === 'min')
-        // return this.setState({counter: min(this.state.counter)})
-        // else if(event.target.name === 'plus')
-        //     return this.setState({counter: plus(this.state.counter)})
-
-        // function min(val){
-        // if (val > 0)
-        //     return val - 1
-        //     else return 0
-        // }
-
-        // function plus(val){
-        //     return val + 1
-        // } 
-        // this.props.change(this.state.counter); 
-
-        // ---------------------------------------------------------->
-
+        this.props.change(this.state.counter);  // todo
 
     }
 

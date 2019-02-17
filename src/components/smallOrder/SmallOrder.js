@@ -32,6 +32,11 @@ class SmallOrder extends Component {
                 person: newValue
             });
         }
+
+        actionInc =() => {
+            console.log("pluse");
+
+        }
     
 
     render() {
@@ -41,7 +46,7 @@ class SmallOrder extends Component {
             // <p>{this.props.prices.product_price_range.price}</p>
 
             <li key={this.props.prices.product_price_range.id} className="create-ticket-tourist-change-li">
-            {console.log(this.props.prices.count)}
+            {console.log(this.props.prices)}
             <div className="notCloseMenuLand">
                 <h6 className="notCloseMenuLand">{this.props.prices.product_price_range.title}</h6>
                 <span>{PriceDigit(this.props.prices.product_price_range.price,'price')}</span> 
@@ -49,7 +54,7 @@ class SmallOrder extends Component {
              
             </div>
             <div className="MinusPlus" >
-                <MinusPlus actionDec={this.actionDec} actionInc={() => this.actionInc} change={this.handleFilterUpdate} counter={this.props.prices.count}   />
+                <MinusPlus actionDec={this.actionDec} actionInc={() => this.actionInc()} change={this.handleFilterUpdate} counter={this.props.prices.count}   />
             </div>
         </li>
              
