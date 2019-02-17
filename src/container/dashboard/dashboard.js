@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import Calendar from 'react-persian-calendar';
-
+import Chart from 'react-apexcharts'
 //
 // external component ------------------->
 //
@@ -34,8 +34,94 @@ class Dashboard extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            agentLoading:true,
-            agents:[],
+            agentLoading: true,
+            agents: [],
+
+            options: {
+                chart: {
+                    id: 'apexchart-example'
+                },
+                grid: {
+                    xaxis: {
+                        lines: {
+                            show: false
+                        }
+                    },
+                    yaxis: {
+                        lines: {
+                            show: false
+                        }
+                    }
+                },
+
+                fill: {
+                    type: "gradient",
+                    gradient: {
+                        shadeIntensity: 1,
+                        opacityFrom: 0.7,
+                        opacityTo: 0.9,
+                        colorStops: [
+                            {
+                                offset: 0,
+                                color: "#EB656F",
+                                opacity: 1
+                            },
+                            {
+                                offset: 20,
+                                color: "#FAD375",
+                                opacity: 1
+                            },
+                            {
+                                offset: 60,
+                                color: "#61DBC3",
+                                opacity: 1
+                            },
+                            {
+                                offset: 100,
+                                color: "#95DA74",
+                                opacity: 1
+                            }
+                        ]
+                    }
+                },
+                dataLabels: {
+                    enabled: true,
+                    style: {
+                        colors: ['transparent']
+                      }
+                  },
+                xaxis: {
+                    // chart horizontal number
+                    categories: ['شنبه', 'فروردین', '15', 'فروردین', 'فروردین', 'فروردین', 'فروردین', 'فروردین', 'فروردین', 'فروردین', 'فروردین', 'فروردین', 'فروردین', 'فروردین', 'فروردین', 'فروردین', 'فروردین', 'فروردین', 'فروردین', 'فروردین', 'فروردین', 'فروردین', 'فروردین', 'فروردین'],
+                    labels: {
+                        style: {
+                            // colors: ['#008FFB', '#00E396', '#FEB019', '#FF4560', '#775DD0', '#546E7A', '#26a69a', '#D10CE8'],
+                            fontSize: '14px'
+                        }
+                    }
+                }
+                
+
+            },
+                  
+            dataLabels: {
+                
+                style: {
+                    colors: ['#F44336', '#E91E63', '#9C27B0']
+                  }
+              },
+            series: [{
+                name: ' مقدار ',
+                //data value
+                data: [300000, 400000, 450000, 500000, 490000, 600000, 700000, 910000, 600000, 700000, 910000, 300000, 400000, 450000, 500000, 490000, 600000, 300000, 400000, 450000, 500000, 490000,2500000, 700000, 910000],
+                
+                
+                style: {
+                    colors: ['red' , 'blue'],
+                    fontSize: '10px'
+                }
+            }
+            ]
 
         }
     }
@@ -46,7 +132,7 @@ class Dashboard extends Component {
         this.getAllSellers();
         this.getCalenderDayeMonth();
 
-       // console.log(PriceDigit('df','digit'))
+        // console.log(PriceDigit('df','digit'))
 
     }
 
@@ -97,12 +183,12 @@ class Dashboard extends Component {
     //   Seller managemts ------------------------>
     //
     sellermanagment = () => {
-        
-        window.location.pathname ='/addsellers'
+
+        window.location.pathname = '/addsellers'
 
     }
 
-    
+
 
     getCalenderDayeMonth = () => {
         // jalali day month
@@ -115,13 +201,14 @@ class Dashboard extends Component {
         ];
 
         let currentMonthChris = monthNames[(new Date()).getMonth()]
-        let currentDayChris = (new Date()).getDay()
+        let currentDayChris = (new Date()).getDate()
 
-        this.setState({ currentDayJalali: currentDayJalali,
-                        currentMonthJalali: currentMonthJalali,
-                        currentDayChris: currentDayChris,
-                        currentMonthChris: currentMonthChris
-                     })
+        this.setState({
+            currentDayJalali: currentDayJalali,
+            currentMonthJalali: currentMonthJalali,
+            currentDayChris: currentDayChris,
+            currentMonthChris: currentMonthChris
+        })
     }
 
     handler = () => {
@@ -189,6 +276,14 @@ class Dashboard extends Component {
                         </div>
                         <div className="dashboard-chart" >
 
+                            <Chart options={this.state.options} series={this.state.series} type="bar" width={'100%'} height={500} />
+
+                            <svg className="green" width="100" height="50" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                                <linearGradient id="grad2" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" style={{ stopColor: '30afff', stopOpacity: '1' }} />
+                                    <stop offset="100%" style={{ stopColor: 'e900ed', stopOpacity: '1' }} />
+                                </linearGradient>
+                            </svg>
 
                         </div>
                     </div>

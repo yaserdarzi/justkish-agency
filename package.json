@@ -3,10 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "apexcharts": "^3.4.1",
     "moment": "^2.24.0",
     "moment-jalaali": "^0.8.3",
     "radium": "^0.25.1",
     "react": "^16.7.0",
+    "react-apexcharts": "^1.2.1",
     "react-dom": "^16.7.0",
     "react-moment": "^0.8.4",
     "react-persian-calendar": "^1.0.3",
