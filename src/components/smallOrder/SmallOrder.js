@@ -7,7 +7,8 @@ import PriceDigit from '../priceDigit/priceDigit';
 
 
 import deletee from './../../../assets/icons/delete.svg';
-
+import base from '../../api/baseURL';
+import Token from '../../api/token';
 
 
 import './SmallOrder.css';
@@ -33,10 +34,67 @@ class SmallOrder extends Component {
             });
         }
 
-        actionInc =() => {
+        actionInc =async(data,id) => {
             console.log("pluse");
 
+            console.log(`
+            data is -------------------
+            type :${data.type}
+            id :${data.id}
+            price_age_range_id :${id}
+            episode_id :${data.products_episode.id}
+            `);
+
+            // provider data for API --------->
+            const dataProw = {
+                "type":data.type,
+                "id":data.id,
+                "price_age_range_id":id,
+                "episode_id": data.products_episode.id
+            } 
+
+          //  const res = await this.postData(dataProw,'agency/shopping/add');
+           // console.log(res)
+          //  console.log(res.status);
+        
+         //   this.props.action(); // refresh shoping bag
+
+
         }
+
+        postData(data,key) {
+            console.log(data)
+    
+            this.setState({
+             
+            })
+    
+             const url =  base.baseURL + key;
+    
+              return fetch(url, {
+                  method: "POST", 
+                  cache: "no-cache",  
+                  headers: {
+                      "Content-Type": "application/json",
+                      "Accept": "application/json",
+                      "agent" : "web",
+                      "Authorization": Token
+                  },
+                  redirect: "follow", 
+                  referrer: "no-referrer", 
+                  body: JSON.stringify(data), 
+              })
+              .then(response => {
+                const statusCode = response.status
+                const data = response.json()
+                return Promise.all([statusCode, data])
+              })
+              .then(([res, data]) => {
+                //console.log(res, data)
+                this.setState({isLoading: false})
+                return ({'status':res, 'data':data.data})
+              })
+          }
     
 
     render() {
@@ -54,7 +112,7 @@ class SmallOrder extends Component {
              
             </div>
             <div className="MinusPlus" >
-                <MinusPlus actionDec={this.actionDec} actionInc={() => this.actionInc()} change={this.handleFilterUpdate} counter={this.props.prices.count}   />
+                <MinusPlus actionDec={this.actionDec} actionInc={() => this.actionInc(this.props.prices,this.props.prices.product_price_range.id)} change={this.handleFilterUpdate} counter={this.props.prices.count}   />
             </div>
         </li>
              

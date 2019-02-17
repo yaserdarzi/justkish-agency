@@ -288,33 +288,6 @@ class Seller extends Component {
                                             ?
                                             <div className="create-ticket-tourist-change" >
                                                 <ul className="create-ticket-tourist-change-ul">
-                                                    {/* <li className="create-ticket-tourist-change-li">
-                                                        <div className="notCloseMenuLand">
-                                                            <h6 className="notCloseMenuLand" >بزرگسال</h6>
-                                                            <span className="notCloseMenuLand">(12 سال به بالا)</span>
-                                                        </div>
-                                                        <div className="MinusPlus" >
-                                                            <MinusPlus change={this.handleFilterUpdate} counter={this.state.person} name={this.state.person} />
-                                                        </div>
-                                                    </li>
-                                                    <li className="create-ticket-tourist-change-li">
-                                                        <div className="notCloseMenuLand">
-                                                            <h6 className="notCloseMenuLand">کودک</h6>
-                                                            <span className="notCloseMenuLand">(2 تا 12 سال)</span>
-                                                        </div>
-                                                        <div className="MinusPlus" >
-                                                            <MinusPlus change={this.handleFilterUpdate} counter={this.state.person} name={this.state.person} />
-                                                        </div>
-                                                    </li>
-                                                    <li className="create-ticket-tourist-change-li">
-                                                        <div className="notCloseMenuLand">
-                                                            <h6 className="notCloseMenuLand">نوزاد</h6>
-                                                            <span className="notCloseMenuLand">(10 روز تا 2 سال)</span>
-                                                        </div>
-                                                        <div className="MinusPlus" >
-                                                            <MinusPlus change={this.handleFilterUpdate} counter={this.state.person} name={this.state.person} />
-                                                        </div>
-                                                    </li> */}
                                                     {renderPriceAction}
                                                 </ul>
 
@@ -328,7 +301,7 @@ class Seller extends Component {
                             </div>
                         </div>
                         <div className="create-ticket-price-box" >
-                            <p className="create-ticket-price-span">قیمت مشتری</p>
+                            <p className="create-ticket-price-span">قیمت</p>
                             {/* {renderPriceAction} */}
                             
                                     {/* <div className="create-ticket-price-level">
