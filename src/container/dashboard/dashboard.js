@@ -125,7 +125,7 @@ class Dashboard extends Component {
         ];
 
         let currentMonthChris = monthNames[(new Date()).getMonth()]
-        let currentDayChris = (new Date()).getDay()
+        let currentDayChris = (new Date()).getDate()
 
         this.setState({
             currentDayJalali: currentDayJalali,
