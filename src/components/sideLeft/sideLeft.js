@@ -96,10 +96,12 @@ class SideLeft extends Component {
                         <button className="checkout-request" >
                         درخواست تصویه حساب
                         </button>
-                        <div className="report" >
-                        <img src={report} alt="گزارش مالی" />
-                        <span>گزارش فروش ومالی</span>
-                        </div>
+                        <Link to="/reports">
+                            <div className="report" >
+                                <img src={report} alt="گزارش مالی" />
+                                <span>گزارش فروش ومالی</span>
+                            </div>
+                        </Link>
                         <div className="account" >
                         <p>حساب کاربری شما</p>
                         <ul className="manage-account" >
