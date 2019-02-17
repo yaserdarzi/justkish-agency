@@ -2,11 +2,6 @@
 /*
 small order is left sid of sodor belit - list sabad kharid --->
 */
-import React, { Component } from 'react';
-import MinusPlus from './../../components/common/MinusPlus/MinusPlus'
-
-
-
 
 import React, { Component } from 'react';
 import MinusPlus from './../common/MinusPlus/MinusPlus'
