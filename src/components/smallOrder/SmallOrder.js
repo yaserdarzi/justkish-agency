@@ -53,9 +53,9 @@ class SmallOrder extends Component {
                 "episode_id": data.products_episode.id
             } 
 
-          //  const res = await this.postData(dataProw,'agency/shopping/add');
-           // console.log(res)
-          //  console.log(res.status);
+           const res = await this.postData(dataProw,'agency/shopping/add');
+           console.log(res)
+           console.log(res.status);
         
          //   this.props.action(); // refresh shoping bag
 
