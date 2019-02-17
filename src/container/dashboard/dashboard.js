@@ -276,6 +276,9 @@ class Dashboard extends Component {
             <div className="dashboard">
                 <div className="dashboard1">
                     <div className="calender-weather-box" >
+                    <div className="dashboard-weather" id="dashboardweather" >
+                            {WeatherApp}
+                        </div>
                         <div className="dashboard-calenrder">
 
                             <div className="calendar-left">
@@ -299,9 +302,7 @@ class Dashboard extends Component {
                             </div>
 
                         </div>
-                        <div className="dashboard-weather" id="dashboardweather" >
-                            {WeatherApp}
-                        </div>
+
                     </div>
                     <div className="sale-statistics" >
                         <div className="statistics-actions" >
