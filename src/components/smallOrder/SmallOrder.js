@@ -1,14 +1,18 @@
+/*
+small order is left sid of sodor belit - list sabad kharid --->
+*/
+
 import React, { Component } from 'react';
-
-
-
 import MinusPlus from './../common/MinusPlus/MinusPlus'
 import PriceDigit from '../priceDigit/priceDigit';
-
-
-import deletee from './../../../assets/icons/delete.svg';
 import base from '../../api/baseURL';
 import Token from '../../api/token';
+
+//
+// icons and images ----------------------->
+//
+import deletee from './../../../assets/icons/delete.svg';
+
 
 
 import './SmallOrder.css';
@@ -17,7 +21,7 @@ import './SmallOrder.css';
 
 
 class SmallOrder extends Component {
-
+ 
     constructor(props) {
         super(props);
         this.state = {
@@ -27,20 +31,20 @@ class SmallOrder extends Component {
     }
 
 
+
         //minus plus 
         handleFilterUpdate = (newValue) => {
             this.setState({
                 person: newValue
             });
         }
+        actionDec = async(data,id) =>{
 
-        actionInc =async(data,id) => {
-            console.log("pluse");
-
+            console.log("dec")
             console.log(`
             data is -------------------
             type :${data.type}
-            id :${data.id}
+            id :${data.products_id}
             price_age_range_id :${id}
             episode_id :${data.products_episode.id}
             `);
@@ -48,16 +52,43 @@ class SmallOrder extends Component {
             // provider data for API --------->
             const dataProw = {
                 "type":data.type,
-                "id":data.id,
+                "id":data.products_id,
                 "price_age_range_id":id,
                 "episode_id": data.products_episode.id
             } 
+            
+           const res = await this.postData(dataProw,'agency/shopping/minus');
+           console.log(res)
+           console.log(res.status);
+           this.props.action(); // refresh shoping bag
+        
+        }
 
+        actionInc =async(data,id) => {
+            console.log("pluse");
+            
+            console.log(`
+            data is -------------------
+            type :${data.type}
+            id :${data.products_id}
+            price_age_range_id :${id}
+            episode_id :${data.products_episode.id}
+            `);
+
+            // provider data for API --------->
+            const dataProw = {
+                "type":data.type,
+                "id":data.products_id,
+                "price_age_range_id":id,
+                "episode_id": data.products_episode.id
+            } 
+            
            const res = await this.postData(dataProw,'agency/shopping/add');
            console.log(res)
            console.log(res.status);
+           this.props.action(); // refresh shoping bag
         
-         //   this.props.action(); // refresh shoping bag
+          
 
 
         }
@@ -112,7 +143,7 @@ class SmallOrder extends Component {
              
             </div>
             <div className="MinusPlus" >
-                <MinusPlus actionDec={this.actionDec} actionInc={() => this.actionInc(this.props.prices,this.props.prices.product_price_range.id)} change={this.handleFilterUpdate} counter={this.props.prices.count}   />
+                <MinusPlus actionDec={() => this.actionDec(this.props.prices,this.props.prices.product_price_range.id)} actionInc={() => this.actionInc(this.props.prices,this.props.prices.product_price_range.id)} change={this.handleFilterUpdate} counter={this.props.prices.count}   />
             </div>
         </li>
              

@@ -76,17 +76,27 @@ class Seller extends Component {
 
     }
 
-    actionDec(){
-        alert("HI decriment")
+    actionDec = async(data,id) =>{
+        console.log("click added") 
+        console.log(id) 
+  
+  
+        console.log(`
+        data is -------------------
+        type :${data.type}
+        id :${data.id}
+        price_age_range_id :${id}
+        episode_id :${data.episode_id}
+        `);
     }
 
 
     //
-    // add in shop bag --------------------------->
+    // add or pluse in shop bag --------------------------->
     //
 
     actionInc = async(data,id) =>{
-      console.log("click") 
+      console.log("click added") 
       console.log(id) 
 
 
@@ -217,7 +227,7 @@ class Seller extends Component {
                  
                 </div>
                 <div className="MinusPlus" >
-                    <MinusPlus actionDec={this.actionDec} actionInc={() => this.actionInc(this.props.data,item.id)} change={this.handleFilterUpdate} counter={this.state.person} name={item.id} />
+                    <MinusPlus actionDec={() => this.actionDec(this.props.data,item.id)} actionInc={() => this.actionInc(this.props.data,item.id)} change={this.handleFilterUpdate} counter={this.state.person} name={item.id} />
                 </div>
             </li>
             ) : <div className="loader"></div>

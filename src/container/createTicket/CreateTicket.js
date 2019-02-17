@@ -55,6 +55,8 @@ class CreateTicket extends Component {
         window.removeEventListener('scroll', this.handleScroll);
     }
 
+
+
     selectTouristNumberHandler = (event) => {
         event.preventDefault();
         this.setState((prev) => {
@@ -66,9 +68,6 @@ class CreateTicket extends Component {
                 document.addEventListener('click', this.closeMenu);
             }
         )
-        console.log('1111')
-
-
     }
 
 
@@ -107,7 +106,7 @@ class CreateTicket extends Component {
     //
 
     getAllTicket =() =>{
-        console.log("fetching all data from issus ticket.....")
+       
         this.getData('agency/ticket?start_date=1550061287&end_date=1550579687&categories_id=0')
     }
 
@@ -146,9 +145,9 @@ class CreateTicket extends Component {
     // Get all shoping bag || sabad kharid---------------------->
     //
 
-    getAllShopingBag(){
-        const x = this.getDataShoping('agency/shopping')
-        console.log(x)
+    getAllShopingBag =async() => {
+       await this.getDataShoping('agency/shopping');
+      
     }
 
     getDataShoping =async(key)=> {
@@ -224,6 +223,8 @@ class CreateTicket extends Component {
             })
     }
 
+ 
+
     render() {
 
         const renderAllTickets = (
@@ -247,7 +248,8 @@ class CreateTicket extends Component {
                  title={item.products.title}
                  orderNumber={item.products.title}
                  date="شنبه 1397/12/10 سانس 17:45تا 19:45"
-                 prices={item}/>  ): <p>No dtaat</p>
+                 prices={item}
+                 action={() => this.getAllShopingBag()}/>  ): <p>No Data for show!</p>
 
               : <div className="loader"></div>
 
