@@ -107,7 +107,9 @@ class Seller extends Component {
 
     const res = await this.postData(dataProw,'agency/shopping/add');
     console.log(res)
-    console.log(res.status)
+    console.log(res.status);
+
+    this.props.action();
     
 
     }

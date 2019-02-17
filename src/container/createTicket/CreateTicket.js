@@ -40,7 +40,8 @@ class CreateTicket extends Component {
             selectTourist: false,
             allTickets:[],
             shopingBag:[],
-            person:0
+            person:0,
+            getShoping:true
         }
     }
 
@@ -142,18 +143,18 @@ class CreateTicket extends Component {
     }
 
     //
-    // Get all shoping bag ---------------------->
+    // Get all shoping bag || sabad kharid---------------------->
     //
 
     getAllShopingBag(){
         const x = this.getDataShoping('agency/shopping')
-       console.log(x)
+        console.log(x)
     }
 
-    getDataShoping(key) {
+    getDataShoping =async(key)=> {
 
         this.setState({
-            agentLoading: true
+            getShoping: true
         })
 
         const url = base.baseURL + key;
@@ -174,13 +175,54 @@ class CreateTicket extends Component {
             .then(responsJson => {
                 console.log(responsJson.data)
                 this.setState({
-                    shopingBag: responsJson.data
+                    shopingBag: responsJson.data,
+                    getShoping: false
                 })
              
             })
+            .catch(err => console.log(err))
     }
 
+
+    //
+    // clear shop bag ----------------------------->
+    //
   
+    clearShopBag =() =>{
+
+        this.ClearShopBagData('agency/shopping/clear')
+    }
+
+    ClearShopBagData(key) {
+
+        this.setState({
+            getShoping: true
+        })
+
+        const url = base.baseURL + key;
+
+        return fetch(url, {
+            method: "POST",
+            cache: "no-cache",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json", 
+                "Authorization": Token
+            },
+            redirect: "follow",
+            referrer: "no-referrer"
+        })
+            .then(response => response.json())
+            .then(responsJson => {
+                console.log(responsJson.data)
+                this.getAllShopingBag(); // call for refresh shoping bag
+                this.setState({
+                    getShoping:false
+                })
+                 
+             
+            })
+    }
 
     render() {
 
@@ -190,7 +232,8 @@ class CreateTicket extends Component {
                 <Tickets key={index}
                     id={item.id}
                     title={item.title}  
-                    data={item} />
+                    data={item}
+                    action={() => this.getAllShopingBag()} />
             ) : <div className="loader"></div>
 
         )
@@ -198,14 +241,15 @@ class CreateTicket extends Component {
 
         const renderShopingBag =  (
             // render all agents and pass props name , avatar , level ------->
-            this.state.agentLoading === false ? this.state.shopingBag.shoppingBags.map((item, index) =>
-            //    <p>{awaititem.id}</p>
-               <SmallOrder key={index}
-                    title={item.products.title}
-                    orderNumber={item.products.title}
-                    date="شنبه 1397/12/10 سانس 17:45تا 19:45"
-                    prices={item}/> 
-            ) : <div className="loader"></div>
+            this.state.getShoping === false ? this.state.shopingBag !== null ? this.state.shopingBag.shoppingBags.map((item, index) =>
+            
+            <SmallOrder key={index}
+                 title={item.products.title}
+                 orderNumber={item.products.title}
+                 date="شنبه 1397/12/10 سانس 17:45تا 19:45"
+                 prices={item}/>  ): <p>No dtaat</p>
+
+              : <div className="loader"></div>
 
         )
 
@@ -223,7 +267,7 @@ class CreateTicket extends Component {
                             <div className="create-ticket-your-bascket" >
                                 <p className="create-ticket-your-bascket-row1" >
                                     <span className="create-ticket-your-bascket-row1-span1">سبد خرید</span>
-                                    <span className="create-ticket-your-bascket-row1-span2"><img src={deletee} alt="حذف" />خالی کردن سبد</span>
+                                    <span onClick={this.clearShopBag} className="create-ticket-your-bascket-row1-span2"><img src={deletee} alt="حذف" />خالی کردن سبد</span>
                                 </p>
                                 <p className="create-ticket-your-bascket-row2" >
                                     <span>مبلغ کل</span>
