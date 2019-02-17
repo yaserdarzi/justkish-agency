@@ -39,6 +39,7 @@ class CreateTicket extends Component {
         this.state = {
             selectTourist: false,
             allTickets:[],
+            shopingBag:[],
             person:0
         }
     }
@@ -46,6 +47,7 @@ class CreateTicket extends Component {
     componentDidMount = async () => {
         window.addEventListener('scroll', this.handleScroll);
         this.getAllTicket();
+        this.getAllShopingBag();
     }
 
     componentWillUnmount() {
@@ -139,6 +141,45 @@ class CreateTicket extends Component {
             })
     }
 
+    //
+    // Get all shoping bag ---------------------->
+    //
+
+    getAllShopingBag(){
+        const x = this.getDataShoping('agency/shopping')
+       console.log(x)
+    }
+
+    getDataShoping(key) {
+
+        this.setState({
+            agentLoading: true
+        })
+
+        const url = base.baseURL + key;
+
+        return fetch(url, {
+            method: "GET",
+            cache: "no-cache",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                "agent": "web",
+                "Authorization": Token
+            },
+            redirect: "follow",
+            referrer: "no-referrer"
+        })
+            .then(response => response.json())
+            .then(responsJson => {
+                console.log(responsJson.data)
+                this.setState({
+                    shopingBag: responsJson.data
+                })
+             
+            })
+    }
+
   
 
     render() {
@@ -150,6 +191,20 @@ class CreateTicket extends Component {
                     id={item.id}
                     title={item.title}  
                     data={item} />
+            ) : <div className="loader"></div>
+
+        )
+
+
+        const renderShopingBag =  (
+            // render all agents and pass props name , avatar , level ------->
+            this.state.agentLoading === false ? this.state.shopingBag.shoppingBags.map((item, index) =>
+            //    <p>{awaititem.id}</p>
+               <SmallOrder key={index}
+                    title={item.products.title}
+                    orderNumber={item.products.title}
+                    date="شنبه 1397/12/10 سانس 17:45تا 19:45"
+                    prices={item}/> 
             ) : <div className="loader"></div>
 
         )
@@ -172,35 +227,19 @@ class CreateTicket extends Component {
                                 </p>
                                 <p className="create-ticket-your-bascket-row2" >
                                     <span>مبلغ کل</span>
-                                    <span>1,630,000 ت</span>
+                                    <span>{this.state.shopingBag.total_price}</span>
                                 </p>
                                 <p className="create-ticket-your-bascket-row2" >
                                     <span>تعداد سفارشات</span>
-                                    <span>3</span>
+                                    <span>{this.state.shopingBag.total_count}</span>
                                 </p>
                             </div>
 
                             <div className="create-ticket-your-orders" >
-                                <SmallOrder title="جت اسکی"
-                                    orderNumber="5"
-                                    date="شنبه 1397/12/10 سانس 17:45تا 19:45"
-                                    price="600,000 ت" />
-                                <SmallOrder title="پاراسل"
-                                    orderNumber="5"
-                                    date="شنبه 1397/12/10 سانس 17:45تا 19:45"
-                                    price="600,000 ت" />
-                                <SmallOrder title="قایق تندرو "
-                                    orderNumber="5"
-                                    date="شنبه 1397/12/10 سانس 17:45تا 19:45"
-                                    price="600,000 ت" />
-                                <SmallOrder title="گشت جزیره "
-                                    orderNumber="5"
-                                    date="شنبه 1397/12/10 سانس 17:45تا 19:45"
-                                    price="600,000 ت" />
-                                <SmallOrder title="عکاسی "
-                                    orderNumber="5"
-                                    date="شنبه 1397/12/10 سانس 17:45تا 19:45"
-                                    price="600,000 ت" />
+                        
+                                    {renderShopingBag}
+                            
+                        
 
                             </div>
 
