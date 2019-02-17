@@ -326,7 +326,7 @@ class CreateTicket extends Component {
                         </div>
                        {/* -------------------------- */}
                         {renderAllTickets}
-
+{/* 
                         <div className="create-ticket-search-result table-tablet" >
                             <h1>نتایج جستجو</h1>
                             <div className="create-ticket-search-lists " >
@@ -435,7 +435,7 @@ class CreateTicket extends Component {
                                 </div>
 
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>
