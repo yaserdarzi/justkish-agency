@@ -40,6 +40,7 @@ class CreateTicket extends Component {
             selectTourist: false,
             allTickets:[],
             shopingBag:[],
+            categories:[],
             person:0,
             getShoping:true
         }
@@ -47,8 +48,10 @@ class CreateTicket extends Component {
 
     componentDidMount = async () => {
         window.addEventListener('scroll', this.handleScroll);
-        this.getAllTicket();
-        this.getAllShopingBag();
+        // fetch data from api ----------------------------->
+        this.getAllTicket();      // get all tickets
+        this.getAllShopingBag(); // get all shoping bag
+        this.getCategories();   //  get all categories
     }
 
     componentWillUnmount() {
@@ -223,7 +226,47 @@ class CreateTicket extends Component {
             })
     }
 
+    //
+    // get All categories ------------------------------>
+    //
+
+    getCategories(){
+        console.log("get all categories!");
+        this.fetchCategories('agency/categories')
+
+
+    }
+
+
+    fetchCategories(key){
+        const url = base.baseURL + key;
+
+        fetch(url, {
+            method: "GET", 
+            cache: "no-cache",  
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                "agent" : "web",
+                "Authorization": Token
+            },
+            redirect: "follow", 
+            referrer: "no-referrer"  
+        })
+        .then(response => response.json())
+        .then(responseJson => {
+            this.setState({ 
+                categories : responseJson.data
+
+            })
+            console.log(responseJson.data)
+        })
+    }
  
+
+    _selectCategorie(id){
+        console.log(`selectedt ${id}`)
+    }
 
     render() {
 
@@ -253,6 +296,14 @@ class CreateTicket extends Component {
 
               : <div className="loader"></div>
 
+        )
+
+
+        const renderCategory =(
+            this.state.categories !== null ? this.state.categories.map((item,index) => 
+            <li key={item.id} onClick={() => this._selectCategorie(item.id)}> {item.title}</li>
+            ) : ''
+            
         )
 
 
@@ -336,7 +387,7 @@ class CreateTicket extends Component {
                             </div>
                             <div className="create-ticket-search">
 
-                                <div className="create-ticket-places" >
+                                {/* <div className="create-ticket-places" >
                                     <span className="create-ticket-places-right" >
                                         <i className="fas fa-map-marker-alt create-ticket-places-marker "></i>
                                         <span>در جزیره کیش </span>
@@ -355,10 +406,9 @@ class CreateTicket extends Component {
                                         <li className="create-ticket-places-list" >
                                             کیش
                                         </li>
-
                                     </ul>
 
-                                </div>
+                                </div> */}
 
                                 <div className="create-ticket-features" >
                                     <span className="create-ticket-features-right" >
@@ -368,17 +418,9 @@ class CreateTicket extends Component {
                                     <ul className="create-ticket-features-lists" >
                                         <li className="create-ticket-features-list" >
                                             <ul className="create-ticket-features-col" >
-                                                <li> پارسل</li>
-                                                <li> جت اسکی</li>
-                                                <li> فلای برد</li>
-                                                <li> قایق تندرو</li>
-                                                <li> غواصی </li>
-                                                <li> شاتل</li>
-                                                <li> بنانا</li>
-                                                <li> اسکی روی آب</li>
-                                                <li> اسب سواری</li>
+                                            {renderCategory}
                                             </ul>
-                                            <ul className="create-ticket-features-col" >
+                                            {/* <ul className="create-ticket-features-col" >
                                                 <li> استند آپ کمدی</li>
                                                 <li> اسکوتر زیر دریایی</li>
                                                 <li> باگی</li>
@@ -388,8 +430,8 @@ class CreateTicket extends Component {
                                                 <li> دلفیناریوم</li>
                                                 <li> سافاری</li>
                                                 <li> پینت بال</li>
-                                            </ul>
-                                            <ul className="create-ticket-features-col" >
+                                            </ul> */}
+                                            {/* <ul className="create-ticket-features-col" >
                                                 <li> کشتی کروز</li>
                                                 <li> قلعه وحشت</li>
                                                 <li> شهرزیرزمینی کاریز</li>
@@ -399,7 +441,7 @@ class CreateTicket extends Component {
                                                 <li> ماهیگیری</li>
                                                 <li> جابرو کوپتر</li>
                                                 <li> پینت بال</li>
-                                            </ul>
+                                            </ul> */}
 
 
                                         </li>
