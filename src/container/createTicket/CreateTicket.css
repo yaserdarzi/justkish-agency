@@ -154,17 +154,23 @@ color: #272A2D;
 transition: all .2s linear;
 width: 33%;
 border-radius: 10px;
-text-align: center;
+text-align: center; 
 }
 .create-ticket-features-col li:hover{
 opacity: .8;
 transition: all .2s linear;
+background-color: #eee;
 
 }
 .create-ticket-features-col li:active{
-    background-color: #f7f7f7;
+    background-color: #eee;
 transition: all .2s linear;
 
+}
+.categori-delete-create-ticket{
+    width: 20px;
+    height: 20px;
+    padding: 5px;
 }
 .create-ticket-search-btn{
     border-radius: 50%;

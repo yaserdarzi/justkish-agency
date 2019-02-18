@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import {Link } from 'react-router';
+import {Link, browserHistory } from 'react-router'; 
+
 import base from '../../api/baseURL';
 import Token from '../../api/token';
 
@@ -41,6 +42,7 @@ class CreateTicket extends Component {
             allTickets:[],
             shopingBag:[],
             categories:[],
+            categorie: this.getParms('categories') || 0 ,
             person:0,
             getShoping:true
         }
@@ -110,7 +112,7 @@ class CreateTicket extends Component {
 
     getAllTicket =() =>{
        
-        this.getData('agency/ticket?start_date=1550061287&end_date=1550579687&categories_id=0')
+        this.getData('agency/ticket?start_date=1550061287&end_date=1550579687&categories_id=' + this.getParms('categories'))
     }
 
 
@@ -264,8 +266,47 @@ class CreateTicket extends Component {
     }
  
 
-    _selectCategorie(id){
-        console.log(`selectedt ${id}`)
+    _selectCategorie = async(item) => {
+        await this.setState({
+            categorie: item.title
+        })
+
+        console.log(`selectedt ${item.id}`)
+        this.insertParam('categories',item.id);
+   
+    }
+
+    insertParam = async (key, value) => {
+        // push params in url location query
+        await browserHistory.push({
+            pathname: this.props.location.pathname,
+            query: Object.assign({}, this.props.location.query, { [key]: value })
+        });
+
+        console.log(browserHistory.getCurrentLocation())
+    }
+
+
+    getParms(value) {
+     
+        let url_string = window.location.href
+        let url = new URL(url_string);
+
+        const val = url.searchParams.get(value);
+        console.log(val)
+        if (val !== null)
+            return val;
+        return 0
+    }
+
+
+    //
+    // search button -------------------->
+    //
+
+    _searchButonTickets(){
+        console.log("search.....");
+        this.getAllTicket();
     }
 
     render() {
@@ -301,7 +342,7 @@ class CreateTicket extends Component {
 
         const renderCategory =(
             this.state.categories !== null ? this.state.categories.map((item,index) => 
-            <li key={item.id} onClick={() => this._selectCategorie(item.id)}> {item.title}</li>
+            <li key={item.id} onClick={() => this._selectCategorie(item)}> {item.title}</li>
             ) : ''
             
         )
@@ -411,8 +452,9 @@ class CreateTicket extends Component {
                                 </div> */}
 
                                 <div className="create-ticket-features" >
+                                    {/* <img className="categori-delete-create-ticket" src={deletee} alt="فلش" /> */}
                                     <span className="create-ticket-features-right" >
-                                        <span>همه </span>
+                                        <span>{this.state.categorie || 'همه'} </span>
                                     </span>
                                     <img src={arrowdown2} alt="فلش" />
                                     <ul className="create-ticket-features-lists" >
@@ -446,7 +488,7 @@ class CreateTicket extends Component {
 
                                         </li>
                                     </ul></div>
-                                <button className="create-ticket-btn" >
+                                <button className="create-ticket-btn" onClick={() => this._searchButonTickets()} >
                                     <img src={search} alt="جستجو" ></img>
                                 </button>
                             </div>
