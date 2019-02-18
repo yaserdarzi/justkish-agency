@@ -188,6 +188,9 @@ transition: all .2s linear;
     margin-right: 10px;;
 }
 
+.create-ticket-btn:hover {
+    opacity: 0.8;
+}
 
 
 
