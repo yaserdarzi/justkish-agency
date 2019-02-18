@@ -3,6 +3,8 @@ import {Link, browserHistory } from 'react-router';
 
 import base from '../../api/baseURL';
 import Token from '../../api/token';
+import DateToShamsi from '../../components/times/dateMiladiToShamsi';
+import jalaali from 'jalaali-js';
 
 
 
@@ -54,6 +56,9 @@ class CreateTicket extends Component {
         this.getAllTicket();      // get all tickets
         this.getAllShopingBag(); // get all shoping bag
         this.getCategories();   //  get all categories
+
+       // console.log(DateToShamsi('2019','10','20'))
+       console.log(jalaali.toJalaali(2016, 4, 11))
     }
 
     componentWillUnmount() {
@@ -329,7 +334,7 @@ class CreateTicket extends Component {
             this.state.getShoping === false ? this.state.shopingBag !== null ? this.state.shopingBag.shoppingBags.map((item, index) =>
             
             <SmallOrder key={index}
-                 title={item.products.title}
+                 title={item.products.title }
                  orderNumber={item.products.title}
                  date="شنبه 1397/12/10 سانس 17:45تا 19:45"
                  prices={item}

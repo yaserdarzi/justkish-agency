@@ -279,15 +279,15 @@ class Seller extends Component {
                         <div className="clock-numbers">
                             <p className="create-ticket-clock ">
                                 {/* <img src={arrowdown2} alt="فلش" /> */}
-                                <span>زمان شروع:</span><span>{this.props.data.start_hours}</span>
+                                <span>زمان شروع:</span><span>{this.props.data.start_hours || '-'}</span>
                             </p>
                             <p className="create-ticket-clock ">
                                 {/* <img src={arrowdown2} alt="فلش" /> */}
-                                <span>زمان پایان:</span><span>{this.props.data.end_hours}</span>
+                                <span>زمان پایان:</span><span>{this.props.data.end_hours || '-'}</span>
                             </p>
                             <p className="create-ticket-clock ">
                                 {/* <img src={arrowdown2} alt="فلش" /> */}
-                                <span>موجودی:</span><span>{this.props.data.capacity}</span>
+                                <span>موجودی:</span><span>{this.props.data.capacity || '0'}</span>
                             </p>
                         </div>
                         <div className="create-ticket-price-box" >
