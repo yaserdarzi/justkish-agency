@@ -285,30 +285,10 @@ class Seller extends Component {
                                 {/* <img src={arrowdown2} alt="فلش" /> */}
                                 <span>زمان پایان:</span><span>{this.props.data.end_hours}</span>
                             </p>
-                            <div className="create-ticket-numbers">
-                                <p onClick={this.selectTouristNumberHandler} className="create-ticket-btn-fullscreen"></p>
-                                <p className="create-ticket-number" >
-                                    <span className="notCloseMenuLand">{this.props.data.capacity}</span>
-                                    <span className="notCloseMenuLand">موجودی</span>
-                                </p>
-                                <div className="create-ticket-tourist-numbers" >تعدا گردشگر
-                                    <div className="notCloseMenuLand">1</div>
-                                    {
-                                        this.state.selectTourist
-                                            ?
-                                            <div className="create-ticket-tourist-change" >
-                                                <ul className="create-ticket-tourist-change-ul">
-                                                    {renderPriceAction}
-                                                </ul>
-
-                                            </div>
-
-                                            :
-                                            ''
-
-                                    }
-                                </div>
-                            </div>
+                            <p className="create-ticket-clock ">
+                                {/* <img src={arrowdown2} alt="فلش" /> */}
+                                <span>موجودی:</span><span>{this.props.data.capacity}</span>
+                            </p>
                         </div>
                         <div className="create-ticket-price-box" >
                             <p className="create-ticket-price-span">قیمت</p>
