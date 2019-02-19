@@ -59,10 +59,7 @@ class CreateTicket extends Component {
         this.getAllShopingBag(); // get all shoping bag
         this.getCategories();   //  get all categories
 
-       // console.log(DateToShamsi('2019','10','20'))
-      // console.log(jalaali.toJalaali(2016, 4, 11))
-    //    console.log(DateJalaly(2016, 4, 11))
-       console.log(DateJalaly('11/02/2019'))
+     
     }
 
     componentWillUnmount() {
