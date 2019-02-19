@@ -54,7 +54,8 @@ class CreateTicket extends Component {
             customerName:'',
             customerPhone:'',
             customerNameError:'',
-            customerPhoneError:''
+            customerPhoneError:'',
+            isLoadingPayment:false
         }
     }
 
@@ -190,11 +191,12 @@ class CreateTicket extends Component {
             .then(response => response.json())
             .then(responsJson => {
                 console.log(responsJson.data)
+
                 this.setState({
                     shopingBag: responsJson.data,
                     getShoping: false,
-                    customerName: responsJson.data.customer.name,
-                    customerPhone: responsJson.data.customer.phone
+                    customerName:  responsJson.data.customer ? responsJson.data.customer.name : '',
+                    customerPhone: responsJson.data.customer ? responsJson.data.customer.phone : ''
                 })
 
             })
@@ -396,7 +398,10 @@ class CreateTicket extends Component {
 
             console.log(res)
             if (res.status === 200) {
-            browserHistory.push("/payment-method")
+            browserHistory.push({pathname:'/payment-method',state: res.data })
+            }
+            else{
+                console.log(res)
             }
         }
     }
@@ -405,7 +410,7 @@ class CreateTicket extends Component {
         // console.log("fetching...")
 
         this.setState({
-            isLoadingAddAgent: true
+            isLoadingPayment: true
         })
 
         const url = base.baseURL + key;
@@ -430,14 +435,15 @@ class CreateTicket extends Component {
             })
             .then(([res, data]) => {
                 //console.log(res, data)
-                this.setState({ isLoadingAddAgent: false })
+                this.setState({ isLoadingPayment: false })
                 // after add refresh render all agent and show new record in list ....
                 if (res === 200) 
                 {
-                    console.log("request is success.")
+                    console.log(data)
                 }
                 return ({ 'status': res, 'data': data.data })
             })
+            .catch(err => console.log(err))
 
 
     }
@@ -561,8 +567,10 @@ class CreateTicket extends Component {
                                             <img src={arrow} alt="فلش" />
                                         </div>
                                         <div onClick={() => this._paymentToShop()} className="create-ticket-text">
-                                            پرداخت و صدور بلیت
+                                            <span>پرداخت و صدور بلیت</span> {this.state.isLoadingPayment ? <div className="loader-button"></div> : ''}
                                         </div>
+                                        
+                                        
                                     </div>
                                 </div>
                             </div>

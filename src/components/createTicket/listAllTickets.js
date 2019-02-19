@@ -163,7 +163,7 @@ class Seller extends Component {
 
 
       addToShopBag = async(data,id) =>{
-          console.log(event.target.name)
+        console.log(event.target.name)
         console.log("click") 
         console.log(id) 
         this.setState({
