@@ -6,7 +6,7 @@ import base from '../../api/baseURL';
 import Token from '../../api/token';
 import DateToShamsi from '../../components/times/dateMiladiToShamsi';
 import jalaali from 'jalaali-js';
-import DateJalaly from '../../components/times/dateMiladiToShamsi';
+import DateJalaly from '../../components/times/dateShamsiToMiladi';
 import PriceDigit from '../../components/priceDigit/priceDigit';
 
 
@@ -65,6 +65,8 @@ class CreateTicket extends Component {
         this.getAllTicket();      // get all tickets
         this.getAllShopingBag(); // get all shoping bag
         this.getCategories();   //  get all categories
+
+        console.log(DateJalaly('1395/12/10'))
 
     }
 
