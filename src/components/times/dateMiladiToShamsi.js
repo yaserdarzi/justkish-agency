@@ -12,14 +12,13 @@ import jalaali from 'jalaali-js';
 
 function DateJalaly(val){
     
-  
+   
         if(val !=='' && val !== null && val !== undefined){
             
             let dd = val.split('/'); 
-            let dateJalaly = jalaali.toJalaali(parseInt(dd[2],10), parseInt(dd[1],10), parseInt(dd[0],10));
+            let dateJalaly = jalaali.toJalaali(parseInt(dd[0],10), parseInt(dd[1],10), parseInt(dd[2],10));
 
-
-            return  dateJalaly.jd + '/' +  dateJalaly.jm + '/' +  dateJalaly.jy
+            return  dateJalaly.jy + '/' +  dateJalaly.jm + '/' +  dateJalaly.jd
         } 
         return 'No Value'
     

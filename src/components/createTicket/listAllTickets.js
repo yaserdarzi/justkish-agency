@@ -269,8 +269,8 @@ class Seller extends Component {
 
         return (
             <div className="create-ticket-search-result table-desktop" > 
-
-            <div className="create-ticket-search-lists " >
+                {console.log('sssssssssssssssssssssssssssssssssssssss')}
+                <div className="create-ticket-search-lists " >
                     <div className="create-ticket-search-list">
                         <div className="create-ticket-search-list-first-cell" >
                             <div className="create-ticket-search-play">{this.props.data.title}</div>
@@ -294,51 +294,9 @@ class Seller extends Component {
                         </div>
                         <div className="create-ticket-price-box" >
                             <p className="create-ticket-price-span">قیمت</p>
-                            {/* {renderPriceAction} */}
-                            
-                                    {/* <div className="create-ticket-price-level">
-                                        <div className="create-ticket-price-level-text">
-                                            <span className="create-ticket-price-level-text1">بزرگسال</span>
-                                            <span className="create-ticket-price-level-text2">(18 تا 20 سال)</span>
-                                        </div>
-                                        <h3>   25,000 </h3>
-                                        <Button                                                                  
-                                            isLoading={this.state.isLoading}                                    
-                                            title={' افزودن به سبد خرید'}                                                      
-                                            bgcolor={'#0080FF'}                                                 
-                                            hoverbgcolor={'#0080FF'}                                          
-                                            click={this.callSubmit}/> 
-                                    </div>
-                                    <div className="create-ticket-price-level">
-                                        <div className="create-ticket-price-level-text">
-                                            <span className="create-ticket-price-level-text1">بزرگسال</span>
-                                            <span className="create-ticket-price-level-text2">(18 تا 20 سال)</span>
-                                        </div>
-                                        <h3>   25,000 </h3>
-                                        <Button                                                                  
-                                            isLoading={this.state.isLoading}                                    
-                                            title={' افزودن به سبد خرید'}                                                      
-                                            bgcolor={'#0080FF'}                                                 
-                                            hoverbgcolor={'#0080FF'}                                          
-                                            click={this.callSubmit}/> 
-                                    </div> */}
 
                                    {renderAddTicket}
                         </div>
-                        {/* <div className="create-ticket-price-box">
-                            <p className="create-ticket-price-span">قیمت (تومان) </p>
-                            
-                            {renderPrice}
-                        </div> */}
-
-                        {/* <div className="create-ticket-add-to-bascket" >
-                            <Button
-                                isLoading={this.state.isLoading}
-                                title={'اضافه به سبد '}
-                                bgcolor={'#0080FF'}
-                                hoverbgcolor={'#1fc056cc'}
-                                click={this.callSubmit} />
-                        </div> */}
                     </div>
 
                 </div>

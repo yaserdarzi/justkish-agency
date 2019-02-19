@@ -16,9 +16,7 @@ function DateMiladi(val){
         if(val !=='' && val !== null && val !== undefined){
             
             let dd = val.split('/'); 
-            console.log(dd)
             let dateJalaly = jalaali.toGregorian(parseInt(dd[0],10), parseInt(dd[1],10), parseInt(dd[2],10));
-            console.log(dateJalaly)
 
             return  dateJalaly.gy + '/' +  dateJalaly.gm + '/' +  dateJalaly.gd
         } 

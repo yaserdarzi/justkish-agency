@@ -7,6 +7,7 @@ import Token from '../../api/token';
 import DateToShamsi from '../../components/times/dateMiladiToShamsi';
 import jalaali from 'jalaali-js';
 import DateJalaly from '../../components/times/dateShamsiToMiladi';
+import dateMilady from '../../components/times/dateMiladiToShamsi';
 import PriceDigit from '../../components/priceDigit/priceDigit';
 
 
@@ -66,12 +67,19 @@ class CreateTicket extends Component {
         this.getAllShopingBag(); // get all shoping bag
         this.getCategories();   //  get all categories
 
-        console.log(DateJalaly('1395/12/10'))
 
     }
 
     componentWillUnmount() {
         window.removeEventListener('scroll', this.handleScroll);
+    }
+
+    getCurrentDate(){
+        let d = new Date();
+        let fullDate = d.getFullYear() + '/' + (d.getMonth() + 1) + '/' + d.getDate()
+        //  console.log(fullDate)
+        //  console.log(dateMilady(fullDate))
+         return dateMilady(fullDate)
     }
 
 
@@ -126,7 +134,14 @@ class CreateTicket extends Component {
 
     getAllTicket = () => {
 
-        this.getData('agency/ticket?start_date=1550061287&end_date=1550579687&categories_id=' + this.getParms('categories') + '&' + this.getParms('start_date')+ '&' + this.getParms('end_date'))
+        
+        let start_date = this.getParms('start_date') !== 0 ? this.getParms('start_date') : this.getCurrentDate();
+        let end_date = this.getParms('end') !== 0 ? this.getParms('end') : this.getCurrentDate();
+
+        //console.log('agency/ticket?categories_id=' + this.getParms('categories') + '&start_date=' + start_date   + '&end_date=' + end_date )
+
+        this.getData('agency/ticket?categories_id=' + this.getParms('categories') + '&start_date=' + start_date   + '&end_date=' + end_date )
+
     }
 
 
@@ -152,7 +167,7 @@ class CreateTicket extends Component {
         })
             .then(response => response.json())
             .then(responsJson => {
-                console.log(responsJson.data.total)
+              //  console.log(responsJson.data.total)
                 this.setState({
                     allTickets: responsJson.data.total,
                     agentLoading: false,
@@ -192,7 +207,7 @@ class CreateTicket extends Component {
         })
             .then(response => response.json())
             .then(responsJson => {
-                console.log(responsJson.data)
+              //  console.log(responsJson.data)
 
                 this.setState({
                     shopingBag: responsJson.data,
@@ -250,8 +265,7 @@ class CreateTicket extends Component {
     // get All categories ------------------------------>
     //
 
-    getCategories() {
-        console.log("get all categories!");
+    getCategories() { 
         this.fetchCategories('agency/categories')
 
 
@@ -279,7 +293,7 @@ class CreateTicket extends Component {
                     categories: responseJson.data
 
                 })
-                console.log(responseJson.data)
+               // console.log(responseJson.data)
             })
     }
 
@@ -315,7 +329,7 @@ class CreateTicket extends Component {
         let url = new URL(url_string);
 
         const val = url.searchParams.get(value);
-        console.log(val)
+       // console.log(val)
         if (val !== null)
             return val;
         return 0
@@ -327,7 +341,7 @@ class CreateTicket extends Component {
     //
 
     _searchButonTickets() {
-        console.log("search.....");
+        //console.log("search.....");
         this.getAllTicket();
     }
 
@@ -456,12 +470,15 @@ class CreateTicket extends Component {
 
         const renderAllTickets = (
             // render all agents and pass props name , avatar , level ------->
+            
             this.state.agentLoading === false ? this.state.allTickets.map((item, index) =>
+                
                 <Tickets key={index}
                     id={item.id}
                     title={item.title}
                     data={item}
-                    action={() => this.getAllShopingBag()} />
+                    action={() => this.getAllShopingBag()} /> 
+
             ) : <div className="loader"></div>
 
         )
@@ -490,6 +507,12 @@ class CreateTicket extends Component {
                 <li key={item.id} onClick={() => this._selectCategorie(item)}> {item.title}</li>
             ) : ''
 
+        )
+
+        const notFound = (
+            <div className="create-ticket-filter notfound">
+                <p>متاسفانه ، موردی برای نمایش در تاریخ امروز موجود نیست</p>
+            </div>
         )
 
 
@@ -667,8 +690,13 @@ class CreateTicket extends Component {
                             </div>
 
                         </div>
-                        {/* -------------------------- */}
-                        {renderAllTickets}
+                        {/* --------------------------------------------------------------- */}
+                       
+                        {renderAllTickets } 
+                        
+                        {/* {this.state.allTickets.length === 0 ? notFound : renderAllTickets}
+                        {console.log(this.state.allTickets.length )}
+                        {console.log(this.state.allTickets ? 'notFound' : 'renderAllTickets')} */}
 
                     </div>
                 </div>
