@@ -5,6 +5,8 @@ import base from '../../api/baseURL';
 import Token from '../../api/token';
 import DateToShamsi from '../../components/times/dateMiladiToShamsi';
 import jalaali from 'jalaali-js';
+import DateJalaly from '../../components/times/dateMiladiToShamsi';
+
 
 
 
@@ -58,7 +60,9 @@ class CreateTicket extends Component {
         this.getCategories();   //  get all categories
 
        // console.log(DateToShamsi('2019','10','20'))
-       console.log(jalaali.toJalaali(2016, 4, 11))
+      // console.log(jalaali.toJalaali(2016, 4, 11))
+    //    console.log(DateJalaly(2016, 4, 11))
+       console.log(DateJalaly('11/02/2019'))
     }
 
     componentWillUnmount() {
