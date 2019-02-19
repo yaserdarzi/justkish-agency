@@ -470,8 +470,8 @@ class CreateTicket extends Component {
             this.state.getShoping === false ? this.state.shopingBag !== null ? this.state.shopingBag.shoppingBags.map((item, index) =>
                 
                 <SmallOrder key={index}
-                    title={item.products.title }
-                    orderNumber={item.products.title}
+                    title={item.type === 'product' ? item.products.title : item.tours.title }
+                    orderNumber={item.type === 'product' ? item.products.title : item.tours.title}
                     date="شنبه 1397/12/10 سانس 17:45تا 19:45"
                     prices={item}
                     action={() => this.getAllShopingBag()}/>  ): <p>No Data for show!</p>
