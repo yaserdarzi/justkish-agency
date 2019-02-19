@@ -118,7 +118,7 @@ class CreateTicket extends Component {
 
     getAllTicket = () => {
 
-        this.getData('agency/ticket?start_date=1550061287&end_date=1550579687&categories_id=' + this.getParms('categories'))
+        this.getData('agency/ticket?start_date=1550061287&end_date=1550579687&categories_id=' + this.getParms('categories') + '&' + this.getParms('start_date')+ '&' + this.getParms('end_date'))
     }
 
 
@@ -318,14 +318,19 @@ class CreateTicket extends Component {
 
 
     // date select 
-    change(unix, formatted) {
+    change = (unix, formatted) => {
         console.log(unix)
         console.log(formatted)
+        console.log("start date ");
+        this.insertParam('start_date',formatted);
     }
 
-    changeTimeDate(unix, formatted) {
+    changeTimeDate = (unix, formatted) => {
         console.log(unix)
         console.log(formatted)
+        console.log("end date ")
+        this.insertParam('end_date',formatted)
+
     }
 
     DatePickerInput(props) {
