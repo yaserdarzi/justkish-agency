@@ -10,15 +10,15 @@ import jalaali from 'jalaali-js';
 
 // jalaali.toJalaali(2016, 4, 11)
 
-function DateJalaly(val){
+function DateMiladi(val){
     
-   
+  
         if(val !=='' && val !== null && val !== undefined){
             
             let dd = val.split('/'); 
-            let dateJalaly = jalaali.toJalaali(parseInt(dd[0],10), parseInt(dd[1],10), parseInt(dd[2],10));
+            let dateJalaly = jalaali.toGregorian(parseInt(dd[0],10), parseInt(dd[1],10), parseInt(dd[2],10));
 
-            return  dateJalaly.jy + '/' +  dateJalaly.jm + '/' +  dateJalaly.jd
+            return  dateJalaly.gy + '/' +  dateJalaly.gm + '/' +  dateJalaly.gd
         } 
         return 'No Value'
     
@@ -28,4 +28,4 @@ function DateJalaly(val){
  
 
 
-export default DateJalaly;
+export default DateMiladi;

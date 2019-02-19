@@ -45,17 +45,17 @@ class SmallOrder extends Component {
             console.log(`
             data is -------------------
             type :${data.type}
-            id :${data.products_id}
+            id :${data.type==='product' ? data.products_id : data.tour_id}
             price_age_range_id :${id}
-            episode_id :${data.products_episode.id}
+            episode_id :${data.type==='product' ? data.products_episode.id : data.tours_episode.id}
             `);
 
             // provider data for API --------->
             const dataProw = {
                 "type":data.type,
-                "id":data.products_id,
+                "id":data.type==='product' ? data.products_id : data.tour_id,
                 "price_age_range_id":id,
-                "episode_id": data.products_episode.id
+                "episode_id": data.type==='product' ? data.products_episode.id : data.tours_episode.id
             } 
             
            const res = await this.postData(dataProw,'agency/shopping/minus');
@@ -71,17 +71,17 @@ class SmallOrder extends Component {
             console.log(`
             data is -------------------
             type :${data.type}
-            id :${data.products_id}
+            id :${data.type==='product' ? data.products_id : data.tour_id}
             price_age_range_id :${id}
-            episode_id :${data.products_episode.id}
+            episode_id :${data.type==='product' ? data.products_episode.id : data.tours_episode.id}
             `);
 
             // provider data for API --------->
             const dataProw = {
                 "type":data.type,
-                "id":data.products_id,
+                "id":data.type==='product' ? data.products_id : data.tour_id,
                 "price_age_range_id":id,
-                "episode_id": data.products_episode.id
+                "episode_id": data.type==='product' ? data.products_episode.id : data.tours_episode.id
             } 
             
            const res = await this.postData(dataProw,'agency/shopping/add');
@@ -135,9 +135,9 @@ class SmallOrder extends Component {
               console.log(`
               data is -------------------
               type :${data.type}
-              id :${data.products_id}
-              price_age_range_id : ${data.product_price_range.id}
-              episode_id :${data.products_episode.id}
+              id :${data.type==='product' ? data.products_id : data.tour_id}
+              price_age_range_id :${data.type==='product' ? data.product_price_range.id:data.tours_price_range.id}
+              episode_id :${data.type==='product' ? data.products_episode.id : data.tours_episode.id}
               `);
 
 
@@ -145,9 +145,9 @@ class SmallOrder extends Component {
                      // provider data for API --------->
             const dataProw = {
                 "type":data.type,
-                "id":data.products_id,
-                "price_age_range_id":data.product_price_range.id,
-                "episode_id": data.products_episode.id
+                "id":data.type==='product' ? data.products_id : data.tour_id,
+                "price_age_range_id":data.type==='product' ? data.product_price_range.id:data.tours_price_range.id,
+                "episode_id": data.type==='product' ? data.products_episode.id : data.tours_episode.id
             } 
             
            const res = await this.postData(dataProw,'agency/shopping/remove');
@@ -164,16 +164,15 @@ class SmallOrder extends Component {
             this.props.prices !== undefined ?
             // <p>{this.props.prices.product_price_range.price}</p>
 
-            <li key={this.props.prices.product_price_range.id} className="create-ticket-tourist-change-li">
-            {console.log(this.props.prices)}
+            <li key={this.props.prices.type==='product' ? this.props.prices.product_price_range.id : this.props.prices.tours_price_range.id} className="create-ticket-tourist-change-li">
             <div className="notCloseMenuLand">
-                <h6 className="notCloseMenuLand">{this.props.prices.product_price_range.title}</h6>
-                <span>{PriceDigit(this.props.prices.product_price_range.price,'price')}</span> 
-                <p className="notCloseMenuLand">({this.props.prices.product_price_range.min} تا {this.props.prices.product_price_range.max} سال)</p> 
+                <h6 className="notCloseMenuLand">{this.props.prices.type==='product' ? this.props.prices.product_price_range.title : this.props.prices.tours_price_range.title}</h6>
+                <span>{PriceDigit(this.props.prices.type==='product' ? this.props.prices.product_price_range.price : this.props.prices.tours_price_range.price,'price')}</span> 
+                <p className="notCloseMenuLand">({this.props.prices.type==='product' ? this.props.prices.product_price_range.min : this.props.prices.tours_price_range.min} تا {this.props.prices.type==='product' ? this.props.prices.product_price_range.max : this.props.prices.tours_price_range.max} سال)</p> 
              
             </div>
             <div className="MinusPlus" >
-                <MinusPlus actionDec={() => this.actionDec(this.props.prices,this.props.prices.product_price_range.id)} actionInc={() => this.actionInc(this.props.prices,this.props.prices.product_price_range.id)} change={this.handleFilterUpdate} counter={this.props.prices.count}   />
+                <MinusPlus actionDec={() => this.actionDec(this.props.prices,this.props.prices.type==='product' ? this.props.prices.product_price_range.id : this.props.prices.tours_price_range.id)} actionInc={() => this.actionInc(this.props.prices,this.props.prices.type==='product' ? this.props.prices.product_price_range.id : this.props.prices.tours_price_range.id)} change={this.handleFilterUpdate} counter={this.props.prices.count}   />
             </div>
         </li>
              

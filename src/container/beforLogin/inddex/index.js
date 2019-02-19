@@ -191,7 +191,7 @@ class Index extends Component {
             if(res.status === 200)
             {
                 
-               console.log(`Agent is registerd!`) // TODO Delete Later 
+               console.log(`Agent is registerd!`) // TODO: Delete Later 
                this.setState({
                    regSuccess:'درخواست شما با موفقیت ارسال شد.',
                   

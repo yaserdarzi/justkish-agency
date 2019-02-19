@@ -138,13 +138,11 @@ class Dashboard extends Component {
         console.log()
         this.getAllSellers();
         this.getCalenderDayeMonth();
+        this.weatherHandler();
+    }
 
-
-
-        console.log(PriceDigit('df', 'digit'))
-        this.weatherHandler()
-
-
+    componentWillMount(){
+     
     }
 
 
@@ -223,7 +221,7 @@ class Dashboard extends Component {
         })
     }
 
-    weatherHandler = () => {
+    weatherHandler =  () => {
         var APPID = "7d1b757c28035a0d3f9608ee7c54278a"
         var temp, loc, icon, humidity, wind, direction;
 
