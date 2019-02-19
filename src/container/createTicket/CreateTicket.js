@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import {Link, browserHistory } from 'react-router'; 
+import { Link, browserHistory } from 'react-router';
+import { DateRangePicker } from "react-advance-jalaali-datepicker";
 
 import base from '../../api/baseURL';
 import Token from '../../api/token';
@@ -32,7 +33,7 @@ import SmallOrder from './../../components/smallOrder/SmallOrder';
 import Input from './../../components/input/Input';
 import Button from './../../components/common/Button/Button'
 import MinusPlus from './../../components/common/MinusPlus/MinusPlus';
-import Tickets from '../../components/createTicket/listAllTickets'; 
+import Tickets from '../../components/createTicket/listAllTickets';
 
 
 import './CreateTicket.css';
@@ -43,12 +44,12 @@ class CreateTicket extends Component {
         super(props);
         this.state = {
             selectTourist: false,
-            allTickets:[],
-            shopingBag:[],
-            categories:[],
-            categorie: this.getParms('categories') || 0 ,
-            person:0,
-            getShoping:true
+            allTickets: [],
+            shopingBag: [],
+            categories: [],
+            categorie: this.getParms('categories') || 0,
+            person: 0,
+            getShoping: true
         }
     }
 
@@ -59,7 +60,6 @@ class CreateTicket extends Component {
         this.getAllShopingBag(); // get all shoping bag
         this.getCategories();   //  get all categories
 
-     
     }
 
     componentWillUnmount() {
@@ -116,8 +116,8 @@ class CreateTicket extends Component {
     //  Get all issus ticket ------------------->
     //
 
-    getAllTicket =() =>{
-       
+    getAllTicket = () => {
+
         this.getData('agency/ticket?start_date=1550061287&end_date=1550579687&categories_id=' + this.getParms('categories'))
     }
 
@@ -156,12 +156,12 @@ class CreateTicket extends Component {
     // Get all shoping bag || sabad kharid---------------------->
     //
 
-    getAllShopingBag =async() => {
-       await this.getDataShoping('agency/shopping');
-      
+    getAllShopingBag = async () => {
+        await this.getDataShoping('agency/shopping');
+
     }
 
-    getDataShoping =async(key)=> {
+    getDataShoping = async (key) => {
 
         this.setState({
             getShoping: true
@@ -188,7 +188,7 @@ class CreateTicket extends Component {
                     shopingBag: responsJson.data,
                     getShoping: false
                 })
-             
+
             })
             .catch(err => console.log(err))
     }
@@ -197,8 +197,8 @@ class CreateTicket extends Component {
     //
     // clear shop bag ----------------------------->
     //
-  
-    clearShopBag =() =>{
+
+    clearShopBag = () => {
 
         this.ClearShopBagData('agency/shopping/clear')
     }
@@ -216,7 +216,7 @@ class CreateTicket extends Component {
             cache: "no-cache",
             headers: {
                 "Content-Type": "application/json",
-                "Accept": "application/json", 
+                "Accept": "application/json",
                 "Authorization": Token
             },
             redirect: "follow",
@@ -227,10 +227,10 @@ class CreateTicket extends Component {
                 console.log(responsJson.data)
                 this.getAllShopingBag(); // call for refresh shoping bag
                 this.setState({
-                    getShoping:false
+                    getShoping: false
                 })
-                 
-             
+
+
             })
     }
 
@@ -238,7 +238,7 @@ class CreateTicket extends Component {
     // get All categories ------------------------------>
     //
 
-    getCategories(){
+    getCategories() {
         console.log("get all categories!");
         this.fetchCategories('agency/categories')
 
@@ -246,40 +246,40 @@ class CreateTicket extends Component {
     }
 
 
-    fetchCategories(key){
+    fetchCategories(key) {
         const url = base.baseURL + key;
 
         fetch(url, {
-            method: "GET", 
-            cache: "no-cache",  
+            method: "GET",
+            cache: "no-cache",
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json",
-                "agent" : "web",
+                "agent": "web",
                 "Authorization": Token
             },
-            redirect: "follow", 
-            referrer: "no-referrer"  
+            redirect: "follow",
+            referrer: "no-referrer"
         })
-        .then(response => response.json())
-        .then(responseJson => {
-            this.setState({ 
-                categories : responseJson.data
+            .then(response => response.json())
+            .then(responseJson => {
+                this.setState({
+                    categories: responseJson.data
 
+                })
+                console.log(responseJson.data)
             })
-            console.log(responseJson.data)
-        })
     }
- 
 
-    _selectCategorie = async(item) => {
+
+    _selectCategorie = async (item) => {
         await this.setState({
             categorie: item.title
         })
 
         console.log(`selectedt ${item.id}`)
-        this.insertParam('categories',item.id);
-   
+        this.insertParam('categories', item.id);
+
     }
 
     insertParam = async (key, value) => {
@@ -294,7 +294,7 @@ class CreateTicket extends Component {
 
 
     getParms(value) {
-     
+
         let url_string = window.location.href
         let url = new URL(url_string);
 
@@ -310,9 +310,27 @@ class CreateTicket extends Component {
     // search button -------------------->
     //
 
-    _searchButonTickets(){
+    _searchButonTickets() {
         console.log("search.....");
         this.getAllTicket();
+    }
+
+
+
+    // date select 
+    change(unix, formatted) {
+        console.log(unix)
+        console.log(formatted)
+    }
+
+    changeTimeDate(unix, formatted) {
+        console.log(unix)
+        console.log(formatted)
+    }
+
+    DatePickerInput(props) {
+        console.log(prop)
+        return <input className="popo" {...props} ></input>;
     }
 
     render() {
@@ -322,7 +340,7 @@ class CreateTicket extends Component {
             this.state.agentLoading === false ? this.state.allTickets.map((item, index) =>
                 <Tickets key={index}
                     id={item.id}
-                    title={item.title}  
+                    title={item.title}
                     data={item}
                     action={() => this.getAllShopingBag()} />
             ) : <div className="loader"></div>
@@ -330,9 +348,10 @@ class CreateTicket extends Component {
         )
 
 
-        const renderShopingBag =  (
+        const renderShopingBag = (
             // render all agents and pass props name , avatar , level ------->
             this.state.getShoping === false ? this.state.shopingBag !== null ? this.state.shopingBag.shoppingBags.map((item, index) =>
+
             
             <SmallOrder key={index}
                  title={item.products.title }
@@ -341,16 +360,25 @@ class CreateTicket extends Component {
                  prices={item}
                  action={() => this.getAllShopingBag()}/>  ): <p>No Data for show!</p>
 
-              : <div className="loader"></div>
+
+                <SmallOrder key={index}
+                    title={item.products.title}
+                    orderNumber={item.products.title}
+                    date="شنبه 1397/12/10 سانس 17:45تا 19:45"
+                    prices={item}
+                    action={() => this.getAllShopingBag()} />) : <p>No Data for show!</p>
+
+                :
+                <div className="loader"></div>
 
         )
 
 
-        const renderCategory =(
-            this.state.categories !== null ? this.state.categories.map((item,index) => 
-            <li key={item.id} onClick={() => this._selectCategorie(item)}> {item.title}</li>
+        const renderCategory = (
+            this.state.categories !== null ? this.state.categories.map((item, index) =>
+                <li key={item.id} onClick={() => this._selectCategorie(item)}> {item.title}</li>
             ) : ''
-            
+
         )
 
 
@@ -376,15 +404,15 @@ class CreateTicket extends Component {
                                 <p className="create-ticket-your-bascket-row2" >
                                     <span>تعداد سفارشات</span>
                                     <span>{this.state.shopingBag.total_count}</span>
-                              
+
                                 </p>
                             </div>
 
                             <div className="create-ticket-your-orders" >
-                        
-                                    {renderShopingBag}
-                            
-                        
+
+                                {renderShopingBag}
+
+
 
                             </div>
 
@@ -429,8 +457,22 @@ class CreateTicket extends Component {
                     <div className="part2" >
                         <div className="create-ticket-filter" >
                             <div className="create-ticket-date" >
-                                <div className="create-ticket-from" >از</div>
-                                <div className="create-ticket-to" >تا</div>
+                                {/* <div className="create-ticket-from" >از</div>
+                                <div className="create-ticket-to" >تا</div> */}
+
+                                <div className="datePicker">
+
+                                    <DateRangePicker
+                                        placeholderStart="تاریخ شروع"
+                                        placeholderEnd="تاریخ پایان"
+                                        format="jYYYY/jMM/jDD"
+                                        onChangeStart={this.change}
+                                        onChangeEnd={this.changeTimeDate}
+                                        idStart="rangePickerStart"
+                                        idEnd="rangePickerEnd"
+                                    />
+
+                                </div>
                             </div>
                             <div className="create-ticket-search">
 
@@ -466,7 +508,7 @@ class CreateTicket extends Component {
                                     <ul className="create-ticket-features-lists" >
                                         <li className="create-ticket-features-list" >
                                             <ul className="create-ticket-features-col" >
-                                            {renderCategory}
+                                                {renderCategory}
                                             </ul>
                                             {/* <ul className="create-ticket-features-col" >
                                                 <li> استند آپ کمدی</li>
@@ -500,7 +542,7 @@ class CreateTicket extends Component {
                             </div>
 
                         </div>
-                       {/* -------------------------- */}
+                        {/* -------------------------- */}
                         {renderAllTickets}
 
                     </div>
