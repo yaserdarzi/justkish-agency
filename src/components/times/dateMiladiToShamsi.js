@@ -17,9 +17,9 @@ function DateJalaly(val){
             
             let dd = val.split('/'); 
             let dateJalaly = jalaali.toJalaali(parseInt(dd[2],10), parseInt(dd[1],10), parseInt(dd[0],10));
-            
 
-            return jalaali.toJalaali(parseInt(dd[2],10), parseInt(dd[1],10), parseInt(dd[0],10))
+
+            return  dateJalaly.jd + '/' +  dateJalaly.jm + '/' +  dateJalaly.jy
         } 
         return 'No Value'
     

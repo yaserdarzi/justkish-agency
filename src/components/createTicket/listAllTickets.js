@@ -6,7 +6,8 @@ import PriceDigit from '../priceDigit/priceDigit';
 import TimeStamp from '../times/timespanToDate';
 import base from '../../api/baseURL';
 import Token from '../../api/token';
- 
+import DateJalaly from '../times/dateMiladiToShamsi';
+
 
 
 import arrowdown2 from '../../../assets/icons/arrow-down2.svg';
@@ -34,6 +35,7 @@ class Seller extends Component {
 
     componentWillUnmount() {
         window.removeEventListener('scroll', this.handleScroll);
+
     }
 
     selectTouristNumberHandler = (event) => {
@@ -273,7 +275,7 @@ class Seller extends Component {
                         <div className="create-ticket-search-list-first-cell" >
                             <div className="create-ticket-search-play">{this.props.data.title}</div>
                             <div className="create-ticket-dates">
-                                <p>{TimeStamp(this.props.data.start_date)}</p>
+                                <p>{DateJalaly(TimeStamp(this.props.data.start_date))}</p>
                             </div>
                         </div>
                         <div className="clock-numbers">
