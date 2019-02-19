@@ -55,6 +55,7 @@ class CreateTicket extends Component {
         this.getAllTicket();      // get all tickets
         this.getAllShopingBag(); // get all shoping bag
         this.getCategories();   //  get all categories
+        
     }
 
     componentWillUnmount() {
