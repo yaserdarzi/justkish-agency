@@ -7,6 +7,7 @@ import Token from '../../api/token';
 import DateToShamsi from '../../components/times/dateMiladiToShamsi';
 import jalaali from 'jalaali-js';
 import DateJalaly from '../../components/times/dateMiladiToShamsi';
+import PriceDigit from '../../components/priceDigit/priceDigit';
 
 
 
@@ -49,7 +50,9 @@ class CreateTicket extends Component {
             categories: [],
             categorie: this.getParms('categories') || 0,
             person: 0,
-            getShoping: true
+            getShoping: true,
+            customerName:'aras',
+            shopingNumber:'0123456'
         }
     }
 
@@ -396,7 +399,7 @@ class CreateTicket extends Component {
                                 </p>
                                 <p className="create-ticket-your-bascket-row2" >
                                     <span>مبلغ کل</span>
-                                    <span>{this.state.shopingBag.total_price}</span>
+                                    <span>{PriceDigit(this.state.shopingBag.total_price,'price')}</span>
                                 </p>
                                 <p className="create-ticket-your-bascket-row2" >
                                     <span>تعداد سفارشات</span>
@@ -431,7 +434,7 @@ class CreateTicket extends Component {
                                     </div>
                                     <div className="create-ticket-customer-factor-total">
                                         <span>مبلغ قابل پرداخت شما</span>
-                                        <span style={{ color: '#00BF66' }}>{this.state.shopingBag.total_price} تومان</span>
+                                        <span style={{ color: '#00BF66' }}>{PriceDigit(this.state.shopingBag.total_price,'price')} تومان</span>
                                     </div>
                                 </div>
                                 <div className="create-ticket-transaction" >
