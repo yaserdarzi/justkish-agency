@@ -51,8 +51,10 @@ class CreateTicket extends Component {
             categorie: this.getParms('categories') || 0,
             person: 0,
             getShoping: true,
-            customerName:'aras',
-            shopingNumber:'0123456'
+            customerName:'',
+            customerPhone:'',
+            customerNameError:'',
+            customerPhoneError:''
         }
     }
 
@@ -150,7 +152,8 @@ class CreateTicket extends Component {
                 console.log(responsJson.data.total)
                 this.setState({
                     allTickets: responsJson.data.total,
-                    agentLoading: false
+                    agentLoading: false,
+                   
                 })
             })
     }
@@ -189,7 +192,9 @@ class CreateTicket extends Component {
                 console.log(responsJson.data)
                 this.setState({
                     shopingBag: responsJson.data,
-                    getShoping: false
+                    getShoping: false,
+                    customerName: responsJson.data.customer.name,
+                    customerPhone: responsJson.data.customer.phone
                 })
 
             })
@@ -285,6 +290,10 @@ class CreateTicket extends Component {
 
     }
 
+    //
+    // insert and get params from url --------------------------------------------------------->
+    //
+
     insertParam = async (key, value) => {
         // push params in url location query
         await browserHistory.push({
@@ -340,6 +349,100 @@ class CreateTicket extends Component {
         console.log(prop)
         return <input className="popo" {...props} ></input>;
     }
+
+
+    changedHandler = (e) => {
+        //console.log(e.target.value)
+        this.setState({
+            [e.target.name]: e.target.value
+        });
+    }
+
+    //
+    // paymnet to shop ------------------->
+    //
+
+    _paymentToShop =async() => {
+        console.log("payment call")
+
+        let chechking = false;
+
+        if(this.state.customerName === '' || this.state.customerName === null){
+            chechking = true;
+            this.setState({
+                customerNameError:'لطفا نام مشتری را وارد نمایید'
+            })
+        }
+
+        if(this.state.customerPhone === '' || this.state.customerPhone === null){
+            chechking = true;
+            this.setState({
+                customerPhoneError:'لطفا شماره مشتری را وارد نمایید'
+            })
+        }
+
+
+           // provider data for API --------->
+           const data = {
+            "name": this.state.customerName,
+            "phone": this.state.customerPhone
+           
+        }
+
+
+        if(chechking === false){
+            console.log('data success cheking');
+            const res = await this.postPayment(data, 'agency/shopping');
+
+            console.log(res)
+            if (res.status === 200) {
+            browserHistory.push("/payment-method")
+            }
+        }
+    }
+
+    postPayment = (data, key) => {
+        // console.log("fetching...")
+
+        this.setState({
+            isLoadingAddAgent: true
+        })
+
+        const url = base.baseURL + key;
+
+        return fetch(url, {
+            method: "POST",
+            cache: "no-cache",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                "agent": "web",
+                "Authorization": Token
+            },
+            redirect: "follow",
+            referrer: "no-referrer",
+            body: JSON.stringify(data),
+        })
+            .then(response => {
+                const statusCode = response.status
+                const data = response.json()
+                return Promise.all([statusCode, data])
+            })
+            .then(([res, data]) => {
+                //console.log(res, data)
+                this.setState({ isLoadingAddAgent: false })
+                // after add refresh render all agent and show new record in list ....
+                if (res === 200) 
+                {
+                    console.log("request is success.")
+                }
+                return ({ 'status': res, 'data': data.data })
+            })
+
+
+    }
+
+
 
     render() {
 
@@ -438,17 +541,29 @@ class CreateTicket extends Component {
                                     </div>
                                 </div>
                                 <div className="create-ticket-transaction" >
-                                    <Input name="buyerName" placeholder="نام خریدار" />
-                                    <Input name="buyerNumber" placeholder="شماره خریدار " />
-                                    <Link to="/payment-method" className="create-ticket-pay" >
+                                    <Input 
+                                        name="customerName"
+                                        val={this.state.customerName || ''} 
+                                        placeholder="نام خریدار"
+                                        changed={this.changedHandler}
+                                        error={this.state.customerNameError}
+                                     />
+                                    <Input 
+                                        name="customerPhone" 
+                                        placeholder="شماره تماس خریدار "
+                                        val={this.state.customerPhone}
+                                        changed={this.changedHandler}
+                                        error={this.state.customerPhoneError} 
+                                    />
+                                    <div  className="create-ticket-pay" >
                                         <div className="create-ticket-imgs">
                                             <img src={co} alt="فلش" />
                                             <img src={arrow} alt="فلش" />
                                         </div>
-                                        <div className="create-ticket-text">
+                                        <div onClick={() => this._paymentToShop()} className="create-ticket-text">
                                             پرداخت و صدور بلیت
                                         </div>
-                                    </Link>
+                                    </div>
                                 </div>
                             </div>
 
