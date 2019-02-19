@@ -351,22 +351,14 @@ class CreateTicket extends Component {
         const renderShopingBag = (
             // render all agents and pass props name , avatar , level ------->
             this.state.getShoping === false ? this.state.shopingBag !== null ? this.state.shopingBag.shoppingBags.map((item, index) =>
-
-            
-            <SmallOrder key={index}
-                 title={item.products.title }
-                 orderNumber={item.products.title}
-                 date="شنبه 1397/12/10 سانس 17:45تا 19:45"
-                 prices={item}
-                 action={() => this.getAllShopingBag()}/>  ): <p>No Data for show!</p>
-
-
+                
                 <SmallOrder key={index}
-                    title={item.products.title}
+                    title={item.products.title }
                     orderNumber={item.products.title}
                     date="شنبه 1397/12/10 سانس 17:45تا 19:45"
                     prices={item}
-                    action={() => this.getAllShopingBag()} />) : <p>No Data for show!</p>
+                    action={() => this.getAllShopingBag()}/>  ): <p>No Data for show!</p>
+                
 
                 :
                 <div className="loader"></div>
