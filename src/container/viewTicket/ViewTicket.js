@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import base from '../../api/baseURL';
 import Token from '../../api/token';
-
-
+import PriceDigit from '../../components/priceDigit/priceDigit';
+ 
 
 
 //
@@ -29,12 +29,16 @@ class ViewTicket extends Component {
             userInfo: {},
             userType: '',
             isLoading: false,
-            userAvatar: 'https://www.drupal.org/files/issues/default-avatar.png'
+            userAvatar: 'https://www.drupal.org/files/issues/default-avatar.png',
+            ticket:[],
+            isLoadingTicket: false
         }
     }
 
-    componentDidMount(){
+    componentWillMount(){
         console.log(this.getParms('id'));
+        this.getData('agency/factor/' + this.getParms('id'));
+
 
     }
 
@@ -44,7 +48,7 @@ class ViewTicket extends Component {
     getData(key) {
 
         this.setState({
-            agentLoading: true
+            isLoadingTicket: true
         })
 
         const url = base.baseURL + key;
@@ -63,10 +67,10 @@ class ViewTicket extends Component {
         })
             .then(response => response.json())
             .then(responsJson => {
-                //console.log(responsJson.data)
+                console.log(responsJson.data)
                 this.setState({
-                    agents: responsJson.data,
-                    agentLoading: false
+                    ticket: responsJson.data,
+                    isLoadingTicket: false
                 })
             })
     }
@@ -98,7 +102,8 @@ class ViewTicket extends Component {
                                     <img src={brand} alt="برند" />
                                     <div className="ticket-triple-box-titles" >
                                         <h2>نام خریدار</h2>
-                                        <p>محمدرضا رحمانی</p>
+                                        <p>{this.state.ticket.customer ? this.state.ticket.customer.name : ' '}</p>
+                                        {console.log(this.state.ticket.customer ? this.state.ticket.customer.name : ' ')}
                                         <p>0912-569-6696</p>
                                     </div>
                                 </div>
@@ -123,7 +128,7 @@ class ViewTicket extends Component {
                                 <div className="ticket-dates-box" >
                                     <img src={icon1} alt="آیکن" />
                                     <span>تاریخ بلیت: </span>
-                                    <span>1397/12/10</span>
+                                    <span>{this.state.ticket.created_at}</span>
                                 </div>
                                 <div className="ticket-dates-box" >
                                     <img src={icon2} alt="آیکن" />
@@ -151,7 +156,7 @@ class ViewTicket extends Component {
                                     </div>
                                 </div>
                                 <h1 className="ticket-barcode-price-number">
-                                    360,000
+                                    {PriceDigit(this.state.ticket.total_count,'price')}
                                     <span>تومان</span>
                                 </h1>
 
