@@ -159,6 +159,153 @@ margin: 10px;
 display: flex;
 }
 
+
+
+
+
+
+.filter .datePicker  {
+    display: flex;
+    align-items: center;
+}
+.filter .datePicker  .jdtrp > div:nth-child(1) ,
+.filter .datePicker  .jdtrp > div:nth-child(3){
+    position: relative;
+}
+.filter .datePicker  .jdtrp > div:nth-child(1)::before , 
+.filter .datePicker  .jdtrp > div:nth-child(3)::before {
+    width: 18px;
+    height: 20px;
+    vertical-align: middle;
+    margin-left: 10px;
+    display: inline-block;
+    content: '';
+    background: url('./../../../assets/icons/calendar.svg') 0 0 no-repeat;
+}
+
+.filter .datePicker  .jdtrp > div .JDatePicker {
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 3px 30px rgba(157,206,255,.36);
+    direction: rtl;
+    width: 400px;
+    margin-right: -150px;
+    overflow: hidden;
+    min-height: 70px;
+    display: block;
+    position: absolute;
+    background-color: #fff;
+    right: 145px;
+    top: 30px;
+}
+
+.filter .datePicker  .jdtrp > div:nth-child(2){
+    display: none;
+
+}
+
+.filter .JDatePicker .JC-months .holder:last-child{
+    width: 100%;
+    font-weight: 900;
+    font-size: 17px;
+}
+.filter .days-titles{
+    margin-bottom: 5px;
+}
+.filter .days-titles div{
+    padding: 5px;
+    border: 1px solid #eee;
+    border-radius: 10px;
+}
+
+.filter .JDatePicker .day-items:hover{
+    background-color: #007be6!important;
+    color: #fff!important;
+}
+.filter .JDatePicker .day-items.selected{
+    background-color:#005299!important;
+    color: #fff!important;
+    border: none!important;
+    text-shadow: 1px 1px 1px #000!important;
+
+}
+.filter .JDatePicker .JC-days{
+    background-color: #fff;
+}
+.filter  .JDatePicker .day-items {
+    padding: 5px!important;
+    border: 1px solid #eee!important;
+    border-radius: 10px!important;
+    background-color: #fff !important;
+    cursor: pointer!important;
+}
+.filter .JDatePicker .JC-months .prev,.filter .JDatePicker .JC-months .next{
+    transition: all .2s linear;
+
+}
+.filter .JDatePicker .JC-months .prev:hover,.filter .JDatePicker .JC-months .next:hover{
+    background-color: #f1f1f1;
+    border-radius: 10px;
+    transition: all .2s linear;
+}
+.filter .JDatePicker .JDheader .right .number{
+    border: 1px solid #eee;
+    border-radius: 10px;
+}
+.filter .JDatePicker .JDheader .right .number:hover{
+    border: 1px solid #eee;
+    border-radius: 10px;
+}
+
+.filter  .JC-years{
+    position: relative;
+    margin-bottom: 10px;
+    height: 25px;
+}
+
+.filter .JDatePicker .JDheader .right input[type="tel"] {
+    z-index: 2;
+    top: 0px;
+    position: absolute;
+    width: 70%;
+    direction: ltr;
+    text-align: center;
+    display: inline-block;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    font-size: 12px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .search-sellers{
     display: flex;
 }
@@ -285,6 +432,7 @@ display: block;
     justify-content: space-between;
     padding:20px;
     border-radius: 10px;
+    box-shadow: 0 3px 6px rgba(157,206,255,.16);
 }
 .all-income-sale{
     display: flex;
@@ -401,11 +549,19 @@ display: block;
     .part1{
         width: 100%;
         padding: 10px;
+        margin: 0px;
     }
     .part2{
         width: 100%;
         margin: auto;
         padding: 10px;
+    }
+    .filter .datePicker .jdtrp > div .JDatePicker{
+        padding: 10px;
+    }
+
+    .filter .datePicker .jdtrp > div:nth-child(3) .JDatePicker{
+        right: -30px;
     }
 
 }
@@ -457,6 +613,21 @@ display: block;
             display: flex;
             justify-content:space-around;
             width: 100px;
+        }
+        .filter .datePicker .jdtrp > div:nth-child(1), .filter .datePicker .jdtrp > div:nth-child(3){
+            padding: 20px 0px;
+        }
+        .filter .datePicker .jdtrp{
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+        .filter .datePicker .jdtrp > div .JDatePicker ,.filter .datePicker .jdtrp > div:nth-child(3) .JDatePicker{
+            right: 145px;
+            width: 100%;
+        }
+        .filter .days-titles div{
+            padding: 0px;
         }
 }
 @media screen and (max-width: 450px){

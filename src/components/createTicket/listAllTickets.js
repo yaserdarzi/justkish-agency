@@ -6,7 +6,8 @@ import PriceDigit from '../priceDigit/priceDigit';
 import TimeStamp from '../times/timespanToDate';
 import base from '../../api/baseURL';
 import Token from '../../api/token';
- 
+import DateJalaly from '../times/dateMiladiToShamsi';
+
 
 
 import arrowdown2 from '../../../assets/icons/arrow-down2.svg';
@@ -34,6 +35,7 @@ class Seller extends Component {
 
     componentWillUnmount() {
         window.removeEventListener('scroll', this.handleScroll);
+
     }
 
     selectTouristNumberHandler = (event) => {
@@ -161,7 +163,7 @@ class Seller extends Component {
 
 
       addToShopBag = async(data,id) =>{
-          console.log(event.target.name)
+        console.log(event.target.name)
         console.log("click") 
         console.log(id) 
         this.setState({
@@ -242,7 +244,7 @@ class Seller extends Component {
             // render all agents and pass props name , avatar , level ------->
             this.state.agentLoading === false ? this.props.data.prices.map((item, index) =>
              
-                    <div key={index} className="create-ticket-price-level">
+                    <div key={index} className="create-ticket-price-level ">
                         <div className="create-ticket-price-level-text">
                             <span className="create-ticket-price-level-text1">{item.title}</span>
                             <span className="create-ticket-price-level-text2">({item.min} تا {item.max} سال)</span>
@@ -266,97 +268,34 @@ class Seller extends Component {
 
 
         return (
-            <div className="create-ticket-search-result table-desktop" > 
-
-            <div className="create-ticket-search-lists " >
-                    <div className="create-ticket-search-list">
+            <div className="create-ticket-search-result table-desktop fadeInDown" >  
+                <div className="create-ticket-search-lists " >
+                    <div className="create-ticket-search-list ">
                         <div className="create-ticket-search-list-first-cell" >
                             <div className="create-ticket-search-play">{this.props.data.title}</div>
                             <div className="create-ticket-dates">
-                                <p>{TimeStamp(this.props.data.start_date)}</p>
+                                <p>{DateJalaly(TimeStamp(this.props.data.start_date))}</p>
                             </div>
                         </div>
                         <div className="clock-numbers">
                             <p className="create-ticket-clock ">
                                 {/* <img src={arrowdown2} alt="فلش" /> */}
-                                <span>زمان شروع:</span><span>{this.props.data.start_hours}</span>
+                                <span>زمان شروع:</span><span>{this.props.data.start_hours || '-'}</span>
                             </p>
                             <p className="create-ticket-clock ">
                                 {/* <img src={arrowdown2} alt="فلش" /> */}
-                                <span>زمان پایان:</span><span>{this.props.data.end_hours}</span>
+                                <span>زمان پایان:</span><span>{this.props.data.end_hours || '-'}</span>
                             </p>
-                            <div className="create-ticket-numbers">
-                                <p onClick={this.selectTouristNumberHandler} className="create-ticket-btn-fullscreen"></p>
-                                <p className="create-ticket-number" >
-                                    <span className="notCloseMenuLand">{this.props.data.capacity}</span>
-                                    <span className="notCloseMenuLand">موجودی</span>
-                                </p>
-                                <div className="create-ticket-tourist-numbers" >تعدا گردشگر
-                                    <div className="notCloseMenuLand">1</div>
-                                    {
-                                        this.state.selectTourist
-                                            ?
-                                            <div className="create-ticket-tourist-change" >
-                                                <ul className="create-ticket-tourist-change-ul">
-                                                    {renderPriceAction}
-                                                </ul>
-
-                                            </div>
-
-                                            :
-                                            ''
-
-                                    }
-                                </div>
-                            </div>
+                            <p className="create-ticket-clock ">
+                                {/* <img src={arrowdown2} alt="فلش" /> */}
+                                <span>موجودی:</span><span>{this.props.data.capacity || '0'}</span>
+                            </p>
                         </div>
                         <div className="create-ticket-price-box" >
                             <p className="create-ticket-price-span">قیمت</p>
-                            {/* {renderPriceAction} */}
-                            
-                                    {/* <div className="create-ticket-price-level">
-                                        <div className="create-ticket-price-level-text">
-                                            <span className="create-ticket-price-level-text1">بزرگسال</span>
-                                            <span className="create-ticket-price-level-text2">(18 تا 20 سال)</span>
-                                        </div>
-                                        <h3>   25,000 </h3>
-                                        <Button                                                                  
-                                            isLoading={this.state.isLoading}                                    
-                                            title={' افزودن به سبد خرید'}                                                      
-                                            bgcolor={'#0080FF'}                                                 
-                                            hoverbgcolor={'#0080FF'}                                          
-                                            click={this.callSubmit}/> 
-                                    </div>
-                                    <div className="create-ticket-price-level">
-                                        <div className="create-ticket-price-level-text">
-                                            <span className="create-ticket-price-level-text1">بزرگسال</span>
-                                            <span className="create-ticket-price-level-text2">(18 تا 20 سال)</span>
-                                        </div>
-                                        <h3>   25,000 </h3>
-                                        <Button                                                                  
-                                            isLoading={this.state.isLoading}                                    
-                                            title={' افزودن به سبد خرید'}                                                      
-                                            bgcolor={'#0080FF'}                                                 
-                                            hoverbgcolor={'#0080FF'}                                          
-                                            click={this.callSubmit}/> 
-                                    </div> */}
 
                                    {renderAddTicket}
                         </div>
-                        {/* <div className="create-ticket-price-box">
-                            <p className="create-ticket-price-span">قیمت (تومان) </p>
-                            
-                            {renderPrice}
-                        </div> */}
-
-                        {/* <div className="create-ticket-add-to-bascket" >
-                            <Button
-                                isLoading={this.state.isLoading}
-                                title={'اضافه به سبد '}
-                                bgcolor={'#0080FF'}
-                                hoverbgcolor={'#1fc056cc'}
-                                click={this.callSubmit} />
-                        </div> */}
                     </div>
 
                 </div>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { DateRangePicker } from "react-advance-jalaali-datepicker";
 
 //
 // external compoent ---------------------------->
@@ -32,28 +33,42 @@ class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            userInfo:{},
-            userType:'',
-            isLoading:false,
-            userAvatar:'https://www.drupal.org/files/issues/default-avatar.png'
-           
+            userInfo: {},
+            userType: '',
+            isLoading: false,
+            userAvatar: 'https://www.drupal.org/files/issues/default-avatar.png'
+
         }
     }
 
 
 
+    // date select 
+    change(unix, formatted) {
+        console.log(unix)
+        console.log(formatted)
+    }
 
+    changeTimeDate(unix, formatted) {
+        console.log(unix)
+        console.log(formatted)
+    }
+
+    DatePickerInput(props) {
+        console.log(prop)
+        return <input className="popo" {...props} ></input>;
+    }
 
 
     render() {
 
-   
-      
+
+
 
 
         return (
             <div className="home">
-            {this.state.isLoading === true ? <div className="LoadingPattern"><div className="loader"></div></div> : ''}
+                {this.state.isLoading === true ? <div className="LoadingPattern"><div className="loader"></div></div> : ''}
                 <div className="home-box container" >
 
                     <div className="part1" >
@@ -62,8 +77,19 @@ class Home extends Component {
                     <div className="part2" >
                         <div className="filter" >
                             <div className="date" >
-                                <div className="from" >از</div>
-                                <div className="to" >تا</div>
+                                <div className="datePicker">
+
+                                    <DateRangePicker
+                                        placeholderStart="تاریخ شروع"
+                                        placeholderEnd="تاریخ پایان"
+                                        format="jYYYY/jMM/jDD"
+                                        onChangeStart={this.change}
+                                        onChangeEnd={this.changeTimeDate}
+                                        idStart="rangePickerStart"
+                                        idEnd="rangePickerEnd"
+                                    />
+
+                                </div>
                             </div>
                             <div className="search-sellers">
 

@@ -126,7 +126,7 @@ display: flex;
     position: absolute;
     top: 50px;
     background-color: #fff;
-    min-width: 370px;
+    min-width: 460px;
     display: none;
     box-shadow: 0 2px 10px rgba(157,206,255,.34);
 }
@@ -142,20 +142,35 @@ display: block;
     justify-content: space-around;
 }
 .create-ticket-features-col{
-
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
 }
 .create-ticket-features-col li{
-padding: 10px;
 padding: 10px;
 font-size: 11px;
 font-weight: 500;
 color: #272A2D;
 transition: all .2s linear;
+width: 33%;
+border-radius: 10px;
+text-align: center; 
 }
 .create-ticket-features-col li:hover{
 opacity: .8;
 transition: all .2s linear;
+background-color: #eee;
 
+}
+.create-ticket-features-col li:active{
+    background-color: #eee;
+transition: all .2s linear;
+
+}
+.categori-delete-create-ticket{
+    width: 20px;
+    height: 20px;
+    padding: 5px;
 }
 .create-ticket-search-btn{
     border-radius: 50%;
@@ -173,6 +188,9 @@ transition: all .2s linear;
     margin-right: 10px;;
 }
 
+.create-ticket-btn:hover {
+    opacity: 0.8;
+}
 
 
 
@@ -232,7 +250,152 @@ text-align: right;
     font-size: 12px;
     color: #272A2D;
 }
-.create-ticket-dates p{
+.create-ticket-date .datePicker  {
+    display: flex;
+    align-items: center;
+}
+.create-ticket-date .datePicker  .jdtrp > div:nth-child(1) ,
+.create-ticket-date .datePicker  .jdtrp > div:nth-child(3){
+    position: relative;
+}
+.create-ticket-date .datePicker  .jdtrp > div:nth-child(1)::before , 
+.create-ticket-date .datePicker  .jdtrp > div:nth-child(3)::before {
+    width: 18px;
+    height: 20px;
+    vertical-align: middle;
+    margin-left: 10px;
+    display: inline-block;
+    content: '';
+    background: url('./../../../assets/icons/calendar.svg') 0 0 no-repeat;
+}
+
+.create-ticket-date .datePicker  .jdtrp > div .JDatePicker {
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 3px 30px rgba(157,206,255,.36);
+    direction: rtl;
+    width: 400px;
+    margin-right: -150px;
+    overflow: hidden;
+    min-height: 70px;
+    display: block;
+    position: absolute;
+    background-color: #fff;
+    right: 145px;
+    top: 30px;
+}
+
+.create-ticket-date .datePicker  .jdtrp > div:nth-child(2){
+    display: none;
+
+}
+
+.create-ticket-date .JDatePicker .JC-months .holder:last-child{
+    width: 100%;
+    font-weight: 900;
+    font-size: 17px;
+}
+.create-ticket-date .days-titles{
+    margin-bottom: 5px;
+}
+.create-ticket-date .days-titles div{
+    padding: 5px;
+    border: 1px solid #eee;
+    border-radius: 10px;
+}
+
+.create-ticket-date .JDatePicker .day-items:hover{
+    background-color: #007be6!important;
+    color: #fff!important;
+}
+.create-ticket-date .JDatePicker .day-items.selected{
+    background-color:#005299!important;
+    color: #fff!important;
+    border: none!important;
+    text-shadow: 1px 1px 1px #000!important;
+
+}
+.create-ticket-date .JDatePicker .JC-days{
+    background-color: #fff;
+}
+.create-ticket-date  .JDatePicker .day-items {
+    padding: 5px!important;
+    border: 1px solid #eee!important;
+    border-radius: 10px!important;
+    background-color: #fff !important;
+    cursor: pointer!important;
+}
+.create-ticket-date .JDatePicker .JC-months .prev,.create-ticket-date .JDatePicker .JC-months .next{
+    transition: all .2s linear;
+
+}
+.create-ticket-date .JDatePicker .JC-months .prev:hover,.create-ticket-date .JDatePicker .JC-months .next:hover{
+    background-color: #f1f1f1;
+    border-radius: 10px;
+    transition: all .2s linear;
+}
+.create-ticket-date .JDatePicker .JDheader .right .number{
+    border: 1px solid #eee;
+    border-radius: 10px;
+}
+.create-ticket-date .JDatePicker .JDheader .right .number:hover{
+    border: 1px solid #eee;
+    border-radius: 10px;
+}
+
+.create-ticket-date  .JC-years{
+    position: relative;
+    margin-bottom: 10px;
+    height: 25px;
+}
+
+.create-ticket-date .JDatePicker .JDheader .right input[type="tel"] {
+    z-index: 2;
+    top: 0px;
+    position: absolute;
+    width: 70%;
+    direction: ltr;
+    text-align: center;
+    display: inline-block;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    font-size: 12px;
+}
+
+.notfound{
+    margin: 10px 0;
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.create-ticket-date p{
     font-size: 13px;
 }
 .create-ticket-clock{
@@ -623,6 +786,9 @@ font-size: 14px;
     .sellers{
         border-left: 1px solid #eaeaea;
     }
+    .create-ticket-features-lists{
+        right: 0;
+    }
 
 }
 
@@ -660,6 +826,13 @@ font-size: 14px;
     }
     .create-ticket-search{
         justify-content: space-between;
+    }
+    .create-ticket-date .datePicker .jdtrp > div .JDatePicker{
+        padding: 10px;
+    }
+
+    .create-ticket-date .datePicker .jdtrp > div:nth-child(3) .JDatePicker{
+        right: -30px;
     }
 
 }
@@ -739,11 +912,41 @@ margin: auto;
         justify-content: space-between;
         padding: 0px 10px;
     }
+    .create-ticket-features-list , .create-ticket-features-col li{
+        padding: 5px;
+    }
+    .create-ticket-features-lists{
+        min-width: 380px;
+    }
+    .create-ticket-features-lists{
+        right: -10px;
+    }
+
+    .create-ticket-date .datePicker .jdtrp > div:nth-child(1), .create-ticket-date .datePicker .jdtrp > div:nth-child(3){
+        padding: 20px 0px;
+    }
+    .create-ticket-date .datePicker .jdtrp{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    .create-ticket-date .datePicker .jdtrp > div .JDatePicker ,.create-ticket-date .datePicker .jdtrp > div:nth-child(3) .JDatePicker{
+        right: 145px;
+        width: 100%;
+    }
+    .create-ticket-date .days-titles div{
+        padding: 0px;
+    }
 }
 @media screen and (max-width: 450px){
 
     .part1 , .part2{
         padding: 10px;
+    }
+    .create-ticket-features-col li {
+        width: 30%;
+        border: 1px solid #dfdfdf;
+        margin: 1%;
     }
 }
 @media screen and (max-width: 400px){

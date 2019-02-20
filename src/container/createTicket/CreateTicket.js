@@ -1,7 +1,15 @@
 import React, { Component } from 'react';
-import {Link } from 'react-router';
+import { Link, browserHistory } from 'react-router';
+import { DateRangePicker } from "react-advance-jalaali-datepicker";
+
 import base from '../../api/baseURL';
 import Token from '../../api/token';
+import DateToShamsi from '../../components/times/dateMiladiToShamsi';
+import jalaali from 'jalaali-js';
+import DateJalaly from '../../components/times/dateShamsiToMiladi';
+import dateMilady from '../../components/times/dateMiladiToShamsi';
+import PriceDigit from '../../components/priceDigit/priceDigit';
+
 
 
 
@@ -27,7 +35,7 @@ import SmallOrder from './../../components/smallOrder/SmallOrder';
 import Input from './../../components/input/Input';
 import Button from './../../components/common/Button/Button'
 import MinusPlus from './../../components/common/MinusPlus/MinusPlus';
-import Tickets from '../../components/createTicket/listAllTickets'; 
+import Tickets from '../../components/createTicket/listAllTickets';
 
 
 import './CreateTicket.css';
@@ -38,21 +46,40 @@ class CreateTicket extends Component {
         super(props);
         this.state = {
             selectTourist: false,
-            allTickets:[],
-            shopingBag:[],
-            person:0,
-            getShoping:true
+            allTickets: [],
+            shopingBag: [],
+            categories: [],
+            categorie: this.getParms('categories') || 0,
+            person: 0,
+            getShoping: true,
+            customerName:'',
+            customerPhone:'',
+            customerNameError:'',
+            customerPhoneError:'',
+            isLoadingPayment:false
         }
     }
 
     componentDidMount = async () => {
         window.addEventListener('scroll', this.handleScroll);
-        this.getAllTicket();
-        this.getAllShopingBag();
+        // fetch data from api ----------------------------->
+        this.getAllTicket();      // get all tickets
+        this.getAllShopingBag(); // get all shoping bag
+        this.getCategories();   //  get all categories
+
+
     }
 
     componentWillUnmount() {
         window.removeEventListener('scroll', this.handleScroll);
+    }
+
+    getCurrentDate(){
+        let d = new Date();
+        let fullDate = d.getFullYear() + '/' + (d.getMonth() + 1) + '/' + d.getDate()
+        //  console.log(fullDate)
+        //  console.log(dateMilady(fullDate))
+         return dateMilady(fullDate)
     }
 
 
@@ -105,9 +132,16 @@ class CreateTicket extends Component {
     //  Get all issus ticket ------------------->
     //
 
-    getAllTicket =() =>{
-       
-        this.getData('agency/ticket?start_date=1550061287&end_date=1550579687&categories_id=0')
+    getAllTicket = () => {
+
+        
+        let start_date = this.getParms('start_date') !== 0 ? this.getParms('start_date') : this.getCurrentDate();
+        let end_date = this.getParms('end') !== 0 ? this.getParms('end') : this.getCurrentDate();
+
+        //console.log('agency/ticket?categories_id=' + this.getParms('categories') + '&start_date=' + start_date   + '&end_date=' + end_date )
+
+        this.getData('agency/ticket?categories_id=' + this.getParms('categories') + '&start_date=' + start_date   + '&end_date=' + end_date )
+
     }
 
 
@@ -133,10 +167,11 @@ class CreateTicket extends Component {
         })
             .then(response => response.json())
             .then(responsJson => {
-                console.log(responsJson.data.total)
+              //  console.log(responsJson.data.total)
                 this.setState({
                     allTickets: responsJson.data.total,
-                    agentLoading: false
+                    agentLoading: false,
+                   
                 })
             })
     }
@@ -145,12 +180,12 @@ class CreateTicket extends Component {
     // Get all shoping bag || sabad kharid---------------------->
     //
 
-    getAllShopingBag =async() => {
-       await this.getDataShoping('agency/shopping');
-      
+    getAllShopingBag = async () => {
+        await this.getDataShoping('agency/shopping');
+
     }
 
-    getDataShoping =async(key)=> {
+    getDataShoping = async (key) => {
 
         this.setState({
             getShoping: true
@@ -172,12 +207,15 @@ class CreateTicket extends Component {
         })
             .then(response => response.json())
             .then(responsJson => {
-                console.log(responsJson.data)
+              //  console.log(responsJson.data)
+
                 this.setState({
                     shopingBag: responsJson.data,
-                    getShoping: false
+                    getShoping: false,
+                    customerName:  responsJson.data.customer ? responsJson.data.customer.name : '',
+                    customerPhone: responsJson.data.customer ? responsJson.data.customer.phone : ''
                 })
-             
+
             })
             .catch(err => console.log(err))
     }
@@ -186,8 +224,8 @@ class CreateTicket extends Component {
     //
     // clear shop bag ----------------------------->
     //
-  
-    clearShopBag =() =>{
+
+    clearShopBag = () => {
 
         this.ClearShopBagData('agency/shopping/clear')
     }
@@ -205,7 +243,7 @@ class CreateTicket extends Component {
             cache: "no-cache",
             headers: {
                 "Content-Type": "application/json",
-                "Accept": "application/json", 
+                "Accept": "application/json",
                 "Authorization": Token
             },
             redirect: "follow",
@@ -216,50 +254,272 @@ class CreateTicket extends Component {
                 console.log(responsJson.data)
                 this.getAllShopingBag(); // call for refresh shoping bag
                 this.setState({
-                    getShoping:false
+                    getShoping: false
                 })
-                 
-             
+
+
             })
     }
 
- 
+    //
+    // get All categories ------------------------------>
+    //
+
+    getCategories() { 
+        this.fetchCategories('agency/categories')
+
+
+    }
+
+
+    fetchCategories(key) {
+        const url = base.baseURL + key;
+
+        fetch(url, {
+            method: "GET",
+            cache: "no-cache",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                "agent": "web",
+                "Authorization": Token
+            },
+            redirect: "follow",
+            referrer: "no-referrer"
+        })
+            .then(response => response.json())
+            .then(responseJson => {
+                this.setState({
+                    categories: responseJson.data
+
+                })
+               // console.log(responseJson.data)
+            })
+    }
+
+
+    _selectCategorie = async (item) => {
+        await this.setState({
+            categorie: item.title
+        })
+
+        console.log(`selectedt ${item.id}`)
+        this.insertParam('categories', item.id);
+
+    }
+
+    //
+    // insert and get params from url --------------------------------------------------------->
+    //
+
+    insertParam = async (key, value) => {
+        // push params in url location query
+        await browserHistory.push({
+            pathname: this.props.location.pathname,
+            query: Object.assign({}, this.props.location.query, { [key]: value })
+        });
+
+        console.log(browserHistory.getCurrentLocation())
+    }
+
+
+    getParms(value) {
+
+        let url_string = window.location.href
+        let url = new URL(url_string);
+
+        const val = url.searchParams.get(value);
+       // console.log(val)
+        if (val !== null)
+            return val;
+        return 0
+    }
+
+
+    //
+    // search button -------------------->
+    //
+
+    _searchButonTickets() {
+        //console.log("search.....");
+        this.getAllTicket();
+    }
+
+
+
+    // date select 
+    change = (unix, formatted) => {
+        console.log(unix)
+        console.log(formatted)
+        console.log("start date ");
+        this.insertParam('start_date',formatted);
+    }
+
+    changeTimeDate = (unix, formatted) => {
+        console.log(unix)
+        console.log(formatted)
+        console.log("end date ")
+        this.insertParam('end_date',formatted)
+
+    }
+
+    DatePickerInput(props) {
+        console.log(prop)
+        return <input className="popo" {...props} ></input>;
+    }
+
+
+    changedHandler = (e) => {
+        //console.log(e.target.value)
+        this.setState({
+            [e.target.name]: e.target.value
+        });
+    }
+
+    //
+    // paymnet to shop ------------------->
+    //
+
+    _paymentToShop =async() => {
+        console.log("payment call")
+
+        let chechking = false;
+
+        if(this.state.customerName === '' || this.state.customerName === null){
+            chechking = true;
+            this.setState({
+                customerNameError:'لطفا نام مشتری را وارد نمایید'
+            })
+        }
+
+        if(this.state.customerPhone === '' || this.state.customerPhone === null){
+            chechking = true;
+            this.setState({
+                customerPhoneError:'لطفا شماره مشتری را وارد نمایید'
+            })
+        }
+
+
+           // provider data for API --------->
+           const data = {
+            "name": this.state.customerName,
+            "phone": this.state.customerPhone
+           
+        }
+
+
+        if(chechking === false){
+            console.log('data success cheking');
+            const res = await this.postPayment(data, 'agency/shopping');
+
+            console.log(res)
+            if (res.status === 200) {
+            browserHistory.push({pathname:'/payment-method',state: res.data })
+            }
+            else{
+                console.log(res)
+            }
+        }
+    }
+
+    postPayment = (data, key) => {
+        // console.log("fetching...")
+
+        this.setState({
+            isLoadingPayment: true
+        })
+
+        const url = base.baseURL + key;
+
+        return fetch(url, {
+            method: "POST",
+            cache: "no-cache",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                "agent": "web",
+                "Authorization": Token
+            },
+            redirect: "follow",
+            referrer: "no-referrer",
+            body: JSON.stringify(data),
+        })
+            .then(response => {
+                const statusCode = response.status
+                const data = response.json()
+                return Promise.all([statusCode, data])
+            })
+            .then(([res, data]) => {
+                //console.log(res, data)
+                this.setState({ isLoadingPayment: false })
+                // after add refresh render all agent and show new record in list ....
+                if (res === 200) 
+                {
+                    console.log(data)
+                }
+                return ({ 'status': res, 'data': data.data })
+            })
+            .catch(err => console.log(err))
+
+
+    }
+
+
 
     render() {
 
         const renderAllTickets = (
             // render all agents and pass props name , avatar , level ------->
+            
             this.state.agentLoading === false ? this.state.allTickets.map((item, index) =>
+                
                 <Tickets key={index}
                     id={item.id}
-                    title={item.title}  
+                    title={item.title}
                     data={item}
-                    action={() => this.getAllShopingBag()} />
+                    action={() => this.getAllShopingBag()} /> 
+
             ) : <div className="loader"></div>
 
         )
 
 
-        const renderShopingBag =  (
+        const renderShopingBag = (
             // render all agents and pass props name , avatar , level ------->
             this.state.getShoping === false ? this.state.shopingBag !== null ? this.state.shopingBag.shoppingBags.map((item, index) =>
-            
-            <SmallOrder key={index}
-                 title={item.products.title}
-                 orderNumber={item.products.title}
-                 date="شنبه 1397/12/10 سانس 17:45تا 19:45"
-                 prices={item}
-                 action={() => this.getAllShopingBag()}/>  ): <p>No Data for show!</p>
+                
+                <SmallOrder key={index}
+                    title={item.type === 'product' ? item.products.title : item.tours.title }
+                    orderNumber={item.type === 'product' ? item.products.title : item.tours.title}
+                    date="شنبه 1397/12/10 سانس 17:45تا 19:45"
+                    prices={item}
+                    action={() => this.getAllShopingBag()}/>  ): <p>No Data for show!</p>
+                
 
-              : <div className="loader"></div>
+                :
+                <div className="loader"></div>
 
+        )
+
+
+        const renderCategory = (
+            this.state.categories !== null ? this.state.categories.map((item, index) =>
+                <li key={item.id} onClick={() => this._selectCategorie(item)}> {item.title}</li>
+            ) : ''
+
+        )
+
+        const notFound = (
+            <div className="create-ticket-filter notfound">
+                <p>متاسفانه ، موردی برای نمایش در تاریخ امروز موجود نیست</p>
+            </div>
         )
 
 
         return (
             <div className="create-ticket" >
                 <div className="create-ticket-box container" >
-                    <div className="part1" >
+                    <div className="part1 fadeInUp" >
                         {/* <div className="create-ticket-your-credit">
                             <p className="create-ticket-your-credit-title" ><img src={wallet} alt="wallet" /> اعتبار شما</p>
                             <p className="create-ticket-increase-credit-text">افزایش اعتبار</p>
@@ -273,20 +533,20 @@ class CreateTicket extends Component {
                                 </p>
                                 <p className="create-ticket-your-bascket-row2" >
                                     <span>مبلغ کل</span>
-                                    <span>{this.state.shopingBag.total_price}</span>
+                                    <span>{PriceDigit(this.state.shopingBag.total_price,'price')}</span>
                                 </p>
                                 <p className="create-ticket-your-bascket-row2" >
                                     <span>تعداد سفارشات</span>
                                     <span>{this.state.shopingBag.total_count}</span>
-                              
+
                                 </p>
                             </div>
 
                             <div className="create-ticket-your-orders" >
-                        
-                                    {renderShopingBag}
-                            
-                        
+
+                                {renderShopingBag}
+
+
 
                             </div>
 
@@ -308,35 +568,63 @@ class CreateTicket extends Component {
                                     </div>
                                     <div className="create-ticket-customer-factor-total">
                                         <span>مبلغ قابل پرداخت شما</span>
-                                        <span style={{ color: '#00BF66' }}>{this.state.shopingBag.total_price} تومان</span>
+                                        <span style={{ color: '#00BF66' }}>{PriceDigit(this.state.shopingBag.total_price,'price')} تومان</span>
                                     </div>
                                 </div>
                                 <div className="create-ticket-transaction" >
-                                    <Input name="buyerName" placeholder="نام خریدار" />
-                                    <Input name="buyerNumber" placeholder="شماره خریدار " />
-                                    <Link to="/payment-method" className="create-ticket-pay" >
+                                    <Input 
+                                        name="customerName"
+                                        val={this.state.customerName || ''} 
+                                        placeholder="نام خریدار"
+                                        changed={this.changedHandler}
+                                        error={this.state.customerNameError}
+                                     />
+                                    <Input 
+                                        name="customerPhone" 
+                                        placeholder="شماره تماس خریدار "
+                                        val={this.state.customerPhone}
+                                        changed={this.changedHandler}
+                                        error={this.state.customerPhoneError} 
+                                    />
+                                    <div onClick={() => this._paymentToShop()} className="create-ticket-pay" >
                                         <div className="create-ticket-imgs">
                                             <img src={co} alt="فلش" />
                                             <img src={arrow} alt="فلش" />
                                         </div>
                                         <div className="create-ticket-text">
-                                            پرداخت و صدور بلیت
+                                            <span>پرداخت و صدور بلیت</span> {this.state.isLoadingPayment ? <div className="loader-button"></div> : ''}
                                         </div>
-                                    </Link>
+                                        
+                                        
+                                    </div>
                                 </div>
                             </div>
 
                         </div>
                     </div>
                     <div className="part2" >
-                        <div className="create-ticket-filter" >
+                        <div className="create-ticket-filter fadeInDown" >
                             <div className="create-ticket-date" >
-                                <div className="create-ticket-from" >از</div>
-                                <div className="create-ticket-to" >تا</div>
+                                {/* <div className="create-ticket-from" >از</div>
+                                <div className="create-ticket-to" >تا</div> */}
+
+                                <div className="datePicker">
+
+                                    <DateRangePicker
+                                        placeholderStart="تاریخ شروع"
+                                        placeholderEnd="تاریخ پایان"
+                                        format="jYYYY/jMM/jDD"
+                                        onChangeStart={this.change}
+                                        onChangeEnd={this.changeTimeDate}
+                                        idStart="rangePickerStart"
+                                        idEnd="rangePickerEnd"
+                                    />
+
+                                </div>
                             </div>
                             <div className="create-ticket-search">
 
-                                <div className="create-ticket-places" >
+                                {/* <div className="create-ticket-places" >
                                     <span className="create-ticket-places-right" >
                                         <i className="fas fa-map-marker-alt create-ticket-places-marker "></i>
                                         <span>در جزیره کیش </span>
@@ -355,173 +643,37 @@ class CreateTicket extends Component {
                                         <li className="create-ticket-places-list" >
                                             کیش
                                         </li>
-
                                     </ul>
 
-                                </div>
+                                </div> */}
 
                                 <div className="create-ticket-features" >
+                                    {/* <img className="categori-delete-create-ticket" src={deletee} alt="فلش" /> */}
                                     <span className="create-ticket-features-right" >
-                                        <span>همه </span>
+                                        <span>{this.state.categorie || 'همه'} </span>
                                     </span>
                                     <img src={arrowdown2} alt="فلش" />
                                     <ul className="create-ticket-features-lists" >
                                         <li className="create-ticket-features-list" >
                                             <ul className="create-ticket-features-col" >
-                                                <li> پارسل</li>
-                                                <li> جت اسکی</li>
-                                                <li> فلای برد</li>
-                                                <li> قایق تندرو</li>
-                                                <li> غواصی </li>
-                                                <li> شاتل</li>
-                                                <li> بنانا</li>
-                                                <li> اسکی روی آب</li>
-                                                <li> اسب سواری</li>
+                                                {renderCategory}
                                             </ul>
-                                            <ul className="create-ticket-features-col" >
-                                                <li> استند آپ کمدی</li>
-                                                <li> اسکوتر زیر دریایی</li>
-                                                <li> باگی</li>
-                                                <li> بیگ بال</li>
-                                                <li> پلاژ</li>
-                                                <li> پارک آبی اوشن</li>
-                                                <li> دلفیناریوم</li>
-                                                <li> سافاری</li>
-                                                <li> پینت بال</li>
-                                            </ul>
-                                            <ul className="create-ticket-features-col" >
-                                                <li> کشتی کروز</li>
-                                                <li> قلعه وحشت</li>
-                                                <li> شهرزیرزمینی کاریز</li>
-                                                <li> شترسواری</li>
-                                                <li> کیبل</li>
-                                                <li> ماساژ</li>
-                                                <li> ماهیگیری</li>
-                                                <li> جابرو کوپتر</li>
-                                                <li> پینت بال</li>
-                                            </ul>
-
-
                                         </li>
                                     </ul></div>
-                                <button className="create-ticket-btn" >
+                                <button className="create-ticket-btn" onClick={() => this._searchButonTickets()} >
                                     <img src={search} alt="جستجو" ></img>
                                 </button>
                             </div>
 
                         </div>
-                       {/* -------------------------- */}
-                        {renderAllTickets}
-{/* 
-                        <div className="create-ticket-search-result table-tablet" >
-                            <h1>نتایج جستجو</h1>
-                            <div className="create-ticket-search-lists " >
-                                <div className="create-ticket-search-list-tablet" >
-                                    <div className="create-ticket-search-list-cells" >
-                                        <p className="create-ticket-search-play-title" >تفریح </p>
-                                        <div className="create-ticket-search-play">کشتی اوستا</div>
-                                    </div>
-                                    <div className="create-ticket-search-list-cells">
-                                        <p>تاریخ </p>
-                                        <div className="create-ticket-dates">
-                                            <p>1397/10/12</p>
-                                            <p className="create-ticket-days">شنبه</p>
-                                        </div>
-                                    </div>
-                                    <div className="create-ticket-search-list-cells">
-                                        <p>سانس ها</p>
-                                        <div>
-                                            <p className="create-ticket-clock">
-                                                <span>17:45</span>
-                                                <img src={arrowdown2} alt="فلش" />
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div className="create-ticket-search-list-cells">
-                                        <p>تعداد</p>
-                                        <div className="create-ticket-numbers">
-                                            <p onClick={this.selectTouristNumberHandler} className="create-ticket-btn-fullscreen"></p>
-                                            <p className="create-ticket-number" >
-                                                <span className="notCloseMenuLand">20</span>
-                                                <span className="notCloseMenuLand">موجودی</span>
-                                            </p>
-                                            <div className="create-ticket-tourist-numbers" >تعدا گردشگر
-                                                <div className="notCloseMenuLand">1</div>
-                                                {
-                                                    this.state.selectTourist
-                                                        ?
-                                                        <div className="create-ticket-tourist-change" >
-                                                            <ul className="create-ticket-tourist-change-ul">
-                                                                <li className="create-ticket-tourist-change-li">
-                                                                    <div className="notCloseMenuLand">
-                                                                        <h6 className="notCloseMenuLand" >بزرگسال</h6>
-                                                                        <span className="notCloseMenuLand">(12 سال به بالا)</span>
-                                                                    </div>
-                                                                    <div className="MinusPlus" >
-                                                                    
-                                                                    <MinusPlus change={this.handleFilterUpdate} counter={this.state.person} name={this.state.person}  />
-                                                                    </div>
-                                                                </li>
-                                                                <li className="create-ticket-tourist-change-li">
-                                                                    <div className="notCloseMenuLand">
-                                                                        <h6 className="notCloseMenuLand">کودک</h6>
-                                                                        <span className="notCloseMenuLand">(2 تا 12 سال)</span>
-                                                                    </div>
-                                                                    <div className="MinusPlus" >
-                                                                        <MinusPlus change={this.handleFilterUpdate} counter={this.state.person} name={this.state.person} />
-                                                                    </div>
-                                                                </li>
-                                                                <li className="create-ticket-tourist-change-li">
-                                                                    <div className="notCloseMenuLand">
-                                                                        <h6 className="notCloseMenuLand">نوزاد</h6>
-                                                                        <span className="notCloseMenuLand">(10 روز تا 2 سال)</span>
-                                                                    </div>
-                                                                    <div className="MinusPlus" >
-                                                                        <MinusPlus change={this.handleFilterUpdate} counter={this.state.person} name={this.state.person} />
-                                                                    </div>
-                                                                </li>
+                        {/* --------------------------------------------------------------- */}
+                       
+                        {renderAllTickets } 
+                        
+                        {/* {this.state.allTickets.length === 0 ? notFound : renderAllTickets}
+                        {console.log(this.state.allTickets.length )}
+                        {console.log(this.state.allTickets ? 'notFound' : 'renderAllTickets')} */}
 
-                                                            </ul>
-
-                                                        </div>
-
-                                                        :
-                                                        ''
-
-                                                }
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="create-ticket-search-list-cells">
-                                        <p>قیمت مشتری</p>
-                                        <div className="customer-coworker" >
-                                            <p><span className="create-ticket-price-span">بزرگسال</span> <span>250,000 ت</span></p>
-                                            <p><span className="create-ticket-price-span">کودک</span><span>125,000 ت</span></p>
-                                            <p><span className="create-ticket-price-span">نوزاد رایگان</span></p>
-                                        </div>
-                                    </div>
-                                    <div className="create-ticket-search-list-cells">
-                                        <p>قیمت همکار</p>
-                                        <div className="customer-coworker">
-                                            <p><span className="create-ticket-price-span">بزرگسال</span> <span>190,000 ت</span></p>
-                                            <p><span className="create-ticket-price-span">کودک</span><span> 100,000 ت</span></p>
-                                            <p><span className="create-ticket-price-span">نوزاد رایگان</span></p>
-                                        </div>
-                                    </div>
-                                    <div className="create-ticket-search-list-cells">
-                                    <div className="create-ticket-add-to-bascket" >
-                                        <Button
-                                            isLoading={this.state.isLoading}
-                                            title={'اضافه به سبد '}
-                                            bgcolor={'#0080FF'}
-                                            hoverbgcolor={'#1fc056cc'}
-                                            click={this.callSubmit} />
-                                    </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div> */}
                     </div>
                 </div>
             </div>

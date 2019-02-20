@@ -18,6 +18,10 @@ import TicketIssuedScreen from './container/ticketIssued/TicketIssued'
 import ChangePasswordScreen from './container/changePassword/changePassword';
 import ViewTicketScreen from './container/viewTicket/ViewTicket';
 import PaymentMethodScreen from './container/paymentMethod/PaymentMethod';
+import ReportsScreen from './container/reports/Reports';
+import SuccessMessageScreen from './container/successMessage/successMessage';
+import FailedMessageScreen from './container/failedMessage/failedMessage';
+
 
 
 
@@ -54,6 +58,9 @@ class RouterComponent extends Component {
                   <Route   path="change-password" component={ChangePasswordScreen} /> 
                   <Route   path="view-ticket" component={ViewTicketScreen} /> 
                   <Route   path="payment-method" component={PaymentMethodScreen} /> 
+                  <Route   path="reports" component={ReportsScreen} /> 
+                  <Route   path="success-message" component={SuccessMessageScreen} /> 
+                  <Route   path="failed-message" component={FailedMessageScreen} /> 
 
 
                 
