@@ -285,7 +285,7 @@ class Index extends Component {
                                      <p className="forget-pass" >
                                          <span>رمز خود را فراموش کرده ام </span>
                                      </p>
-                                     <button className="login-btn" onClick={this.onLogin.bind(this)} >ورود</button>
+                                     {/* <button className="login-btn" onClick={this.onLogin.bind(this)} >ورود</button> */}
                                      <Button                                                                  
                                         isLoading={this.state.isLoading}                                    
                                         title={'ورود'}                                                      
