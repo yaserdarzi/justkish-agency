@@ -111,6 +111,9 @@ width: 50%;
     font-size: 95px;
     margin-left: 10px;
     display: flex;
+    width: 100px;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .calendar-jalali-detail{
@@ -570,6 +573,7 @@ margin-bottom: 10px;
         font-size: 27px;
         margin-left: 0;
         display: flex;
+        width: unset;
     }
     .calendar-jalali {
         color: #fff;
