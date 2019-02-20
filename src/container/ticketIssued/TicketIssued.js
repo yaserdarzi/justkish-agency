@@ -78,23 +78,33 @@ class TicketIssued extends Component {
                 })
             })
     }
+
+    //
+    // show ticket and get ticket Id ----------------------->
+    //
+
+    _showTicket =(id) => {
+        console.log(id);
+    }
+
+
     render() {
 
         const renderAllTickets = (
             this.state.isLoadingAllTicket === false ? 
                 this.state.allTicket.map((item,index) =>
               
-                <div className="ticket-issued-search-list">
+                <div className="ticket-issued-search-list" key={index}>
                     <p className="ticket-issued-search-list-cell-1">{item.id}</p>
                     <p className="ticket-issued-search-list-cell">{item.customer.name}</p>
                     {/* <p className="ticket-issued-search-list-cell">اسم عامل فروش</p> */}
                     <p className="ticket-issued-search-list-cell">{PriceDigit(item.total_count,'price')}</p>
                     <p className="ticket-issued-search-list-cell">{MiladiToJalaly(TimeStamp(item.created_at_timestamp))}</p>
-                    <p className="ticket-issued-search-list-cell">
-                        <Link to="/view-ticket"><img src={email} alt="ایمیل" /></Link>
-                        <Link to="/view-ticket"><img src={sms} alt="پیام کوتاه" /></Link>
-                        <Link to="/view-ticket"><img src={print} alt="پرینت" /></Link>
-                    </p>
+                    <div className="ticket-issued-search-list-cell">
+                        {/* <Link to="/view-ticket"><img src={email} alt="ایمیل" /></Link>
+                        <Link to="/view-ticket"><img src={sms} alt="پیام کوتاه" /></Link> */}
+                        <div  onClick={() => this._showTicket(item.id)}><img src={print} alt="پرینت" /></div>
+                    </div>
                 </div>
                             
                             )
