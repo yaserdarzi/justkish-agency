@@ -31,7 +31,8 @@ class ViewTicket extends Component {
             isLoading: false,
             userAvatar: 'https://www.drupal.org/files/issues/default-avatar.png',
             ticket:[],
-            isLoadingTicket: false
+            isLoadingTicket: false,
+            isNotDisplay: false
         }
     }
 
@@ -48,7 +49,8 @@ class ViewTicket extends Component {
     getData(key) {
 
         this.setState({
-            isLoadingTicket: true
+            isLoadingTicket: true,
+            isNotDisplay: false
         })
 
         const url = base.baseURL + key;
@@ -69,9 +71,12 @@ class ViewTicket extends Component {
             .then(responsJson => {
                 console.log(responsJson.data)
                 this.setState({
-                    ticket: responsJson.data,
-                    isLoadingTicket: false
+                    ticket: responsJson.data || [],
+                    isLoadingTicket: false,
                 })
+                // if dont find anything must disile ticket palce
+                if(responsJson.data === null)
+                this.setState({isNotDisplay : true })
             })
     }
 
@@ -95,83 +100,88 @@ class ViewTicket extends Component {
         return (
             <div className="viw-ticket">
                 <div className="viw-ticket-box">
+                   {this.state.isNotDisplay === false ? 
                     <div className="ticket-picture" >
-                        <div className="ticket-right" >
-                            <div className="ticket-triple" >
-                                <div className="ticket-triple-box">
-                                    <img src={brand} alt="برند" />
-                                    <div className="ticket-triple-box-titles" >
-                                        <h2>نام خریدار</h2>
-                                        <p>{this.state.ticket.customer ? this.state.ticket.customer.name : ' '}</p>
-                                        {console.log(this.state.ticket.customer ? this.state.ticket.customer.name : ' ')}
-                                        <p>0912-569-6696</p>
-                                    </div>
-                                </div>
-                                <div className="ticket-triple-box">
-                                    <img src={pic} alt="برند" />
-                                    <div className="ticket-triple-box-titles" >
-                                        <h2>نام خریدار</h2>
-                                        <p>محمدرضا رحمانی</p>
-                                        <p>0912-569-6696</p>
-                                    </div>
-                                </div>
-                                <div className="ticket-triple-box">
-                                    <img src={pic} alt="برند" />
-                                    <div className="ticket-triple-box-titles" >
-                                        <h2>نام خریدار</h2>
-                                        <p>محمدرضا رحمانی</p>
-                                        <p>0912-569-6696</p>
-                                    </div>
+                    <div className="ticket-right" >
+                        <div className="ticket-triple" >
+                            <div className="ticket-triple-box">
+                                <img src={brand} alt="برند" />
+                                <div className="ticket-triple-box-titles" >
+                                    <h2>نام خریدار</h2>
+                                    <p>{this.state.ticket.customer ? this.state.ticket.customer.name : ' '}</p>
+                                    {console.log(this.state.ticket.customer ? this.state.ticket.customer.name : ' ')}
+                                    <p>0912-569-6696</p>
                                 </div>
                             </div>
-                            <div className="ticket-dates" >
-                                <div className="ticket-dates-box" >
-                                    <img src={icon1} alt="آیکن" />
-                                    <span>تاریخ بلیت: </span>
-                                    <span>{this.state.ticket.created_at}</span>
-                                </div>
-                                <div className="ticket-dates-box" >
-                                    <img src={icon2} alt="آیکن" />
-                                    <span>روز : </span>
-                                    <span>1397/12/10</span>
-                                </div>
-                                <div className="ticket-dates-box" >
-                                    <img src={icon3} alt="آیکن" />
-                                    <span>سانس : </span>
-                                    <span>1397/12/10</span>
-                                </div>
-                                <div className="ticket-dates-box" >
-                                    <img src={icon4} alt="آیکن" />
-                                    <span> برای 3 نفر </span>
-
+                            <div className="ticket-triple-box">
+                                <img src={pic} alt="برند" />
+                                <div className="ticket-triple-box-titles" >
+                                    <h2>نام خریدار</h2>
+                                    <p>محمدرضا رحمانی</p>
+                                    <p>0912-569-6696</p>
                                 </div>
                             </div>
-                            <div className="ticket-barcode-price" >
-                                <div className="ticket-barcode-right" >
-                                    <img src={barcode1} alt="بارکد" />
-                                    <div>
-
-                                        <h1 className="ticket-barcode-text" >شماره بلیت</h1>
-                                        <p className="ticket-barcode-number" >JK12321654846</p>
-                                    </div>
+                            <div className="ticket-triple-box">
+                                <img src={pic} alt="برند" />
+                                <div className="ticket-triple-box-titles" >
+                                    <h2>نام خریدار</h2>
+                                    <p>محمدرضا رحمانی</p>
+                                    <p>0912-569-6696</p>
                                 </div>
-                                <h1 className="ticket-barcode-price-number">
-                                    {PriceDigit(this.state.ticket.total_count,'price')}
-                                    <span>تومان</span>
-                                </h1>
+                            </div>
+                        </div>
+                        <div className="ticket-dates" >
+                            <div className="ticket-dates-box" >
+                                <img src={icon1} alt="آیکن" />
+                                <span>تاریخ بلیت: </span>
+                                <span>{this.state.ticket.created_at}</span>
+                            </div>
+                            <div className="ticket-dates-box" >
+                                <img src={icon2} alt="آیکن" />
+                                <span>روز : </span>
+                                <span>1397/12/10</span>
+                            </div>
+                            <div className="ticket-dates-box" >
+                                <img src={icon3} alt="آیکن" />
+                                <span>سانس : </span>
+                                <span>1397/12/10</span>
+                            </div>
+                            <div className="ticket-dates-box" >
+                                <img src={icon4} alt="آیکن" />
+                                <span> برای 3 نفر </span>
 
                             </div>
                         </div>
-                        <div className="ticket-left" >
-                            <div className="ticket-left-box" >
-                                <img src={brand2} alt="برند" />
-                                <h1 className="ticket-barcode-text">شماره بلیت</h1>
-                                <p className="ticket-barcode-number">JK12321654846</p>
-                                <img src={barcode} alt="بارکد" />
+                        <div className="ticket-barcode-price" >
+                            <div className="ticket-barcode-right" >
+                                <img src={barcode1} alt="بارکد" />
+                                <div>
 
+                                    <h1 className="ticket-barcode-text" >شماره بلیت</h1>
+                                    <p className="ticket-barcode-number" >JK12321654846</p>
+                                </div>
                             </div>
+                            <h1 className="ticket-barcode-price-number">
+                                {PriceDigit(this.state.ticket.total_count,'price')}
+                                <span>تومان</span>
+                            </h1>
+
                         </div>
                     </div>
+                    <div className="ticket-left" >
+                        <div className="ticket-left-box" >
+                            <img src={brand2} alt="برند" />
+                            <h1 className="ticket-barcode-text">شماره بلیت</h1>
+                            <p className="ticket-barcode-number">JK12321654846</p>
+                            <img src={barcode} alt="بارکد" />
+
+                        </div>
+                    </div>
+                </div>
+                :
+                <div className="notfound-ticket">
+                    <p>متاسفانه بلیطی با این شماره پیدا نشده است</p>
+                </div>}
 
                     <div className="the-rules" >
                         <div className="rules-box" >

@@ -1,5 +1,6 @@
 .viw-ticket{
     background-color: #fff;
+    margin-bottom: 50px;
 
 }
 
@@ -160,6 +161,22 @@ align-items: center;
     color: #272a2d;
     font-weight: 500;
     margin-right: 10px;
+}
+
+.notfound-ticket{
+    background-color: #E74C3C;
+    width: 100%; 
+    text-align: center;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-around;
+    padding: 20px 10px; 
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(157,206,255,.34);
+    color: #333333;
+    margin: 20px 0
+
+
 }
 
 

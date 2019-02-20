@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {browserHistory } from 'react-router'
 // import Header from "./header/header";
 // import Footer from "./footer/footer";
 import IndexComponent from "./container/beforLogin/inddex/index";
@@ -18,6 +19,7 @@ export default class Root extends Component {
 
     componentDidMount(){
         console.log(Token) 
+        console.log(window.location.pathname !== '/view-ticket')
     }
 
     
@@ -38,7 +40,7 @@ export default class Root extends Component {
 
 
                 <div>
-                    {Token === null ? ( 
+                    {Token === null || window.location.pathname === '/view-ticket' ? ( 
                       ''
                      ): 
                     (
