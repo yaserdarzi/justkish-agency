@@ -101,16 +101,19 @@ margin-bottom: 20px;
 
 
 .ticket-dates-box{
-    margin-left: 8px;
-    display: inline-block;
+    margin: 0 14px; 
     vertical-align: middle;
     font-size: 12px;
+    font-weight: 700;
     color: #272a2d;
     margin-bottom: 20px;
     display: flex;
     align-items: center;
 }
 
+.fit-a4{
+    margin-bottom: 400px; 
+}
 .ticket-dates-box img{
 margin-left: 5px;
 }

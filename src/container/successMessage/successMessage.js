@@ -14,7 +14,7 @@ class SuuccessMessage extends Component {
     render() { 
         return ( 
             <div className="success-message-payment">
-               <div className="message-box">
+               <div className="message-box bounceIn">
                     <h1>پرداخت موفق</h1>
                     <p>پرداخت شما با موفقیت از اعتبار بستانکاری شما انجام شد و در سامانه ثبت گردید</p>
 

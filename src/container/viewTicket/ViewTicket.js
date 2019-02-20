@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import base from '../../api/baseURL';
 import Token from '../../api/token';
 import PriceDigit from '../../components/priceDigit/priceDigit';
- 
+import TimeSpan from '../../components/times/timespanToDate';
+import MiladyToJalaly from '../../components/times/dateMiladiToShamsi';
+
 
 
 //
@@ -36,9 +38,9 @@ class ViewTicket extends Component {
         }
     }
 
-    componentWillMount(){
+    componentWillMount =() => {
         console.log(this.getParms('id'));
-        this.getData('agency/factor/' + this.getParms('id'));
+         this.getData('agency/factor/' + this.getParms('id'));
 
 
     }
@@ -46,7 +48,7 @@ class ViewTicket extends Component {
     //
     // get ticket info and fetching from API ------------------------------------->
     //
-    getData(key) {
+    getData = (key) => {
 
         this.setState({
             isLoadingTicket: true,
@@ -70,7 +72,7 @@ class ViewTicket extends Component {
             .then(response => response.json())
             .then(responsJson => {
                 console.log(responsJson.data)
-                this.setState({
+                 this.setState({
                     ticket: responsJson.data || [],
                     isLoadingTicket: false,
                 })
@@ -97,147 +99,159 @@ class ViewTicket extends Component {
 
     render() {
 
+
+        const Ruls = (
+
+            <div className="the-rules" >
+            <div className="rules-box" >
+                <div className="rules-box-chid1">
+                    <h3>شرایط جریمه استرداد بلیط کیش ایر با شناسه نرخی --</h3>
+                    <p>در صورت استرداد بلیط، با توجه به موارد زیر، شما جریمه شده و از مبلغ بازگشتی به شما کاسته می شود.</p>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>شرایط هنگام استرداد</th>
+                                <th>میزان جریمه</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>تا 11:30 ظهر 5 روز قبل از حرکت</td>
+                                <td>35%</td>
+                            </tr>
+                            <tr>
+                                <td>تا 11:30 ظهر 4 روز قبل از حرکت</td>
+                                <td>40%</td>
+                            </tr>
+                            <tr>
+                                <td>تا 11:30 ظهر 3 روز قبل از حرکت</td>
+                                <td>45%</td>
+                            </tr>
+                            <tr>
+                                <td>تا 11:30 ظهر 2 روز قبل از حرکت</td>
+                                <td>55%</td>
+                            </tr>
+                            <tr>
+                                <td>تا 11:30 ظهر 1 روز قبل از حرکت</td>
+                                <td>70%</td>
+                            </tr>
+                            <tr>
+                                <td>از 11:30 ظهر 1 روز قبل از حرکت به بعد - تماس تلفنی</td>
+                                <td>100%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div className="rules-box" >
+                <div className="rules-box-child2">
+                    <h3>قوانین و مقررات</h3>
+                    <ul className="rules-list">
+                        <li><span>1</span>پرواز داخلی هواپیمایی کیش ایر از ترمینال - فرودگاه انجام می شود</li>
+                        <li><span>2</span>برای سوار شدن به هواپیما، ارائه کارت شناسایی عکس دار ضروری است</li>
+                        <li><span>3</span>برای استرداد بلیط ارائه کارت شناسایی عکس دار ضروری است</li>
+                        <li><span>4</span>دوربین، موبایل، نوت بوک، اشیا گران بها و مدارک مهم را در بسته های تحویلی به هواپیما قرار ندهید. بر اساس قوانین، هواپیمایی جمهوری اسلامی ایران در خصوص مفقود شدن این موارد، هیچ مسئولیتی ندارد</li>
+                        <li><span>5</span>حضور مسافر حداقل یک ساعت قبل از زمان پرواز در فرودگاه الزامی است.</li>
+                    </ul>
+                </div>
+            </div>
+            
+        </div>
+    
+        )
+
+        const renderTicket = (
+            
+             
+                // console.log(this.state.ticket)
+                this.state.ticket.map((item,index) => 
+                <div className="fit-a4">
+                    <div className="ticket-picture" key={index} >
+                    {console.log( item)}
+                  <div className="ticket-right" >
+                      <div className="ticket-triple" >
+                          <div className="ticket-triple-box">
+                              <img src={brand} alt="برند" />
+                              <div className="ticket-triple-box-titles" >
+                                  <p>نام خریدار</p>
+                                  <h2>{item.customer.name}</h2>
+                                  <h2>{item.customer.phone}</h2>
+                              </div>
+                          </div>
+
+                          <div className="ticket-triple-box">
+                              <div className="ticket-triple-box-titles" >
+                                  <h2></h2>
+                                  <p>تاریخ صدور بلیط</p>
+                                  <p><b>{item ? MiladyToJalaly(TimeSpan(item.created_at_timestamp)) : '****/**/**'}</b></p>
+                              </div>
+                          </div>
+                      </div>
+                      <div className="ticket-dates" >
+                          <div className="ticket-dates-box" >
+                              <img src={icon2} alt="آیکن" />
+                              <span>روز : </span>
+                              <span>{item.products_episode ? MiladyToJalaly(TimeSpan(item.products_episode.start_date)) : '****/**/**'}</span>
+                          </div>
+                          <div className="ticket-dates-box" >
+                              <img src={icon3} alt="آیکن" />
+                              <span>سانس : </span>
+                              <span>{item.products_episode ? item.products_episode.start_hours : '-'} تا {item.products_episode ? item.products_episode.end_hours : '-'}</span>
+                          </div>
+                          <div className="ticket-dates-box" >
+                              <img src={icon4} alt="آیکن" />
+                              <span> تعداد: </span>
+                              <span> برای {item.count} نفر </span>
+         
+                          </div>
+                      </div>
+                      <div className="ticket-barcode-price" >
+                          <div className="ticket-barcode-right" >
+                              <img src={barcode1} alt="بارکد" />
+                              <div>
+         
+                                  <h1 className="ticket-barcode-text" >شماره بلیت</h1>
+                                  <p className="ticket-barcode-number" >{item.ticket_number || '---'}</p>
+                              </div>
+                          </div>
+                          <h1 className="ticket-barcode-price-number">
+                          {PriceDigit(item.total_price,'price')}
+                              <span>تومان</span>
+                          </h1>
+         
+                      </div>
+                  </div>
+                  <div className="ticket-left" >
+                      <div className="ticket-left-box" >
+                          <img src={brand2} alt="برند" />
+                          <h1 className="ticket-barcode-text">شماره بلیت</h1>
+                          <p className="ticket-barcode-number">{item.ticket_number || '---'}</p>
+                          <img src={barcode} alt="بارکد" />
+         
+                      </div>
+                  </div>
+              </div>
+              {Ruls}
+              </div>
+                )
+           
+        )
+
+
         return (
             <div className="viw-ticket">
                 <div className="viw-ticket-box">
-                   {this.state.isNotDisplay === false ? 
-                    <div className="ticket-picture" >
-                    <div className="ticket-right" >
-                        <div className="ticket-triple" >
-                            <div className="ticket-triple-box">
-                                <img src={brand} alt="برند" />
-                                <div className="ticket-triple-box-titles" >
-                                    <h2>نام خریدار</h2>
-                                    <p>{this.state.ticket.customer ? this.state.ticket.customer.name : ' '}</p>
-                                    {console.log(this.state.ticket.customer ? this.state.ticket.customer.name : ' ')}
-                                    <p>0912-569-6696</p>
-                                </div>
-                            </div>
-                            <div className="ticket-triple-box">
-                                <img src={pic} alt="برند" />
-                                <div className="ticket-triple-box-titles" >
-                                    <h2>نام خریدار</h2>
-                                    <p>محمدرضا رحمانی</p>
-                                    <p>0912-569-6696</p>
-                                </div>
-                            </div>
-                            <div className="ticket-triple-box">
-                                <img src={pic} alt="برند" />
-                                <div className="ticket-triple-box-titles" >
-                                    <h2>نام خریدار</h2>
-                                    <p>محمدرضا رحمانی</p>
-                                    <p>0912-569-6696</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="ticket-dates" >
-                            <div className="ticket-dates-box" >
-                                <img src={icon1} alt="آیکن" />
-                                <span>تاریخ بلیت: </span>
-                                <span>{this.state.ticket.created_at}</span>
-                            </div>
-                            <div className="ticket-dates-box" >
-                                <img src={icon2} alt="آیکن" />
-                                <span>روز : </span>
-                                <span>1397/12/10</span>
-                            </div>
-                            <div className="ticket-dates-box" >
-                                <img src={icon3} alt="آیکن" />
-                                <span>سانس : </span>
-                                <span>1397/12/10</span>
-                            </div>
-                            <div className="ticket-dates-box" >
-                                <img src={icon4} alt="آیکن" />
-                                <span> برای 3 نفر </span>
-
-                            </div>
-                        </div>
-                        <div className="ticket-barcode-price" >
-                            <div className="ticket-barcode-right" >
-                                <img src={barcode1} alt="بارکد" />
-                                <div>
-
-                                    <h1 className="ticket-barcode-text" >شماره بلیت</h1>
-                                    <p className="ticket-barcode-number" >JK12321654846</p>
-                                </div>
-                            </div>
-                            <h1 className="ticket-barcode-price-number">
-                                {PriceDigit(this.state.ticket.total_count,'price')}
-                                <span>تومان</span>
-                            </h1>
-
-                        </div>
-                    </div>
-                    <div className="ticket-left" >
-                        <div className="ticket-left-box" >
-                            <img src={brand2} alt="برند" />
-                            <h1 className="ticket-barcode-text">شماره بلیت</h1>
-                            <p className="ticket-barcode-number">JK12321654846</p>
-                            <img src={barcode} alt="بارکد" />
-
-                        </div>
-                    </div>
-                </div>
+                   {/* {this.state.isNotDisplay === false ? 
+                   renderTicket
                 :
                 <div className="notfound-ticket">
                     <p>متاسفانه بلیطی با این شماره پیدا نشده است</p>
-                </div>}
+                </div>} */}
 
-                    <div className="the-rules" >
-                        <div className="rules-box" >
-                            <div className="rules-box-chid1">
-                                <h3>شرایط جریمه استرداد بلیط کیش ایر با شناسه نرخی --</h3>
-                                <p>در صورت استرداد بلیط، با توجه به موارد زیر، شما جریمه شده و از مبلغ بازگشتی به شما کاسته می شود.</p>
+                   {renderTicket}
 
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th>شرایط هنگام استرداد</th>
-                                            <th>میزان جریمه</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>تا 11:30 ظهر 5 روز قبل از حرکت</td>
-                                            <td>35%</td>
-                                        </tr>
-                                        <tr>
-                                            <td>تا 11:30 ظهر 4 روز قبل از حرکت</td>
-                                            <td>40%</td>
-                                        </tr>
-                                        <tr>
-                                            <td>تا 11:30 ظهر 3 روز قبل از حرکت</td>
-                                            <td>45%</td>
-                                        </tr>
-                                        <tr>
-                                            <td>تا 11:30 ظهر 2 روز قبل از حرکت</td>
-                                            <td>55%</td>
-                                        </tr>
-                                        <tr>
-                                            <td>تا 11:30 ظهر 1 روز قبل از حرکت</td>
-                                            <td>70%</td>
-                                        </tr>
-                                        <tr>
-                                            <td>از 11:30 ظهر 1 روز قبل از حرکت به بعد - تماس تلفنی</td>
-                                            <td>100%</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        <div className="rules-box" >
-                            <div className="rules-box-child2">
-                                <h3>قوانین و مقررات</h3>
-                                <ul className="rules-list">
-                                    <li><span>1</span>پرواز داخلی هواپیمایی کیش ایر از ترمینال - فرودگاه انجام می شود</li>
-                                    <li><span>2</span>برای سوار شدن به هواپیما، ارائه کارت شناسایی عکس دار ضروری است</li>
-                                    <li><span>3</span>برای استرداد بلیط ارائه کارت شناسایی عکس دار ضروری است</li>
-                                    <li><span>4</span>دوربین، موبایل، نوت بوک، اشیا گران بها و مدارک مهم را در بسته های تحویلی به هواپیما قرار ندهید. بر اساس قوانین، هواپیمایی جمهوری اسلامی ایران در خصوص مفقود شدن این موارد، هیچ مسئولیتی ندارد</li>
-                                    <li><span>5</span>حضور مسافر حداقل یک ساعت قبل از زمان پرواز در فرودگاه الزامی است.</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+         
                 </div>
             </div>
         );

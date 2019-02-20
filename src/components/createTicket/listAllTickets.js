@@ -244,7 +244,7 @@ class Seller extends Component {
             // render all agents and pass props name , avatar , level ------->
             this.state.agentLoading === false ? this.props.data.prices.map((item, index) =>
              
-                    <div key={index} className="create-ticket-price-level">
+                    <div key={index} className="create-ticket-price-level ">
                         <div className="create-ticket-price-level-text">
                             <span className="create-ticket-price-level-text1">{item.title}</span>
                             <span className="create-ticket-price-level-text2">({item.min} تا {item.max} سال)</span>
@@ -268,10 +268,9 @@ class Seller extends Component {
 
 
         return (
-            <div className="create-ticket-search-result table-desktop" > 
-                {console.log('sssssssssssssssssssssssssssssssssssssss')}
+            <div className="create-ticket-search-result table-desktop fadeInDown" >  
                 <div className="create-ticket-search-lists " >
-                    <div className="create-ticket-search-list">
+                    <div className="create-ticket-search-list ">
                         <div className="create-ticket-search-list-first-cell" >
                             <div className="create-ticket-search-play">{this.props.data.title}</div>
                             <div className="create-ticket-dates">

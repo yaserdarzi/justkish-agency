@@ -110,8 +110,8 @@ class PaymentMethod extends Component {
 
         return (
             <div className="payment-method">
-                <div className="payment-method-box container" >
-                    <div className="payment-method-title" >
+                <div className="payment-method-box container " >
+                    <div className="payment-method-title  fadeInDown"  >
                         <div className="payment-method-title-text" >
                             <h3>نحوه ی پرداخت </h3>
                             <p>با یکی از روش های زیر پرداخت کنید</p>
@@ -119,8 +119,8 @@ class PaymentMethod extends Component {
                         <h1>{PriceDigit(this.state.wallet.total_price,'price')} تومان</h1>
                     </div>
                     <div className="payment-method-context" >
-                        <div className="payment-method-context-box payment-method-right" >
-                            <div className="payment-method-up">
+                        <div className="payment-method-context-box payment-method-right fadeInUp" >
+                            <div className="payment-method-up ">
                                 <div className="payment-method-up-1" >
                                     <h3>پرداخت مستقیم شتاب</h3>
                                     <p>شما میتوانید با انتخاب درگاه مورد نظر پرداخت خود را به صورت مستقیم انجام دهید</p>
@@ -151,7 +151,7 @@ class PaymentMethod extends Component {
                                 </div>
                             </div>
                         </div>
-                        <div className="payment-method-context-box payment-method-left" >
+                        <div className="payment-method-context-box payment-method-left  fadeInUp" >
                             <div className="payment-method-up">
                                 <div className="payment-method-up-1" >
                                     <h3>پرداخت مستقیم شتاب</h3>

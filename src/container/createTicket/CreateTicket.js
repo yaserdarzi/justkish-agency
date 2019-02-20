@@ -519,7 +519,7 @@ class CreateTicket extends Component {
         return (
             <div className="create-ticket" >
                 <div className="create-ticket-box container" >
-                    <div className="part1" >
+                    <div className="part1 fadeInUp" >
                         {/* <div className="create-ticket-your-credit">
                             <p className="create-ticket-your-credit-title" ><img src={wallet} alt="wallet" /> اعتبار شما</p>
                             <p className="create-ticket-increase-credit-text">افزایش اعتبار</p>
@@ -586,12 +586,12 @@ class CreateTicket extends Component {
                                         changed={this.changedHandler}
                                         error={this.state.customerPhoneError} 
                                     />
-                                    <div  className="create-ticket-pay" >
+                                    <div onClick={() => this._paymentToShop()} className="create-ticket-pay" >
                                         <div className="create-ticket-imgs">
                                             <img src={co} alt="فلش" />
                                             <img src={arrow} alt="فلش" />
                                         </div>
-                                        <div onClick={() => this._paymentToShop()} className="create-ticket-text">
+                                        <div className="create-ticket-text">
                                             <span>پرداخت و صدور بلیت</span> {this.state.isLoadingPayment ? <div className="loader-button"></div> : ''}
                                         </div>
                                         
@@ -603,7 +603,7 @@ class CreateTicket extends Component {
                         </div>
                     </div>
                     <div className="part2" >
-                        <div className="create-ticket-filter" >
+                        <div className="create-ticket-filter fadeInDown" >
                             <div className="create-ticket-date" >
                                 {/* <div className="create-ticket-from" >از</div>
                                 <div className="create-ticket-to" >تا</div> */}
