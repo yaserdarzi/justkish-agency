@@ -131,6 +131,8 @@ class Dashboard extends Component {
 
 
         }
+        // this.weatherHandler()
+
     }
 
 
@@ -141,9 +143,8 @@ class Dashboard extends Component {
         this.weatherHandler();
     }
 
-    componentWillMount(){
-     
-    }
+
+
 
 
 
@@ -221,80 +222,56 @@ class Dashboard extends Component {
         })
     }
 
-    weatherHandler =  () => {
+
+    weatherHandler = async () => {
+
         var APPID = "7d1b757c28035a0d3f9608ee7c54278a"
         var temp, loc, icon, humidity, wind, direction;
 
+        var url = "https://api.openweathermap.org/data/2.5/weather?" +
+            "q=Kish,IR" +
+            "&APPID=" + APPID;
+        await fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                this.setState({ data: data })
+                console.log(data)
+            });
 
-        function updateByZip(q) {
-            var url = "https://api.openweathermap.org/data/2.5/weather?" +
-                "q=" + q +
-                "&APPID=" + APPID;
-            sendRequest(url);
-            // api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=7d1b757c28035a0d3f9608ee7c54278a
+        var data = this.state.data
+        var weather = { };
+        
+        temp = document.getElementById('temperature')
+        loc = document.getElementById('location')
+        icon = document.getElementById('icon')
+        humidity = document.getElementById('humidity')
+        wind = document.getElementById('wind')
+        direction = document.getElementById('direction')
+
+
+        wind.innerHTML = data.weather[0].id;
+        direction.innerHTML =Math.round(data.wind.deg);
+        humidity.innerHTML =  data.main.humidity;
+        // loc.innerHTML = weather.loc;
+        temp.innerHTML = Math.round(data.main.temp / 10)
+
+
+        if (weather.temp < 5) {
+            icon.src = rain
+        } else if (weather.temp > 5 && weather.temp < 10) {
+            icon.src = cloud
+        } else if (weather.temp < 20 && weather.temp > 10) {
+            icon.src = suncloud
+        } else {
+            icon.src = sun
         }
 
-        function sendRequest(url) {
-            let self = this
-            var xmlhttp = new XMLHttpRequest();
-            xmlhttp.onreadystatechange = function () {
-                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                    var data = JSON.parse(xmlhttp.responseText);
-                    var weather = {};
-                    weather.icon = data.weather[0].id;
-                    weather.humidity = data.main.humidity;
-                    weather.wind = Math.round(data.wind.speed * 1.6);
-                    weather.direction = Math.round(data.wind.deg);
-                    weather.loc = data.name;
-                    weather.temp = Math.round(data.main.temp / 10)
-
-
-                    update(weather)
-                    console.log(data)
-
-                }
-            };
-            xmlhttp.open('GET', url, true);
-            xmlhttp.send();
-
-        }
-
-
-        function update(weather) {
-
-            if (weather.temp < 5) {
-                icon.src = rain
-            } else if (weather.temp > 5 && weather.temp < 10) {
-                icon.src = cloud
-            } else if (weather.temp < 20 && weather.temp > 10) {
-                icon.src = suncloud
-            } else {
-                icon.src = sun
-            }
-
-            wind.innerHTML = weather.wind;
-            direction.innerHTML = weather.direction;
-            humidity.innerHTML = weather.humidity;
-            // loc.innerHTML = weather.loc;
-            temp.innerHTML = weather.temp;
-
-
-        }
-
-        window.onload = function () {
-
-            temp = document.getElementById('temperature')
-            loc = document.getElementById('location')
-            icon = document.getElementById('icon')
-            humidity = document.getElementById('humidity')
-            wind = document.getElementById('wind')
-            direction = document.getElementById('direction')
-
-            updateByZip("Kish,IR")
 
         }
 
     }
+
+   
 
     handler = () => {
 
@@ -367,7 +344,7 @@ class Dashboard extends Component {
             <div className="dashboard">
                 <div className="dashboard1">
                     <div className="calender-weather-box" >
-                    <div className="dashboard-weather" id="dashboardweather" >
+                        <div className="dashboard-weather" id="dashboardweather" >
                             {WeatherApp}
                         </div>
                         <div className="dashboard-calenrder">
