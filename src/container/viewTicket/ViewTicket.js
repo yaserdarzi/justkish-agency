@@ -114,7 +114,7 @@ class ViewTicket extends Component {
 
                     <div className="the-rules" >
                         <div className="rules-box" >
-                            <div class="rules-box-chid1">
+                            <div className="rules-box-chid1">
                                 <h3>شرایط جریمه استرداد بلیط کیش ایر با شناسه نرخی --</h3>
                                 <p>در صورت استرداد بلیط، با توجه به موارد زیر، شما جریمه شده و از مبلغ بازگشتی به شما کاسته می شود.</p>
 
@@ -155,9 +155,9 @@ class ViewTicket extends Component {
                             </div>
                         </div>
                         <div className="rules-box" >
-                            <div class="rules-box-child2">
+                            <div className="rules-box-child2">
                                 <h3>قوانین و مقررات</h3>
-                                <ul class="rules-list">
+                                <ul className="rules-list">
                                     <li><span>1</span>پرواز داخلی هواپیمایی کیش ایر از ترمینال - فرودگاه انجام می شود</li>
                                     <li><span>2</span>برای سوار شدن به هواپیما، ارائه کارت شناسایی عکس دار ضروری است</li>
                                     <li><span>3</span>برای استرداد بلیط ارائه کارت شناسایی عکس دار ضروری است</li>

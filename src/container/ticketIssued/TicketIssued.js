@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
+import { Link, browserHistory } from 'react-router';
 import base from '../../api/baseURL';
 import Token from '../../api/token';
 import PriceDigit from '../../components/priceDigit/priceDigit';
@@ -47,6 +47,7 @@ class TicketIssued extends Component {
 
     _getAllTicket =() =>{
         this.getData('agency/factor?page=0');
+        
     }
 
     getData(key) {
@@ -85,6 +86,7 @@ class TicketIssued extends Component {
 
     _showTicket =(id) => {
         console.log(id);
+        browserHistory.push({pathname:'/view-ticket',state: id })
     }
 
 

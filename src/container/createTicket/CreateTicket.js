@@ -658,30 +658,6 @@ class CreateTicket extends Component {
                                             <ul className="create-ticket-features-col" >
                                                 {renderCategory}
                                             </ul>
-                                            {/* <ul className="create-ticket-features-col" >
-                                                <li> استند آپ کمدی</li>
-                                                <li> اسکوتر زیر دریایی</li>
-                                                <li> باگی</li>
-                                                <li> بیگ بال</li>
-                                                <li> پلاژ</li>
-                                                <li> پارک آبی اوشن</li>
-                                                <li> دلفیناریوم</li>
-                                                <li> سافاری</li>
-                                                <li> پینت بال</li>
-                                            </ul> */}
-                                            {/* <ul className="create-ticket-features-col" >
-                                                <li> کشتی کروز</li>
-                                                <li> قلعه وحشت</li>
-                                                <li> شهرزیرزمینی کاریز</li>
-                                                <li> شترسواری</li>
-                                                <li> کیبل</li>
-                                                <li> ماساژ</li>
-                                                <li> ماهیگیری</li>
-                                                <li> جابرو کوپتر</li>
-                                                <li> پینت بال</li>
-                                            </ul> */}
-
-
                                         </li>
                                     </ul></div>
                                 <button className="create-ticket-btn" onClick={() => this._searchButonTickets()} >
