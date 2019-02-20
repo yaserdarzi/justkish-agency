@@ -75,7 +75,7 @@ class TicketIssued extends Component {
                 console.log(responsJson.data)
                 this.setState({
                     allTicket: responsJson.data,
-                    isLoadingAllTicket: false  // stop show loadig --->!
+                    isLoadingAllTicket: false  // stop show loadig ------------------->!
                 })
             })
     }
@@ -86,7 +86,7 @@ class TicketIssued extends Component {
 
     _showTicket =(id) => {
         console.log(id);
-        browserHistory.push({pathname:'/view-ticket',state: id })
+        browserHistory.push({pathname:'/view-ticket',search: '?id=' + id, state: id })
     }
 
 

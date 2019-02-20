@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import base from '../../api/baseURL';
+import Token from '../../api/token';
+
 
 
 
@@ -28,6 +31,59 @@ class ViewTicket extends Component {
             isLoading: false,
             userAvatar: 'https://www.drupal.org/files/issues/default-avatar.png'
         }
+    }
+
+    componentDidMount(){
+        console.log(this.getParms('id'));
+
+    }
+
+    //
+    // get ticket info and fetching from API ------------------------------------->
+    //
+    getData(key) {
+
+        this.setState({
+            agentLoading: true
+        })
+
+        const url = base.baseURL + key;
+
+        return fetch(url, {
+            method: "GET",
+            cache: "no-cache",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                "agent": "web",
+                "Authorization": Token
+            },
+            redirect: "follow",
+            referrer: "no-referrer"
+        })
+            .then(response => response.json())
+            .then(responsJson => {
+                //console.log(responsJson.data)
+                this.setState({
+                    agents: responsJson.data,
+                    agentLoading: false
+                })
+            })
+    }
+
+    // 
+    //  get params from url-------------------------->
+    //
+    getParms(value) {
+
+        let url_string = window.location.href
+        let url = new URL(url_string);
+
+        const val = url.searchParams.get(value);
+       // console.log(val)
+        if (val !== null)
+            return val;
+        return 0
     }
 
     render() {
