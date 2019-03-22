@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import { Link, browserHistory } from 'react-router';
 import { DateRangePicker } from "react-advance-jalaali-datepicker";
+/*
+
+https://www.npmjs.com/package/react-advance-jalaali-datepicker
+
+*/
 
 import base from '../../api/baseURL';
 import Token from '../../api/token';
@@ -618,6 +623,7 @@ class CreateTicket extends Component {
                                         onChangeEnd={this.changeTimeDate}
                                         idStart="rangePickerStart"
                                         idEnd="rangePickerEnd"
+                                        preSelected="1396/05/15"
                                     />
 
                                 </div>
