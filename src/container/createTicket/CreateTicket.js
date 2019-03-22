@@ -603,7 +603,7 @@ class CreateTicket extends Component {
                         </div>
                     </div>
                     <div className="part2" >
-                        <div className="create-ticket-filter fadeInDown" >
+                        <div className="create-ticket-filter " >
                             <div className="create-ticket-date" >
                                 {/* <div className="create-ticket-from" >از</div>
                                 <div className="create-ticket-to" >تا</div> */}
