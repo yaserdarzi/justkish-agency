@@ -31,6 +31,7 @@ class Seller extends Component {
     componentDidMount = async () => {
         window.addEventListener('scroll', this.handleScroll);
         
+        
     }
 
     componentWillUnmount() {
