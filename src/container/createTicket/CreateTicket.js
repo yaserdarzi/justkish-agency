@@ -354,22 +354,22 @@ class CreateTicket extends Component {
 
     // date select 
     change = (unix, formatted) => {
-        console.log(unix)
-        console.log(formatted)
-        console.log("start date ");
+        // console.log(unix)
+        // console.log(formatted)
+        // console.log("start date ");
         this.insertParam('start_date',formatted);
     }
 
     changeTimeDate = (unix, formatted) => {
-        console.log(unix)
-        console.log(formatted)
-        console.log("end date ")
+        // console.log(unix)
+        // console.log(formatted)
+        // console.log("end date ")
         this.insertParam('end_date',formatted)
 
     }
 
     DatePickerInput(props) {
-        console.log(prop)
+        // console.log(prop)
         return <input className="popo" {...props} ></input>;
     }
 
@@ -386,7 +386,7 @@ class CreateTicket extends Component {
     //
 
     _paymentToShop =async() => {
-        console.log("payment call")
+        // console.log("payment call")
 
         let chechking = false;
 
@@ -623,7 +623,6 @@ class CreateTicket extends Component {
                                         onChangeEnd={this.changeTimeDate}
                                         idStart="rangePickerStart"
                                         idEnd="rangePickerEnd"
-                                        preSelected="1396/05/15"
                                     />
 
                                 </div>

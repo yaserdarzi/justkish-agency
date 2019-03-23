@@ -268,7 +268,7 @@ class Seller extends Component {
 
 
         return (
-            <div className="create-ticket-search-result table-desktop fadeInDown" >  
+            <div className="create-ticket-search-result table-desktop " >  
                 <div className="create-ticket-search-lists " >
                     <div className="create-ticket-search-list ">
                         <div className="create-ticket-search-list-first-cell" >
