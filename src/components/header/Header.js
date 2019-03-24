@@ -97,13 +97,15 @@ class Header extends Component {
 
                     <div className="logo-menu" >
                         <div className="logo-box" >
-                            <img className="logo" src={logo} alt="logo" />
+                            <Link to="http://www.justkish.com">
+                                <img className="logo" src={logo} alt="logo" />
+                            </Link>
                         </div>
                         <ul className="menu" >
                             <li className="sub-menu" ><Link to="/dashboard"><img className="menu-icon" src={dashboard} alt="داشبورد" /> داشبورد</Link></li>
-                            <li className="sub-menu" ><Link to="/create-ticket"><img className="menu-icon" src={ticket2} alt="بلیت" /> صدور بلیت </Link></li>
+                            <li className="sub-menu" ><Link to="/create-ticket?categories=1"><img className="menu-icon" src={ticket2} alt="بلیت" /> خرید بلیت </Link></li>
                             <li className="sub-menu" ><Link to="/management"><img className="menu-icon" src={management} alt="مدیریت" /> مدیریت</Link></li>
-                            <li className="sub-menu" ><Link to="/support"><img className="menu-icon" src={support2} alt="پشتیبانی" /> پشتیبانی</Link></li>
+                            {/* <li className="sub-menu" ><Link to="/support"><img className="menu-icon" src={support2} alt="پشتیبانی" /> پشتیبانی</Link></li> */}
                         </ul>
                     </div>
                     <div className="user-section" >
@@ -116,7 +118,7 @@ class Header extends Component {
                             <img className="my-arrow-down" src={arrow_down} alt="فلش" />
                             <ul className="manage-profile" >
                                 <li className="sub-manage-profile" ><Link to="/addsellers"><img className="manage-profile-icon" src={operator_edit} alt="داشبورد" />مدیریت اپراتورها</Link></li>
-                                <li className="sub-manage-profile" ><img className="manage-profile-icon" src={change_password} alt="تغییر رمز عبور" />تغییر رمز عبور</li>
+                                <li className="sub-manage-profile" ><Link to="/change-password"><img className="manage-profile-icon" src={change_password} alt="تغییر رمز عبور" />تغییر رمز عبور</Link></li>
                                 <li className="sub-manage-profile" ><Link to="/profile"><img className="manage-profile-icon" src={edit_profile} alt="ویرایش حساب کاربری" />ویرایش حساب کاربری</Link></li>
                                 <li className="sub-manage-profile" onClick={this.logout}><img className="manage-profile-icon" src={logput} alt="خروج" />خروج از حساب کاربری</li>
                             </ul>
@@ -134,11 +136,11 @@ class Header extends Component {
                             <div className="ticket" >
                                 <Link to="/ticket-issued">
                                     <img className="shoppings-icon border-left" src={ticket} alt="ticket" />
-                                    <span className="wallet-remain">دانلود بلیت</span>
+                                    <span className="wallet-remain">بلیت ها</span>
                                 </Link>
                             </div>
                             <div className="shopping-card" >
-                                <Link to="/">
+                                <Link to="/create-ticket">
                                     <img className="shoppings-icon border-left" src={shopping_card} alt="shopping_card" />
                                     <span className="wallet-remain">سبد خرید</span>
                                 </Link>

@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import { Link, browserHistory } from 'react-router';
 import { DateRangePicker } from "react-advance-jalaali-datepicker";
+/*
+
+https://www.npmjs.com/package/react-advance-jalaali-datepicker
+
+*/
 
 import base from '../../api/baseURL';
 import Token from '../../api/token';
@@ -349,22 +354,22 @@ class CreateTicket extends Component {
 
     // date select 
     change = (unix, formatted) => {
-        console.log(unix)
-        console.log(formatted)
-        console.log("start date ");
+        // console.log(unix)
+        // console.log(formatted)
+        // console.log("start date ");
         this.insertParam('start_date',formatted);
     }
 
     changeTimeDate = (unix, formatted) => {
-        console.log(unix)
-        console.log(formatted)
-        console.log("end date ")
+        // console.log(unix)
+        // console.log(formatted)
+        // console.log("end date ")
         this.insertParam('end_date',formatted)
 
     }
 
     DatePickerInput(props) {
-        console.log(prop)
+        // console.log(prop)
         return <input className="popo" {...props} ></input>;
     }
 
@@ -381,7 +386,7 @@ class CreateTicket extends Component {
     //
 
     _paymentToShop =async() => {
-        console.log("payment call")
+        // console.log("payment call")
 
         let chechking = false;
 
@@ -603,7 +608,7 @@ class CreateTicket extends Component {
                         </div>
                     </div>
                     <div className="part2" >
-                        <div className="create-ticket-filter fadeInDown" >
+                        <div className="create-ticket-filter " >
                             <div className="create-ticket-date" >
                                 {/* <div className="create-ticket-from" >از</div>
                                 <div className="create-ticket-to" >تا</div> */}

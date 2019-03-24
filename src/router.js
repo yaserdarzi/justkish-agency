@@ -51,7 +51,7 @@ class RouterComponent extends Component {
                   <Route   path="forgetpassword" component={ForgetPasword} /> 
                   <Route   path="addsellers" component={AddSellers} /> 
                   <Route   path="management" component={ManagementScreen} /> 
-                  <Route   path="create-ticket" component={CreateTicketScreen} /> 
+                  <Route   path="/create-ticket" component={CreateTicketScreen} /> 
                   <Route   path="support" component={SupportScreen} /> 
                   <Route   path="profile" component={ProfileScreen} /> 
                   <Route   path="ticket-issued" component={TicketIssuedScreen} /> 

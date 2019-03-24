@@ -428,7 +428,7 @@ class Dashboard extends Component {
                         <div className="dashboard-support-text" >
                             <h2>پشتیبانی فنی</h2>
                             <p className="dashboard-support-phone">
-                                ‍‍      <span>076-44495698 -- 076-44495698</span>
+                                ‍‍      <span>۰۹۰۳۲۴۰۸۲۰۲</span>
                                 <img src={call} alt="تلفن" />
                             </p>
                             <p className="dashboard-support-mail">
