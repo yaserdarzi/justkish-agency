@@ -31,7 +31,6 @@ class Seller extends Component {
     componentDidMount = async () => {
         window.addEventListener('scroll', this.handleScroll);
         
-        
     }
 
     componentWillUnmount() {
@@ -50,7 +49,6 @@ class Seller extends Component {
                 document.addEventListener('click', this.closeMenu);
             }
         ) 
-
 
     }
 
@@ -80,8 +78,8 @@ class Seller extends Component {
     }
 
     actionDec = async(data,id) =>{
-        console.log("click added") 
-        console.log(id) 
+        // console.log("click added") 
+        // console.log(id) 
   
   
         console.log(`
