@@ -1,5 +1,7 @@
 .dashboard{
     display: flex;
+    max-width: 1366px;
+    margin: auto;
 
 }
 
