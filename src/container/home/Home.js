@@ -8,6 +8,7 @@ import SaleBox from '../../components/saleBox/SaleBox'
 import Token from '../../api/token';
 import base from '../../api/baseURL';
 import SideLeft from '../../components/sideLeft/sideLeft';
+import priceDigit from '../../components/priceDigit/priceDigit';
 
 
 
@@ -40,6 +41,9 @@ class Home extends Component {
 
         }
     }
+    componentWillMount(){
+        this.getAllReport();
+    }
 
 
 
@@ -60,9 +64,59 @@ class Home extends Component {
     }
 
 
+
+    getAllReport =() => {
+        this.getData('agency/report/sales?page=0');
+    }
+
+
+    getData(key) {
+
+        this.setState({
+            isLoadingAllTicket: true
+        })
+
+        const url = base.baseURL + key;
+
+        return fetch(url, {
+            method: "GET",
+            cache: "no-cache",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                "agent": "web",
+                "Authorization": Token
+            },
+            redirect: "follow",
+            referrer: "no-referrer"
+        })
+            .then(response => response.json())
+            .then(responsJson => {
+                console.log(responsJson.data)
+                this.setState({
+                    allReport: responsJson.data.factorProduct,
+                    totalPrice: responsJson.data.totalPrice,
+                    countAll: responsJson.data.countAll,
+                    isLoadingAllReport: false ,
+          
+                })
+            })
+    }
+
     render() {
 
-
+        const renderAllReport = (
+            this.state.isLoadingAllReport === false ? 
+                this.state.allReport.map((item,index) =>
+              
+                 
+                      <SaleBox key={index} data={item} tours={item.products != null ? item.products : item.tours} />
+               
+                            
+                            )
+        :
+        <div className="loader"></div>
+        )
 
 
 
@@ -152,12 +206,12 @@ class Home extends Component {
                         <div className="all-income" >
                             <div className="all-income-sale" >
                                 <p className="income-text" >
-                                    <span>مجموع درآمد</span>
-                                    <span> 16,000,000</span>
+                                    <span>مجموع درآمد</span> 
+                                    <span> {priceDigit(this.state.totalPrice,'price')}</span>
                                 </p>
                                 <p className="sale-text" >
                                     <span>تعداد فروش </span>
-                                    <span>150</span>
+                                    <span>{this.state.countAll}</span>
                                 </p>
                             </div>
                             <div className="pdf-grid" >
@@ -172,19 +226,8 @@ class Home extends Component {
                             </div>
                         </div>
                         <div className="products" >
-                            <SaleBox />
-                            <SaleBox />
-                            <SaleBox />
-                            <SaleBox />
-                            <SaleBox />
-                            <SaleBox />
-                            <SaleBox />
-                            <SaleBox />
-                            <SaleBox />
-                            <SaleBox />
-                            <SaleBox />
-                            <SaleBox />
-                            <SaleBox />
+                            {/* <SaleBox /> */}
+                            {renderAllReport}
 
                         </div>
                     </div>
