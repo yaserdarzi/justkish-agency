@@ -9,8 +9,8 @@ import Button from '../common/Button/Button';
 //
 //
 
-import cancel from './../../../assets/icons/cancel.svg'
-import loadingAvatar from '../../../assets/icons/loading.gif'
+import cancel from '../../assets/icons/cancel.svg'
+import loadingAvatar from '../../assets/icons/loading.gif'
 
 import './EditSeller.css'
 

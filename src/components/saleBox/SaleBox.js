@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import product from '../../../assets/images/product.jpg'
+import product from '../../assets/images/product.jpg'
 
 import './SaleBox.css';
 

@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 //
 //
 import Input from './../../../components/input/Input';
-import logo from './../../../../assets/images/logo.png';
+import logo from '../../../assets/images/logo.png';
 import base from '../../../api/baseURL';
 import Token from '../../../api/token';
 import Button from '../../../components/common/Button/Button';
@@ -303,7 +303,7 @@ class Index extends Component {
                                      <Input 
                                      
                                         placeholder="نام آژانس" 
-                                        name="agentname"
+                                        name="agentname"ب
                                         type={'text'}  
                                         changed={this.changedHandler}
                                         error={this.state.agentnameError}

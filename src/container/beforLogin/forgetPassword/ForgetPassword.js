@@ -8,7 +8,7 @@ import Input from '../../../components/input/Input';
 //
 // icons and images ----------------->
 //
-import logo from './../../../../assets/images/logo.png'
+import logo from '../../../assets/images/logo.png'
 
 import './ForgetPassword.css';
 

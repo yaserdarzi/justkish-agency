@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 // components ------------->
 //
 import Button from './../../components/common/Button/Button'
-import sample from './../../../assets/images/sample.jpg'
+import sample from '../../assets/images/sample.jpg'
 import PriceDigit from '../../components/priceDigit/priceDigit';
 import Token from '../../api/token';
 import base from '../../api/baseURL';

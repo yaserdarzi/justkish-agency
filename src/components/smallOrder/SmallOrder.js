@@ -12,7 +12,7 @@ import Token from '../../api/token';
 //
 // icons and images ----------------------->
 //
-import deletee from './../../../assets/icons/delete.svg';
+import deletee from '../../assets/icons/delete.svg';
 
 
 

@@ -22,15 +22,15 @@ import PriceDigit from '../../components/priceDigit/priceDigit';
 // icons and images ------------->
 //
 
-import search from './../../../assets/icons/search.svg';
-import arrowdown2 from './../../../assets/icons/arrow-down2.svg';
-import positive from './../../../assets/icons/positive.svg';
-import ngative from './../../../assets/icons/ngative.svg';
-import deletee from './../../../assets/icons/delete.svg';
-import wallet from './../../../assets/icons/wallet.svg';
-import pluscircle from './../../../assets/icons/pluscircle.svg';
-import co from './../../../assets/icons/co.svg';
-import arrow from './../../../assets/icons/arrow.svg';
+import search from '../../assets/icons/search.svg';
+import arrowdown2 from '../../assets/icons/arrow-down2.svg';
+import positive from '../../assets/icons/positive.svg';
+import ngative from '../../assets/icons/ngative.svg';
+import deletee from '../../assets/icons/delete.svg';
+import wallet from '../../assets/icons/wallet.svg';
+import pluscircle from '../../assets/icons/pluscircle.svg';
+import co from '../../assets/icons/co.svg';
+import arrow from '../../assets/icons/arrow.svg';
 
 
 //

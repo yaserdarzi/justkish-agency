@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
-import edit from './../../../assets/icons/edit_profile.svg'
-import off from './../../../assets/icons/dashboard-2.svg'
-import defaultAvatar from './../../../assets/icons/defaultAvatar.svg'
+import edit from '../../assets/icons/edit_profile.svg'
+import off from '../../assets/icons/dashboard-2.svg'
+import defaultAvatar from '../../assets/icons/defaultAvatar.svg'
 
 
 import './Seller.css';

@@ -10,7 +10,7 @@ import DateJalaly from '../times/dateMiladiToShamsi';
 
 
 
-import arrowdown2 from '../../../assets/icons/arrow-down2.svg';
+import arrowdown2 from '../../assets/icons/arrow-down2.svg'; 
  
  
 
@@ -162,7 +162,7 @@ class Seller extends Component {
 
 
       addToShopBag = async(data,id) =>{
-        console.log(event.target.name)
+        // console.log(event.target.name)
         console.log("click") 
         console.log(id) 
         this.setState({

@@ -11,9 +11,9 @@ import MiladiToJalaly from '../../components/times/dateMiladiToShamsi';
 //
 // icons and images ------------------------------------------------->
 //
-import email from './../../../assets/icons/email.svg'
-import sms from './../../../assets/icons/sms.svg'
-import print from './../../../assets/icons/print.svg'
+import email from '../../assets/icons/email.svg'
+import sms from '../../assets/icons/sms.svg'
+import print from '../../assets/icons/print.svg'
 
 
 

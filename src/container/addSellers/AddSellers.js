@@ -12,12 +12,12 @@ import EditSeller from './../../components/editSeller/EditSeller'
 //
 // icons and imeages ----------------------->
 //
-import profile from './../../../assets/images/profile.jpg';
-import operator_edit from './../../../assets/icons/operator_edit.svg';
-import change_password from './../../../assets/icons/change_password.svg';
-import edit_profile from './../../../assets/icons/edit_profile.svg';
-import logput from './../../../assets/icons/logput.svg';
-import report from './../../../assets/icons/report.svg';
+import profile from '../../assets/images/profile.jpg';
+import operator_edit from '../../assets/icons/operator_edit.svg';
+import change_password from '../../assets/icons/change_password.svg';
+import edit_profile from '../../assets/icons/edit_profile.svg';
+import logput from '../../assets/icons/logput.svg';
+import report from '../../assets/icons/report.svg';
 
 //
 // css class ------------------------------>
