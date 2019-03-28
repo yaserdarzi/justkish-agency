@@ -14,7 +14,7 @@ import Chart from 'react-apexcharts'
 import Seller from './../../components/seller/Seller';
 import base from '../../api/baseURL';
 import Token from '../../api/token';
-import PriceDigit from '../../components/priceDigit/priceDigit';
+// import PriceDigit from '../../components/priceDigit/priceDigit';
 
 //
 // icons and images --------------------------------->

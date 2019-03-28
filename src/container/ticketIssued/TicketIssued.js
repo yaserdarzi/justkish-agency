@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, browserHistory } from 'react-router';
+import {  browserHistory } from 'react-router';
 import base from '../../api/baseURL';
 import Token from '../../api/token';
 import PriceDigit from '../../components/priceDigit/priceDigit';
@@ -11,8 +11,9 @@ import MiladiToJalaly from '../../components/times/dateMiladiToShamsi';
 //
 // icons and images ------------------------------------------------->
 //
-import email from '../../assets/icons/email.svg'
-import sms from '../../assets/icons/sms.svg'
+
+// import email from '../../assets/icons/email.svg'
+// import sms from '../../assets/icons/sms.svg'
 import print from '../../assets/icons/print.svg'
 
 

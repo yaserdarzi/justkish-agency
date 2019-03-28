@@ -8,15 +8,14 @@ import './SaleBox.css';
 class SaleBox extends Component {
 
     componentDidMount(){
-        //console.log(this.props.data)
-        // console.log(this.props.data.products.title != null ? this.props.data.products.title : 'n tile')
+        console.log(this.props.tours.images)
     }
 
     render() {
         return (
             <div className="sale-box">
                     <div className="product-sale-box" >
-                        <img className="product-picture" src={product} alt="محصول" />
+                        <img className="product-picture" src={ this.props.tours.images != '' ? 'http://justkish.com/files/products/' + this.props.tours.images : product} alt="محصول" />
                         <span className="product-sale-title" >
                             <span>{this.props.tours.title}</span>
                             <span className="product-sale" >{this.props.data.count}

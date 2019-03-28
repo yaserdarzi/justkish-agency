@@ -92,7 +92,7 @@ class Home extends Component {
         })
             .then(response => response.json())
             .then(responsJson => {
-                console.log(responsJson.data)
+              //  console.log(responsJson.data)
                 this.setState({
                     allReport: responsJson.data.factorProduct,
                     totalPrice: responsJson.data.totalPrice,

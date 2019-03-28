@@ -123,8 +123,9 @@ class Wallet extends Component {
 
 
         if(checking === false){
-            console.log("price fetching")
+           // console.log("price fetching")
             const res = await  this.postData(data,'agency/wallet/pay');
+            console.log(res)
 
         }
     }
