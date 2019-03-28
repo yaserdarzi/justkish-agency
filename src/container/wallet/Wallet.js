@@ -13,8 +13,8 @@ import PriceDigit from '../../components/priceDigit/priceDigit';
 //
 // icons and images ------------->
 //
-import arrowdown2 from './../../../assets/icons/arrow-down2.svg'
-import search from './../../../assets/icons/search.svg'
+import arrowdown2 from '../../assets/icons/arrow-down2.svg'
+import search from '../../assets/icons/search.svg'
 
 import './Wallet.css'; 
 
@@ -123,8 +123,9 @@ class Wallet extends Component {
 
 
         if(checking === false){
-            console.log("price fetching")
+           // console.log("price fetching")
             const res = await  this.postData(data,'agency/wallet/pay');
+            console.log(res)
 
         }
     }

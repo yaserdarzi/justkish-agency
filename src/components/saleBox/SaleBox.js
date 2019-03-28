@@ -1,18 +1,24 @@
 import React, { Component } from 'react';
 
-import product from '../../../assets/images/product.jpg'
+import product from '../../assets/images/product.jpg'
+import priceDigit from '../priceDigit/priceDigit';
 
 import './SaleBox.css';
 
 class SaleBox extends Component {
+
+    componentDidMount(){
+        console.log(this.props.tours.images)
+    }
+
     render() {
         return (
             <div className="sale-box">
                     <div className="product-sale-box" >
-                        <img className="product-picture" src={product} alt="محصول" />
+                        <img className="product-picture" src={ this.props.tours.images != '' ? 'http://justkish.com/files/products/' + this.props.tours.images : product} alt="محصول" />
                         <span className="product-sale-title" >
-                            <span>پاراسل</span>
-                            <span className="product-sale" >۲۰
+                            <span>{this.props.tours.title}</span>
+                            <span className="product-sale" >{this.props.data.count}
                                 <span>فروش</span>
                             </span>
                         </span>
@@ -20,7 +26,7 @@ class SaleBox extends Component {
                     <div className="product-price-box" >
                         <span className="product-price-title" >میزان درآمد</span>
                         <span className="product-price-number" >
-                            2,000,000
+                           {priceDigit(this.props.data.agencyProfit,'price')}
                             <span>تومان</span>
                         </span>
                     </div>

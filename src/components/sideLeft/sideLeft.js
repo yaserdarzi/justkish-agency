@@ -12,12 +12,12 @@ import PriceDigit from '../../components/priceDigit/priceDigit';
 //
 //
 //
-import operator_edit from './../../../assets/icons/operator_edit.svg'
-import change_password from './../../../assets/icons/change_password.svg'
-import edit_profile from './../../../assets/icons/edit_profile.svg'
-import logput from './../../../assets/icons/logput.svg'
-import report from './../../../assets/icons/report.svg'
-import loading from '../../../assets/icons/loading.gif'
+import operator_edit from '../../assets/icons/operator_edit.svg'
+import change_password from '../../assets/icons/change_password.svg'
+import edit_profile from '../../assets/icons/edit_profile.svg'
+import logput from '../../assets/icons/logput.svg'
+import report from '../../assets/icons/report.svg'
+import loading from '../../assets/icons/loading.gif'
 
 
 class SideLeft extends Component {

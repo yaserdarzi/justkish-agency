@@ -10,15 +10,15 @@ import MiladyToJalaly from '../../components/times/dateMiladiToShamsi';
 //
 // icons and images --------------------------------->
 //
-import brand from './../../../assets/images/brand.png'
-import brand2 from './../../../assets/images/brand2.png'
-import icon1 from './../../../assets/icons/icon1.svg'
-import icon2 from './../../../assets/icons/icon2.svg'
-import icon3 from './../../../assets/icons/icon3.png'
-import icon4 from './../../../assets/icons/icon4.svg'
-import barcode from './../../../assets/images/barcode.png'
-import barcode1 from './../../../assets/images/barcode1.png'
-import pic from './../../../assets/images/pic.jpg'
+import brand from '../../assets/images/brand.png'
+import brand2 from '../../assets/images/brand2.png'
+import icon2 from '../../assets/icons/icon2.svg'
+import icon3 from '../../assets/icons/icon3.png'
+import icon4 from '../../assets/icons/icon4.svg'
+import barcode from '../../assets/images/barcode.png'
+import barcode1 from '../../assets/images/barcode1.png'
+// import pic from '../../assets/images/pic.jpg'
+// import icon1 from '../../assets/icons/icon1.svg'
 
 import './ViewTicket.css';
 
@@ -39,7 +39,7 @@ class ViewTicket extends Component {
     }
 
     componentWillMount =() => {
-        console.log(this.getParms('id'));
+       // console.log(this.getParms('id'));
          this.getData('agency/factor/' + this.getParms('id'));
 
 
@@ -182,7 +182,7 @@ class ViewTicket extends Component {
 
                           <div className="ticket-triple-box">
                               <div className="ticket-triple-box-titles" >
-                                  <h2></h2>
+                                  <h2> </h2>
                                   <p>تاریخ صدور بلیط</p>
                                   <p><b>{item ? MiladyToJalaly(TimeSpan(item.created_at_timestamp)) : '****/**/**'}</b></p>
                               </div>

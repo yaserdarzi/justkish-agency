@@ -13,9 +13,9 @@ export default class CreateTicketMinusPluse extends React.Component {
 
         
 
-           console.log(this.state.counter)
-           console.log(event.target.name)
-           console.log(this.props.name)
+        //    console.log(this.state.counter)
+        //    console.log(event.target.name)
+        //    console.log(this.props.name)
 
         if (event.target.name === 'max')
            {

@@ -14,15 +14,15 @@ import SideLeft from '../../components/sideLeft/sideLeft';
 //
 // icons and images --------------------------------->
 //
-import profile from './../../../assets/images/profile.jpg'
+import profile from '../../assets/images/profile.jpg'
 
-import search from './../../../assets/icons/search.svg'
-import arrowdown2 from './../../../assets/icons/arrow-down2.svg'
-import user from './../../../assets/icons/user.svg'
-import gridview from './../../../assets/icons/grid_view.svg'
-import cardview from './../../../assets/icons/card_view.svg'
-import pdf from './../../../assets/icons/pdf.svg'
-import excel from './../../../assets/icons/excel.svg'
+import search from '../../assets/icons/search.svg'
+import arrowdown2 from '../../assets/icons/arrow-down2.svg'
+import user from '../../assets/icons/user.svg'
+import gridview from '../../assets/icons/grid_view.svg'
+import cardview from '../../assets/icons/card_view.svg'
+import pdf from '../../assets/icons/pdf.svg'
+import excel from '../../assets/icons/excel.svg'
 
 
 import './FailedPayment.css';

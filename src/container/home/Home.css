@@ -180,7 +180,7 @@ display: flex;
     margin-left: 10px;
     display: inline-block;
     content: '';
-    background: url('./../../../assets/icons/calendar.svg') 0 0 no-repeat;
+    background: url('../../assets/icons/calendar.svg') 0 0 no-repeat;
 }
 
 .filter .datePicker  .jdtrp > div .JDatePicker {

@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
 
 //
 // icons and images ------------->
 //
-import profile from './../../../assets/images/profile.jpg'
-import place_holder from './../../../assets/icons/place_holder.svg'
+import profile from '../../assets/images/profile.jpg'
+import place_holder from '../../assets/icons/place_holder.svg'
 
 //
 // components ------------->

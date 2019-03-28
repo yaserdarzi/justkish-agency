@@ -25,9 +25,10 @@ flex-direction: column;
 margin-right: 20px;
 }
 .product-picture{
-    border-radius: 10px;
-    width: 55px;
+    border-radius: 5px;
+    width: 90px;
     height: auto;
+
 }
 
 .product-sale{

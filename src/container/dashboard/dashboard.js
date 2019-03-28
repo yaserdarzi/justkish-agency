@@ -14,21 +14,21 @@ import Chart from 'react-apexcharts'
 import Seller from './../../components/seller/Seller';
 import base from '../../api/baseURL';
 import Token from '../../api/token';
-import PriceDigit from '../../components/priceDigit/priceDigit';
+// import PriceDigit from '../../components/priceDigit/priceDigit';
 
 //
 // icons and images --------------------------------->
 //
-import report from './../../../assets/icons/report.svg'
-import support from './../../../assets/icons/support.svg'
-import call from './../../../assets/icons/call.svg'
-import mail from './../../../assets/icons/mail.svg'
-import questionmark from './../../../assets/icons/questionmark.svg'
-import sun from './../../../assets/icons/201.svg'
-import suncloud from './../../../assets/icons/200.svg'
-import rain from './../../../assets/icons/202.svg'
-import cloud from './../../../assets/icons/203.svg'
-import humidity from './../../../assets/icons/humidity.svg'
+import report from '../../assets/icons/report.svg'
+import support from '../../assets/icons/support.svg'
+import call from '../../assets/icons/call.svg'
+import mail from '../../assets/icons/mail.svg'
+import questionmark from '../../assets/icons/questionmark.svg'
+import sun from '../../assets/icons/201.svg'
+import suncloud from '../../assets/icons/200.svg'
+import rain from '../../assets/icons/202.svg'
+import cloud from '../../assets/icons/203.svg'
+import humidity from '../../assets/icons/humidity.svg'
 
 
 import './dashboard.css';

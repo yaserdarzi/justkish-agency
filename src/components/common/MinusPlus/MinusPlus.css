@@ -49,7 +49,7 @@
  
 
 .btn-plus-icon{
-    background-image: url("../../../../assets/icons/positive.svg");
+    background-image: url("../../../assets/icons/positive.svg");
     background-repeat: no-repeat;
     background-position: center; /* Center the image */
     background-size: 16px;
@@ -58,7 +58,7 @@
 }
 
 .btn-minus-icon{
-    background-image: url("../../../../assets/icons/ngative.svg");
+    background-image: url("../../../assets/icons/ngative.svg");
     background-repeat: no-repeat;
     background-position: center; /* Center the image */
     background-size: 16px;

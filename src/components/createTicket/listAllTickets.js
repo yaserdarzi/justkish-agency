@@ -10,7 +10,7 @@ import DateJalaly from '../times/dateMiladiToShamsi';
 
 
 
-import arrowdown2 from '../../../assets/icons/arrow-down2.svg';
+// import arrowdown2 from '../../assets/icons/arrow-down2.svg'; 
  
  
 
@@ -162,7 +162,7 @@ class Seller extends Component {
 
 
       addToShopBag = async(data,id) =>{
-        console.log(event.target.name)
+        // console.log(event.target.name)
         console.log("click") 
         console.log(id) 
         this.setState({
@@ -204,36 +204,37 @@ class Seller extends Component {
 
 
     render() {
-
-        const renderPrice = (
-            // render all agents and pass props name , avatar , level ------->
-            this.state.agentLoading === false ? this.props.data.prices.map((item, index) =>
-                <p key={index}><span className="create-ticket-price-span">{item.title}</span> <span>{PriceDigit(item.price,'price')}</span></p>
-            ) : <div className="loader"></div>
-
-        )
-
         //
-        // for drop list to incremnt and decremnt ticket.
+        // Not Importent -- TODO // LAter to check what is this.
         //
-        const renderPriceAction = (
-            // render all agents and pass props name , avatar , level ------->
-            this.state.agentLoading === false ? this.props.data.prices.map((item, index) =>
-                // <p ><span className="create-ticket-price-span">{item.title}</span> <span>{PriceDigit(item.price,'price')}</span></p>
-                <li key={index} className="create-ticket-tourist-change-li">
-                <div className="notCloseMenuLand">
-                    <h6 className="notCloseMenuLand">{item.title}</h6>
-                    <span>{PriceDigit(item.price,'price')}</span> 
-                    <p className="notCloseMenuLand">( تا {item.max} سال)</p> 
-                 
-                </div>
-                <div className="MinusPlus" >
-                    <MinusPlus actionDec={() => this.actionDec(this.props.data,item.id)} actionInc={() => this.actionInc(this.props.data,item.id)} change={this.handleFilterUpdate} counter={this.state.person} name={item.id} />
-                </div>
-            </li>
-            ) : <div className="loader"></div>
 
-        )
+        // const renderPrice = (
+         
+        //     this.state.agentLoading === false ? this.props.data.prices.map((item, index) =>
+        //         <p key={index}><span className="create-ticket-price-span">{item.title}</span> <span>{PriceDigit(item.price,'price')}</span></p>
+        //     ) : <div className="loader"></div>
+
+        // )
+
+        // //
+        // // for drop list to incremnt and decremnt ticket.
+        // //
+        // const renderPriceAction = (
+            
+        //     this.state.agentLoading === false ? this.props.data.prices.map((item, index) =>
+        //         <li key={index} className="create-ticket-tourist-change-li">
+        //         <div className="notCloseMenuLand">
+        //             <h6 className="notCloseMenuLand">{item.title}</h6>
+        //             <span>{PriceDigit(item.price,'price')}</span> 
+        //             <p className="notCloseMenuLand">( تا {item.max} سال)</p> 
+        //         </div>
+        //         <div className="MinusPlus" >
+        //             <MinusPlus actionDec={() => this.actionDec(this.props.data,item.id)} actionInc={() => this.actionInc(this.props.data,item.id)} change={this.handleFilterUpdate} counter={this.state.person} name={item.id} />
+        //         </div>
+        //     </li>
+        //     ) : <div className="loader"></div>
+
+        // )
 
 
                 //
