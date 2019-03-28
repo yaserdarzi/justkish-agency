@@ -26,13 +26,11 @@ margin-right: 20px;
 .product-picture{
     border-radius: 5px;
     width: 90px;
-    height: auto;
+    height: 65px;
 
 }
 
-.product-sale{
-
-}
+ 
 .product-sale span , .product-price-number span{
     color: #c4c4c4;
     margin-right: 4px;
