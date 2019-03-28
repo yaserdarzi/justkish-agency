@@ -37,7 +37,8 @@ class Home extends Component {
             userInfo: {},
             userType: '',
             isLoading: false,
-            userAvatar: 'https://www.drupal.org/files/issues/default-avatar.png'
+            userAvatar: 'https://www.drupal.org/files/issues/default-avatar.png',
+            totalPrice: ' .  .  .'
 
         }
     }
@@ -208,6 +209,7 @@ class Home extends Component {
                                 <p className="income-text" >
                                     <span>مجموع درآمد</span> 
                                     <span> {priceDigit(this.state.totalPrice,'price')}</span>
+                                    <span> تومان </span>
                                 </p>
                                 <p className="sale-text" >
                                     <span>تعداد فروش </span>
