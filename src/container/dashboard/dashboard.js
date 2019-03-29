@@ -186,8 +186,7 @@ class Dashboard extends Component {
                 console.log(responsJson.data)
                 console.log(responsJson.data.type)
                 this.setState({
-                    userType:responsJson.data.type,
-                    agentLoading: false
+                    userType:responsJson.data.type
                 })
             })
     }
