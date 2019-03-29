@@ -101,7 +101,7 @@ class TicketIssued extends Component {
                     <p className="ticket-issued-search-list-cell-1">{item.id}</p>
                     <p className="ticket-issued-search-list-cell">{item.customer.name}</p>
                     {/* <p className="ticket-issued-search-list-cell">اسم عامل فروش</p> */}
-                    <p className="ticket-issued-search-list-cell">{PriceDigit(item.total_count,'price')}</p>
+                    <p className="ticket-issued-search-list-cell">{PriceDigit(item.total_price,'price')}</p>
                     <p className="ticket-issued-search-list-cell">{MiladiToJalaly(TimeStamp(item.created_at_timestamp))}</p>
                     <div className="ticket-issued-search-list-cell">
                         {/* <Link to="/view-ticket"><img src={email} alt="ایمیل" /></Link>
