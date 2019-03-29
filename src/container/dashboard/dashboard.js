@@ -137,12 +137,49 @@ class Dashboard extends Component {
 
 
     componentDidMount() {
-        console.log()
-        this.getAllSellers();
+        this._getUserInformation();
+        
         this.getCalenderDayeMonth();
         this.weatherHandler();
+
+        // if is admin must show that -------------------->
+       // this.getAllSellers();
     }
 
+
+    _getUserInformation(){
+        this.fetchingUserINfo('agency/profile');
+
+    }
+
+    fetchingUserINfo(key) {
+
+        this.setState({
+            agentLoading: true
+        })
+
+        const url = base.baseURL + key;
+
+        return fetch(url, {
+            method: "GET",
+            cache: "no-cache",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                "agent": "web",
+                "Authorization": Token
+            },
+            redirect: "follow",
+            referrer: "no-referrer"
+        })
+            .then(response => response.json())
+            .then(responsJson => {
+                console.log(responsJson.data)
+                this.setState({
+                    agentLoading: false
+                })
+            })
+    }
 
 
 
