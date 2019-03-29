@@ -94,8 +94,8 @@ class Dashboard extends Component {
                     enabled: true,
                     style: {
                         colors: ['transparent']
-                      }
-                  },
+                    }
+                },
                 xaxis: {
                     // chart horizontal number
                     categories: ['شنبه', 'فروردین', '15', 'فروردین', 'فروردین', 'فروردین', 'فروردین', 'فروردین', 'فروردین', 'فروردین', 'فروردین', 'فروردین', 'فروردین', 'فروردین', 'فروردین', 'فروردین', 'فروردین', 'فروردین', 'فروردین', 'فروردین', 'فروردین', 'فروردین', 'فروردین', 'فروردین'],
@@ -106,24 +106,24 @@ class Dashboard extends Component {
                         }
                     }
                 }
-                
+
 
             },
-                  
+
             dataLabels: {
-                
+
                 style: {
                     colors: ['#F44336', '#E91E63', '#9C27B0']
-                  }
-              },
+                }
+            },
             series: [{
                 name: ' مقدار ',
                 //data value
-                data: [300000, 400000, 450000, 500000, 490000, 600000, 700000, 910000, 600000, 700000, 910000, 300000, 400000, 450000, 500000, 490000, 600000, 300000, 400000, 450000, 500000, 490000,2500000, 700000, 910000],
-                
-                
+                data: [300000, 400000, 450000, 500000, 490000, 600000, 700000, 910000, 600000, 700000, 910000, 300000, 400000, 450000, 500000, 490000, 600000, 300000, 400000, 450000, 500000, 490000, 2500000, 700000, 910000],
+
+
                 style: {
-                    colors: ['red' , 'blue'],
+                    colors: ['red', 'blue'],
                     fontSize: '10px'
                 }
             }
@@ -239,8 +239,8 @@ class Dashboard extends Component {
             });
 
         var data = this.state.data
-        var weather = { };
-        
+        var weather = {};
+
         temp = document.getElementById('temperature')
         loc = document.getElementById('location')
         icon = document.getElementById('icon')
@@ -250,8 +250,8 @@ class Dashboard extends Component {
 
 
         wind.innerHTML = data.weather[0].id;
-        direction.innerHTML =Math.round(data.wind.deg);
-        humidity.innerHTML =  data.main.humidity;
+        direction.innerHTML = Math.round(data.wind.deg);
+        humidity.innerHTML = data.main.humidity;
         // loc.innerHTML = weather.loc;
         temp.innerHTML = Math.round(data.main.temp / 10)
 
@@ -267,11 +267,11 @@ class Dashboard extends Component {
         }
 
 
-        }
+    }
 
-   
 
-   
+
+
 
     handler = () => {
 
@@ -392,8 +392,8 @@ class Dashboard extends Component {
 
                             <svg className="green" width="100" height="50" version="1.1" xmlns="http://www.w3.org/2000/svg">
                                 <linearGradient id="grad2" x1="0%" y1="0%" x2="0%" y2="100%">
-                                    <stop offset="0%" style={{ stopColor: '30afff', stopOpacity: '1' }} />
-                                    <stop offset="100%" style={{ stopColor: 'e900ed', stopOpacity: '1' }} />
+                                    <stop offset="0%" stop-color="#30afff" stop-opacity="1" />
+                                    <stop offset="100%" stop-color="#e900ed" stop-opacity="1" />
                                 </linearGradient>
                             </svg>
 
