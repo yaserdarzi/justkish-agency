@@ -153,8 +153,8 @@ class PaymentMethod extends Component {
                         <div className="payment-method-context-box payment-method-left  fadeInUp" >
                             <div className="payment-method-up">
                                 <div className="payment-method-up-1" >
-                                    <h3>پرداخت مستقیم شتاب</h3>
-                                    <p>شما میتوانید با انتخاب درگاه مورد نظر پرداخت خود را به صورت مستقیم انجام دهید</p>
+                                    <h3>اعتبار کیف پول شما</h3>
+                                    <p>شمام میتوانید از کیف پول خود پرداخت نمایید و یا قسمتی از آن را از کیف پول و مابقی را از شتاب</p>
                                 </div>
                                 <div className="payment-method-up-2" >
 
