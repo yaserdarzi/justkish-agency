@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { DateRangePicker } from "react-advance-jalaali-datepicker";
 
 //
 // external compoent ---------------------------->
@@ -39,13 +40,16 @@ class Reports extends Component {
             userType: '',
             isLoading: false,
             userAvatar: 'https://www.drupal.org/files/issues/default-avatar.png',
-            reports:[]
+            reports:[],
+            AllAgents:[]
 
         }
     }
 
     componentWillMount(){
-        this._getReports()
+        this._getAllAgents();
+        this._getReports();
+
     }
 
 
@@ -58,7 +62,7 @@ class Reports extends Component {
      fetchReports(key) {
  
          this.setState({
-             agentLoading: true
+            isLoadingAllReport: true
          })
  
          const url = base.baseURL + key;
@@ -87,6 +91,45 @@ class Reports extends Component {
              })
      }
  
+
+     // 
+     // Get All Agents --------->
+     //
+ 
+     _getAllAgents =async() => {
+        await this.fetchAgents('agency/agent');
+ 
+     }
+ 
+     fetchAgents(key) {
+ 
+         this.setState({
+            isLoadingAllAgents: true
+         })
+ 
+         const url = base.baseURL + key;
+ 
+         return fetch(url, {
+             method: "GET",
+             cache: "no-cache",
+             headers: {
+                 "Content-Type": "application/json",
+                 "Accept": "application/json",
+                 "agent": "web",
+                 "Authorization": Token
+             },
+             redirect: "follow",
+             referrer: "no-referrer"
+         })
+             .then(response => response.json())
+             .then(responsJson => {
+                 console.log(responsJson.data) 
+                 this.setState({
+                     AllAgents:responsJson.data,
+                     isLoadingAllAgents : false
+                 })
+             })
+     }
  
 
 
@@ -104,6 +147,20 @@ class Reports extends Component {
                 :
                 <div className="loader"></div>
            
+        );
+
+        const renderAllAgents = (
+           this.state.isLoadingAllAgents === false ?
+                this.state.AllAgents.map((item,index) => 
+                <li className="seller-list" >
+                    <img className="seller-img" src={profile} alt="عاملین" />
+                    <span className="seller-box" >
+                        <span className="seller-name" >{this.state.AllAgents.name}</span>
+                        <span className="seller-level" >{this.state.AllAgents.type}</span>
+                    </span>
+                </li>
+                ) :
+            ''
         )
 
 
@@ -119,9 +176,20 @@ class Reports extends Component {
                     </div>
                     <div className="part2" >
                         <div className="filter" >
-                            <div className="date" >
-                                <div className="from" >از</div>
-                                <div className="to" >تا</div>
+                        <div className="date" >
+                                <div className="datePicker">
+
+                                    <DateRangePicker
+                                        placeholderStart="از"
+                                        placeholderEnd="تا"
+                                        format="jYYYY/jMM/jDD"
+                                        onChangeStart={this.change}
+                                        onChangeEnd={this.changeTimeDate}
+                                        idStart="rangePickerStart"
+                                        idEnd="rangePickerEnd"
+                                    />
+
+                                </div>
                             </div>
                             <div className="search-sellers">
 
@@ -142,20 +210,8 @@ class Reports extends Component {
                                                 <span className="seller-level" >عامل فروش ۱</span>
                                             </span>
                                         </li>
-                                        <li className="seller-list" >
-                                            <img className="seller-img" src={profile} alt="عاملین" />
-                                            <span className="seller-box" >
-                                                <span className="seller-name" >MONA VAFA</span>
-                                                <span className="seller-level" >عامل فروش ۲</span>
-                                            </span>
-                                        </li>
-                                        <li className="seller-list" >
-                                            <img className="seller-img" src={profile} alt="عاملین" />
-                                            <span className="seller-box" >
-                                                <span className="seller-name" >LEYLA HATAMI</span>
-                                                <span className="seller-level" >عامل فروش ۳</span>
-                                            </span>
-                                        </li>
+                                        {renderAllAgents}
+                        
 
                                     </ul>
 
