@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { DateRangePicker } from "react-advance-jalaali-datepicker";
+import { Link } from 'react-router';
 
 //
 // external compoent ---------------------------->
@@ -218,10 +219,14 @@ class Reports extends Component {
                                     <img src={arrowdown2} alt="فلش" />
                                     <ul className="report-lists" >
                                         <li className="report-list" >
-                                            <span>گزارش فروش</span>
+                                           <Link to="/reports" >
+                                                <span>گزارش فروش</span>
+                                           </Link>
                                         </li>
                                         <li className="report-list" >
-                                            <span>گزارش مالی</span>
+                                            <Link to="/management" >
+                                                <span>گزارش مالی</span>
+                                            </Link>
                                         </li>
                                     </ul></div>
                                 <button className="search-btn" >
@@ -272,7 +277,7 @@ class Reports extends Component {
                                     <div>سود اپراتور</div>
                                 </div>
                  
-                                {renderResportsSelas}
+                                {this.state.reports.length > 0 ?  renderResportsSelas : <div className="no-data-for-showing-grid"><p>اطلاعاتی برای نمایش ثبت نشده است.</p></div>}
                     
                     
 

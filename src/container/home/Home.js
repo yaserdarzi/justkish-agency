@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { DateRangePicker } from "react-advance-jalaali-datepicker";
+import { Link } from 'react-router';
 
 //
 // external compoent ---------------------------->
@@ -38,7 +39,8 @@ class Home extends Component {
             userType: '',
             isLoading: false,
             userAvatar: 'https://www.drupal.org/files/issues/default-avatar.png',
-            totalPrice: ' .  .  .'
+            totalPrice: ' .  .  .',
+            allReport:[]
 
         }
     }
@@ -229,15 +231,19 @@ class Home extends Component {
                                 <div className="sell-report" >
                                     <span className="sell-report-right" >
                                         <img src={user} alt="کاربر" />
-                                        <span>گزارش فروش</span>
+                                        <span>گزارش مالی</span>
                                     </span>
                                     <img src={arrowdown2} alt="فلش" />
                                     <ul className="report-lists" >
                                         <li className="report-list" >
-                                            <span>گزارش فروش</span>
+                                            <Link to ='/reports'>
+                                                <span>گزارش فروش</span>
+                                            </Link>
                                         </li>
                                         <li className="report-list" >
-                                            <span>گزارش مالی</span>
+                                            <Link to='/management'>
+                                                <span>گزارش مالی</span>
+                                            </Link>
                                         </li>
                                     </ul></div>
                                 <button className="search-btn" >
@@ -271,7 +277,8 @@ class Home extends Component {
                         </div>
                         <div className="products" >
                             {/* <SaleBox /> */}
-                            {renderAllReport}
+
+                            {this.state.allReport.length > 0 ?  renderAllReport : <div className="no-data-for-showing-grid"><p>اطلاعاتی برای نمایش ثبت نشده است.</p></div>}
 
                         </div>
                     </div>

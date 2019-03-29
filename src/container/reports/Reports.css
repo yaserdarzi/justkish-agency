@@ -61,6 +61,13 @@ position: relative;
 
 }
 
+.no-data-for-showing-grid {
+    width: 100%;
+    padding: 2rem;
+    text-align: center;
+    color: #969696;
+}
+
 .reports-search-table-title ,.reports-search-table-body{
 display: flex;
 align-items: center;
