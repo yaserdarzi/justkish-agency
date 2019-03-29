@@ -43,22 +43,34 @@ class PaymentMethod extends Component {
     //
     
     paymentDirect = async()=>{
-        console.log("payment drirect");
+      // console.log("payment drirect");
 
 
-        const res = await  this.postData('agency/shopping/portal');
+        const res = await  this.postData('agency/shopping/portal','online');
+        console.log(res)
          
 
 
     }
 
-    postData =  (key) => {
+
+    paymentWallet = async()=>{
+        // console.log("payment drirect");
+  
+  
+          const res = await  this.postData('agency/shopping/wallet', 'wallet');
+           
+  
+  
+      }
+
+    postData =  (key, type) => {
         // console.log("fetching...")
 
-        this.setState({
-            isOnlinePayment:true,
-           
-        })
+        if(type === "online")
+            this.setState({isOnlinePayment: true})
+        else if (type ==="wallet")
+            this.setState({isLoadingWallet: true}) 
 
          const url =  base.baseURL + key;
 
@@ -83,7 +95,10 @@ class PaymentMethod extends Component {
           .then(([res, data]) => {
             console.log(res, data)
             console.log(data.error)
-            this.setState({isOnlinePayment: false})
+            if(type === "online")
+                this.setState({isOnlinePayment: false})
+            else if (type ==="wallet")
+            this.setState({isLoadingWallet: false}) 
             // after add refresh render all agent and show new record in list ....
             if(res === 200)
             {
@@ -153,8 +168,8 @@ class PaymentMethod extends Component {
                         <div className="payment-method-context-box payment-method-left  fadeInUp" >
                             <div className="payment-method-up">
                                 <div className="payment-method-up-1" >
-                                    <h3>پرداخت مستقیم شتاب</h3>
-                                    <p>شما میتوانید با انتخاب درگاه مورد نظر پرداخت خود را به صورت مستقیم انجام دهید</p>
+                                    <h3>اعتبار کیف پول شما</h3>
+                                    <p>شمام میتوانید از کیف پول خود پرداخت نمایید و یا قسمتی از آن را از کیف پول و مابقی را از شتاب</p>
                                 </div>
                                 <div className="payment-method-up-2" >
 
@@ -183,11 +198,11 @@ class PaymentMethod extends Component {
                                 <div className="payment-method-btn" >
 
                                     <Button
-                                        isLoading={this.state.isLoading}
+                                        isLoading={this.state.isLoadingWallet}
                                         title={' کسر از کیف پول و پرداخت '}
                                         bgcolor={'#0080FF'}
                                         hoverbgcolor={'#0080FF'}
-                                        click={() => this.paymentDirect()} />
+                                        click={() => this.paymentWallet()} />
                                 </div>
                             </div>
                         </div>
