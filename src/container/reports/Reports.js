@@ -152,7 +152,7 @@ class Reports extends Component {
         const renderAllAgents = (
            this.state.isLoadingAllAgents === false ?
                 this.state.AllAgents.map((item,index) => 
-                <li className="seller-list" >
+                <li className="seller-list" key={index}>
                     <img className="seller-img" src={item.image} alt="عاملین" />
                     <span className="seller-box" >
                         <span className="seller-name" >{item.name}</span>
