@@ -34,6 +34,10 @@ class SuuccessMessage extends Component {
         return 0
     }
 
+    callGoToReports =() => {
+        window.location.pathname = '/wallet'
+    }
+
 
     render() { 
         return ( 
@@ -48,7 +52,7 @@ class SuuccessMessage extends Component {
                         title={'مشاهده تراکنش ها'}                                                      
                         bgcolor={'#0080FF'}                                                 
                         hoverbgcolor={'#1fc056cc'}                                          
-                        click={this.callSubmit}
+                        click={this.callGoToReports}
                     />  
                </div>
             </div>
