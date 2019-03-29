@@ -43,7 +43,10 @@ class Home extends Component {
         }
     }
     componentWillMount(){
+
         this.getAllReport();
+        this._getAllAgents();
+
     }
 
 
@@ -104,6 +107,48 @@ class Home extends Component {
             })
     }
 
+
+     // 
+     // Get All Agents --------->
+     //
+ 
+     _getAllAgents =async() => {
+        await this.fetchAgents('agency/agent');
+ 
+     }
+ 
+     fetchAgents(key) {
+ 
+         this.setState({
+            isLoadingAllAgents: true
+         })
+ 
+         const url = base.baseURL + key;
+ 
+         return fetch(url, {
+             method: "GET",
+             cache: "no-cache",
+             headers: {
+                 "Content-Type": "application/json",
+                 "Accept": "application/json",
+                 "agent": "web",
+                 "Authorization": Token
+             },
+             redirect: "follow",
+             referrer: "no-referrer"
+         })
+             .then(response => response.json())
+             .then(responsJson => {
+                 console.log(responsJson.data) 
+                 this.setState({
+                     AllAgents:responsJson.data,
+                     isLoadingAllAgents : false
+                 })
+             })
+     }
+
+
+
     render() {
 
         const renderAllReport = (
@@ -118,10 +163,23 @@ class Home extends Component {
                       />
                
                             
-                            )
-        :
-        <div className="loader"></div>
-        )
+                    )     :
+                <div className="loader"></div>
+            );
+
+            const renderAllAgents = (
+                this.state.isLoadingAllAgents === false ?
+                     this.state.AllAgents.map((item,index) => 
+                     <li className="seller-list" key={index}>
+                         <img className="seller-img" src={item.image} alt="عاملین" />
+                         <span className="seller-box" >
+                             <span className="seller-name" >{item.name}</span>
+                             <span className="seller-level" >{item.type === 'normal' ? 'عامل فروش' : 'مدیر'}</span>
+                         </span>
+                     </li>
+                     ) :
+                 ''
+             )
 
 
 
@@ -162,28 +220,8 @@ class Home extends Component {
 
                                         <p className="all-sellers" >همه عاملین فروش</p>
 
-                                        <li className="seller-list" >
-                                            <img className="seller-img" src={profile} alt="عاملین" />
-                                            <span className="seller-box" >
-                                                <span className="seller-name" >ZAHRA AMIRI</span>
-                                                <span className="seller-level" >عامل فروش ۱</span>
-                                            </span>
-                                        </li>
-                                        <li className="seller-list" >
-                                            <img className="seller-img" src={profile} alt="عاملین" />
-                                            <span className="seller-box" >
-                                                <span className="seller-name" >MONA VAFA</span>
-                                                <span className="seller-level" >عامل فروش ۲</span>
-                                            </span>
-                                        </li>
-                                        <li className="seller-list" >
-                                            <img className="seller-img" src={profile} alt="عاملین" />
-                                            <span className="seller-box" >
-                                                <span className="seller-name" >LEYLA HATAMI</span>
-                                                <span className="seller-level" >عامل فروش ۳</span>
-                                            </span>
-                                        </li>
-
+                                        {renderAllAgents}
+                                
                                     </ul>
 
                                 </div>
