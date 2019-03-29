@@ -41,6 +41,7 @@ class Dashboard extends Component {
         this.state = {
             agentLoading: true,
             agents: [],
+            userType:'',
 
 
             options: {
@@ -136,19 +137,28 @@ class Dashboard extends Component {
     }
 
 
-    componentDidMount() {
-        this._getUserInformation();
+    componentDidMount =async() => {
+      await  this._getUserInformation();
         
         this.getCalenderDayeMonth();
         this.weatherHandler();
 
         // if is admin must show that -------------------->
        // this.getAllSellers();
+       if(this.state.userType === "admin")
+       {
+           console.log("ths user is admin!")
+           this.getAllSellers();
+       }
+       else{
+           console.log('the user is normal!')
+       }
+       
     }
 
 
-    _getUserInformation(){
-        this.fetchingUserINfo('agency/profile');
+    _getUserInformation =async() => {
+       await this.fetchingUserINfo('agency/profile');
 
     }
 
@@ -175,7 +185,9 @@ class Dashboard extends Component {
             .then(response => response.json())
             .then(responsJson => {
                 console.log(responsJson.data)
+                console.log(responsJson.data.type)
                 this.setState({
+                    userType:responsJson.data.type,
                     agentLoading: false
                 })
             })
