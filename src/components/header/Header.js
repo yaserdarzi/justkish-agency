@@ -41,7 +41,8 @@ class Header extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            userAvatar: loading
+            userAvatar: loading,
+            walletPrice: -1
         }
     }
 
@@ -127,7 +128,7 @@ class Header extends Component {
                             <div className="wallet">
                               <Link to="/wallet">
                                 <img className="shoppings-icon border-left" src={wallet} alt="wallet" />
-                                <span className="wallet-remain" >{this.state.walletPrice ? PriceDigit(this.state.walletPrice,'price') : <div className="loading-inline"></div>}</span>
+                                <span className="wallet-remain" >{this.state.walletPrice !== -1 ? PriceDigit(this.state.walletPrice,'price') : <div className="loading-inline"></div>}</span>
                                 <img className="shoppings-icon border-right" src={pluscircle} alt="pluscircle" />
                               </Link>
 

@@ -3,10 +3,13 @@ import React, { Component } from 'react';
 //
 // external compoent ---------------------------->
 //
-import SaleBox from '../../components/saleBox/SaleBox'
+// import SaleBox from '../../components/saleBox/SaleBox'
 import Token from '../../api/token';
 import base from '../../api/baseURL';
 import SideLeft from '../../components/sideLeft/sideLeft';
+import ReportBox from '../../components/report/reportBox';
+import PriceDigit from '../../components/priceDigit/priceDigit';
+
 
 
 
@@ -35,18 +38,73 @@ class Reports extends Component {
             userInfo: {},
             userType: '',
             isLoading: false,
-            userAvatar: 'https://www.drupal.org/files/issues/default-avatar.png'
+            userAvatar: 'https://www.drupal.org/files/issues/default-avatar.png',
+            reports:[]
 
         }
     }
 
+    componentWillMount(){
+        this._getReports()
+    }
 
 
 
+    _getReports =async() => {
+        await this.fetchReports('agency/report/sales?page=0');
+ 
+     }
+ 
+     fetchReports(key) {
+ 
+         this.setState({
+             agentLoading: true
+         })
+ 
+         const url = base.baseURL + key;
+ 
+         return fetch(url, {
+             method: "GET",
+             cache: "no-cache",
+             headers: {
+                 "Content-Type": "application/json",
+                 "Accept": "application/json",
+                 "agent": "web",
+                 "Authorization": Token
+             },
+             redirect: "follow",
+             referrer: "no-referrer"
+         })
+             .then(response => response.json())
+             .then(responsJson => {
+                 console.log(responsJson.data) 
+                 this.setState({
+                     reports:responsJson.data.factorProduct,
+                     isLoadingAllReport: false ,
+                     totoalPrice:responsJson.data.totalPrice,
+                     countAll: responsJson.data.countAll
+                 })
+             })
+     }
+ 
+ 
 
 
     render() {
 
+        const renderResportsSelas = (
+            this.state.isLoadingAllReport === false ? 
+                this.state.reports.map((item,index) => 
+                    <ReportBox 
+                        key={index} 
+                        data={item}  
+                        tours={item.products != null ? item.products : item.tours} 
+                    />
+                )
+                :
+                <div className="loader"></div>
+           
+        )
 
 
 
@@ -127,11 +185,12 @@ class Reports extends Component {
                             <div className="all-income-sale" >
                                 <p className="income-text" >
                                     <span>مجموع درآمد</span>
-                                    <span> 16,000,000</span>
+                                    <span> {PriceDigit(this.state.totoalPrice,'price')}</span>
+                                    <span> تومان </span>
                                 </p>
                                 <p className="sale-text" >
                                     <span>تعداد فروش </span>
-                                    <span>150</span>
+                                    <span>{this.state.countAll}</span>
                                 </p>
                             </div>
                             <div className="pdf-grid" >
@@ -160,61 +219,13 @@ class Reports extends Component {
                                     <div className="reports-search-table-child3">شرح</div>
                                     <div>تاریخ</div>
                                     <div>اپراتور</div>
-                                    <div>بدهکار</div>
-                                    <div>بستانکار</div>
-                                    <div>مانده</div>
+                                    <div>سود کل</div>
+                                    <div>سود اپراتور</div>
                                 </div>
-                                <div className="reports-search-table-body" >
-                                    <div>1</div>
-                                    <div>1265</div>
-                                    <div className="reports-search-table-child3" >
-                                        <div className="reports-search-table-play">جت اسکی</div>
-                                        <div>
-                                            <span>20  عدد</span>  /
-                                            <span> رزرو  265118 </span> /
-                                            <span> رفرنس xz125659</span>
-                                        </div>
-                                    </div>
-                                    <div>12 بهمن 1397</div>
-                                    <div>فتحیان</div>
-                                    <div className="reports-search-table-child-bold" >250.000 ت</div>
-                                    <div className="reports-search-table-child-bold" >250.000 ت</div>
-                                    <div className="reports-search-table-child-bold" >250.000 ت</div>
-                                </div>
-                                <div className="reports-search-table-body" >
-                                    <div>2</div>
-                                    <div>1265</div>
-                                    <div className="reports-search-table-child3" >
-                                        <div className="reports-search-table-play">جت اسکی</div>
-                                        <div>
-                                            <span>20  عدد</span>  /
-                                            <span> رزرو  265118 </span> /
-                                            <span> رفرنس xz125659</span>
-                                        </div>
-                                    </div>
-                                    <div>12 بهمن 1397</div>
-                                    <div>فتحیان</div>
-                                    <div className="reports-search-table-child-bold" >250.000 ت</div>
-                                    <div className="reports-search-table-child-bold" >250.000 ت</div>
-                                    <div className="reports-search-table-child-bold" >250.000 ت</div>
-                                </div>
-                                <div className="reports-search-table-body" >
-                                    <div>3</div>
-                                    <div>1265</div>
-                                    <div className="reports-search-table-child3" >
-                                        <div className="reports-search-table-play">جت اسکی</div>
-                                        <div>
-                                            <span>20  عدد</span>  /
-                                            <span> رزرو  265118 </span> /
-                                            <span> رفرنس xz125659</span>
-                                        </div>
-                                    </div>
-                                    <div>12 بهمن 1397</div>
-                                    <div>فتحیان</div>
-                                    <div className="reports-search-table-child-bold" >250.000 ت</div>
-                                    <div className="reports-search-table-child-bold" >250.000 ت</div>
-                                    <div className="reports-search-table-child-bold" >250.000 ت</div>
-                                </div>
+                 
+                                {renderResportsSelas}
+                    
+                    
 
 
                             </div>
@@ -250,7 +261,7 @@ class Reports extends Component {
                                         <div className="reports-search-table-body reports-search-table-child-bold">250.000 ت</div>
                                     </div>
                                     <div>
-                                        <div className="reports-search-table-title">بستانکار</div>
+                                        <div className="reports-search-table-title">www</div>
                                         <div className="reports-search-table-body reports-search-table-child-bold">250.000 ت</div>
                                     </div>
                                     <div>
@@ -258,6 +269,11 @@ class Reports extends Component {
                                         <div className="reports-search-table-body reports-search-table-child-bold">250.000 ت</div>
                                     </div>
                                 </div>
+
+
+
+
+
 
                                 <div className="reports-search-table">
 

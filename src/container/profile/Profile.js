@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
+import base from '../../api/baseURL';
+import Token from '../../api/token';
+
 
 //
 // icons and images ------------->
 //
 import profile from '../../assets/images/profile.jpg'
 import place_holder from '../../assets/icons/place_holder.svg'
+import loading from '../../assets/icons/loading.gif'
 
 //
 // components ------------->
@@ -20,7 +24,14 @@ class Profile extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            transaction: true
+            transaction: true,
+            username:'',
+            userNameandFamily:'',
+            userPhone:'',
+            userTell:'',
+            userEmail:'',
+            userImage:loading,
+            getuserinfoLoading:true
         }
     }
 
@@ -30,6 +41,55 @@ class Profile extends Component {
         console.log(e)
         
     }
+
+    componentWillMount(){
+        this._getUserInformation();
+    }
+
+
+
+    _getUserInformation =async() => {
+        await this.fetchingUserINfo('agency/profile');
+ 
+     }
+ 
+     fetchingUserINfo(key) {
+ 
+         this.setState({
+             agentLoading: true
+         })
+ 
+         const url = base.baseURL + key;
+ 
+         return fetch(url, {
+             method: "GET",
+             cache: "no-cache",
+             headers: {
+                 "Content-Type": "application/json",
+                 "Accept": "application/json",
+                 "agent": "web",
+                 "Authorization": Token
+             },
+             redirect: "follow",
+             referrer: "no-referrer"
+         })
+             .then(response => response.json())
+             .then(responsJson => {
+                 console.log(responsJson.data)
+                 console.log(responsJson.data.type)
+                 this.setState({
+                     userType:responsJson.data.type,
+                     userEmail:responsJson.data.email,
+                     userNameandFamily:responsJson.data.name,
+                     userTell:responsJson.data.tell,
+                     userPhone:responsJson.data.phone,
+                     userImage: responsJson.data.image,
+                     getuserinfoLoading: false
+                 })
+             })
+     }
+ 
+ 
 
     render() {
 
@@ -47,23 +107,26 @@ class Profile extends Component {
                             </div>
                             <div className="user-box-form" >
                                 <div className="user-box-img-input" >
-                                    <div className="user-box-inputs" >
-                                        <div className="profile-field" >
-                                            <p>نام کاربری</p>
-                                            <input className="profile-input" name="userName" placeholder="Maryam Azizi" />
-                                        </div>
-                                        <div className="profile-field" >
-                                            <p>شماره همراه </p>
-                                            <input className="profile-input" name="mobile" placeholder="0936 589 5569" />
-                                        </div>
-                                        <div className="profile-field" >
-                                            <p>شماره ثابت</p>
-                                            <input className="profile-input" name="phoneNumber" placeholder=" 076 444 5698" />
-                                        </div>
+                                    {!this.state.getuserinfoLoading ? (
+                                                              <div className="user-box-inputs" >
+                                                              <div className="profile-field" >
+                                                                  <p>نام کاربری</p>
+                                                                  <input className="profile-input" name="userName" placeholder="Maryam Azizi" value={this.state.userEmail}/>
+                                                              </div>
+                                                              <div className="profile-field" >
+                                                                  <p>شماره همراه </p>
+                                                                  <input className="profile-input" name="mobile" placeholder="0936 589 5569" value={this.state.userPhone} />
+                                                              </div>
+                                                              <div className="profile-field" >
+                                                                  <p>شماره ثابت</p>
+                                                                  <input className="profile-input" name="phoneNumber" placeholder=" 076 444 5698" value={this.state.userTell} />
+                                                              </div>
+                      
+                                                          </div>
 
-                                    </div>
+                                    ) :  <div className="loader"></div>}
                                     <div className="user-box-img" >
-                                        <img src={profile} alt="پروفایل" />
+                                        <img src={this.state.userImage} alt="پروفایل" />
                                         <button className="profile-mini-btn" >تغییر نمایه کاربری</button>
                                     </div>
                                 </div>
@@ -82,22 +145,22 @@ class Profile extends Component {
                                     <div className="user-box-inputs" >
                                         <div className="profile-field" >
                                             <p>نام کاربری</p>
-                                            <input className="profile-input" name="userName" placeholder="Maryam Azizi" />
+                                            <input className="profile-input" name="userName" placeholder="Maryam Azizi" value={this.state.userEmail} />
                                         </div>
                                         <div className="profile-field" >
                                             <p>شماره همراه </p>
-                                            <input className="profile-input" name="mobile" placeholder="0936 589 5569" />
+                                            <input className="profile-input" name="mobile" placeholder="0936 589 5569" value={this.state.userPhone} />
                                         </div>
                                         <div className="profile-field" >
                                             <p>شماره ثابت</p>
-                                            <input className="profile-input" name="phoneNumber" placeholder=" 076 444 5698" />
+                                            <input className="profile-input" name="phoneNumber" placeholder=" 076 444 5698" value={this.state.userTell} />
                                         </div>
                                         <div className="profile-field" >
                                             <p>وب سایت</p>
                                             <input className="profile-input" name="website" placeholder=" www.ghasrangasht.com" />
                                         </div>
                                         <div className="profile-field big" >
-                                            <p>شماره ثابت</p>
+                                            <p> نشانی</p>
                                             <input className="profile-input" name="address" placeholder=" تهران، شریعتی،‌خیابان میرداماد قبل از میدان مادر پلاک 87" />
                                         </div>
 

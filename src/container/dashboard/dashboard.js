@@ -41,6 +41,7 @@ class Dashboard extends Component {
         this.state = {
             agentLoading: true,
             agents: [],
+            userType:'',
 
 
             options: {
@@ -136,13 +137,59 @@ class Dashboard extends Component {
     }
 
 
-    componentDidMount() {
-        console.log()
-        this.getAllSellers();
+    componentDidMount =async() => {
+
+      await  this._getUserInformation();
         this.getCalenderDayeMonth();
         this.weatherHandler();
+
+        // if is admin must show that -------------------->
+       if(this.state.userType === "admin")
+       {
+           console.log("ths user is admin!")
+           this.getAllSellers(); // namayesh amelin forosh ---->
+       }
+       else{
+           console.log('the user is normal!')
+       }
+       
     }
 
+
+    _getUserInformation =async() => {
+       await this.fetchingUserINfo('agency/profile');
+
+    }
+
+    fetchingUserINfo(key) {
+
+        this.setState({
+            agentLoading: true
+        })
+
+        const url = base.baseURL + key;
+
+        return fetch(url, {
+            method: "GET",
+            cache: "no-cache",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                "agent": "web",
+                "Authorization": Token
+            },
+            redirect: "follow",
+            referrer: "no-referrer"
+        })
+            .then(response => response.json())
+            .then(responsJson => {
+                console.log(responsJson.data)
+                console.log(responsJson.data.type)
+                this.setState({
+                    userType:responsJson.data.type
+                })
+            })
+    }
 
 
 
@@ -402,21 +449,22 @@ class Dashboard extends Component {
 
                 </div>
                 <div className="dashboard2">
+
+                {this.state.userType ==="admin" ? ( 
                     <div className="dashbord-sellers">
                         <p className="dashbord-sellers-title" >عاملین فروش<img src={questionmark} alt="فروش" /></p>
                         <ul className="dashbord-manage-sellers" >
-
-                            {/* <Seller name="MOJTABA" level="عاملین فروش" /> */}
                             {allAgents}
-
                         </ul>
 
                         <Link to="/addsellers" className="checkout-request" >
                             مدیریت عاملین فروش
                         </Link>
-
-
                     </div>
+                ) : ''}
+             
+
+
                     <Link to="/reports">
                         <div className="dashboard-report" >
                             <img src={report} alt="گزارش مالی" />

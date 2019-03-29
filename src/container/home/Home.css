@@ -346,10 +346,12 @@ display: flex;
 }
 .sell-report:hover .sellers-list{
     display: block;
+   
 }
 
 .sellers:hover .sellers-list{
     display: block;
+    z-index: 999;
 }
 
 .seller-list{
