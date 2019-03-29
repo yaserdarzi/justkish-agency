@@ -33,6 +33,7 @@ import humidity from '../../assets/icons/humidity.svg'
 
 import './dashboard.css';
 
+var month = [];
 
 
 class Dashboard extends Component {
@@ -41,6 +42,7 @@ class Dashboard extends Component {
         this.state = {
             agentLoading: true,
             agents: [],
+            dataChart: [],
             userType:'',
 
 
@@ -99,7 +101,8 @@ class Dashboard extends Component {
                 },
                 xaxis: {
                     // chart horizontal number
-                    categories: ['شنبه', 'فروردین', '15', 'فروردین', 'فروردین', 'فروردین', 'فروردین', 'فروردین', 'فروردین', 'فروردین', 'فروردین', 'فروردین', 'فروردین', 'فروردین', 'فروردین', 'فروردین', 'فروردین', 'فروردین'],
+                    // categories: ['شنبه', 'فروردین', '15', 'فروردین', 'فروردین', 'فروردین', 'فروردین', 'فروردین', 'فروردین', 'فروردین', 'فروردین', 'فروردین', 'فروردین', 'فروردین', 'فروردین', 'فروردین', 'فروردین', 'فروردین'],
+                    categories:  [] ,
                     labels: {
                         style: {
                             // colors: ['#008FFB', '#00E396', '#FEB019', '#FF4560', '#775DD0', '#546E7A', '#26a69a', '#D10CE8'],
@@ -119,8 +122,8 @@ class Dashboard extends Component {
             },
             series: [{
                 name: ' مقدار ',
-                //data value
-                data: [300000, 400000, 450000, 500000, 490000, 600000, 700000, 910000, 600000, 700000, 910000, 300000],
+                data :[] ,
+                // data: [300000, 400000, 450000, 500000, 490000, 600000, 700000, 910000, 600000, 700000, 910000, 300000],
 
 
                 style: {
@@ -135,10 +138,15 @@ class Dashboard extends Component {
         // this.weatherHandler()
 
     }
+    componentWillMount(){
+     
+
+    }
 
 
     componentDidMount =async() => {
 
+        this._getDataChart();
       await  this._getUserInformation();
         this.getCalenderDayeMonth();
         this.weatherHandler();
@@ -160,7 +168,7 @@ class Dashboard extends Component {
        await this.fetchingUserINfo('agency/profile');
 
     }
-
+  
     fetchingUserINfo(key) {
 
         this.setState({
@@ -190,6 +198,64 @@ class Dashboard extends Component {
                 })
             })
     }
+
+    //
+    // Data Charting for report ------------------------->
+    //
+    _getDataChart =async() => {
+        await this.fetchingDataChart('agency/report/chart');
+    }
+
+    fetchingDataChart(key) {
+
+        // this.setState({
+        //     agentLoading: true
+        // })
+
+        const url = base.baseURL + key;
+
+        return fetch(url, {
+            method: "GET",
+            cache: "no-cache",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                "agent": "web",
+                "Authorization": Token
+            },
+            redirect: "follow",
+            referrer: "no-referrer"
+        })
+            .then(response => response.json())
+            .then(responsJson =>     {
+                console.log(responsJson.data)
+                console.log(responsJson.data.month)
+                this.setState({
+                    options : {
+                        xaxis: {
+                            categories: responsJson.data.month,
+                        }
+                    },
+                    series: [{
+                        data:responsJson.data.price ,
+                    }]
+
+                })
+
+               
+            })
+
+           
+    }
+
+
+
+
+    getState = () =>{
+        // console.log(this.state.dataChart);
+      
+    }
+
 
 
 
@@ -421,7 +487,7 @@ class Dashboard extends Component {
                     </div>
                     <div className="sale-statistics" >
                         <div className="statistics-actions" >
-                            <div className="sale-title" >
+                            <div className="sale-title" onClick={() => this.getState()} >
                                 <h3>فروش<img src={questionmark} alt="فروش" /></h3>
                                 <span>آمار کل فروش در سامانه </span>
                             </div>
