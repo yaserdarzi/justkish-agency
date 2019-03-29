@@ -8,6 +8,8 @@ import Token from '../../api/token';
 import base from '../../api/baseURL';
 import SideLeft from '../../components/sideLeft/sideLeft';
 import ReportBox from '../../components/report/reportBox';
+import PriceDigit from '../../components/priceDigit/priceDigit';
+
 
 
 
@@ -79,6 +81,8 @@ class Reports extends Component {
                  this.setState({
                      reports:responsJson.data.factorProduct,
                      isLoadingAllReport: false ,
+                     totoalPrice:responsJson.data.totalPrice,
+                     countAll: responsJson.data.countAll
                  })
              })
      }
@@ -181,11 +185,12 @@ class Reports extends Component {
                             <div className="all-income-sale" >
                                 <p className="income-text" >
                                     <span>مجموع درآمد</span>
-                                    <span> 16,000,000</span>
+                                    <span> {PriceDigit(this.state.totoalPrice,'price')}</span>
+                                    <span> تومان </span>
                                 </p>
                                 <p className="sale-text" >
                                     <span>تعداد فروش </span>
-                                    <span>150</span>
+                                    <span>{this.state.countAll}</span>
                                 </p>
                             </div>
                             <div className="pdf-grid" >
