@@ -138,17 +138,16 @@ class Dashboard extends Component {
 
 
     componentDidMount =async() => {
+
       await  this._getUserInformation();
-        
         this.getCalenderDayeMonth();
         this.weatherHandler();
 
         // if is admin must show that -------------------->
-       // this.getAllSellers();
        if(this.state.userType === "admin")
        {
            console.log("ths user is admin!")
-           this.getAllSellers();
+           this.getAllSellers(); // namayesh amelin forosh ---->
        }
        else{
            console.log('the user is normal!')
@@ -451,21 +450,22 @@ class Dashboard extends Component {
 
                 </div>
                 <div className="dashboard2">
+
+                {this.state.userType ==="admin" ? ( 
                     <div className="dashbord-sellers">
                         <p className="dashbord-sellers-title" >عاملین فروش<img src={questionmark} alt="فروش" /></p>
                         <ul className="dashbord-manage-sellers" >
-
-                            {/* <Seller name="MOJTABA" level="عاملین فروش" /> */}
                             {allAgents}
-
                         </ul>
 
                         <Link to="/addsellers" className="checkout-request" >
                             مدیریت عاملین فروش
                         </Link>
-
-
                     </div>
+                ) : ''}
+             
+
+
                     <Link to="/reports">
                         <div className="dashboard-report" >
                             <img src={report} alt="گزارش مالی" />
