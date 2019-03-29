@@ -152,11 +152,11 @@ class Reports extends Component {
         const renderAllAgents = (
            this.state.isLoadingAllAgents === false ?
                 this.state.AllAgents.map((item,index) => 
-                <li className="seller-list" >
-                    <img className="seller-img" src={profile} alt="عاملین" />
+                <li className="seller-list" key={index}>
+                    <img className="seller-img" src={item.image} alt="عاملین" />
                     <span className="seller-box" >
-                        <span className="seller-name" >{this.state.AllAgents.name}</span>
-                        <span className="seller-level" >{this.state.AllAgents.type}</span>
+                        <span className="seller-name" >{item.name}</span>
+                        <span className="seller-level" >{item.type === 'normal' ? 'عامل فروش' : 'مدیر'}</span>
                     </span>
                 </li>
                 ) :
@@ -203,13 +203,6 @@ class Reports extends Component {
 
                                         <p className="all-sellers" >همه عاملین فروش</p>
 
-                                        <li className="seller-list" >
-                                            <img className="seller-img" src={profile} alt="عاملین" />
-                                            <span className="seller-box" >
-                                                <span className="seller-name" >ZAHRA AMIRI</span>
-                                                <span className="seller-level" >عامل فروش ۱</span>
-                                            </span>
-                                        </li>
                                         {renderAllAgents}
                         
 

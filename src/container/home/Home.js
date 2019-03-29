@@ -111,7 +111,11 @@ class Home extends Component {
                 this.state.allReport.map((item,index) =>
               
                  
-                      <SaleBox key={index} data={item} tours={item.products != null ? item.products : item.tours} />
+                      <SaleBox 
+                        key={index} 
+                        data={item} 
+                        tours={item.products != null ? item.products : item.tours} 
+                      />
                
                             
                             )
