@@ -150,8 +150,8 @@ margin: 10px;
 }
 .filter{
     display: flex;
-    justify-content: space-around;
-    padding: 20px 10px;
+    justify-content: space-between;
+    padding: 20px ;
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(157,206,255,.34);
@@ -204,6 +204,9 @@ display: flex;
 .filter .datePicker  .jdtrp > div:nth-child(2){
     display: none;
 
+}
+.filter .datePicker input {
+    width: 100px;   
 }
 
 .filter .JDatePicker .JC-months .holder:last-child{
@@ -429,7 +432,8 @@ display: block;
     border-radius: 50%;
     background-color: transparent;
     cursor: pointer;
-    margin-right: 10px;;
+    margin-right: 10px;
+    display: flex;
 }
 .all-income {
     margin-top: 20px;
@@ -546,11 +550,20 @@ display: block;
     .sellers , .sell-report , .from, .to{
         width: 300px;
     }
+    .filter .datePicker{
+        width: 100%;
+    }
+    .filter .datePicker  .jdtrp {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+    }
 }
 
 @media screen and (max-width: 1000px){
     .home-box{
         flex-wrap: wrap;
+        width: 100%;
     }
     .part1{
         width: 100%;
@@ -619,6 +632,11 @@ display: block;
             display: flex;
             justify-content:space-around;
             width: 100px;
+        }
+        .filter .datePicker .jdtrp{
+            width: 200px;
+            display: flex;
+            justify-content: space-between;
         }
         .filter .datePicker .jdtrp > div:nth-child(1), .filter .datePicker .jdtrp > div:nth-child(3){
             padding: 20px 0px;
