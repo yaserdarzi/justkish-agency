@@ -139,17 +139,18 @@ class Dashboard extends Component {
 
     }
     componentWillMount(){
-     
 
     }
 
 
     componentDidMount =async() => {
 
-        this._getDataChart();
+      await  this._getDataChart();
       await  this._getUserInformation();
-        this.getCalenderDayeMonth();
-        this.weatherHandler();
+      await  this.getCalenderDayeMonth();
+      await this.weatherHandler();
+
+        
 
         // if is admin must show that -------------------->
        if(this.state.userType === "admin")
@@ -313,10 +314,12 @@ class Dashboard extends Component {
 
 
 
-    getCalenderDayeMonth = () => {
-        // jalali day month
-        let currentMonthJalali = document.querySelector('#calendar .header > span').innerHTML.slice(4)
-        let currentDayJalali = document.querySelector('.day.today').innerHTML
+    getCalenderDayeMonth = async() => {
+
+        try{
+                    // jalali day month
+         let currentMonthJalali = document.querySelector('#calendar .header > span').innerHTML.slice(4)
+         let currentDayJalali = document.querySelector('.day.today').innerHTML
 
         // chris day month
         let monthNames = ["January", "February", "March", "April", "May", "June",
@@ -327,17 +330,22 @@ class Dashboard extends Component {
         let currentDayChris = (new Date()).getDate()
 
 
-        this.setState({
+       await this.setState({
             currentDayJalali: currentDayJalali,
             currentMonthJalali: currentMonthJalali,
             currentDayChris: currentDayChris,
             currentMonthChris: currentMonthChris
         })
+        }
+        catch(e) {
+            console.log(e)
+        }
     }
 
 
     weatherHandler = async () => {
 
+       try{
         var APPID = "7d1b757c28035a0d3f9608ee7c54278a"
         var temp, loc, icon, humidity, wind, direction;
 
@@ -368,6 +376,12 @@ class Dashboard extends Component {
         // loc.innerHTML = weather.loc;
         temp.innerHTML = Math.round(data.main.temp / 10)
 
+        // wind.innerHTML = '20';
+        // direction.innerHTML = '230';
+        // humidity.innerHTML = '60';
+        // // loc.innerHTML = weather.loc;
+        // temp.innerHTML = '30'
+
 
         if (weather.temp < 5) {
             icon.src = rain
@@ -379,6 +393,11 @@ class Dashboard extends Component {
             icon.src = sun
         }
 
+
+       }
+       catch (e) {
+           console.log(e)
+       }
 
     }
 
@@ -494,8 +513,8 @@ class Dashboard extends Component {
                             <div className="dashboard-dates" >
                                 <ul>
                                     <li className="time-active">هفته</li>
-                                    <li>ماه</li>
-                                    <li>سال</li>
+                                        {/* <li>ماه</li>
+                                        <li>سال</li> */}
                                 </ul>
                             </div>
                         </div>
@@ -516,19 +535,7 @@ class Dashboard extends Component {
                 </div>
                 <div className="dashboard2">
 
-                {this.state.userType ==="admin" ? ( 
-                    <div className="dashbord-sellers">
-                        <p className="dashbord-sellers-title" >عاملین فروش<img src={questionmark} alt="فروش" /></p>
-                        <ul className="dashbord-manage-sellers" >
-                            {allAgents}
-                        </ul>
-
-                        <Link to="/addsellers" className="checkout-request" >
-                            مدیریت عاملین فروش
-                        </Link>
-                    </div>
-                ) : ''}
-             
+      
 
 
                     <Link to="/reports">
@@ -562,6 +569,24 @@ class Dashboard extends Component {
                             </p>
                         </div>
                     </div>
+
+
+                    {this.state.userType ==="admin" ? ( 
+                    <div className="dashbord-sellers">
+                        <p className="dashbord-sellers-title" >کانتر من<img src={questionmark} alt="فروش" /></p>
+                        <ul className="dashbord-manage-sellers" >
+                            {allAgents}
+                        </ul>
+
+                        <Link to="/addsellers" className="checkout-request" >
+                            مدیریت عاملین فروش
+                        </Link>
+                    </div>
+                ) : ''}
+             
+
+
+             
                 </div>
             </div>
         );

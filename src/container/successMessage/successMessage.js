@@ -47,13 +47,23 @@ class SuuccessMessage extends Component {
                     <h2>{this.state.tokenMessage}</h2>
                     <p>پرداخت شما با موفقیت از اعتبار بستانکاری شما انجام شد و در سامانه ثبت گردید</p>
 
+                    <div className="button-countainer-success-message">
                     <Button                                                                  
+                        isLoading={this.state.isLoading}                                    
+                        title={'دریافت بلیط'}                                                      
+                        bgcolor={'#0080FF'}                                                 
+                        hoverbgcolor={'#0080FF'}                                          
+                        click={this.callGoToReports}
+                    />  
+
+                <Button                                                                  
                         isLoading={this.state.isLoading}                                    
                         title={'مشاهده تراکنش ها'}                                                      
                         bgcolor={'#0080FF'}                                                 
-                        hoverbgcolor={'#1fc056cc'}                                          
+                        hoverbgcolor={'#0080FF'}                                          
                         click={this.callGoToReports}
-                    />  
+                    /> 
+                    </div> 
                </div>
             </div>
          );

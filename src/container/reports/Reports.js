@@ -197,12 +197,12 @@ class Reports extends Component {
                                 <div className="sellers" >
                                     <span className="selers-right" >
                                         <img src={user} alt="کاربر" />
-                                        <span>عامل فروش</span>
+                                        <span> کانترمن ها</span>
                                     </span>
                                     <img src={arrowdown2} alt="فلش" />
                                     <ul className="sellers-list" >
 
-                                        <p className="all-sellers" >همه عاملین فروش</p>
+                                        <p className="all-sellers" >همه کانترمن ها</p>
 
                                         {renderAllAgents}
                         
@@ -260,7 +260,7 @@ class Reports extends Component {
                         </div>
                         <div className="reports-search" >
                             <div className="reports-search-title" >
-                                <h1>گزارش</h1>
+                                <h1>گزارش فروش</h1>
                                 <div className="reports-search-input">
                                     <i className="fas fa-search"></i>
                                     <input className="" placeholder="جستجو در نتایج" />
@@ -277,8 +277,8 @@ class Reports extends Component {
                                     <div>سود اپراتور</div>
                                 </div>
                  
-                                {this.state.reports.length > 0 ?  renderResportsSelas : <div className="no-data-for-showing-grid"><p>اطلاعاتی برای نمایش ثبت نشده است.</p></div>}
-                    
+                                {/* {this.state.reports.length > 0 ?  renderResportsSelas : <div className="no-data-for-showing-grid"><p>اطلاعاتی برای نمایش ثبت نشده است.</p></div>} */}
+                              {renderResportsSelas}
                     
 
 

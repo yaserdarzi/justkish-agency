@@ -111,15 +111,15 @@ class Profile extends Component {
                                                               <div className="user-box-inputs" >
                                                               <div className="profile-field" >
                                                                   <p>نام کاربری</p>
-                                                                  <input className="profile-input" name="userName" placeholder="Maryam Azizi" value={this.state.userEmail}/>
+                                                                  <input className="profile-input" name="userName" placeholder="" value={this.state.userEmail}/>
                                                               </div>
                                                               <div className="profile-field" >
                                                                   <p>شماره همراه </p>
-                                                                  <input className="profile-input" name="mobile" placeholder="0936 589 5569" value={this.state.userPhone} />
+                                                                  <input className="profile-input" name="mobile" placeholder="" value={this.state.userPhone} />
                                                               </div>
                                                               <div className="profile-field" >
                                                                   <p>شماره ثابت</p>
-                                                                  <input className="profile-input" name="phoneNumber" placeholder=" 076 444 5698" value={this.state.userTell} />
+                                                                  <input className="profile-input" name="phoneNumber" placeholder="" value={this.state.userTell} />
                                                               </div>
                       
                                                           </div>
@@ -137,7 +137,7 @@ class Profile extends Component {
 
                         <div className="user-box" >
                             <div className="user-box-title" >
-                                <h1>اطلاعات کاربری</h1>
+                                <h1>اطلاعات آزانس</h1>
                                 <p>اطلاعات کاربری خود در این بخش ویرایش کنید</p>
                             </div>
                             <div className="user-box-form" >
@@ -145,23 +145,23 @@ class Profile extends Component {
                                     <div className="user-box-inputs" >
                                         <div className="profile-field" >
                                             <p>نام کاربری</p>
-                                            <input className="profile-input" name="userName" placeholder="Maryam Azizi" value={this.state.userEmail} />
+                                            <input className="profile-input" name="userName" placeholder="" value={this.state.userEmail} />
                                         </div>
                                         <div className="profile-field" >
                                             <p>شماره همراه </p>
-                                            <input className="profile-input" name="mobile" placeholder="0936 589 5569" value={this.state.userPhone} />
+                                            <input className="profile-input" name="mobile" placeholder="" value={this.state.userPhone} />
                                         </div>
                                         <div className="profile-field" >
                                             <p>شماره ثابت</p>
-                                            <input className="profile-input" name="phoneNumber" placeholder=" 076 444 5698" value={this.state.userTell} />
+                                            <input className="profile-input" name="phoneNumber" placeholder="" value={this.state.userTell} />
                                         </div>
                                         <div className="profile-field" >
                                             <p>وب سایت</p>
-                                            <input className="profile-input" name="website" placeholder=" www.ghasrangasht.com" />
+                                            <input className="profile-input" name="website" placeholder="" />
                                         </div>
                                         <div className="profile-field big" >
                                             <p> نشانی</p>
-                                            <input className="profile-input" name="address" placeholder=" تهران، شریعتی،‌خیابان میرداماد قبل از میدان مادر پلاک 87" />
+                                            <input className="profile-input" name="address" placeholder="" />
                                         </div>
 
                                     </div>
@@ -175,7 +175,7 @@ class Profile extends Component {
                             </div>
                         </div>
 
-                        <div className="user-box" >
+                        {/* <div className="user-box" >
                             <div className="user-box-title" >
                                 <h1>اطلاعات بانکی</h1>
                                 <p>برای درخواست تسویه حساب و واریز درآمد ها اطلاعات زیر تکمیل کنید</p>
@@ -221,7 +221,7 @@ class Profile extends Component {
                                 <button className="profile-btn" >تغییر اطلاعات</button>
 
                             </div>
-                        </div>
+                        </div> */}
 
                         
 

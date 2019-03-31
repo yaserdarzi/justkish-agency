@@ -30,11 +30,13 @@ class Wallet extends Component {
             errorOnlinePrice:'',
             priceOnline:'',
             isOnlinePayment:false,
-            errorHandler:''
+            errorHandler:'',
+            AllAgents:[]
         }
     }
 
     componentDidMount(){
+        this._getAllAgents();
         this.getAllTransaction()
     }
 
@@ -193,6 +195,47 @@ class Wallet extends Component {
 
     }
 
+     // 
+     // Get All Agents --------->
+     //
+ 
+     _getAllAgents =async() => {
+        await this.fetchAgents('agency/agent');
+ 
+     }
+ 
+     fetchAgents(key) {
+ 
+         this.setState({
+            isLoadingAllAgents: true
+         })
+ 
+         const url = base.baseURL + key;
+ 
+         return fetch(url, {
+             method: "GET",
+             cache: "no-cache",
+             headers: {
+                 "Content-Type": "application/json",
+                 "Accept": "application/json",
+                 "agent": "web",
+                 "Authorization": Token
+             },
+             redirect: "follow",
+             referrer: "no-referrer"
+         })
+             .then(response => response.json())
+             .then(responsJson => {
+                 console.log(responsJson.data) 
+                 this.setState({
+                     AllAgents:responsJson.data,
+                     isLoadingAllAgents : false
+                 })
+             })
+     }
+
+
+
     render() {
         let iCredit = []
         let tActoin = []
@@ -222,13 +265,24 @@ class Wallet extends Component {
             </tr>
                 ) :  <div className="container-loader">
                         <div className="loader"></div>
-                    </div> 
-
-           
-
+                    </div>  
  
-        )
+        );
 
+
+        const renderAllAgents = (
+            this.state.isLoadingAllAgents === false ?
+                 this.state.AllAgents.map((item,index) => 
+                 <li className="seller-list" key={index}>
+                     <img className="seller-img" src={item.image} alt="عاملین" />
+                     <span className="seller-box" >
+                         <span className="seller-name" >{item.name}</span>
+                         <span className="seller-level" >{item.type === 'normal' ? 'عامل فروش' : 'مدیر'}</span>
+                     </span>
+                 </li>
+                 ) :
+             ''
+         )
         return (
 
 
@@ -273,11 +327,12 @@ class Wallet extends Component {
                                     <div className="transaction-sellers" >
                                         <ul className="ts-sellers-ul">
                                             <li className="ts-sellers-li">
-                                                عامل فروش<img className="ts-sellers-img" src={arrowdown2} alt="فلش" />
+                                            همه کانترمن ها <img className="ts-sellers-img" src={arrowdown2} alt="فلش" />
                                                 <ul className="sub-ts-sellers-ul">
-                                                    <li className="sub-ts-sellers-li" >عامل فروش ۱</li>
-                                                    <li className="sub-ts-sellers-li" >عامل فروش ۲</li>
-                                                    <li className="sub-ts-sellers-li" >عامل فروش ۳</li>
+                                                <p className="all-sellers" >همه کانترمن ها</p>
+
+                                                    {renderAllAgents}
+                                              
                                                 </ul>
                                             </li>
 
