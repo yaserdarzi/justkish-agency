@@ -1,3 +1,12 @@
+
+
+#upload-photo {
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+ }
+ 
+
 .profile-box{
     display: flex;
     flex-direction: row;
@@ -120,6 +129,7 @@ margin-left: 10px;
     border-radius: 50%;
     margin-bottom: 10px;
     width: 80px;
+    height: 80px;
 }
 .profile-mini-btn{
     background-color: #F6F6F6;
@@ -154,6 +164,24 @@ margin-left: 10px;
     font-size: 11px;
     color: #0080FF;
 }
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
 
 @media screen and (max-width: 1000px){
 
