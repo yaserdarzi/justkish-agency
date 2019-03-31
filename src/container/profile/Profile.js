@@ -194,9 +194,12 @@ class Profile extends Component {
                             </div>
                         </div>
 
-                        <div className="user-box" >
+
+                    {/* agance information  */}
+
+                        {/* <div className="user-box" >
                             <div className="user-box-title" >
-                                <h1>اطلاعات آزانس</h1>
+                                <h1>اطلاعات آژانس</h1>
                                 <p>اطلاعات کاربری خود در این بخش ویرایش کنید</p>
                             </div>
                             <div className="user-box-form" >
@@ -232,7 +235,7 @@ class Profile extends Component {
                                 <button className="profile-btn" >تغییر اطلاعات</button>
 
                             </div>
-                        </div>
+                        </div> */}
 
                         {/* <div className="user-box" >
                             <div className="user-box-title" >
