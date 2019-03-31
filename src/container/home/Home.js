@@ -72,7 +72,7 @@ class Home extends Component {
 
 
     getAllReport =() => {
-        this.getData('agency/report/sales?page=0');
+        this.getData('agency/report/sales?page=0&type=mali');
     }
 
 
@@ -98,7 +98,7 @@ class Home extends Component {
         })
             .then(response => response.json())
             .then(responsJson => {
-              //  console.log(responsJson.data)
+               console.log(responsJson.data)
                 this.setState({
                     allReport: responsJson.data.factorProduct,
                     totalPrice: responsJson.data.totalPrice,
@@ -215,12 +215,12 @@ class Home extends Component {
                                 <div className="sellers" >
                                     <span className="selers-right" >
                                         <img src={user} alt="کاربر" />
-                                        <span>عامل فروش</span>
+                                        <span>کانتر من ها </span>
                                     </span>
                                     <img src={arrowdown2} alt="فلش" />
                                     <ul className="sellers-list" >
 
-                                        <p className="all-sellers" >همه عاملین فروش</p>
+                                        <p className="all-sellers" >همه  کانترمن ها</p>
 
                                         {renderAllAgents}
                                 
@@ -278,8 +278,8 @@ class Home extends Component {
                         <div className="products" >
                             {/* <SaleBox /> */}
 
-                            {this.state.allReport.length > 0 ?  renderAllReport : <div className="no-data-for-showing-grid"><p>اطلاعاتی برای نمایش ثبت نشده است.</p></div>}
-
+                            {/* {this.state.allReport.length > 0 ?  renderAllReport : <div className="no-data-for-showing-grid"><p>اطلاعاتی برای نمایش ثبت نشده است.</p></div>} */}
+                            {renderAllReport}
                         </div>
                     </div>
                 </div>
