@@ -29,3 +29,16 @@
     color: #333333;
 
 }
+
+.button-countainer-success-message{
+    margin: auto; 
+    display: flex;
+    flex-direction: row;
+    width: 365px;
+    text-align: center!important;
+    align-items: center;
+    align-self: center;
+    align-content: center; 
+
+
+}
