@@ -93,9 +93,9 @@ class SideLeft extends Component {
                         </div>
 
                         </div>
-                        <button className="checkout-request" >
+                        {/* <button className="checkout-request" >
                         درخواست تصویه حساب
-                        </button>
+                        </button> */}
                         <Link to="/reports">
                             <div className="report" >
                                 <img src={report} alt="گزارش مالی" />
@@ -105,7 +105,7 @@ class SideLeft extends Component {
                         <div className="account" >
                         <p>حساب کاربری شما</p>
                         <ul className="manage-account" >
-                            <li className="sub-manage-profile" ><Link to="/addsellers"><img className="manage-profile-icon" src={operator_edit} alt="داشبورد" />مدیریت عاملین فروش</Link></li>
+                            <li className="sub-manage-profile" ><Link to="/addsellers"><img className="manage-profile-icon" src={operator_edit} alt="داشبورد" />مدیریت کانترمن ها</Link></li>
                             <li className="sub-manage-profile" ><Link to="/change-password"><img className="manage-profile-icon" src={change_password} alt="تغییر رمز عبور" />تغییر رمز عبور</Link></li>
                             <li className="sub-manage-profile" ><Link to="/profile"><img className="manage-profile-icon" src={edit_profile} alt="ویرایش حساب کاربری" />ویرایش حساب کاربری</Link></li>
                             <li className="sub-manage-profile" ><img className="manage-profile-icon" src={logput} alt="خروج" />خروج از حساب کاربری</li>

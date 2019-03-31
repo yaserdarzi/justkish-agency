@@ -535,19 +535,7 @@ class Dashboard extends Component {
                 </div>
                 <div className="dashboard2">
 
-                {this.state.userType ==="admin" ? ( 
-                    <div className="dashbord-sellers">
-                        <p className="dashbord-sellers-title" >کانتر من<img src={questionmark} alt="فروش" /></p>
-                        <ul className="dashbord-manage-sellers" >
-                            {allAgents}
-                        </ul>
-
-                        <Link to="/addsellers" className="checkout-request" >
-                            مدیریت عاملین فروش
-                        </Link>
-                    </div>
-                ) : ''}
-             
+      
 
 
                     <Link to="/reports">
@@ -581,6 +569,24 @@ class Dashboard extends Component {
                             </p>
                         </div>
                     </div>
+
+
+                    {this.state.userType ==="admin" ? ( 
+                    <div className="dashbord-sellers">
+                        <p className="dashbord-sellers-title" >کانتر من<img src={questionmark} alt="فروش" /></p>
+                        <ul className="dashbord-manage-sellers" >
+                            {allAgents}
+                        </ul>
+
+                        <Link to="/addsellers" className="checkout-request" >
+                            مدیریت عاملین فروش
+                        </Link>
+                    </div>
+                ) : ''}
+             
+
+
+             
                 </div>
             </div>
         );
