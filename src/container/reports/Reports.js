@@ -202,7 +202,7 @@ class Reports extends Component {
                                     <img src={arrowdown2} alt="فلش" />
                                     <ul className="sellers-list" >
 
-                                        <p className="all-sellers" >همه عاملین فروش</p>
+                                        <p className="all-sellers" >همه کانترمن ها</p>
 
                                         {renderAllAgents}
                         
