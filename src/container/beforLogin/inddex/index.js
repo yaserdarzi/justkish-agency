@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import {Link } from 'react-router';
+
 
 //
 //
@@ -282,9 +284,11 @@ class Index extends Component {
                                          changed={this.changedHandler}
                                          error={this.state.loginPasswordError}
                                      />
-                                     <p className="forget-pass" >
-                                         <span>رمز خود را فراموش کرده ام </span>
-                                     </p>
+                                     <Link to="/forgetpassword">
+                                        <p className="forget-pass" >
+                                            <span>رمز خود را فراموش کرده ام </span>
+                                        </p>
+                                     </Link>
                                      {/* <button className="login-btn" onClick={this.onLogin.bind(this)} >ورود</button> */}
                                      <Button                                                                  
                                         isLoading={this.state.isLoading}                                    
