@@ -195,7 +195,7 @@ class Index extends Component {
                 
                console.log(`Agent is registerd!`) // TODO: Delete Later 
                this.setState({
-                   regSuccess:'درخواست شما با موفقیت ارسال شد.',
+                   regSuccess:'درخواست ساین پنل گردشگری کیش دریافت گردید. یکی از اپراتورهای ما در اسرع وقت با شما تماس خواهند گرفت.',
                   
                    
                })

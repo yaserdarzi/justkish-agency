@@ -494,8 +494,8 @@ class Dashboard extends Component {
                             <div className="dashboard-dates" >
                                 <ul>
                                     <li className="time-active">هفته</li>
-                                    <li>ماه</li>
-                                    <li>سال</li>
+                                    {/* <li>ماه</li>
+                                    <li>سال</li> */}
                                 </ul>
                             </div>
                         </div>
@@ -518,7 +518,7 @@ class Dashboard extends Component {
 
                 {this.state.userType ==="admin" ? ( 
                     <div className="dashbord-sellers">
-                        <p className="dashbord-sellers-title" >عاملین فروش<img src={questionmark} alt="فروش" /></p>
+                        <p className="dashbord-sellers-title" >کانتر من<img src={questionmark} alt="فروش" /></p>
                         <ul className="dashbord-manage-sellers" >
                             {allAgents}
                         </ul>
