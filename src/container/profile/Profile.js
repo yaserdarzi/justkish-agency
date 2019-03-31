@@ -115,6 +115,8 @@ class Profile extends Component {
         }
         reader.readAsDataURL(file)
 
+        console.log(this.state.userImage)
+
  
     }
 

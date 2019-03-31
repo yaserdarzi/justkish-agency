@@ -560,15 +560,15 @@ class CreateTicket extends Component {
                                     <div className="create-ticket-customer-factor" >
                                         <p className="create-ticket-customer-factor-row">
                                             <span>فاکتور مشتری</span>
-                                            <span style={{ color: '#FF3131' }}>0</span>
+                                            <span style={{ color: '#FF3131' }}>{PriceDigit(this.state.shopingBag.total_price,'price')} تومان</span>
                                         </p>
                                         <p className="create-ticket-customer-factor-row">
                                             <span >درآمد مجموعه از این فاکتور</span>
-                                            <span style={{ color: '#00BF66' }}>0</span>
+                                            <span style={{ color: '#00BF66' }}>{PriceDigit(this.state.shopingBag.agencyProfitTotal ,'price')} تومان</span>
                                         </p>
                                         <p className="create-ticket-customer-factor-row">
                                             <span>درآمد شما از این فاکتور</span>
-                                            <span style={{ color: '#00BF66' }}>0</span>
+                                            <span style={{ color: '#00BF66' }}>{PriceDigit(this.state.shopingBag.agencyAgentProfitTotal,'price')} تومان</span>
                                         </p>
                                     </div>
                                     <div className="create-ticket-customer-factor-total">
