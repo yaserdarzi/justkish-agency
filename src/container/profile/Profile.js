@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+ 
+
 import base from '../../api/baseURL';
 import Token from '../../api/token';
 
@@ -19,6 +21,9 @@ import './Profile.css';
 import SideLeft from '../../components/sideLeft/sideLeft';
 
 
+
+ 
+
 class Profile extends Component {
 
     constructor(props) {
@@ -31,7 +36,9 @@ class Profile extends Component {
             userTell:'',
             userEmail:'',
             userImage:loading,
-            getuserinfoLoading:true
+            getuserinfoLoading:true,
+            file: '',
+            imagePreviewUrl: ''
         }
     }
 
@@ -88,10 +95,46 @@ class Profile extends Component {
                  })
              })
      }
+
+
+
+
+     _handleImageChange(e) {
+        e.preventDefault();
+    
+        let reader = new FileReader();
+        let file = e.target.files[0];
+
+        reader.onloadend = () => {
+          this.setState({
+            file: file,
+            imagePreviewUrl: reader.result,
+            userImage: reader.result
+
+          });
+        }
+        reader.readAsDataURL(file)
+
+        console.log(this.state.userImage)
+
+ 
+    }
+
+
  
  
 
     render() {
+
+        // refrence :https://codepen.io/hartzis/pen/VvNGZP
+
+        // let {imagePreviewUrl} = this.state;
+        // let $imagePreview = null;
+        // if (imagePreviewUrl) {
+        //   $imagePreview = (<img src={imagePreviewUrl} />);
+        // } else {
+        //   $imagePreview = (<div className="previewText">Please select an Image for Preview</div>);
+        // }
 
         return (
             <div className="profilee">
@@ -125,19 +168,38 @@ class Profile extends Component {
                                                           </div>
 
                                     ) :  <div className="loader"></div>}
+
+
                                     <div className="user-box-img" >
+                                        {/* image prive for avatar --------------------> */}
                                         <img src={this.state.userImage} alt="پروفایل" />
-                                        <button className="profile-mini-btn" >تغییر نمایه کاربری</button>
+                                        {/* make lable to call hiden input for upload file  called upload-photo from id */}
+                                        <label className="profile-mini-btn" for="upload-photo">تغییر نمایه کاربری</label>
+                                        {/* hiden input uploader  */}
+                                        <input  
+                                            type="file" 
+                                            id="upload-photo"
+                                            onChange={(e)=>this._handleImageChange(e)} 
+                                        />
                                     </div>
+
+                                  
+ 
+ 
+
+
                                 </div>
                                 <button className="profile-btn" >تغییر اطلاعات</button>
 
                             </div>
                         </div>
 
-                        <div className="user-box" >
+
+                    {/* agance information  */}
+
+                        {/* <div className="user-box" >
                             <div className="user-box-title" >
-                                <h1>اطلاعات آزانس</h1>
+                                <h1>اطلاعات آژانس</h1>
                                 <p>اطلاعات کاربری خود در این بخش ویرایش کنید</p>
                             </div>
                             <div className="user-box-form" >
@@ -173,7 +235,7 @@ class Profile extends Component {
                                 <button className="profile-btn" >تغییر اطلاعات</button>
 
                             </div>
-                        </div>
+                        </div> */}
 
                         {/* <div className="user-box" >
                             <div className="user-box-title" >

@@ -11,6 +11,7 @@ import AddSellers from './container/addSellers/AddSellers';
 import IndexScreen from './container/beforLogin/inddex/index';
 import Wallet from './container/wallet/Wallet'
 import ForgetPasword from './container/beforLogin/forgetPassword/ForgetPassword';
+import RePassword from './container/beforLogin/forgetPassword/rePassword';
 import CreateTicketScreen from './container/createTicket/CreateTicket';
 import SupportScreen from './container/support/support';
 import ProfileScreen from './container/profile/Profile';
@@ -61,6 +62,7 @@ class RouterComponent extends Component {
                   <Route   path="reports" component={ReportsScreen} /> 
                   <Route   path="success-message" component={SuccessMessageScreen} /> 
                   <Route   path="failed-message" component={FailedMessageScreen} /> 
+                  <Route   path="repassword" component={RePassword} /> 
 
 
                 
