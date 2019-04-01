@@ -145,7 +145,7 @@ class Reports extends Component {
      _exportPdf =() => {
         //  console.log("pdf export");
 
-         const input = document.getElementById('divIdToPrint');
+      //   const input = document.getElementById('divIdToPrint');
 
 
          html2canvas(document.querySelector("#capture")).then(canvas => {
@@ -164,8 +164,8 @@ class Reports extends Component {
 
 
      _exportExcel = () => {
-         console.log('export excel!')
-
+  
+        console.log('export excel!')
 
      }
 
