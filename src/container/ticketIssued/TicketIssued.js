@@ -100,7 +100,7 @@ class TicketIssued extends Component {
                 <div className="ticket-issued-search-list" key={index}>
                     <p className="ticket-issued-search-list-cell-1">{item.id}</p>
                     <p className="ticket-issued-search-list-cell">{item.customer.name}</p>
-                    {/* <p className="ticket-issued-search-list-cell">اسم عامل فروش</p> */}
+                    <p className="ticket-issued-search-list-cell">{item.customer.phone}</p>
                     <p className="ticket-issued-search-list-cell">{PriceDigit(item.total_price,'price')}</p>
                     <p className="ticket-issued-search-list-cell">{MiladiToJalaly(TimeStamp(item.created_at_timestamp))}</p>
                     <div className="ticket-issued-search-list-cell">
@@ -131,7 +131,7 @@ class TicketIssued extends Component {
                             <div className="ticket-issued-search-list-titles" >
                                 <p className="ticket-issued-search-list-title-1">شماره </p>
                                 <p className="ticket-issued-search-list-title">نام خریدار</p>
-                                {/* <p className="ticket-issued-search-list-title"> عامل فروش</p> */}
+                                <p className="ticket-issued-search-list-title">شماره تماس</p>
                                 <p className="ticket-issued-search-list-title">مبلغ </p>
                                 <p className="ticket-issued-search-list-title">تاریخ صدور </p>
                                 <p className="ticket-issued-search-list-title">دریافت بلیت </p>
