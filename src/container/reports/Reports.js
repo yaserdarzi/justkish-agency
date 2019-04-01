@@ -244,6 +244,8 @@ class Reports extends Component {
                                         idEnd="rangePickerEnd"
                                     />
 
+                            {/* renrence https://www.npmjs.com/package/react-html-table-to-excel */}
+
                                 <ReactHTMLTableToExcel
                                     id="test-table-xls-button"
                                     className="download-table-xls-button"
@@ -251,9 +253,8 @@ class Reports extends Component {
                                     filename="tablexls"
                                     sheet="tablexls"
                                     buttonText="Download as XLS" />
-                               
 
-                                    
+                                {/* export data in table firstly */}
 
                                 <table id="table-to-xls" className="data-table-reports">
                                     <thead>
@@ -266,12 +267,10 @@ class Reports extends Component {
                                             <th>سود کل</th>
                                             <th>سود اپراتور</th>
                                         </tr>
-                                        </thead>
-                                        <tbody>
-                                            {renderDataToExcel}
-                                        </tbody>
-                                          
-                                 
+                                    </thead>
+                                    <tbody>
+                                        {renderDataToExcel}
+                                    </tbody>
                                 </table>
 
 
