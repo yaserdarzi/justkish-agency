@@ -40,7 +40,7 @@ export default class Root extends Component {
 
 
                 <div>
-                    {Token === null || window.location.pathname === '/view-ticket' ? ( 
+                    {Token === null || window.location.pathname === '/view-ticket' || window.location.pathname === '/repassword' || window.location.pathname === '/forgetpassword' ? ( 
                       ''
                      ): 
                     (

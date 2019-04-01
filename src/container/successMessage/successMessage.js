@@ -18,7 +18,8 @@ class SuuccessMessage extends Component {
     componentWillMount(){
       this.setState({
         tokenMessage:  this.getParms('token'),
-        ticketId: 'view-ticket?id=' + this.getParms('ticket')
+        // ticketId: 'view-ticket?id=' + this.getParms('ticket')
+        ticketId: 'ticket-issued'
       }) 
 
     }
@@ -41,7 +42,8 @@ class SuuccessMessage extends Component {
     }
 
     _getTicket =() => {
-        window.location.pathname = "/view-ticket?id=" + this.state.ticketId;
+        // window.location.pathname = "/view-ticket?id=" + this.state.ticketId;
+        window.location.pathname = "/ticket-issued";
     }
 
 
