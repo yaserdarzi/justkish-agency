@@ -5,6 +5,7 @@
 .create-ticket-box{
 display: flex;
 flex-direction: row-reverse;
+width: 1100px;
 }
 .create-ticket-search-result{
     margin-top: 20px;
