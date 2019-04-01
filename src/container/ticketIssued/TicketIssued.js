@@ -108,7 +108,7 @@ class TicketIssued extends Component {
     //
 
     _showTicket =(id) => {
-        console.log(id);
+        // console.log(id);
         browserHistory.push({pathname:'/view-ticket',search: '?id=' + id, state: id })
     }
 
@@ -132,6 +132,11 @@ class TicketIssued extends Component {
               
                 <div className="ticket-issued-search-list" key={index}>
                     <p className="ticket-issued-search-list-cell-1">{item.id}</p>
+                    <p className="ticket-issued-search-list-cell">{item.products.title ? item.products.title : item.tours.title}</p>
+                    <p className="ticket-issued-search-list-cell">
+                        {MiladiToJalaly(TimeStamp(item.products_episode.start_date))}
+                        <p>{item.products_episode.start_hours} - {item.products_episode.end_hours}</p>
+                    </p>
                     <p className="ticket-issued-search-list-cell">{item.name}</p>
                     <p className="ticket-issued-search-list-cell">{item.phone}</p>
                     <p className="ticket-issued-search-list-cell">{PriceDigit(item.price_all,'price')}</p>
@@ -147,6 +152,7 @@ class TicketIssued extends Component {
         :
         <div className="loader"></div>
         )
+        
 
         return (
 
@@ -163,6 +169,8 @@ class TicketIssued extends Component {
                         <div className="ticket-issued-search-lists table-desktop" >
                             <div className="ticket-issued-search-list-titles" >
                                 <p className="ticket-issued-search-list-title-1">شماره </p>
+                                <p className="ticket-issued-search-list-title">نام حصول</p>
+                                <p className="ticket-issued-search-list-title">سانس</p>
                                 <p className="ticket-issued-search-list-title">نام خریدار</p>
                                 <p className="ticket-issued-search-list-title">شماره تماس</p>
                                 <p className="ticket-issued-search-list-title">مبلغ </p>
