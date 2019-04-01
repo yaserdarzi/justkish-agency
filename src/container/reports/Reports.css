@@ -68,6 +68,13 @@ position: relative;
 .reports-search-table{
 
 }
+.download-table-xls-button{
+    display: none;
+}
+.data-table-reports{
+    display: none;
+
+}
 
 .no-data-for-showing-grid {
     width: 100%;
