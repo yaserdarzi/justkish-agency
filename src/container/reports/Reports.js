@@ -3,6 +3,8 @@ import { DateRangePicker } from "react-advance-jalaali-datepicker";
 import { Link } from 'react-router';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
+import ReactHTMLTableToExcel from 'react-html-table-to-excel';
+
 
 //
 // external compoent ---------------------------->
@@ -12,8 +14,9 @@ import Token from '../../api/token';
 import base from '../../api/baseURL';
 import SideLeft from '../../components/sideLeft/sideLeft';
 import ReportBox from '../../components/report/reportBox';
-import PriceDigit from '../../components/priceDigit/priceDigit';
-
+import PriceDigit from '../../components/priceDigit/priceDigit'; 
+import TimeStamp from '../../components/times/timespanToDate'; 
+import DateJalaly from '../../components/times/dateMiladiToShamsi';
 
 
 
@@ -140,7 +143,7 @@ class Reports extends Component {
      ///  refrence : https://medium.com/@shivekkhurana/how-to-create-pdfs-from-react-components-client-side-solution-7f506d9dfa6d
      //
      _exportPdf =() => {
-         console.log("pdf export");
+        //  console.log("pdf export");
 
          const input = document.getElementById('divIdToPrint');
 
@@ -155,43 +158,22 @@ class Reports extends Component {
             pdf.addImage(imgData, 'PNG', 0, 0);
             pdf.save("download.pdf"); 
         });
-
-
-
-
-        //  var doc = new jsPDF()
-
-        //  this.state.reports.map((item,index) => 
-        // {    doc.text('hello ' + item.id, 20, 20)
-        //     doc.setLineDash([2.5])
-        //     doc.line(10, 120, 50, 50)
-        //     console.log("doc")}
-        //  );
-                // doc.save('a4.pdf')
-
-
-
-
-        // <div className="reports-search-table-body" >
-        //     <div>{this.props.data.id }</div>
-        //     <div className="reports-search-table-child2">{this.props.data.ticket_number}</div>
-        //     <div className="reports-search-table-child3" >
-        //         <div className="reports-search-table-play">{this.props.tours.title}</div>
-        //         <div>
-        //             <span>{this.props.data.count}  عدد</span>  
-            
-        //         </div>
-        //     </div> 
-        //     <div>{DateJalaly(TimeStamp(this.props.data.factor_invoice.created_at_timestamp))}</div>
-        //     <div>{this.props.data.agency_agent.name}</div>
-        //     <div className="reports-search-table-child-bold" >{PriceDigit(this.props.data.agencyProfit,'price')} ت</div>
-        //     <div className="reports-search-table-child-bold" >{PriceDigit(this.props.data.agency_agent.profit,'price')} ت</div>
-        // </div>
+ 
 
      }
 
 
+     _exportExcel = () => {
+         console.log('export excel!')
+
+
+     }
+
+     
+
+
     render() {
+ 
 
         const renderResportsSelas = (
             this.state.isLoadingAllReport === false ? 
@@ -221,6 +203,21 @@ class Reports extends Component {
             ''
         )
 
+        const renderDataToExcel = (
+            this.state.reports.map((item,index) => 
+            <tr key={index}>
+                <td>{item.id}</td>
+                <td>{item.ticket_number}</td>
+                <td>{item.products ? item.products.title : item.tours.title}</td>
+                <td>{DateJalaly(TimeStamp(item.factor_invoice.created_at_timestamp))}</td>
+                <td>{item.agency_agent.name}</td>
+                <td>{PriceDigit(item.agencyProfit,'price')}</td>
+                <td>{PriceDigit(item.agency_agent.profit,'price')}</td>
+            </tr>
+        )
+        )
+         
+ 
 
 
 
@@ -247,6 +244,30 @@ class Reports extends Component {
                                         idEnd="rangePickerEnd"
                                     />
 
+                                <ReactHTMLTableToExcel
+                                    id="test-table-xls-button"
+                                    className="download-table-xls-button"
+                                    table="table-to-xls"
+                                    filename="tablexls"
+                                    sheet="tablexls"
+                                    buttonText="Download as XLS" />
+                               
+
+                                    
+
+                                <table id="table-to-xls" className="data-table-reports">
+                                    <tr>
+                                        <th>شماره</th>
+                                        <th>شماره سند</th>
+                                        <th>شرح</th>
+                                        <th>تاریخ</th>
+                                        <th>اپراتور</th>
+                                        <th>سود کل</th>
+                                        <th>سود اپراتور</th>
+                                    </tr>
+                                        {renderDataToExcel}
+                                </table>
+
                                 </div>
                             </div>
                             <div className="search-sellers">
@@ -261,8 +282,7 @@ class Reports extends Component {
 
                                         <p className="all-sellers" >همه کانترمن ها</p>
 
-                                        {renderAllAgents}
-                        
+                                        {renderAllAgents} 
 
                                     </ul>
 
@@ -307,7 +327,9 @@ class Reports extends Component {
                             <div className="pdf-grid" >
                                 <div>
                                     <img src={pdf} alt="پی دی اف" onClick={this._exportPdf} />
-                                    <img src={excel} alt="اکسل" />
+                                    <label  for="test-table-xls-button">
+                                        <img for="test-table-xls-button" src={excel} alt="اکسل"  onClick={this._exportExcel} />
+                                    </label>
                                 </div>
                                 <div>
                                     <img src={gridview} alt="grid" />
