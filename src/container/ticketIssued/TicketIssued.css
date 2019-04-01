@@ -86,6 +86,8 @@ width: calc((100% -50px)/5 ) ;
 padding: 25px 0px;
 text-align: center;
 color: #494D51;
+display: flex;
+
 }
 .ticket-issued-search-list-cell img{
     margin: 0px 5px;

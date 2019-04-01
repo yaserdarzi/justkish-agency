@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { DateRangePicker } from "react-advance-jalaali-datepicker";
 import { Link } from 'react-router';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 
 //
 // external compoent ---------------------------->
@@ -134,6 +136,61 @@ class Reports extends Component {
  
 
 
+     //
+     ///  refrence : https://medium.com/@shivekkhurana/how-to-create-pdfs-from-react-components-client-side-solution-7f506d9dfa6d
+     //
+     _exportPdf =() => {
+         console.log("pdf export");
+
+         const input = document.getElementById('divIdToPrint');
+
+
+         html2canvas(document.querySelector("#capture")).then(canvas => {
+          //  document.body.appendChild(canvas);
+
+            const imgData = canvas.toDataURL('image/png');
+
+
+            const pdf = new jsPDF();
+            pdf.addImage(imgData, 'PNG', 0, 0);
+            pdf.save("download.pdf"); 
+        });
+
+
+
+
+        //  var doc = new jsPDF()
+
+        //  this.state.reports.map((item,index) => 
+        // {    doc.text('hello ' + item.id, 20, 20)
+        //     doc.setLineDash([2.5])
+        //     doc.line(10, 120, 50, 50)
+        //     console.log("doc")}
+        //  );
+                // doc.save('a4.pdf')
+
+
+
+
+        // <div className="reports-search-table-body" >
+        //     <div>{this.props.data.id }</div>
+        //     <div className="reports-search-table-child2">{this.props.data.ticket_number}</div>
+        //     <div className="reports-search-table-child3" >
+        //         <div className="reports-search-table-play">{this.props.tours.title}</div>
+        //         <div>
+        //             <span>{this.props.data.count}  عدد</span>  
+            
+        //         </div>
+        //     </div> 
+        //     <div>{DateJalaly(TimeStamp(this.props.data.factor_invoice.created_at_timestamp))}</div>
+        //     <div>{this.props.data.agency_agent.name}</div>
+        //     <div className="reports-search-table-child-bold" >{PriceDigit(this.props.data.agencyProfit,'price')} ت</div>
+        //     <div className="reports-search-table-child-bold" >{PriceDigit(this.props.data.agency_agent.profit,'price')} ت</div>
+        // </div>
+
+     }
+
+
     render() {
 
         const renderResportsSelas = (
@@ -249,7 +306,7 @@ class Reports extends Component {
                             </div>
                             <div className="pdf-grid" >
                                 <div>
-                                    <img src={pdf} alt="پی دی اف" />
+                                    <img src={pdf} alt="پی دی اف" onClick={this._exportPdf} />
                                     <img src={excel} alt="اکسل" />
                                 </div>
                                 <div>
@@ -258,7 +315,7 @@ class Reports extends Component {
                                 </div>
                             </div>
                         </div>
-                        <div className="reports-search" >
+                        <div id="capture"  className="reports-search" >
                             <div className="reports-search-title" >
                                 <h1>گزارش فروش</h1>
                                 <div className="reports-search-input">
@@ -266,6 +323,9 @@ class Reports extends Component {
                                     <input className="" placeholder="جستجو در نتایج" />
                                 </div>
                             </div>
+
+                            <div >
+
                             <div className="reports-search-table table-desktop" >
                                 <div className="reports-search-table-title" >
                                     <div>شماره </div>
@@ -278,9 +338,15 @@ class Reports extends Component {
                                 </div>
                  
                                 {/* {this.state.reports.length > 0 ?  renderResportsSelas : <div className="no-data-for-showing-grid"><p>اطلاعاتی برای نمایش ثبت نشده است.</p></div>} */}
-                              {renderResportsSelas}
+                              
+                           
+                                {renderResportsSelas}
+                             
+                            
                     
 
+
+                            </div>
 
                             </div>
 
