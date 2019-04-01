@@ -10,7 +10,7 @@ import MiladyToJalaly from '../../components/times/dateMiladiToShamsi';
 //
 // icons and images --------------------------------->
 //
-import brand from '../../assets/images/brand.png'
+import brand from '../../assets/images/logo.png'
 import brand2 from '../../assets/images/brand2.png'
 import icon2 from '../../assets/icons/icon2.svg'
 import icon3 from '../../assets/icons/icon3.png'
