@@ -467,6 +467,10 @@ display: block;
     padding: 0px 2px;
     cursor: pointer;
 }
+
+.pdf-grid div img:hover{
+    opacity: 0.7;
+}
 .products{
     display: flex;
     flex-wrap: wrap;
