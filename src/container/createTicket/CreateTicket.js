@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {  browserHistory } from 'react-router';
-import { DateRangePicker } from "react-advance-jalaali-datepicker";
+import { DateRangePicker, DatePicker } from "react-advance-jalaali-datepicker";
 /*
 
 https://www.npmjs.com/package/react-advance-jalaali-datepicker
@@ -14,6 +14,7 @@ import Token from '../../api/token';
 // import DateJalaly from '../../components/times/dateShamsiToMiladi';
 import dateMilady from '../../components/times/dateMiladiToShamsi';
 import PriceDigit from '../../components/priceDigit/priceDigit';
+import GetToday from '../../components/times/getToday';
 
 
 
@@ -61,7 +62,8 @@ class CreateTicket extends Component {
             customerPhone:'',
             customerNameError:'',
             customerPhoneError:'',
-            isLoadingPayment:false
+            isLoadingPayment:false,
+            currentDate: GetToday('shamsi')
         }
     }
 
@@ -71,6 +73,9 @@ class CreateTicket extends Component {
         this.getAllTicket();      // get all tickets
         this.getAllShopingBag(); // get all shoping bag
         this.getCategories();   //  get all categories
+
+        const a = GetToday('miladi')
+        console.log(a)
 
 
     }
@@ -608,13 +613,10 @@ class CreateTicket extends Component {
                         </div>
                     </div>
                     <div className="part2" >
-                        <div className="create-ticket-filter " >
+
+                        {/* <div className="create-ticket-filter " >
                             <div className="create-ticket-date" >
-                                {/* <div className="create-ticket-from" >از</div>
-                                <div className="create-ticket-to" >تا</div> */}
-
                                 <div className="datePicker">
-
                                     <DateRangePicker
                                         placeholderStart="تاریخ شروع"
                                         placeholderEnd="تاریخ پایان"
@@ -624,37 +626,54 @@ class CreateTicket extends Component {
                                         idStart="rangePickerStart"
                                         idEnd="rangePickerEnd"
                                     />
+                                </div>
+                            </div>
+                            <div className="create-ticket-search">
+                                <div className="create-ticket-features" >
+                                     <span className="create-ticket-features-right" >
+                                        <span>{this.state.categorie || 'همه'} </span>
+                                    </span>
+                                    <img src={arrowdown2} alt="فلش" />
+                                    <ul className="create-ticket-features-lists" >
+                                        <li className="create-ticket-features-list" >
+                                            <ul className="create-ticket-features-col" >
+                                                {renderCategory}
+                                            </ul>
+                                        </li>
+                                    </ul></div>
+                                <button className="create-ticket-btn" onClick={() => this._searchButonTickets()} >
+                                    <img src={search} alt="جستجو" ></img>
+                                </button>
+                            </div>
+
+                        </div> */}
+
+                        <div className="create-ticket-filter " >
+                            <div className="create-ticket-date" >
+                                <div className="datePicker">
+                                    <div className="date-change-day">
+                                        <span>روز قبل</span>
+                                    </div>
+                                    <div className="date-select-create-ticket">
+                                        <DatePicker
+                                            format="jYYYY/jMM/jDD"
+                                            onChangeStart={this.change}  
+                                            inputComponent={this.DatePickerInput}
+                                            placeholder="انتخاب تاریخ" 
+                                            id="rangePickerStart"
+                                            preSelected={this.state.currentDate}
+                                        />
+                                    </div>
+
+                                    <div className="date-change-day">
+                                        <span>روز بعد</span>
+                                    </div>
 
                                 </div>
                             </div>
                             <div className="create-ticket-search">
-
-                                {/* <div className="create-ticket-places" >
-                                    <span className="create-ticket-places-right" >
-                                        <i className="fas fa-map-marker-alt create-ticket-places-marker "></i>
-                                        <span>در جزیره کیش </span>
-                                        <img src={arrowdown2} alt="فلش" />
-                                    </span>
-                                    <ul className="create-ticket-places-lists" >
-
-                                        <p className="create-ticket-places-all" >همه مکانها</p>
-
-                                        <li className="create-ticket-places-list" >
-                                            کیش
-                                        </li>
-                                        <li className="create-ticket-places-list" >
-                                            کیش
-                                        </li>
-                                        <li className="create-ticket-places-list" >
-                                            کیش
-                                        </li>
-                                    </ul>
-
-                                </div> */}
-
                                 <div className="create-ticket-features" >
-                                    {/* <img className="categori-delete-create-ticket" src={deletee} alt="فلش" /> */}
-                                    <span className="create-ticket-features-right" >
+                                     <span className="create-ticket-features-right" >
                                         <span>{this.state.categorie || 'همه'} </span>
                                     </span>
                                     <img src={arrowdown2} alt="فلش" />
@@ -671,6 +690,9 @@ class CreateTicket extends Component {
                             </div>
 
                         </div>
+
+
+
                         {/* --------------------------------------------------------------- */}
                        
                         {renderAllTickets } 

@@ -194,6 +194,28 @@ transition: all .2s linear;
     opacity: 0.8;
 }
 
+.date-change-day {
+    width: 70px;
+    background-color: #eeeeee73;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px;
+    color: #b7b7b7;
+    cursor: pointer;
+
+}
+.date-change-day:hover {
+    background-color: #949494;
+    color: #fff;
+
+}
+
+.date-select-create-ticket{
+    width: 80px;
+    margin: 0 5px;
+    text-align: center;
+}
+
 
 
 .create-ticket-search-lists{
