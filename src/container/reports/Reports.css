@@ -125,6 +125,7 @@ border-bottom: 1px solid #f8f8f8;
 @media screen and (max-width: 1000px){
     .reports-box{
         flex-direction: column;
+        width: 100%;
     }
     .reports-search-table{
         width: 100%;
