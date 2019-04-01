@@ -205,7 +205,7 @@ class Reports extends Component {
 
         const renderDataToExcel = (
             this.state.reports.map((item,index) => 
-            <tr key={index}>
+            <tr key={index} >
                 <td>{item.id}</td>
                 <td>{item.ticket_number}</td>
                 <td>{item.products ? item.products.title : item.tours.title}</td>
@@ -256,17 +256,24 @@ class Reports extends Component {
                                     
 
                                 <table id="table-to-xls" className="data-table-reports">
-                                    <tr>
-                                        <th>شماره</th>
-                                        <th>شماره سند</th>
-                                        <th>شرح</th>
-                                        <th>تاریخ</th>
-                                        <th>اپراتور</th>
-                                        <th>سود کل</th>
-                                        <th>سود اپراتور</th>
-                                    </tr>
-                                        {renderDataToExcel}
+                                    <thead>
+                                        <tr>
+                                            <th>شماره</th>
+                                            <th>شماره سند</th>
+                                            <th>شرح</th>
+                                            <th>تاریخ</th>
+                                            <th>اپراتور</th>
+                                            <th>سود کل</th>
+                                            <th>سود اپراتور</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                            {renderDataToExcel}
+                                        </tbody>
+                                          
+                                 
                                 </table>
+
 
                                 </div>
                             </div>
@@ -327,8 +334,8 @@ class Reports extends Component {
                             <div className="pdf-grid" >
                                 <div>
                                     <img src={pdf} alt="پی دی اف" onClick={this._exportPdf} />
-                                    <label  for="test-table-xls-button">
-                                        <img for="test-table-xls-button" src={excel} alt="اکسل"  onClick={this._exportExcel} />
+                                    <label  htmlFor="test-table-xls-button">
+                                        <img src={excel} alt="اکسل"  onClick={this._exportExcel} />
                                     </label>
                                 </div>
                                 <div>
