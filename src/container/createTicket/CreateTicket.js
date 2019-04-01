@@ -72,11 +72,9 @@ class CreateTicket extends Component {
         // fetch data from api ----------------------------->
         this.getAllTicket();      // get all tickets
         this.getAllShopingBag(); // get all shoping bag
-        this.getCategories();   //  get all categories
-
-        const a = GetToday('miladi')
-        console.log(a)
-
+        await this.getCategories();   //  get all categories
+ 
+       console.log(this.state.categories)
 
     }
 
@@ -275,14 +273,14 @@ class CreateTicket extends Component {
     // get All categories ------------------------------>
     //
 
-    getCategories() { 
-        this.fetchCategories('agency/categories')
+    getCategories = async()=> { 
+        await  this.fetchCategories('agency/categories')
 
 
     }
 
 
-    fetchCategories(key) {
+    fetchCategories =async(key) => {
         const url = base.baseURL + key;
 
         fetch(url, {
@@ -298,7 +296,7 @@ class CreateTicket extends Component {
             referrer: "no-referrer"
         })
             .then(response => response.json())
-            .then(responseJson => {
+            .then( responseJson => {
                 this.setState({
                     categories: responseJson.data
 
