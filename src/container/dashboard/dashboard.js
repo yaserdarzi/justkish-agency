@@ -467,7 +467,7 @@ class Dashboard extends Component {
                     name={item.name}
                     editAgent={() => this.editSellerModalOpen(item.id)}
                     avatar={item.image}
-                    level={item.type === 'normal' ? 'عامل فروش' : 'مدیر'} />
+                    level={item.type === 'normal' ? 'کانترمن' : 'مدیر'} />
             ) : <div className="loader"></div>
 
         )
@@ -573,13 +573,13 @@ class Dashboard extends Component {
 
                     {this.state.userType ==="admin" ? ( 
                     <div className="dashbord-sellers">
-                        <p className="dashbord-sellers-title" >کانتر من<img src={questionmark} alt="فروش" /></p>
+                        <p className="dashbord-sellers-title" > کانترمن ها<img src={questionmark} alt="فروش" /></p>
                         <ul className="dashbord-manage-sellers" >
                             {allAgents}
                         </ul>
 
                         <Link to="/addsellers" className="checkout-request" >
-                            مدیریت عاملین فروش
+                            مدیریت کانترمن ها
                         </Link>
                     </div>
                 ) : ''}

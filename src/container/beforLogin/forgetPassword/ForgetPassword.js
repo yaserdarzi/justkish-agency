@@ -4,6 +4,8 @@ import React, { Component } from 'react';
 // external compoennt ----------------->
 //
 import Input from '../../../components/input/Input';
+import Token from '../../../api/token';
+
 
 //
 // icons and images ----------------->
@@ -19,6 +21,15 @@ class ForgetPassword extends Component {
         super(props);
         this.state = {}
     }
+
+    componentWillMount(){
+        if(Token !== null)
+        window.location.pathname = '/dashboard'
+    
+    }
+
+ 
+
     render() {
         return (
             <div className="forget-password">
