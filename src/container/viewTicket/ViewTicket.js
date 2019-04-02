@@ -99,6 +99,12 @@ class ViewTicket extends Component {
 
     render() {
 
+        const rulesAndCondition = (
+           this.state.ticket.products ?  this.state.ticket.map((item,index) => 
+           <li><span>{index + 1}</span>{item.products.rule}</li>
+           ) : <li><span>1</span>درحال حاضر قوانینی برای این بلیط ثبت نگردید</li>
+        );
+
 
         const Ruls = (
 
@@ -148,11 +154,15 @@ class ViewTicket extends Component {
                 <div className="rules-box-child2">
                     <h3>قوانین و مقررات</h3>
                     <ul className="rules-list">
-                        <li><span>1</span>پرواز داخلی هواپیمایی کیش ایر از ترمینال - فرودگاه انجام می شود</li>
+                        {/* <li><span>1</span>پرواز داخلی هواپیمایی کیش ایر از ترمینال - فرودگاه انجام می شود</li>
                         <li><span>2</span>برای سوار شدن به هواپیما، ارائه کارت شناسایی عکس دار ضروری است</li>
                         <li><span>3</span>برای استرداد بلیط ارائه کارت شناسایی عکس دار ضروری است</li>
                         <li><span>4</span>دوربین، موبایل، نوت بوک، اشیا گران بها و مدارک مهم را در بسته های تحویلی به هواپیما قرار ندهید. بر اساس قوانین، هواپیمایی جمهوری اسلامی ایران در خصوص مفقود شدن این موارد، هیچ مسئولیتی ندارد</li>
-                        <li><span>5</span>حضور مسافر حداقل یک ساعت قبل از زمان پرواز در فرودگاه الزامی است.</li>
+                        <li><span>5</span>حضور مسافر حداقل یک ساعت قبل از زمان پرواز در فرودگاه الزامی است.</li> */}
+
+                        
+                       {rulesAndCondition}
+
                     </ul>
                 </div>
             </div>
