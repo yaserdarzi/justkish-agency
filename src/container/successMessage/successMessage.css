@@ -16,6 +16,8 @@
     box-shadow: 0 2px 10px rgba(157,206,255,.34);
     text-align: center;
     line-height: 4em;
+    margin: 1rem 0;
+    
 }
 
 .message-box h1 {
