@@ -4,7 +4,7 @@
  //
  
 
- const url ='http://justkish.com' ;
+ const url ='http://snappkish.com' ;
  const versioan ='v1' ;
  const api ='api' ;
 
