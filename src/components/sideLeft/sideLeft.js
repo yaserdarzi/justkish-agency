@@ -81,7 +81,7 @@ class SideLeft extends Component {
                             <img className="checkout-profile-img" src={this.state.userAvatar} alt="profile" />
                             <div className="checkout-profile-desc" >
                                 <span className="checkout-profile-name" >{this.state.userName}</span>
-                                <span className="checkout-profile-level" >{this.state.userType === 'admin' ? 'مدیر' : 'عامل فروش'}</span>
+                                <span className="checkout-profile-level" >{this.state.userType === 'admin' ? 'مدیر' : 'کانترمن'}</span>
                             </div>
                         </div>
                         <div className="increas-credit" >

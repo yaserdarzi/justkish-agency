@@ -144,9 +144,10 @@ class TicketIssued extends Component {
                     <p className="ticket-issued-search-list-cell">{PriceDigit(item.price_all,'price')}</p>
                     <p className="ticket-issued-search-list-cell">{MiladiToJalaly(TimeStamp(item.created_at_timestamp))}</p>
                     <div className="ticket-issued-search-list-cell">
-                        <Link to="/view-ticket"><img src={email} alt="ایمیل" /></Link>
-                        <Link to="/view-ticket"><img src={sms} alt="پیام کوتاه" /></Link>
                         <div  onClick={() => this._showTicket(item.id)}><img src={print} alt="پرینت" /></div>
+                        <Link to="/#" className="disabledbutton"><img src={email}  disabled="disabled" alt="ایمیل"   /></Link>
+                        <Link to="/#" className="disabledbutton"><img src={sms}  alt="پیام کوتاه" /></Link>
+                        
                     </div>
                 </div>
                             
@@ -156,6 +157,7 @@ class TicketIssued extends Component {
         )
         
 
+        
         return (
 
             <div className="ticket-issued">

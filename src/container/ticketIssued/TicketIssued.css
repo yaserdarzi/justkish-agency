@@ -110,6 +110,11 @@ transition:all .2s linear;
 
 }
 
+.disabledbutton {
+    pointer-events: none;
+    cursor: none;
+    opacity: 0.3;
+}
 
 
 @media screen and (max-width: 1200px){
