@@ -157,6 +157,7 @@ class TicketIssued extends Component {
         )
         
 
+        
         return (
 
             <div className="ticket-issued">
