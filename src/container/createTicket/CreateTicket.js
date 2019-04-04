@@ -63,7 +63,7 @@ class CreateTicket extends Component {
             customerNameError:'',
             customerPhoneError:'',
             isLoadingPayment:false,
-            currentDate: GetToday('shamsi')
+            currentDate: ''
         }
     }
 
@@ -73,6 +73,9 @@ class CreateTicket extends Component {
         this.getAllTicket();      // get all tickets
         this.getAllShopingBag(); // get all shoping bag
         await this.getCategories();   //  get all categories
+        await this.setState({
+            currentDate :  GetToday('shamsi')
+        })
  
        console.log(this.state.categories)
 
@@ -357,22 +360,22 @@ class CreateTicket extends Component {
 
     // date select 
     change = (unix, formatted) => {
-        // console.log(unix)
-        // console.log(formatted)
+        console.log(unix)
+        console.log(formatted)
         // console.log("start date ");
         this.insertParam('start_date',formatted);
     }
 
     changeTimeDate = (unix, formatted) => {
-        // console.log(unix)
-        // console.log(formatted)
+        console.log(unix)
+        console.log(formatted)
         // console.log("end date ")
         this.insertParam('end_date',formatted)
 
     }
 
     DatePickerInput(props) {
-        // console.log(prop)
+       //  console.log(props)
         return <input className="popo" {...props} ></input>;
     }
 
@@ -470,6 +473,41 @@ class CreateTicket extends Component {
             .catch(err => console.log(err))
 
 
+    }
+
+    //
+    //
+    //
+
+    _changedate = async(type) => {
+        console.log(this.state.currentDate)
+        let date = this.state.currentDate.split('/')
+        let day = date[2]
+        console.log(date[2])
+
+        if(type === 'min'){
+
+            if(day > 1)
+            {
+                day --;
+                console.log(day)
+            }
+
+        } 
+        else {
+            if(day < 30)
+            {
+                day ++;
+                console.log(day)
+            }
+        }
+
+
+       await this.setState({
+            currentDate: date[0] + '/' + date[1] + '/' + day
+        })
+
+        console.log(this.state.currentDate)
     }
 
 
@@ -649,7 +687,7 @@ class CreateTicket extends Component {
                         <div className="create-ticket-filter " >
                             <div className="create-ticket-date" >
                                 <div className="datePicker">
-                                    <div className="date-change-day">
+                                    <div className="date-change-day-right" onClick={() => this._changedate('min')}>
                                         <span>روز قبل</span>
                                     </div>
                                     <div className="date-select-create-ticket">
@@ -657,13 +695,13 @@ class CreateTicket extends Component {
                                             format="jYYYY/jMM/jDD"
                                             onChangeStart={this.change}  
                                             inputComponent={this.DatePickerInput}
-                                            placeholder="انتخاب تاریخ" 
+                                            placeholder={this.state.currentDate}
                                             id="rangePickerStart"
                                             preSelected={this.state.currentDate}
                                         />
                                     </div>
 
-                                    <div className="date-change-day">
+                                    <div className="date-change-day-left" onClick={() => this._changedate('max')} >
                                         <span>روز بعد</span>
                                     </div>
 
