@@ -139,14 +139,14 @@ class AddSellers extends Component {
         if (this.state.name === '') {
             cheking = true;
             this.setState({
-                errorName: 'لطفا نام عامل فروش را وارد نمایید.'
+                errorName: 'لطفا نام کانترمن را وارد نمایید.'
             })
         }
 
         if (this.state.email === '') {
             cheking = true;
             this.setState({
-                errorEmail: 'لطفا آدرس ایمیل عامل فروش را وارد نمایید.'
+                errorEmail: 'لطفا آدرس ایمیل کانترمن را وارد نمایید.'
             })
         }
 
@@ -160,7 +160,7 @@ class AddSellers extends Component {
         if (this.state.password === '') {
             cheking = true;
             this.setState({
-                errorPassword: 'لطفا کلمه عبور عامل فروش را وارد نمایید'
+                errorPassword: 'لطفا کلمه عبور کانترمن را وارد نمایید'
             })
         }
 
@@ -170,13 +170,13 @@ class AddSellers extends Component {
             //console.log(res.status)
             if (res.status === 200) {
                 this.setState({
-                    suuccessMessage: 'عامل فروش جدید ثبت شد'
+                    suuccessMessage: ' کانترمن جدید ثبت شد'
                 })
                 this.sellerForm.current.reset();
             }
             if (res.status === 400) {
                 this.setState({
-                    errorMessage: 'عامل فروش با این آدرس ایمیل ، قبلا ثبت شده است'
+                    errorMessage: ' کانترمن با این آدرس ایمیل ، قبلا ثبت شده است'
                 });
                 console.log(res)
             }
@@ -288,7 +288,7 @@ class AddSellers extends Component {
                     name={item.name}
                     editAgent={() => this.editSellerModalOpen(item.id)}
                     avatar={item.image}
-                    level={item.type === 'normal' ? 'عامل فروش' : 'مدیر'} />
+                    level={item.type === 'normal' ? 'کانترمن' : 'مدیر'} />
             ) : <div className="loader"></div>
 
         )
@@ -317,8 +317,8 @@ class AddSellers extends Component {
                 </div>
                 <div className="part2" >
                     <div className="add-sellers-title" >
-                        <h1>مدیریت عاملین فروش</h1>
-                        <p>حذف و اضافه کردم و تغییر سطح دسترسی عامیلن فروش با امکان زیر صورت پذیر است</p>
+                        <h1>مدیریت کانترمن ها</h1>
+                        <p>حذف و اضافه کردم و تغییر سطح دسترسی کانترمن ها با امکان زیر صورت پذیر است</p>
                     </div>
 
                     <form className="add-sellers-form" onSubmit={this.addNewSeller} ref={this.sellerForm}>
@@ -335,8 +335,8 @@ class AddSellers extends Component {
                         <div className="add-sellers-fields">
 
                             <div className="add-sellers-field" >
-                                <p>نام عامل فروش</p>
-                                <input name="name" placeholder="یاسر درزی" onChange={this.changedHandler} />
+                                <p>نام  کانترمن</p>
+                                <input name="name" placeholder="" onChange={this.changedHandler} />
                             </div>
                             <div className="add-sellers-field" >
                                 <p>ایمیل</p>
