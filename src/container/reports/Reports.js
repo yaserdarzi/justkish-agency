@@ -196,7 +196,7 @@ class Reports extends Component {
                     <img className="seller-img" src={item.image} alt="عاملین" />
                     <span className="seller-box" >
                         <span className="seller-name" >{item.name}</span>
-                        <span className="seller-level" >{item.type === 'normal' ? 'عامل فروش' : 'مدیر'}</span>
+                        <span className="seller-level" >{item.type === 'normal' ? 'کانترمن' : 'مدیر'}</span>
                     </span>
                 </li>
                 ) :

@@ -113,7 +113,7 @@ class Header extends Component {
                             <img className="profile-img" src={this.state.userAvatar} alt="profile" />
                             <div className="profile-desc" >
                                 <span className="profile-name" >{this.state.userName}</span>
-                                <span className="profile-level" >{this.state.userType === 'admin' ? 'مدیر' : 'عامل فروش'}</span>
+                                <span className="profile-level" >{this.state.userType === 'admin' ? 'مدیر' : 'کانترمن'}</span>
                             </div>
                             <img className="my-arrow-down" src={arrow_down} alt="فلش" />
                             <ul className="manage-profile" >
