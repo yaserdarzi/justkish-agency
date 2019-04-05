@@ -105,6 +105,16 @@ class ViewTicket extends Component {
            ) : <li><span>1</span>درحال حاضر قوانینی برای این بلیط ثبت نگردید</li>
         );
 
+        const recoveryTicket = (
+            this.state.ticket.products ?  this.state.ticket.map((item,index) => 
+          
+                <tr>
+                    <td>{item.products.recovery}</td>
+                </tr>
+
+            ) : <li>درحال حاضر شرایط جریمه استرداد برای این بلیط ثبت نگردید</li>
+         );
+
 
         const Ruls = (
 
@@ -117,35 +127,13 @@ class ViewTicket extends Component {
                     <table>
                         <thead>
                             <tr>
-                                <th>شرایط هنگام استرداد</th>
-                                <th>میزان جریمه</th>
+                                <th>شرایط هنگام استرداد و میزان جریمه</th> 
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>تا 11:30 ظهر 5 روز قبل از حرکت</td>
-                                <td>35%</td>
-                            </tr>
-                            <tr>
-                                <td>تا 11:30 ظهر 4 روز قبل از حرکت</td>
-                                <td>40%</td>
-                            </tr>
-                            <tr>
-                                <td>تا 11:30 ظهر 3 روز قبل از حرکت</td>
-                                <td>45%</td>
-                            </tr>
-                            <tr>
-                                <td>تا 11:30 ظهر 2 روز قبل از حرکت</td>
-                                <td>55%</td>
-                            </tr>
-                            <tr>
-                                <td>تا 11:30 ظهر 1 روز قبل از حرکت</td>
-                                <td>70%</td>
-                            </tr>
-                            <tr>
-                                <td>از 11:30 ظهر 1 روز قبل از حرکت به بعد - تماس تلفنی</td>
-                                <td>100%</td>
-                            </tr>
+                      {recoveryTicket}
+                         
+                        
                         </tbody>
                     </table>
                 </div>
