@@ -103,7 +103,7 @@ class Header extends Component {
                         </div>
                         <ul className="menu" >
                             <li className="sub-menu" ><Link to="/dashboard"><img className="menu-icon" src={dashboard} alt="داشبورد" /> داشبورد</Link></li>
-                            <li className="sub-menu" ><Link to="/create-ticket?categories=1"><img className="menu-icon" src={ticket2} alt="بلیت" /> خرید بلیت </Link></li>
+                            <li className="sub-menu" ><Link to="/create-ticket?categories=کشتی+های+تفریحی"><img className="menu-icon" src={ticket2} alt="بلیت" /> خرید بلیت </Link></li>
                             <li className="sub-menu" ><Link to="/management"><img className="menu-icon" src={management} alt="مدیریت" /> مدیریت</Link></li>
                             {/* <li className="sub-menu" ><Link to="/support"><img className="menu-icon" src={support2} alt="پشتیبانی" /> پشتیبانی</Link></li> */}
                         </ul>

@@ -153,13 +153,14 @@ class CreateTicket extends Component {
 
         //console.log('agency/ticket?categories_id=' + this.getParms('categories') + '&start_date=' + start_date   + '&end_date=' + end_date )
 
-        this.getData('agency/ticket?categories_id=' + this.getParms('categories') + '&start_date=' + start_date   + '&end_date=' + end_date )
+        this.getData('agency/ticket?categories_title=' + this.getParms('categories') + '&start_date=' + start_date   + '&end_date=' + end_date )
 
     }
 
 
     getData(key) {
 
+        console.log(key)
         this.setState({
             agentLoading: true
         })
@@ -180,7 +181,7 @@ class CreateTicket extends Component {
         })
             .then(response => response.json())
             .then(responsJson => {
-              //  console.log(responsJson.data.total)
+               console.log(responsJson.data.total)
                 this.setState({
                     allTickets: responsJson.data.total,
                     agentLoading: false,
@@ -317,7 +318,7 @@ class CreateTicket extends Component {
         })
 
         console.log(`selectedt ${item.id}`)
-        this.insertParam('categories', item.id);
+        this.insertParam('categories', item.title);
 
     }
 
