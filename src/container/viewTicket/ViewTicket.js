@@ -12,6 +12,7 @@ import MiladyToJalaly from '../../components/times/dateMiladiToShamsi';
 //
 import brand from '../../assets/images/logo.png'
 import brand2 from '../../assets/images/brand2.png'
+import iconLogo from '../../assets/images/iconLogo.png'
 import icon2 from '../../assets/icons/icon2.svg'
 import icon3 from '../../assets/icons/icon3.png'
 import icon4 from '../../assets/icons/icon4.svg'
@@ -105,6 +106,16 @@ class ViewTicket extends Component {
            ) : <li><span>1</span>درحال حاضر قوانینی برای این بلیط ثبت نگردید</li>
         );
 
+        const recoveryTicket = (
+            this.state.ticket.products ?  this.state.ticket.map((item,index) => 
+          
+                <tr>
+                    <td>{item.products.recovery}</td>
+                </tr>
+
+            ) : <li>درحال حاضر شرایط جریمه استرداد برای این بلیط ثبت نگردید</li>
+         );
+
 
         const Ruls = (
 
@@ -117,35 +128,13 @@ class ViewTicket extends Component {
                     <table>
                         <thead>
                             <tr>
-                                <th>شرایط هنگام استرداد</th>
-                                <th>میزان جریمه</th>
+                                <th>شرایط هنگام استرداد و میزان جریمه</th> 
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>تا 11:30 ظهر 5 روز قبل از حرکت</td>
-                                <td>35%</td>
-                            </tr>
-                            <tr>
-                                <td>تا 11:30 ظهر 4 روز قبل از حرکت</td>
-                                <td>40%</td>
-                            </tr>
-                            <tr>
-                                <td>تا 11:30 ظهر 3 روز قبل از حرکت</td>
-                                <td>45%</td>
-                            </tr>
-                            <tr>
-                                <td>تا 11:30 ظهر 2 روز قبل از حرکت</td>
-                                <td>55%</td>
-                            </tr>
-                            <tr>
-                                <td>تا 11:30 ظهر 1 روز قبل از حرکت</td>
-                                <td>70%</td>
-                            </tr>
-                            <tr>
-                                <td>از 11:30 ظهر 1 روز قبل از حرکت به بعد - تماس تلفنی</td>
-                                <td>100%</td>
-                            </tr>
+                      {recoveryTicket}
+                         
+                        
                         </tbody>
                     </table>
                 </div>
@@ -167,6 +156,7 @@ class ViewTicket extends Component {
                 </div>
             </div>
             
+           
         </div>
     
         )
@@ -190,6 +180,8 @@ class ViewTicket extends Component {
                               </div>
                           </div>
 
+                          
+
                           <div className="ticket-triple-box">
                               <div className="ticket-triple-box-titles" >
                                   <h2> </h2>
@@ -198,6 +190,10 @@ class ViewTicket extends Component {
                               </div>
                           </div>
                       </div>
+                     
+                     <div className="title-ticket-view">
+                        <p>{item.products ? item.products.title : item.tours.title}</p>
+                     </div>
                       <div className="ticket-dates" >
                           <div className="ticket-dates-box" >
                               <img src={icon2} alt="آیکن" />
@@ -242,6 +238,11 @@ class ViewTicket extends Component {
                       </div>
                   </div>
               </div>
+                    <div className="powered-by">
+                        <p> Powered by Justkish </p>
+                        <img src={iconLogo} alt="" />
+                    </div>
+
               {Ruls}
               </div>
                 )
@@ -250,7 +251,7 @@ class ViewTicket extends Component {
 
 
         return (
-            <div className="viw-ticket">
+            <div className="viw-ticket" >
                 <div className="viw-ticket-box">
                    {/* {this.state.isNotDisplay === false ? 
                    renderTicket
@@ -261,8 +262,10 @@ class ViewTicket extends Component {
 
                    {renderTicket}
 
-         
+                 
                 </div>
+
+              
             </div>
         );
     }

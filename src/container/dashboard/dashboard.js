@@ -558,7 +558,7 @@ class Dashboard extends Component {
                             </p>
                         </div>
                         <div className="dashboard-support-text" >
-                            <h2>پشتیبانی فروش در جزیرخ کیش</h2>
+                            <h2>پشتیبانی فروش در جزیره کیش</h2>
                             <p className="dashboard-support-phone">
                                 ‍‍      <span>076-44495698 -- 076-44495698</span>
                                 <img src={call} alt="تلفن" />
