@@ -627,6 +627,7 @@ class CreateTicket extends Component {
                                      />
                                     <Input 
                                         name="customerPhone" 
+                                        type="number"
                                         placeholder="شماره تماس خریدار "
                                         val={this.state.customerPhone}
                                         changed={this.changedHandler}
