@@ -155,6 +155,7 @@ class ViewTicket extends Component {
                 </div>
             </div>
             
+           
         </div>
     
         )
@@ -238,7 +239,7 @@ class ViewTicket extends Component {
 
 
         return (
-            <div className="viw-ticket">
+            <div className="viw-ticket" >
                 <div className="viw-ticket-box">
                    {/* {this.state.isNotDisplay === false ? 
                    renderTicket
@@ -249,8 +250,12 @@ class ViewTicket extends Component {
 
                    {renderTicket}
 
-         
+                    <div className="powered-by">
+                        <p> Powered by Justkish </p>
+                    </div>
                 </div>
+
+              
             </div>
         );
     }

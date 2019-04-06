@@ -1,6 +1,6 @@
 .viw-ticket{
     background-color: #fff;
-    margin-bottom: 50px;
+    /* margin-bottom: 50px; */
 
 }
 
@@ -112,7 +112,7 @@ margin-bottom: 20px;
 }
 
 .fit-a4{
-    margin-bottom: 400px; 
+    margin-bottom: 200px; 
 }
 .ticket-dates-box img{
 margin-left: 5px;
@@ -339,4 +339,11 @@ align-items: center;
     text-align: center;
     color: #595a5c;
     line-height: 18px;
+}
+
+
+.powered-by {
+    width: 100%;
+    text-align: center; 
+    padding: 30px 0 ;
 }
