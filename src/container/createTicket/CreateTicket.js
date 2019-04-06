@@ -45,6 +45,8 @@ import Tickets from '../../components/createTicket/listAllTickets';
 
 
 import './CreateTicket.css';
+import timeStamp from '../../components/times/timespanToDate';
+import DateJalaly from '../../components/times/dateMiladiToShamsi';
 
 
 class CreateTicket extends Component {
@@ -537,7 +539,8 @@ class CreateTicket extends Component {
                 <SmallOrder key={index}
                     title={item.type === 'product' ? item.products.title : item.tours.title }
                     orderNumber={item.type === 'product' ? item.products.title : item.tours.title}
-                    date="شنبه 1397/12/10 سانس 17:45تا 19:45"
+                    // date="شنبه 1397/12/10 سانس 17:45تا 19:45"
+                    date={DateJalaly(timeStamp(item.products_episode.start_date)) +  ' سانس ' + item.products_episode.start_hours + '-' + item.products_episode.end_hours}
                     prices={item}
                     action={() => this.getAllShopingBag()}/>  ): <p>No Data for show!</p>
                 
