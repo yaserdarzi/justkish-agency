@@ -12,6 +12,7 @@ import MiladyToJalaly from '../../components/times/dateMiladiToShamsi';
 //
 import brand from '../../assets/images/logo.png'
 import brand2 from '../../assets/images/brand2.png'
+import iconLogo from '../../assets/images/iconLogo.png'
 import icon2 from '../../assets/icons/icon2.svg'
 import icon3 from '../../assets/icons/icon3.png'
 import icon4 from '../../assets/icons/icon4.svg'
@@ -155,6 +156,7 @@ class ViewTicket extends Component {
                 </div>
             </div>
             
+           
         </div>
     
         )
@@ -178,6 +180,8 @@ class ViewTicket extends Component {
                               </div>
                           </div>
 
+                          
+
                           <div className="ticket-triple-box">
                               <div className="ticket-triple-box-titles" >
                                   <h2> </h2>
@@ -186,6 +190,10 @@ class ViewTicket extends Component {
                               </div>
                           </div>
                       </div>
+                     
+                     <div className="title-ticket-view">
+                        <p>{item.products ? item.products.title : item.tours.title}</p>
+                     </div>
                       <div className="ticket-dates" >
                           <div className="ticket-dates-box" >
                               <img src={icon2} alt="آیکن" />
@@ -230,6 +238,11 @@ class ViewTicket extends Component {
                       </div>
                   </div>
               </div>
+                    <div className="powered-by">
+                        <p> Powered by Justkish </p>
+                        <img src={iconLogo} alt="" />
+                    </div>
+
               {Ruls}
               </div>
                 )
@@ -238,7 +251,7 @@ class ViewTicket extends Component {
 
 
         return (
-            <div className="viw-ticket">
+            <div className="viw-ticket" >
                 <div className="viw-ticket-box">
                    {/* {this.state.isNotDisplay === false ? 
                    renderTicket
@@ -249,8 +262,10 @@ class ViewTicket extends Component {
 
                    {renderTicket}
 
-         
+                 
                 </div>
+
+              
             </div>
         );
     }
