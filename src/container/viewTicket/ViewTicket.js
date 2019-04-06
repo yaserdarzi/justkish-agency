@@ -239,7 +239,7 @@ class ViewTicket extends Component {
                   </div>
               </div>
                     <div className="powered-by">
-                        <p> Powered by Justkish </p>
+                        <p> Powered by SnappKish </p>
                         <img src={iconLogo} alt="" />
                     </div>
 
