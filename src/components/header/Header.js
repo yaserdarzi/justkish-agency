@@ -97,7 +97,7 @@ class Header extends Component {
 
                     <div className="logo-menu" >
                         <div className="logo-box" >
-                            <a href="http://www.justkish.com">
+                            <a href="http://www.snappkish.com/">
                                 <img className="logo" src={logo} alt="logo" />
                             </a>
                         </div>
