@@ -38,7 +38,12 @@ class Profile extends Component {
             userImage:loading,
             getuserinfoLoading:true,
             file: '',
-            imagePreviewUrl: ''
+            imagePreviewUrl: '',
+            agancyInfo:[],
+            agancyName:'',
+            agancyMobile: '',
+            agancyPhone: '',
+            agancyLogo: '',
         }
     }
 
@@ -53,10 +58,20 @@ class Profile extends Component {
         this._getUserInformation();
     }
 
+    // componentDidMount(){
+    //     this.setState({
+    //                 agancyName:this.state.agancyInfo.name,
+    //                 agancyMobile: this.state.agancyInfo.phone,
+    //                 agancyPhone: this.state.agancyInfo.tell, 
+    //                 agancyLogo: this.state.agancyInfo.image, 
+    //     })
+    // }
+
 
 
     _getUserInformation =async() => {
         await this.fetchingUserINfo('agency/profile');
+        await this._getAgancyInfo('agency')
  
      }
  
@@ -121,8 +136,84 @@ class Profile extends Component {
     }
 
 
+    //
+    // change image logo for agancy ------------------------------?
+    //
+
+    _handleImageChange(e) {
+        e.preventDefault();
+    
+        let reader = new FileReader();
+        let file = e.target.files[0];
+
+        reader.onloadend = () => {
+          this.setState({
+            file: file,
+            imagePreviewUrl: reader.result,
+            agancyLogo: reader.result
+
+          });
+        }
+        reader.readAsDataURL(file)
+
+        console.log(this.state.userImage)
+
  
+    }
+
+
+    changedHandler = (e) => {
+        //console.log(e.target.value)
+        this.setState({
+            [e.target.name]: e.target.value
+        });
+    }
+
+
+    //
+    // agancy information  ----------------------->
+    //
  
+
+    _changeAgancyInfo(){
+        console.log("agancy init!")
+    }
+ 
+
+
+    _getAgancyInfo(key){
+        this.setState({
+            agentLoading: true
+        })
+
+        const url = base.baseURL + key;
+
+        return fetch(url, {
+            method: "GET",
+            cache: "no-cache",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                "agent": "web",
+                "Authorization": Token
+            },
+            redirect: "follow",
+            referrer: "no-referrer"
+        })
+            .then(response => response.json())
+            .then(responsJson => {
+                console.log(responsJson.data)
+                console.log(responsJson.data.type)
+                this.setState({
+                    agancyInfo:responsJson.data,
+                    agancyName:responsJson.data.name,
+                    agancyMobile:responsJson.data.phone,
+                    agancyPhone:responsJson.data.tell, 
+                    agancyLogo:responsJson.data.image, 
+                    getuserinfoLoading: false
+                })
+            })
+    }
 
     render() {
 
@@ -183,11 +274,6 @@ class Profile extends Component {
                                         />
                                     </div>
 
-                                  
- 
- 
-
-
                                 </div>
                                 <button className="profile-btn" >تغییر اطلاعات</button>
 
@@ -197,7 +283,7 @@ class Profile extends Component {
 
                     {/* agance information  */}
 
-                        {/* <div className="user-box" >
+                        <div className="user-box" >
                             <div className="user-box-title" >
                                 <h1>اطلاعات آژانس</h1>
                                 <p>اطلاعات کاربری خود در این بخش ویرایش کنید</p>
@@ -206,36 +292,50 @@ class Profile extends Component {
                                 <div className="user-box-img-input" >
                                     <div className="user-box-inputs" >
                                         <div className="profile-field" >
-                                            <p>نام کاربری</p>
-                                            <input className="profile-input" name="userName" placeholder="" value={this.state.userEmail} />
+                                            <p>نام آژانس</p>
+                                            <input className="profile-input" name="agancyName" placeholder="" onChange={this.changedHandler} value={this.state.agancyName} />
                                         </div>
                                         <div className="profile-field" >
                                             <p>شماره همراه </p>
-                                            <input className="profile-input" name="mobile" placeholder="" value={this.state.userPhone} />
+                                            <input className="profile-input" name="agancyMobile" placeholder="" onChange={this.changedHandler} value={this.state.agancyMobile} />
                                         </div>
                                         <div className="profile-field" >
                                             <p>شماره ثابت</p>
-                                            <input className="profile-input" name="phoneNumber" placeholder="" value={this.state.userTell} />
+                                            <input className="profile-input" name="agancyPhone" placeholder="" onChange={this.changedHandler} value={this.state.agancyPhone} />
                                         </div>
                                         <div className="profile-field" >
                                             <p>وب سایت</p>
-                                            <input className="profile-input" name="website" placeholder="" />
+                                            <input className="profile-input" name="website" placeholder="" onChange={this.changedHandler}/>
                                         </div>
                                         <div className="profile-field big" >
                                             <p> نشانی</p>
-                                            <input className="profile-input" name="address" placeholder="" />
+                                            <input className="profile-input" name="address" placeholder="" onChange={this.changedHandler}/>
                                         </div>
 
                                     </div>
-                                    <div className="user-box-img" >
-                                        <img src={place_holder} alt="پروفایل" />
+                                    {/* <div className="user-box-img" >
+                                        <img src={this.state.agancyLogo || place_holder} alt="پروفایل" />
                                         <button className="profile-mini-btn" >تغییر آرم آژانس </button>
+                                    </div> */}
+
+                                    <div className="user-box-img" >
+                                        {/* image prive for avatar --------------------> */}
+                                        <img src={this.state.agancyLogo || place_holder} alt="پروفایل" />
+                                        {/* make lable to call hiden input for upload file  called upload-photo from id */}
+                                        <label className="profile-mini-btn" for="upload-photo">تغییر نمایه کاربری</label>
+                                        {/* hiden input uploader  */}
+                                        <input  
+                                            type="file" 
+                                            id="upload-photo"
+                                            onChange={(e)=>this._handleImageChangeAgancy(e)} 
+                                        />
                                     </div>
+
                                 </div>
-                                <button className="profile-btn" >تغییر اطلاعات</button>
+                                <button className="profile-btn" onClick={this._changeAgancyInfo} >تغییر اطلاعات</button>
 
                             </div>
-                        </div> */}
+                        </div>
 
                         {/* <div className="user-box" >
                             <div className="user-box-title" >

@@ -14,6 +14,7 @@ import brand from '../../assets/images/logo.png'
 import brand2 from '../../assets/images/brand2.png'
 import iconLogo from '../../assets/images/iconLogo.png'
 import icon2 from '../../assets/icons/icon2.svg'
+import icon5 from '../../assets/images/profile.jpg'
 import icon3 from '../../assets/icons/icon3.png'
 import icon4 from '../../assets/icons/icon4.svg'
 import barcode from '../../assets/images/barcode.png'
@@ -44,6 +45,13 @@ class ViewTicket extends Component {
          this.getData('agency/factor/' + this.getParms('id'));
 
 
+    }
+
+    changedHandler = (e) => {
+        //console.log(e.target.value)
+        this.setState({
+            [e.target.name]: e.target.value
+        });
     }
 
     //
@@ -183,12 +191,22 @@ class ViewTicket extends Component {
                           
 
                           <div className="ticket-triple-box">
+                            <img src={icon5} alt="آیکن" className="logo-agancy-ticket-view"/>
+                              <div className="ticket-triple-box-titles" >
+                                  <h2> </h2>
+                                  <p>آژانس انبر</p>
+                                  <p><b>983241425</b></p>
+                              </div>
+                          </div>
+
+                          <div className="ticket-triple-box"> 
                               <div className="ticket-triple-box-titles" >
                                   <h2> </h2>
                                   <p>تاریخ صدور بلیط</p>
                                   <p><b>{item ? MiladyToJalaly(TimeSpan(item.created_at_timestamp)) : '****/**/**'}</b></p>
                               </div>
                           </div>
+                          
                       </div>
                      
                      <div className="title-ticket-view">
