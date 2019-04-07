@@ -155,7 +155,7 @@ class Dashboard extends Component {
         // if is admin must show that -------------------->
        if(this.state.userType === "admin")
        {
-           console.log("ths user is admin!")
+          // console.log("ths user is admin!")
            this.getAllSellers(); // namayesh amelin forosh ---->
        }
        else{
@@ -192,8 +192,8 @@ class Dashboard extends Component {
         })
             .then(response => response.json())
             .then(responsJson => {
-                console.log(responsJson.data)
-                console.log(responsJson.data.type)
+               // console.log(responsJson.data)
+              //  console.log(responsJson.data.type)
                 this.setState({
                     userType:responsJson.data.type
                 })
@@ -229,8 +229,8 @@ class Dashboard extends Component {
         })
             .then(response => response.json())
             .then(responsJson =>     {
-                console.log(responsJson.data)
-                console.log(responsJson.data.month)
+               // console.log(responsJson.data)
+              //  console.log(responsJson.data.month)
                 this.setState({
                     options : {
                         xaxis: {
@@ -293,7 +293,7 @@ class Dashboard extends Component {
         })
             .then(response => response.json())
             .then(responsJson => {
-                console.log(responsJson.data)
+                //  console.log(responsJson.data)
                 this.setState({
                     agents: responsJson.data,
                     agentLoading: false
@@ -356,7 +356,7 @@ class Dashboard extends Component {
             .then(response => response.json())
             .then(data => {
                 this.setState({ data: data })
-                console.log(data)
+               // console.log(data)
             });
 
         var data = this.state.data

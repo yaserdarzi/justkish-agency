@@ -124,17 +124,7 @@ display: flex;
     opacity: .8;
     transition: all .2s linear;
 }
-.ticket:before , .shopping-card:before{
-    position: absolute;
-    display: block;
-    content: '';
-    width: 5px;
-    height: 5px;
-    background-color: red;
-    top: 6px;
-    left: 6px;
-    border-radius: 30px;
-}
+ 
 
 .wallet-remain{
     margin: 0px 5px;
