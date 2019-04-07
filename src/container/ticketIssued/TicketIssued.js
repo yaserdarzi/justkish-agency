@@ -128,12 +128,12 @@ class TicketIssued extends Component {
                 <div className="ticket-issued-search-list" key={index}>
                     <p className="ticket-issued-search-list-cell-1">{item.id}</p>
                     <p className="ticket-issued-search-list-cell">{item.products.title ? item.products.title : item.tours.title}</p>
-                    <p className="ticket-issued-search-list-cell">
-                     <div style={{display:'flex', flexDirection:'column'}}>
-                        {MiladiToJalaly(TimeStamp(item.products_episode.start_date))}
-                        <p>{item.products_episode.start_hours} - {item.products_episode.end_hours}</p>
+                    <div className="ticket-issued-search-list-cell">
+                     <div   style={{display:'flex', flexDirection:'column'}}>
+                       <span> {MiladiToJalaly(TimeStamp(item.products_episode.start_date))}</span>
+                        <span>{item.products_episode.start_hours} - {item.products_episode.end_hours}</span>
                      </div>
-                    </p>
+                    </div>
                     <p className="ticket-issued-search-list-cell">{item.name}</p>
                     <p className="ticket-issued-search-list-cell">{item.phone}</p>
                     <p className="ticket-issued-search-list-cell">{PriceDigit(item.price_all,'price')}</p>
