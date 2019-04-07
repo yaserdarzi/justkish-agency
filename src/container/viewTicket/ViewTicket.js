@@ -14,10 +14,13 @@ import brand from '../../assets/images/logo.png'
 import brand2 from '../../assets/images/brand2.png'
 import iconLogo from '../../assets/images/iconLogo.png'
 import icon2 from '../../assets/icons/icon2.svg'
+import icon5 from '../../assets/images/profile.jpg'
 import icon3 from '../../assets/icons/icon3.png'
 import icon4 from '../../assets/icons/icon4.svg'
 import barcode from '../../assets/images/barcode.png'
 import barcode1 from '../../assets/images/barcode1.png'
+import place_holder from '../../assets/icons/place_holder.svg'
+
 // import pic from '../../assets/images/pic.jpg'
 // import icon1 from '../../assets/icons/icon1.svg'
 
@@ -42,8 +45,17 @@ class ViewTicket extends Component {
     componentWillMount =() => {
        // console.log(this.getParms('id'));
          this.getData('agency/factor/' + this.getParms('id'));
+         this._getAgancyInfo('agency');
 
 
+
+    }
+
+    changedHandler = (e) => {
+        //console.log(e.target.value)
+        this.setState({
+            [e.target.name]: e.target.value
+        });
     }
 
     //
@@ -98,6 +110,45 @@ class ViewTicket extends Component {
         return 0
     }
 
+
+
+    //
+    // fetch info agancy   ---------------------------------------->
+    //
+
+    _getAgancyInfo(key){
+        this.setState({
+            agentLoading: true
+        })
+
+        const url = base.baseURL + key;
+
+        return fetch(url, {
+            method: "GET",
+            cache: "no-cache",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                "agent": "web",
+                "Authorization": Token
+            },
+            redirect: "follow",
+            referrer: "no-referrer"
+        })
+            .then(response => response.json())
+            .then(responsJson => {
+                console.log(responsJson.data)
+                console.log(responsJson.data.type)
+                this.setState({
+                    agancyInfo:responsJson.data,
+                    agancyName:responsJson.data.name,
+                    agancyMobile:responsJson.data.phone,
+                    agancyPhone:responsJson.data.tell, 
+                    agancyLogo:responsJson.data.image, 
+                    getuserinfoLoading: false
+                })
+            })
+    }
     render() {
 
         const rulesAndCondition = (
@@ -183,12 +234,22 @@ class ViewTicket extends Component {
                           
 
                           <div className="ticket-triple-box">
+                            <img src={place_holder} alt="آیکن" className="logo-agancy-ticket-view"/>
+                              <div className="ticket-triple-box-titles" >
+                                  <h2> </h2>
+                                  <p>{this.state.agancyName}</p>
+                                  <p><b>{this.state.agancyPhone}</b></p>
+                              </div>
+                          </div>
+
+                          <div className="ticket-triple-box"> 
                               <div className="ticket-triple-box-titles" >
                                   <h2> </h2>
                                   <p>تاریخ صدور بلیط</p>
                                   <p><b>{item ? MiladyToJalaly(TimeSpan(item.created_at_timestamp)) : '****/**/**'}</b></p>
                               </div>
                           </div>
+                          
                       </div>
                      
                      <div className="title-ticket-view">

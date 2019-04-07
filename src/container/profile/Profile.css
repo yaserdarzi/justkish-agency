@@ -1,6 +1,6 @@
 
 
-#upload-photo {
+#upload-photo , #upload-photo-agancy{
     opacity: 0;
     position: absolute;
     z-index: -1;

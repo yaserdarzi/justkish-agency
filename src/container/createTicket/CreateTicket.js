@@ -154,9 +154,7 @@ class CreateTicket extends Component {
         //console.log('agency/ticket?categories_id=' + this.getParms('categories') + '&start_date=' + start_date   + '&end_date=' + end_date )
 
         this.getData('agency/ticket?categories_title=' + this.getParms('categories') + '&start_date=' + start_date   + '&end_date=' + end_date )
-
     }
-
 
     getData(key) {
 
