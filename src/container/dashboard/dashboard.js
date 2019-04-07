@@ -548,8 +548,8 @@ class Dashboard extends Component {
                         <h1><img src={support} alt="پشتیبانی" /> پشتیبانی</h1>
                         <div className="dashboard-support-text" >
                             <h2>پشتیبانی فنی</h2>
-                            <p className="dashboard-support-phone">
-                                ‍‍      <span>۰۹۰۳۲۴۰۸۲۰۲</span>
+                            <p className="dashboard-support-phone"> 
+                                ‍‍      <span>09032408202</span>
                                 <img src={call} alt="تلفن" />
                             </p>
                             <p className="dashboard-support-mail">
@@ -560,11 +560,12 @@ class Dashboard extends Component {
                         <div className="dashboard-support-text" >
                             <h2>پشتیبانی فروش در جزیره کیش</h2>
                             <p className="dashboard-support-phone">
-                                ‍‍      <span>076-44495698 -- 076-44495698</span>
+                                {/* ‍‍      <span>076-44495698 -- 076-44495698</span> */}
+                                ‍‍      <span>09347689322</span>
                                 <img src={call} alt="تلفن" />
                             </p>
                             <p className="dashboard-support-mail" >
-                                ‍‍     <span>support@justkish.com</span>
+                                ‍‍     <span>snappkish@gmail.com</span>
                                 <img src={mail} alt="ایمیل" />
                             </p>
                         </div>
