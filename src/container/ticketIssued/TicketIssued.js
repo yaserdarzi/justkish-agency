@@ -38,11 +38,6 @@ class TicketIssued extends Component {
     componentDidMount(){
         console.log("component did mount!");
         this._getAllTicket(); // fetch all tickets --->
-
-
-
-        
-
     }
 
  
