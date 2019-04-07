@@ -370,7 +370,7 @@ class Profile extends Component {
 
                                     <div className="user-box-img" >
                                         {/* image prive for avatar --------------------> */}
-                                        <img src={this.state.agancyLogo } alt="پروفایل" />
+                                        <img src={this.state.agancyLogo || place_holder} alt="پروفایل" />
                                         {/* make lable to call hiden input for upload file  called upload-photo from id */}
                                         <label className="profile-mini-btn" htmlFor="upload-photo-agancy">تغییر نمایه آژانس</label>
                                         {/* hiden input uploader  */}
