@@ -22,7 +22,7 @@ const input = (props) => {
     return (
         <div className="Inputbox">
 
-            <div  className="input-label">
+            <div  className="input-label"> 
                 <input    type={props.type}
                           onClick={props.clicked} 
                           placeholder=" "

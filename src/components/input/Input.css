@@ -1,9 +1,26 @@
-
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
-  -webkit-appearance: none; 
-  margin: 0; 
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+    -moz-appearance: textfield!important;
 }
+
+.elgg-input-number {
+  /* TODO remove once Firefox default rendering improves */
+  -moz-appearance: textfield!important;
+}
+
+input[type=number] {
+  -moz-appearance:textfield!important;
+}
+ 
+input[type="number"]:hover,
+input[type="number"]:focus {
+  -moz-appearance: textfield!important;
+}
+
+
+
 
 
 .input-label {
