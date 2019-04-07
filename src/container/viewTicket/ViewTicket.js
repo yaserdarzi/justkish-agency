@@ -19,6 +19,8 @@ import icon3 from '../../assets/icons/icon3.png'
 import icon4 from '../../assets/icons/icon4.svg'
 import barcode from '../../assets/images/barcode.png'
 import barcode1 from '../../assets/images/barcode1.png'
+import place_holder from '../../assets/icons/place_holder.svg'
+
 // import pic from '../../assets/images/pic.jpg'
 // import icon1 from '../../assets/icons/icon1.svg'
 
@@ -43,6 +45,8 @@ class ViewTicket extends Component {
     componentWillMount =() => {
        // console.log(this.getParms('id'));
          this.getData('agency/factor/' + this.getParms('id'));
+         this._getAgancyInfo('agency');
+
 
 
     }
@@ -106,6 +110,45 @@ class ViewTicket extends Component {
         return 0
     }
 
+
+
+    //
+    // fetch info agancy   ---------------------------------------->
+    //
+
+    _getAgancyInfo(key){
+        this.setState({
+            agentLoading: true
+        })
+
+        const url = base.baseURL + key;
+
+        return fetch(url, {
+            method: "GET",
+            cache: "no-cache",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                "agent": "web",
+                "Authorization": Token
+            },
+            redirect: "follow",
+            referrer: "no-referrer"
+        })
+            .then(response => response.json())
+            .then(responsJson => {
+                console.log(responsJson.data)
+                console.log(responsJson.data.type)
+                this.setState({
+                    agancyInfo:responsJson.data,
+                    agancyName:responsJson.data.name,
+                    agancyMobile:responsJson.data.phone,
+                    agancyPhone:responsJson.data.tell, 
+                    agancyLogo:responsJson.data.image, 
+                    getuserinfoLoading: false
+                })
+            })
+    }
     render() {
 
         const rulesAndCondition = (
@@ -191,11 +234,11 @@ class ViewTicket extends Component {
                           
 
                           <div className="ticket-triple-box">
-                            <img src={icon5} alt="آیکن" className="logo-agancy-ticket-view"/>
+                            <img src={place_holder} alt="آیکن" className="logo-agancy-ticket-view"/>
                               <div className="ticket-triple-box-titles" >
                                   <h2> </h2>
-                                  <p>آژانس انبر</p>
-                                  <p><b>983241425</b></p>
+                                  <p>{this.state.agancyName}</p>
+                                  <p><b>{this.state.agancyPhone}</b></p>
                               </div>
                           </div>
 

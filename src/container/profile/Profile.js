@@ -140,23 +140,24 @@ class Profile extends Component {
     // change image logo for agancy ------------------------------?
     //
 
-    _handleImageChange(e) {
+    _handleImageChangeAgancy(e) {
         e.preventDefault();
     
         let reader = new FileReader();
         let file = e.target.files[0];
-
+        console.log(file)
         reader.onloadend = () => {
+           
           this.setState({
             file: file,
             imagePreviewUrl: reader.result,
-            agancyLogo: reader.result
+             agancyLogo: reader.result 
 
           });
         }
-        reader.readAsDataURL(file)
+       reader.readAsDataURL(file)
 
-        console.log(this.state.userImage)
+       
 
  
     }
@@ -171,15 +172,64 @@ class Profile extends Component {
 
 
     //
-    // agancy information  ----------------------->
+    // agancy information           --------------------------------->
     //
  
 
-    _changeAgancyInfo(){
+    _changeAgancyInfo =async() => {
         console.log("agancy init!")
+
+        // const dataProw = new FormData();
+        // dataProw.append('image', this.state.file, this.state.file.name)
+
+            // provider data for API --------->
+      const dataProw = {
+        "name":this.state.agancyName,
+        "tell":this.state.agancyPhone,
+        "phone":this.state.agancyMobile,
+        "image": this.state.file
+    } 
+
+    const res = await this.postData(dataProw,'agency/update');
+    console.log(res)
     }
+
+
+    postData(data,key) {
+        console.log(data)
+        console.log(key)
+
+       
+
+         const url =  base.baseURL + key;
+
+          return fetch(url, {
+              method: "POST", 
+              cache: "no-cache",  
+              headers: {
+                  "Content-Type": "application/json",
+                  "Accept": "application/json",
+                  "agent" : "web",
+                  "Authorization": Token
+              },
+              body: JSON.stringify(data), 
+          })
+          .then(response => {
+            const statusCode = response.status
+            const data = response.json()
+            return Promise.all([statusCode, data])
+          })
+          .then(([res, data]) => {
+            //console.log(res, data)
+            this.setState({isLoading: false})
+            return ({'status':res, 'data':data.data})
+          })
+      }
  
 
+    // 
+    // fetch agancy information api --------------------------------->
+    //
 
     _getAgancyInfo(key){
         this.setState({
@@ -265,7 +315,7 @@ class Profile extends Component {
                                         {/* image prive for avatar --------------------> */}
                                         <img src={this.state.userImage} alt="پروفایل" />
                                         {/* make lable to call hiden input for upload file  called upload-photo from id */}
-                                        <label className="profile-mini-btn" for="upload-photo">تغییر نمایه کاربری</label>
+                                        <label className="profile-mini-btn" htmlFor="upload-photo">تغییر نمایه کاربری</label>
                                         {/* hiden input uploader  */}
                                         <input  
                                             type="file" 
@@ -320,13 +370,13 @@ class Profile extends Component {
 
                                     <div className="user-box-img" >
                                         {/* image prive for avatar --------------------> */}
-                                        <img src={this.state.agancyLogo || place_holder} alt="پروفایل" />
+                                        <img src={this.state.agancyLogo } alt="پروفایل" />
                                         {/* make lable to call hiden input for upload file  called upload-photo from id */}
-                                        <label className="profile-mini-btn" for="upload-photo">تغییر نمایه کاربری</label>
+                                        <label className="profile-mini-btn" htmlFor="upload-photo-agancy">تغییر نمایه آژانس</label>
                                         {/* hiden input uploader  */}
                                         <input  
                                             type="file" 
-                                            id="upload-photo"
+                                            id="upload-photo-agancy"
                                             onChange={(e)=>this._handleImageChangeAgancy(e)} 
                                         />
                                     </div>
