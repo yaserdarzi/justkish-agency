@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 
 import base from '../../api/baseURL';
 import Token from '../../api/token';
+import Button from '../../components/common/Button/Button';
 
 
 //
@@ -43,7 +44,8 @@ class Profile extends Component {
             agancyName:'',
             agancyMobile: '',
             agancyPhone: '',
-            agancyLogo: '',
+            agancyLogo: loading,
+            editableAgancy: false
         }
     }
 
@@ -140,15 +142,19 @@ class Profile extends Component {
     // change image logo for agancy ------------------------------?
     //
 
-    _handleImageChangeAgancy(e) {
+    _handleImageChangeAgancy = (e) => {
         e.preventDefault();
     
         let reader = new FileReader();
         let file = e.target.files[0];
-        console.log(file)
+        // console.log(file)
+        // this.setState({
+        //     file: e.target.files[0]
+        // })
         reader.onloadend = () => {
            
           this.setState({
+            editableAgancy:true,
             file: file,
             imagePreviewUrl: reader.result,
              agancyLogo: reader.result 
@@ -166,7 +172,8 @@ class Profile extends Component {
     changedHandler = (e) => {
         //console.log(e.target.value)
         this.setState({
-            [e.target.name]: e.target.value
+            [e.target.name]: e.target.value,
+            editableAgancy:true
         });
     }
 
@@ -177,21 +184,43 @@ class Profile extends Component {
  
 
     _changeAgancyInfo =async() => {
+        this.setState({
+            isLoadingUploadAgancy: true
+        })
         console.log("agancy init!")
 
         // const dataProw = new FormData();
         // dataProw.append('image', this.state.file, this.state.file.name)
 
             // provider data for API --------->
-      const dataProw = {
-        "name":this.state.agancyName,
-        "tell":this.state.agancyPhone,
-        "phone":this.state.agancyMobile,
-        "image": this.state.file
-    } 
+    //   const dataProw = {
+    //     "name":this.state.agancyName,
+    //     "tell":this.state.agancyPhone,
+    //     "phone":this.state.agancyMobile,
+    //     "image": this.state.file
+    // } 
+    // console.log(this.state.file)
+
+    let dataProw = new FormData();
+    dataProw.append('name', this.state.agancyName);
+    dataProw.append('tell', this.state.agancyPhone);
+    dataProw.append('phone',this.state.agancyMobile);
+    if (this.state.file)
+        dataProw.append('image',this.state.file,this.state.file.name); 
+ 
+   
+    
+    // for (var pair of db.entries())
+    // {
+    //  console.log(pair[0]+ ', '+ pair[1]); 
+    // }
 
     const res = await this.postData(dataProw,'agency/update');
     console.log(res)
+    this.setState({
+        isLoadingUploadAgancy: false,
+        editableAgancy:false
+    })
     }
 
 
@@ -207,16 +236,20 @@ class Profile extends Component {
               method: "POST", 
               cache: "no-cache",  
               headers: {
-                  "Content-Type": "application/json",
+                //   "Content-Type": "application/json",
+               // "content-type": "multipart/form-data",
                   "Accept": "application/json",
                   "agent" : "web",
-                  "Authorization": Token
+                  "Authorization": Token,
+                  
               },
-              body: JSON.stringify(data), 
+            //   body: JSON.stringify(data), 
+              body: data, 
           })
           .then(response => {
             const statusCode = response.status
             const data = response.json()
+            console.log(response)
             return Promise.all([statusCode, data])
           })
           .then(([res, data]) => {
@@ -325,7 +358,7 @@ class Profile extends Component {
                                     </div>
 
                                 </div>
-                                <button className="profile-btn" >تغییر اطلاعات</button>
+                                <button className="profile-btn" >ذخیره اطلاعات</button>
 
                             </div>
                         </div>
@@ -382,7 +415,17 @@ class Profile extends Component {
                                     </div>
 
                                 </div>
-                                <button className="profile-btn" onClick={this._changeAgancyInfo} >تغییر اطلاعات</button>
+                                                                                                                  
+                                    {this.state.editableAgancy ? 
+                                       <Button                                                                  
+                                       isLoading={this.state.isLoadingUploadAgancy}                                    
+                                       title={'ذخیره اطلاعات'}                                                      
+                                       bgcolor={'#0080FF'}                                                 
+                                       hoverbgcolor={'#0080FF'}                                          
+                                       click={this._changeAgancyInfo}/>  
+                                    : ''}
+
+                                {/* <button className="profile-btn" onClick={this._changeAgancyInfo} >تغییر اطلاعات</button> */}
 
                             </div>
                         </div>
