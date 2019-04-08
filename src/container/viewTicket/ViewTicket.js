@@ -185,9 +185,7 @@ class ViewTicket extends Component {
                             </tr>
                         </thead>
                         <tbody>
-                      {recoveryTicket}
-                         
-                        
+                            {recoveryTicket}                       
                         </tbody>
                     </table>
                 </div>
