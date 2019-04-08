@@ -45,6 +45,7 @@ class Profile extends Component {
             agancyMobile: '',
             agancyPhone: '',
             agancyLogo: loading,
+            editableAgancy: false
         }
     }
 
@@ -153,6 +154,7 @@ class Profile extends Component {
         reader.onloadend = () => {
            
           this.setState({
+            editableAgancy:true,
             file: file,
             imagePreviewUrl: reader.result,
              agancyLogo: reader.result 
@@ -170,7 +172,8 @@ class Profile extends Component {
     changedHandler = (e) => {
         //console.log(e.target.value)
         this.setState({
-            [e.target.name]: e.target.value
+            [e.target.name]: e.target.value,
+            editableAgancy:true
         });
     }
 
@@ -193,15 +196,17 @@ class Profile extends Component {
     //   const dataProw = {
     //     "name":this.state.agancyName,
     //     "tell":this.state.agancyPhone,
-    //     "phone":this.state.agancyMobile 
+    //     "phone":this.state.agancyMobile,
+    //     "image": this.state.file
     // } 
     // console.log(this.state.file)
 
-    let db = new FormData();
-    db.append('name', this.state.agancyName);
-    db.append('tell', this.state.agancyPhone);
-    db.append('phone',this.state.agancyMobile);
-    db.append('image',this.state.file,this.state.file.name);
+    let dataProw = new FormData();
+    dataProw.append('name', this.state.agancyName);
+    dataProw.append('tell', this.state.agancyPhone);
+    dataProw.append('phone',this.state.agancyMobile);
+    if (this.state.file)
+        dataProw.append('image',this.state.file,this.state.file.name); 
    
     
     // for (var pair of db.entries())
@@ -209,10 +214,11 @@ class Profile extends Component {
     //  console.log(pair[0]+ ', '+ pair[1]); 
     // }
 
-    const res = await this.postData(db,'agency/update');
+    const res = await this.postData(dataProw,'agency/update');
     console.log(res)
     this.setState({
-        isLoadingUploadAgancy: false
+        isLoadingUploadAgancy: false,
+        editableAgancy:false
     })
     }
 
@@ -351,7 +357,7 @@ class Profile extends Component {
                                     </div>
 
                                 </div>
-                                <button className="profile-btn" >تغییر اطلاعات</button>
+                                <button className="profile-btn" >ذخیره اطلاعات</button>
 
                             </div>
                         </div>
@@ -409,12 +415,14 @@ class Profile extends Component {
 
                                 </div>
                                                                                                                   
-                                <Button                                                                  
-                                        isLoading={this.state.isLoadingUploadAgancy}                                    
-                                        title={'تغیر اطلاعات'}                                                      
-                                        bgcolor={'#0080FF'}                                                 
-                                        hoverbgcolor={'#0080FF'}                                          
-                                        click={this._changeAgancyInfo}/>  
+                                    {this.state.editableAgancy ? 
+                                       <Button                                                                  
+                                       isLoading={this.state.isLoadingUploadAgancy}                                    
+                                       title={'ذخیره اطلاعات'}                                                      
+                                       bgcolor={'#0080FF'}                                                 
+                                       hoverbgcolor={'#0080FF'}                                          
+                                       click={this._changeAgancyInfo}/>  
+                                    : ''}
 
                                 {/* <button className="profile-btn" onClick={this._changeAgancyInfo} >تغییر اطلاعات</button> */}
 

@@ -20,6 +20,8 @@ import icon4 from '../../assets/icons/icon4.svg'
 import barcode from '../../assets/images/barcode.png'
 import barcode1 from '../../assets/images/barcode1.png'
 import place_holder from '../../assets/icons/place_holder.svg'
+import loading from '../../assets/icons/loading.gif'
+
 
 // import pic from '../../assets/images/pic.jpg'
 // import icon1 from '../../assets/icons/icon1.svg'
@@ -38,7 +40,8 @@ class ViewTicket extends Component {
             userAvatar: 'https://www.drupal.org/files/issues/default-avatar.png',
             ticket:[],
             isLoadingTicket: false,
-            isNotDisplay: false
+            isNotDisplay: false,
+            agancyLogo:loading
         }
     }
 
@@ -234,7 +237,7 @@ class ViewTicket extends Component {
                           
 
                           <div className="ticket-triple-box">
-                            <img src={place_holder} alt="آیکن" className="logo-agancy-ticket-view"/>
+                            <img src={this.state.agancyLogo} alt="آیکن" className="logo-agancy-ticket-view"/>
                               <div className="ticket-triple-box-titles" >
                                   <h2> </h2>
                                   <p>{this.state.agancyName}</p>
