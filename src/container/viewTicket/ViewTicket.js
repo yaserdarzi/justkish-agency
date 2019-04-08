@@ -178,7 +178,6 @@ class ViewTicket extends Component {
                 <div className="rules-box-chid1">
                     <h3>شرایط استرداد و کنسلی</h3>
                     <p>در صورت استرداد بلیط، با توجه به موارد زیر، شما جریمه شده و از مبلغ بازگشتی به شما کاسته می شود.</p>
-
                     <table>
                         <thead>
                             <tr>
