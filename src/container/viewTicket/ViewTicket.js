@@ -231,8 +231,6 @@ class ViewTicket extends Component {
                               </div>
                           </div>
 
-                          
-
                           <div className="ticket-triple-box">
                             <img src={this.state.agancyLogo} alt="آیکن" className="logo-agancy-ticket-view"/>
                               <div className="ticket-triple-box-titles" >
