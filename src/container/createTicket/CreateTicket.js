@@ -728,9 +728,9 @@ class CreateTicket extends Component {
                                             </ul>
                                         </li>
                                     </ul></div>
-                                <button className="create-ticket-btn" onClick={() => this._searchButonTickets()} >
+                                {/* <button className="create-ticket-btn" onClick={() => this._searchButonTickets()} >
                                     <img src={search} alt="جستجو" ></img>
-                                </button>
+                                </button> */}
                             </div>
 
                         </div>
