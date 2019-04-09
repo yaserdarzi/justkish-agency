@@ -31,7 +31,7 @@ How can use this button : ------->
                 isLoading={this.state.isLoading}                                    
                 title={'Send'}                                                      
                 bgcolor={'#0080FF'}                                                 
-                hoverbgcolor={'#1fc056cc'}                                          
+                hoverbgcolor={'#0080FF'}                                          
                 click={this.callSubmit}/>                                           
                                                                                     
                                                                                     

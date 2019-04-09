@@ -15,6 +15,7 @@ import MiladiToJalaly from '../../components/times/dateMiladiToShamsi';
 import email from '../../assets/icons/email.svg'
 import sms from '../../assets/icons/sms.svg'
 import print from '../../assets/icons/print.svg'
+import pdf from '../../assets/icons/pdf-download.svg'
 
 
 
@@ -107,6 +108,11 @@ class TicketIssued extends Component {
         browserHistory.push({pathname:'/view-ticket',search: '?id=' + id, state: id })
     }
 
+    _showTicketPdf =(id) => {
+        // console.log(id);
+        browserHistory.push({pathname:'/view-ticket',search: '?id=' + id +'&type=pdf', state: id })
+    }
+
 
     getSearch = (search) => {
         var result=this.state.allTicket.filter(item => item.customer.name.includes(search));
@@ -139,10 +145,11 @@ class TicketIssued extends Component {
                     <p className="ticket-issued-search-list-cell">{PriceDigit(item.price_all,'price')}</p>
                     <p className="ticket-issued-search-list-cell">{MiladiToJalaly(TimeStamp(item.created_at_timestamp))}</p>
                     <div className="ticket-issued-search-list-cell">
+                        <div  onClick={() => this._showTicketPdf(item.id)}><img src={pdf} alt="pdf" /></div>
                         <div  onClick={() => this._showTicket(item.id)}><img src={print} alt="پرینت" /></div>
                         <Link to="/#" className="disabledbutton"><img src={email}  disabled="disabled" alt="ایمیل"   /></Link>
                         <Link to="/#" className="disabledbutton"><img src={sms}  alt="پیام کوتاه" /></Link>
-                        
+                    
                     </div>
                 </div>
                             

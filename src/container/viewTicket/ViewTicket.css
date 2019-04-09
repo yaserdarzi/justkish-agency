@@ -371,3 +371,17 @@ align-items: center;
     border-radius: 200px;
 
 }
+
+.download-pdf-button {
+    position: absolute;
+    width: 100%; 
+    margin: 10px;
+    z-index: 999999;
+    opacity: 0.1;
+    padding: 2rem 0;
+    transition: ease 500ms;
+}
+
+.download-pdf-button:hover {
+    opacity: 1;
+}

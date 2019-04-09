@@ -1,7 +1,6 @@
 
 
 function priceDigit(str,type){
-    
      
     if(type === 'price'){
         if(str !=='' && str !== null && str !== undefined){

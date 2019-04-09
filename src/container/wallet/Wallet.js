@@ -36,9 +36,32 @@ class Wallet extends Component {
     }
 
     componentDidMount(){
-        this._getAllAgents();
-        this.getAllTransaction()
+        let tabs = this.getParms('tab');
+        if(tabs === 'transaction') 
+            this.transactionTabHandler();
+
+      //  this._getAllAgents();  // TODO for get all agnet and the code is coment
+        this.getAllTransaction();
+
     }
+
+    getParms(value) {
+
+        let url_string = window.location.href
+        let url = new URL(url_string);
+
+        const val = url.searchParams.get(value);
+       // console.log(val)
+        if (val !== null)
+            return val;
+        return 0
+    }
+
+
+
+
+
+
 
     //
     // Get All transaction------------------------------------------------
@@ -85,11 +108,31 @@ class Wallet extends Component {
     //
 
     changedHandler = (event) => {
-        console.log(event.target.name)
-        this.setState({
-            [event.target.name]: event.target.value
-        })
-        console.log(this.state.priceOnline)
+
+//     let input = document.querySelector('input'); 
+
+//    const key = input.addEventListener('keypress', function(e) {
+//        console.log(e.charCode)
+//          return e.charCode
+      
+//     });
+ 
+  
+    // if(key > 47 )
+   
+    this.setState({
+        [event.target.name]:  event.target.value.replace(/\+|-/ig, '')
+    })
+       
+
+      
+       // console.log(this.state.priceOnline)
+    }
+
+
+    _keypress =(event) => {
+ 
+     
     }
 
     //
@@ -298,16 +341,14 @@ class Wallet extends Component {
                     {
                         this.state.transaction
                             ?
-                            <div className="transaction-boxes" >
+                            <div className="transaction-boxes" id="transaction" >
                                 <div className="transaction-box" >
                                     <div className="transaction-type" >
                                         <ul className="ts-type-ul">
                                             <li className="ts-type-li">
-                                                نوع تراکنش<img className="ts-type-img" src={arrowdown2} alt="فلش" />
+                                                 نوع تراکنش: بانکی<img className="ts-type-img" src={arrowdown2} alt="فلش" />
                                                 <ul className="sub-ts-type-ul">
-                                                    <li className="sub-ts-type-li" >نوع ۱</li>
-                                                    <li className="sub-ts-type-li" >نوع ۲</li>
-                                                    <li className="sub-ts-type-li" >نوع ۳</li>
+                                                    <li className="sub-ts-type-li" >بانکی</li>
                                                 </ul>
                                             </li>
                                         </ul>
@@ -324,20 +365,17 @@ class Wallet extends Component {
                                             <input className="transaction-price-input" placeholder="تا مبلغ " />
                                         </div>
                                     </div>
-                                    <div className="transaction-sellers" >
+                                    {/* <div className="transaction-sellers" >
                                         <ul className="ts-sellers-ul">
                                             <li className="ts-sellers-li">
                                             همه کانترمن ها <img className="ts-sellers-img" src={arrowdown2} alt="فلش" />
                                                 <ul className="sub-ts-sellers-ul">
-                                                <p className="all-sellers" >همه کانترمن ها</p>
-
+                                                    <p className="all-sellers" >همه کانترمن ها</p>
                                                     {renderAllAgents}
-                                              
                                                 </ul>
                                             </li>
-
                                         </ul>
-                                    </div>
+                                    </div> */}
                                     <div className="transaction-search" >
                                         <img src={search} alt="جستجو" />
                                     </div>
@@ -473,7 +511,7 @@ class Wallet extends Component {
                                     </div>
                                 </div> */}
 
-                                <div className="credit-box" >
+                                <div className="credit-box" id="increase">
                                     <div className="credit-title" >
                                         <h1 className="credit-title-h1">پرداخت آنلاین </h1>
                                         <p className="credit-title-p">مقدار مورد نیاز برای افزایش اعتبار را به <b>تومان</b> وارد نمایید</p>
@@ -486,6 +524,7 @@ class Wallet extends Component {
                                                 name={'priceOnline'}
                                                 placeholder={'مبلغ'}
                                                 changed={this.changedHandler}
+                                                keyPress={this._keypress}
                                                 val={PriceDigit(this.state.priceOnline,'price')}
                                                 error={this.state.errorOnlinePrice}
                                             /> 

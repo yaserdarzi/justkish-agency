@@ -4,8 +4,10 @@ import Token from '../../api/token';
 import PriceDigit from '../../components/priceDigit/priceDigit';
 import TimeSpan from '../../components/times/timespanToDate';
 import MiladyToJalaly from '../../components/times/dateMiladiToShamsi';
+import Button from '../../components/common/Button/Button';
 
-
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas'; 
 
 //
 // icons and images --------------------------------->
@@ -152,6 +154,31 @@ class ViewTicket extends Component {
                 })
             })
     }
+
+
+    //
+    //
+    //
+
+    _downloadPdf =()=>{
+        console.log("donwload psdf");
+
+
+        html2canvas(document.querySelector("#capture")).then(canvas => {
+            //  document.body.appendChild(canvas);
+  
+              const imgData = canvas.toDataURL('image/png');
+  
+  
+              const pdf = new jsPDF();
+              pdf.addImage(imgData, 'PNG', 0, 0);
+              pdf.save("download.pdf"); 
+          });
+    }
+
+
+
+
     render() {
 
         const rulesAndCondition = (
@@ -311,7 +338,20 @@ class ViewTicket extends Component {
 
         return (
             <div className="viw-ticket" >
-                <div className="viw-ticket-box">
+            {this.getParms('type') === 'pdf' ? 
+                   <div className="download-pdf-button">
+                   <Button                                                                  
+                       isLoading={this.state.isLoading}                                    
+                       title={'دانلود PDF'}                                                      
+                       bgcolor={'#0080FF'}                                                 
+                       hoverbgcolor={'#0080FF'}                                          
+                       click={this._downloadPdf}/> 
+               </div>
+               :
+               ''
+        }
+         
+                <div className="viw-ticket-box" id="capture">
                    {/* {this.state.isNotDisplay === false ? 
                    renderTicket
                 :

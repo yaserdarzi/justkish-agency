@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Button from '../../components/common/Button/Button';
-
+import { Link } from 'react-router'
 import './failedMessage.css'
 class FailedMessage extends Component {
     constructor(props) {
@@ -33,6 +33,9 @@ class FailedMessage extends Component {
       }
 
 
+      _callBackToshoping () {
+
+      }
 
     render() { 
         return ( 
@@ -41,14 +44,16 @@ class FailedMessage extends Component {
                  <h1>پرداخت ناموفق</h1>
                  <h2>{this.state.tokenMessage}</h2>
                 <p>درخواست پرداخت شما از میزان بستانکاری شما بیشتر است و افزایش اعتبار شما با شکست مواجه شد</p>
-
-                 <Button                                                                  
-                     isLoading={this.state.isLoading}                                    
-                     title={'بررسی و پرداخت مجدد'}                                                      
-                     bgcolor={'#0080FF'}                                                 
-                     hoverbgcolor={'#1fc056cc'}                                          
-                     click={this.callSubmit}
-                 />  
+                <Link to="/create-ticket">
+                    <Button                                                                  
+                        isLoading={this.state.isLoading}                                    
+                        title={'بازگشت به سبد خرید'}                                                      
+                        bgcolor={'#0080FF'}                                                 
+                        hoverbgcolor={'#0080FF'}                                          
+                        click={this._callBackToshoping}
+                    />  
+                </Link>
+             
             </div>
          </div>
          );

@@ -78,6 +78,8 @@ class CreateTicket extends Component {
         await this.setState({
             currentDate :  GetToday('shamsi')
         })
+        this.insertParam('start_date', GetToday('shamsi'))
+        this.insertParam('end_date', GetToday('shamsi'))
  
        console.log(this.state.categories)
 
@@ -508,6 +510,9 @@ class CreateTicket extends Component {
             currentDate: date[0] + '/' + date[1] + '/' + day
         })
 
+        this.insertParam('start_date', this.state.currentDate)
+        this.insertParam('end_date', this.state.currentDate)
+        this.getAllTicket();      // get all tickets
         console.log(this.state.currentDate)
     }
 
@@ -723,9 +728,9 @@ class CreateTicket extends Component {
                                             </ul>
                                         </li>
                                     </ul></div>
-                                <button className="create-ticket-btn" onClick={() => this._searchButonTickets()} >
+                                {/* <button className="create-ticket-btn" onClick={() => this._searchButonTickets()} >
                                     <img src={search} alt="جستجو" ></img>
-                                </button>
+                                </button> */}
                             </div>
 
                         </div>
