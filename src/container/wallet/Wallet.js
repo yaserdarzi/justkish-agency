@@ -59,6 +59,10 @@ class Wallet extends Component {
 
 
 
+
+
+
+
     //
     // Get All transaction------------------------------------------------
     //
@@ -104,11 +108,31 @@ class Wallet extends Component {
     //
 
     changedHandler = (event) => {
-        console.log(event.target.name)
-        this.setState({
-            [event.target.name]: event.target.value
-        })
-        console.log(this.state.priceOnline)
+
+//     let input = document.querySelector('input'); 
+
+//    const key = input.addEventListener('keypress', function(e) {
+//        console.log(e.charCode)
+//          return e.charCode
+      
+//     });
+ 
+  
+    // if(key > 47 )
+   
+    this.setState({
+        [event.target.name]:  event.target.value.replace(/\+|-/ig, '')
+    })
+       
+
+      
+       // console.log(this.state.priceOnline)
+    }
+
+
+    _keypress =(event) => {
+ 
+     
     }
 
     //
@@ -500,6 +524,7 @@ class Wallet extends Component {
                                                 name={'priceOnline'}
                                                 placeholder={'مبلغ'}
                                                 changed={this.changedHandler}
+                                                keyPress={this._keypress}
                                                 val={PriceDigit(this.state.priceOnline,'price')}
                                                 error={this.state.errorOnlinePrice}
                                             /> 

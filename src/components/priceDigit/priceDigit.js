@@ -2,7 +2,7 @@
 
 function priceDigit(str,type){
     
-     
+     console.log(str)
     if(type === 'price'){
         if(str !=='' && str !== null && str !== undefined){
             str = str.toString();

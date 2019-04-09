@@ -27,6 +27,7 @@ const input = (props) => {
                           onClick={props.clicked} 
                           placeholder=" "
                           onChange={props.changed}
+                          onKeyPress={props.keyPress}
                           name={props.name}
                           required
                           maxLength={props.max}
