@@ -6,7 +6,8 @@ import TimeSpan from '../../components/times/timespanToDate';
 import MiladyToJalaly from '../../components/times/dateMiladiToShamsi';
 import Button from '../../components/common/Button/Button';
 
-
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas'; 
 
 //
 // icons and images --------------------------------->
@@ -155,16 +156,24 @@ class ViewTicket extends Component {
     }
 
 
-    getParms(value) {
+    //
+    //
+    //
 
-        let url_string = window.location.href
-        let url = new URL(url_string);
+    _downloadPdf =()=>{
+        console.log("donwload psdf");
 
-        const val = url.searchParams.get(value);
-       // console.log(val)
-        if (val !== null)
-            return val;
-        return 0
+
+        html2canvas(document.querySelector("#capture")).then(canvas => {
+            //  document.body.appendChild(canvas);
+  
+              const imgData = canvas.toDataURL('image/png');
+  
+  
+              const pdf = new jsPDF();
+              pdf.addImage(imgData, 'PNG', 0, 0);
+              pdf.save("download.pdf"); 
+          });
     }
 
 
@@ -336,13 +345,13 @@ class ViewTicket extends Component {
                        title={'دانلود PDF'}                                                      
                        bgcolor={'#0080FF'}                                                 
                        hoverbgcolor={'#0080FF'}                                          
-                       click={this.callSubmit}/> 
+                       click={this._downloadPdf}/> 
                </div>
                :
                ''
         }
          
-                <div className="viw-ticket-box">
+                <div className="viw-ticket-box" id="capture">
                    {/* {this.state.isNotDisplay === false ? 
                    renderTicket
                 :
