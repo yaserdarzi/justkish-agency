@@ -4,6 +4,7 @@ import Token from '../../api/token';
 import PriceDigit from '../../components/priceDigit/priceDigit';
 import TimeSpan from '../../components/times/timespanToDate';
 import MiladyToJalaly from '../../components/times/dateMiladiToShamsi';
+import Button from '../../components/common/Button/Button';
 
 
 
@@ -152,6 +153,23 @@ class ViewTicket extends Component {
                 })
             })
     }
+
+
+    getParms(value) {
+
+        let url_string = window.location.href
+        let url = new URL(url_string);
+
+        const val = url.searchParams.get(value);
+       // console.log(val)
+        if (val !== null)
+            return val;
+        return 0
+    }
+
+
+
+
     render() {
 
         const rulesAndCondition = (
@@ -311,6 +329,19 @@ class ViewTicket extends Component {
 
         return (
             <div className="viw-ticket" >
+            {this.getParms('type') === 'pdf' ? 
+                   <div className="download-pdf-button">
+                   <Button                                                                  
+                       isLoading={this.state.isLoading}                                    
+                       title={'دانلود PDF'}                                                      
+                       bgcolor={'#0080FF'}                                                 
+                       hoverbgcolor={'#0080FF'}                                          
+                       click={this.callSubmit}/> 
+               </div>
+               :
+               ''
+        }
+         
                 <div className="viw-ticket-box">
                    {/* {this.state.isNotDisplay === false ? 
                    renderTicket

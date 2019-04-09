@@ -322,11 +322,9 @@ class Wallet extends Component {
                                     <div className="transaction-type" >
                                         <ul className="ts-type-ul">
                                             <li className="ts-type-li">
-                                                نوع تراکنش<img className="ts-type-img" src={arrowdown2} alt="فلش" />
+                                                 نوع تراکنش: بانکی<img className="ts-type-img" src={arrowdown2} alt="فلش" />
                                                 <ul className="sub-ts-type-ul">
-                                                    <li className="sub-ts-type-li" >نوع ۱</li>
-                                                    <li className="sub-ts-type-li" >نوع ۲</li>
-                                                    <li className="sub-ts-type-li" >نوع ۳</li>
+                                                    <li className="sub-ts-type-li" >بانکی</li>
                                                 </ul>
                                             </li>
                                         </ul>
@@ -343,20 +341,17 @@ class Wallet extends Component {
                                             <input className="transaction-price-input" placeholder="تا مبلغ " />
                                         </div>
                                     </div>
-                                    <div className="transaction-sellers" >
+                                    {/* <div className="transaction-sellers" >
                                         <ul className="ts-sellers-ul">
                                             <li className="ts-sellers-li">
                                             همه کانترمن ها <img className="ts-sellers-img" src={arrowdown2} alt="فلش" />
                                                 <ul className="sub-ts-sellers-ul">
-                                                <p className="all-sellers" >همه کانترمن ها</p>
-
+                                                    <p className="all-sellers" >همه کانترمن ها</p>
                                                     {renderAllAgents}
-                                              
                                                 </ul>
                                             </li>
-
                                         </ul>
-                                    </div>
+                                    </div> */}
                                     <div className="transaction-search" >
                                         <img src={search} alt="جستجو" />
                                     </div>
