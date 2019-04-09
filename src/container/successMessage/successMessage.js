@@ -69,6 +69,20 @@ class SuuccessMessage extends Component {
         browserHistory.push({pathname:'/view-ticket',search: '?id=' + id, state: id })
     }
 
+    //
+    // insert and get params from url --------------------------------------------------------->
+    //
+
+    insertParam = async (key, value) => {
+        // push params in url location query
+        await browserHistory.push({
+            pathname: this.props.location.pathname,
+            query: Object.assign({}, this.props.location.query, { [key]: value })
+        });
+
+       // console.log(browserHistory.getCurrentLocation())
+    }
+
 
     //
     // get all ticket in factor -------------------------------------------->

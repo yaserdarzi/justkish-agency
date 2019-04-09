@@ -36,9 +36,28 @@ class Wallet extends Component {
     }
 
     componentDidMount(){
-        this._getAllAgents();
-        this.getAllTransaction()
+        let tabs = this.getParms('tab');
+        if(tabs === 'transaction') 
+            this.transactionTabHandler();
+
+      //  this._getAllAgents();  // TODO for get all agnet and the code is coment
+        this.getAllTransaction();
+
     }
+
+    getParms(value) {
+
+        let url_string = window.location.href
+        let url = new URL(url_string);
+
+        const val = url.searchParams.get(value);
+       // console.log(val)
+        if (val !== null)
+            return val;
+        return 0
+    }
+
+
 
     //
     // Get All transaction------------------------------------------------
@@ -298,7 +317,7 @@ class Wallet extends Component {
                     {
                         this.state.transaction
                             ?
-                            <div className="transaction-boxes" >
+                            <div className="transaction-boxes" id="transaction" >
                                 <div className="transaction-box" >
                                     <div className="transaction-type" >
                                         <ul className="ts-type-ul">
@@ -473,7 +492,7 @@ class Wallet extends Component {
                                     </div>
                                 </div> */}
 
-                                <div className="credit-box" >
+                                <div className="credit-box" id="increase">
                                     <div className="credit-title" >
                                         <h1 className="credit-title-h1">پرداخت آنلاین </h1>
                                         <p className="credit-title-p">مقدار مورد نیاز برای افزایش اعتبار را به <b>تومان</b> وارد نمایید</p>

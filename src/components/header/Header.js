@@ -140,7 +140,7 @@ class Header extends Component {
                                 </Link>
                             </div>
                             <div className="shopping-card" >
-                                <Link to="/create-ticket">
+                                <Link to="/create-ticket?categories=کشتی+های+تفریحی">
                                     <img className="shoppings-icon border-left" src={shopping_card} alt="shopping_card" />
                                     <span className="wallet-remain">سبد خرید</span>
                                 </Link>
