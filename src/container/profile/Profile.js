@@ -177,6 +177,13 @@ class Profile extends Component {
         });
     }
 
+    changedHandlerUser  = (e) => {
+        //console.log(e.target.value)
+        this.setState({
+            [e.target.name]: e.target.value, 
+        });
+    }
+
 
     //
     // agancy information           --------------------------------->
@@ -328,15 +335,15 @@ class Profile extends Component {
                                                               <div className="user-box-inputs" >
                                                               <div className="profile-field" >
                                                                   <p>نام کاربری</p>
-                                                                  <input className="profile-input" name="userName" placeholder="" value={this.state.userEmail}/>
+                                                                  <input className="profile-input" name="userEmail" placeholder="" value={this.state.userEmail} onChange={this.changedHandlerUser}/>
                                                               </div>
                                                               <div className="profile-field" >
                                                                   <p>شماره همراه </p>
-                                                                  <input className="profile-input" name="mobile" placeholder="" value={this.state.userPhone} />
+                                                                  <input className="profile-input" name="userPhone" placeholder="" value={this.state.userPhone} />
                                                               </div>
                                                               <div className="profile-field" >
                                                                   <p>شماره ثابت</p>
-                                                                  <input className="profile-input" name="phoneNumber" placeholder="" value={this.state.userTell} />
+                                                                  <input className="profile-input" name="userTell" placeholder="" value={this.state.userTell} />
                                                               </div>
                       
                                                           </div>
