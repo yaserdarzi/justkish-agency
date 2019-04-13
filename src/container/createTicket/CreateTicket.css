@@ -125,15 +125,16 @@ display: flex;
 
 .create-ticket-features-lists{
     position: absolute;
-    top: 50px;
+    top: 30px;
     background-color: #fff;
     min-width: 460px;
     display: none;
     box-shadow: 0 2px 10px rgba(157,206,255,.34);
+    transition: all .2s linear;
 }
-.create-ticket-features:hover .create-ticket-features-lists{
-display: block;
-}
+/* .create-ticket-features:hover .create-ticket-features-lists{
+    display: block !important;
+} */
 .create-ticket-features-list{
     border-bottom: 1px solid #f7f9fb;
     display: flex;
